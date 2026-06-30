@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "description": "Per-guṇa pole rules for D2 Triguṇa (felt tone only, not constitutional verdict).",
+  "attributes": {
+    "sattva": "equanimity",
+    "rajas": "activation",
+    "tamas": "inertia"
+  }
+}

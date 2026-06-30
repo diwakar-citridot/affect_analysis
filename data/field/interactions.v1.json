@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "description": "Known affect-interaction templates. A template matches when both components appear among the emotion hypotheses. is_tension marks opposed valence/motivation.",
+  "templates": [
+    { "components": ["fear", "hope"],      "is_tension": true,  "description": "the language holds hope and fear together — reaching forward while braced against loss" },
+    { "components": ["love", "grief"],     "is_tension": true,  "description": "love and grief are carried at once — closeness shadowed by loss" },
+    { "components": ["relief", "anxiety"], "is_tension": true,  "description": "relief arrives still threaded with anxiety" },
+    { "components": ["joy", "guilt"],      "is_tension": true,  "description": "joy appears alongside guilt — gladness that does not feel fully permitted" },
+    { "components": ["anger", "sadness"],  "is_tension": true,  "description": "anger and sadness coexist — protest over a hurt that also grieves" },
+    { "components": ["hope", "determination"], "is_tension": false, "description": "hope and determination reinforce one another — a forward-leaning resolve" },
+    { "components": ["fear", "anger"],     "is_tension": false, "description": "fear and anger move together — threat met with protest" }
+  ]
+}

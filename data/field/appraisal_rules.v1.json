@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "description": "Maps field axes + linguistic cues onto appraisal-theory dimensions. Each appraisal dimension value is a coverage-normalized weighted blend of the referenced axes/cues. Ranges: goal_congruence and fairness in [-1,1]; others in [0,1].",
+  "dimensions": {
+    "novelty":         { "from_axes": { "core.arousal": 0.5 }, "from_cues": { "novelty": 0.8 } },
+    "goal_congruence": { "from_axes": { "core.valence": 0.9 } },
+    "controllability": { "from_axes": { "motivation.control": 0.7, "motivation.agency": 0.5 } },
+    "expectedness":    { "from_cues": { "expectedness": 0.9 } },
+    "responsibility":  { "from_cues": { "self_blame": 0.7, "other_blame": 0.7 } },
+    "certainty":       { "from_axes": { "uncertainty.ambiguity": -0.8 }, "from_cues": { "certainty": 0.6 } },
+    "fairness":        { "from_cues": { "fairness": 0.9 } },
+    "agency":          { "from_axes": { "motivation.agency": 1.0 } }
+  }
+}

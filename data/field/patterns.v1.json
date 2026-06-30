@@ -1,0 +1,56 @@
+{
+  "version": "1.0.0",
+  "description": "Experiential-pattern signatures: a pattern fires when its field-region conditions are met. Conditions are [min,max] bands on hierarchical field axes. supporting_axes are reported for explainability.",
+  "patterns": [
+    {
+      "type": "withdrawal",
+      "conditions": { "motivation.avoidance": [0.5, 1.0], "relational.social_orientation": [-1.0, -0.1] },
+      "supporting_axes": ["motivation.avoidance", "relational.social_orientation"]
+    },
+    {
+      "type": "openness",
+      "conditions": { "motivation.approach": [0.5, 1.0], "relational.social_orientation": [0.1, 1.0], "core.valence": [0.0, 1.0] },
+      "supporting_axes": ["motivation.approach", "relational.social_orientation", "core.valence"]
+    },
+    {
+      "type": "striving",
+      "conditions": { "motivation.approach": [0.5, 1.0], "core.vitality": [0.45, 1.0], "motivation.agency": [0.45, 1.0] },
+      "supporting_axes": ["motivation.approach", "core.vitality", "motivation.agency"]
+    },
+    {
+      "type": "avoidance",
+      "conditions": { "motivation.avoidance": [0.55, 1.0], "temporal.anticipation": [0.4, 1.0] },
+      "supporting_axes": ["motivation.avoidance", "temporal.anticipation"]
+    },
+    {
+      "type": "rumination",
+      "conditions": { "regulation.persistence": [0.55, 1.0], "temporal.resolution": [0.0, 0.45], "core.valence": [-1.0, 0.1] },
+      "supporting_axes": ["regulation.persistence", "temporal.resolution", "core.valence"]
+    },
+    {
+      "type": "hypervigilance",
+      "conditions": { "core.arousal": [0.55, 1.0], "temporal.anticipation": [0.5, 1.0], "regulation.regulation": [0.0, 0.5] },
+      "supporting_axes": ["core.arousal", "temporal.anticipation", "regulation.regulation"]
+    },
+    {
+      "type": "surrender",
+      "conditions": { "motivation.control": [0.0, 0.4], "regulation.regulation": [0.5, 1.0], "core.arousal": [0.0, 0.5] },
+      "supporting_axes": ["motivation.control", "regulation.regulation"]
+    },
+    {
+      "type": "resistance",
+      "conditions": { "motivation.approach": [0.5, 1.0], "core.valence": [-1.0, 0.0], "regulation.volatility": [0.4, 1.0] },
+      "supporting_axes": ["motivation.approach", "core.valence", "regulation.volatility"]
+    },
+    {
+      "type": "attachment",
+      "conditions": { "relational.attachment": [0.55, 1.0], "relational.social_orientation": [0.1, 1.0] },
+      "supporting_axes": ["relational.attachment", "relational.social_orientation"]
+    },
+    {
+      "type": "detachment",
+      "conditions": { "relational.attachment": [0.0, 0.4], "core.vitality": [0.0, 0.45] },
+      "supporting_axes": ["relational.attachment", "core.vitality"]
+    }
+  ]
+}

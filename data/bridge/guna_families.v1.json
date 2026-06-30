@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "description": "Rasa attribute families for guṇa modulation of D8/D9 bridge scores (§5.5).",
+  "families": {
+    "agitation": [
+      "krodha",
+      "utsaha",
+      "cinta",
+      "trasa",
+      "amarsa",
+      "avega",
+      "autsukya"
+    ],
+    "heaviness": [
+      "soka",
+      "visada",
+      "dainya",
+      "nirveda",
+      "glani",
+      "jugupsa"
+    ],
+    "equanimity": [
+      "sama",
+      "dhrti",
+      "hasa"
+    ]
+  },
+  "family_to_guna": {
+    "agitation": "rajas",
+    "heaviness": "tamas",
+    "equanimity": "sattva"
+  }
+}

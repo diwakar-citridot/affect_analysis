@@ -1,0 +1,59 @@
+[project]
+name = "svarupa-affect"
+version = "2.1.0"
+description = "Svarupa Assistant — Layer 1: Multi-Axis Affect Analysis (AFF). Field-first affective reconstruction of lived experience."
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2",
+    "fastapi",
+]
+
+[project.optional-dependencies]
+# Lean deterministic NLP backends. The adapters fall back to a self-contained
+# lexicon implementation when these are not installed (see infrastructure/affect/).
+nlp = [
+    "vaderSentiment",
+    "textblob",
+    "nrclex",
+]
+api = [
+    "uvicorn",
+    "httpx",
+]
+llm = [
+    "boto3",
+]
+kg = [
+    "neo4j",
+]
+dev = [
+    "ruff",
+    "black",
+    "mypy",
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+]
+
+[project.scripts]
+svarupa-affect = "svarupa_affect.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "C", "B", "UP"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

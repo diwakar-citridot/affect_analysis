@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AFF gold-standard eval case",
+  "type": "object",
+  "required": ["id", "text", "expected"],
+  "properties": {
+    "id": { "type": "string" },
+    "text": { "type": "string", "minLength": 1 },
+    "expected": {
+      "type": "object",
+      "properties": {
+        "dominant_attribute": { "type": ["string", "null"] },
+        "dominant_dimension": { "type": ["integer", "null"], "enum": [2, 8, 9, 22, 24, null] },
+        "valence_sign": { "type": "string", "enum": ["positive", "negative", "neutral"] },
+        "experiential_patterns": { "type": "array", "items": { "type": "string" } },
+        "dynamics": { "type": "array", "items": { "type": "string" } },
+        "interactions": { "type": "array", "items": { "type": "array" } },
+        "notes": { "type": "string" }
+      }
+    },
+    "judge_runs": { "type": "array" }
+  }
+}

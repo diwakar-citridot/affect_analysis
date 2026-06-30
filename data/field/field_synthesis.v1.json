@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "description": "Per-axis source weights for the AffectiveFieldBuilder. axis -> {source: weight}. Each axis value is the coverage-normalized weighted sum of contributing source signals.",
+  "axes": {
+    "core.valence":               { "vad": 1.0, "lexical": 0.4 },
+    "core.arousal":               { "vad": 0.7, "lexical": 0.3, "cues": 0.3 },
+    "core.vitality":              { "lexical": 0.5, "cues": 0.6, "vad": 0.2 },
+    "core.intensity":             { "vad": 0.5, "lexical": 0.5, "cues": 0.3 },
+    "motivation.agency":          { "cues": 1.0 },
+    "motivation.approach":        { "cues": 0.8, "vad": 0.3 },
+    "motivation.avoidance":       { "cues": 0.8, "vad": 0.3 },
+    "motivation.control":         { "cues": 0.7, "vad": 0.3 },
+    "regulation.stability":       { "cues": 0.8 },
+    "regulation.persistence":     { "cues": 0.7, "temporal": 0.6 },
+    "regulation.volatility":      { "cues": 0.8 },
+    "regulation.regulation":      { "cues": 1.0 },
+    "relational.attachment":      { "cues": 1.0 },
+    "relational.trust":           { "cues": 1.0 },
+    "relational.social_orientation": { "cues": 1.0 },
+    "temporal.continuity":        { "cues": 0.5, "temporal": 0.8 },
+    "temporal.anticipation":      { "cues": 0.6, "temporal": 0.6 },
+    "temporal.resolution":        { "cues": 0.7 }
+  }
+}

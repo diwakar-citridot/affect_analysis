@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "dimension_id": 2,
+  "beta": 0.3,
+  "description": "Field-native guṇa scoring: each guṇa accumulates weighted axis/pattern/trajectory activations. direction: high | low | center (bipolar equanimity band).",
+  "gunas": {
+    "rajas": {
+      "axes": {
+        "core.arousal": { "weight": 0.35, "direction": "high" },
+        "core.intensity": { "weight": 0.25, "direction": "high" },
+        "core.vitality": { "weight": 0.20, "direction": "high" },
+        "motivation.approach": { "weight": 0.30, "direction": "high" },
+        "regulation.volatility": { "weight": 0.25, "direction": "high" },
+        "regulation.persistence": { "weight": 0.18, "direction": "high" },
+        "temporal.anticipation": { "weight": 0.28, "direction": "high" },
+        "regulation.regulation": { "weight": 0.12, "direction": "low" }
+      },
+      "patterns": {
+        "striving": 0.35,
+        "hypervigilance": 0.30,
+        "resistance": 0.25,
+        "openness": 0.12
+      },
+      "trajectory": {
+        "persistence": 0.22,
+        "volatility": 0.28
+      }
+    },
+    "sattva": {
+      "axes": {
+        "regulation.regulation": { "weight": 0.35, "direction": "high" },
+        "regulation.stability": { "weight": 0.30, "direction": "high" },
+        "core.valence": { "weight": 0.20, "direction": "center" },
+        "core.arousal": { "weight": 0.22, "direction": "low" },
+        "motivation.control": { "weight": 0.15, "direction": "high" },
+        "relational.trust": { "weight": 0.12, "direction": "high" }
+      },
+      "patterns": {
+        "surrender": 0.35,
+        "openness": 0.22,
+        "detachment": 0.15
+      },
+      "trajectory": {
+        "persistence": 0.10,
+        "volatility": 0.08
+      }
+    },
+    "tamas": {
+      "axes": {
+        "core.vitality": { "weight": 0.32, "direction": "low" },
+        "core.arousal": { "weight": 0.28, "direction": "low" },
+        "core.intensity": { "weight": 0.18, "direction": "low" },
+        "motivation.agency": { "weight": 0.30, "direction": "low" },
+        "temporal.resolution": { "weight": 0.22, "direction": "low" },
+        "motivation.avoidance": { "weight": 0.15, "direction": "high" }
+      },
+      "patterns": {
+        "withdrawal": 0.35,
+        "rumination": 0.28
+      },
+      "trajectory": {
+        "persistence": 0.15,
+        "volatility": 0.05
+      }
+    }
+  }
+}

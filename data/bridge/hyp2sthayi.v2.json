@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "dimension_id": 8,
+  "dimension_name": "Sthayibhavas (enduring emotions)",
+  "hypothesis_space": "plutchik_rasa_v1",
+  "edges": [
+    { "hypothesis": "love",        "attribute": "rati",     "weight": 0.90, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "joy",         "attribute": "rati",     "weight": 0.55, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "amusement",   "attribute": "hasa",     "weight": 0.85, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "joy",         "attribute": "hasa",     "weight": 0.45, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "sadness",     "attribute": "shoka",    "weight": 0.85, "prefer": "enduring", "pole_rule": "intensity",
+      "field_guard": { "core.valence": [-1.0, -0.1], "regulation.persistence": [0.45, 1.0] } },
+    { "hypothesis": "grief",       "attribute": "shoka",    "weight": 0.90, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "anger",       "attribute": "krodha",   "weight": 0.90, "prefer": "enduring", "pole_rule": "intensity",
+      "field_guard": { "core.arousal": [0.45, 1.0] } },
+    { "hypothesis": "determination","attribute": "utsaha",  "weight": 0.85, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "enthusiasm",  "attribute": "utsaha",   "weight": 0.80, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "hope",        "attribute": "utsaha",   "weight": 0.45, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "fear",        "attribute": "bhaya",    "weight": 0.90, "prefer": "enduring", "pole_rule": "intensity",
+      "field_guard": { "core.valence": [-1.0, -0.05], "regulation.persistence": [0.45, 1.0] } },
+    { "hypothesis": "anxiety",     "attribute": "bhaya",    "weight": 0.55, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "disgust",     "attribute": "jugupsa",  "weight": 0.88, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "moral_aversion", "attribute": "jugupsa", "weight": 0.92, "prefer": "enduring", "pole_rule": "equilibrium",
+      "field_guard": { "motivation.avoidance": [0.35, 1.0] } },
+    { "hypothesis": "surprise",    "attribute": "vismaya",  "weight": 0.85, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "wonder",      "attribute": "vismaya",  "weight": 0.88, "prefer": "enduring", "pole_rule": "intensity" },
+    { "hypothesis": "serenity",    "attribute": "shama",    "weight": 0.88, "prefer": "enduring", "pole_rule": "equanimity",
+      "field_guard": { "core.arousal": [0.0, 0.5], "regulation.regulation": [0.5, 1.0] } },
+    { "hypothesis": "calm",        "attribute": "shama",    "weight": 0.80, "prefer": "enduring", "pole_rule": "equanimity" }
+  ]
+}

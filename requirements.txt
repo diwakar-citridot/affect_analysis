@@ -1,0 +1,45 @@
+# Svarupa — Multi-Axis Affect Analysis (AFF), Layer 1
+# Install:  pip install -r requirements.txt
+#
+# The layer runs on the CORE deps alone (deterministic, lexicon-backed). The other
+# sections are optional — install only what you need. Adapters degrade gracefully when
+# an optional backend is absent (see infrastructure/affect, infrastructure/llm, infrastructure/kg).
+
+# --- core (required) ---------------------------------------------------------------
+pydantic>=2
+fastapi
+
+# --- HTTP API server ---------------------------------------------------------------
+uvicorn
+httpx                 # also used by fastapi.testclient in the test suite
+
+# --- LLM field-assist (Bedrock/Claude) ---------------------------------------------
+# Needed only when SVARUPA_ENABLE_LLM_ASSIST=1. Also configure AWS credentials + region
+# (AWS_REGION / AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) and
+# BEDROCK_MODEL_ID. Otherwise set SVARUPA_ENABLE_LLM_ASSIST=0.
+boto3
+
+# --- Knowledge Steward (read-only Neo4j) -------------------------------------------
+# Needed only for the live KG-backed steward; a seeded static steward is used otherwise.
+neo4j
+
+# --- Dimension registry (MySQL svarupa_dimensions) --------------------------------
+# Optional: loads dimension names from SVARUPA_MYSQL_* when configured; static seed otherwise.
+pymysql
+
+# --- lean NLP backends (optional) --------------------------------------------------
+# When present these replace the self-contained lexicon adapters. The layer works
+# without them.
+vaderSentiment
+textblob
+nrclex
+
+# --- observability (optional) ------------------------------------------------------
+opentelemetry-sdk
+
+# --- dev / test --------------------------------------------------------------------
+pytest
+pytest-asyncio
+ruff
+black
+mypy

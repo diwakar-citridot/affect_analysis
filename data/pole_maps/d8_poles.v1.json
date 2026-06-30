@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "description": "Per-attribute pole rule mapping affect onto {deficiency, balance, excess}. 'intensity' rule: high intensity/arousal -> excess, flat/absent -> deficiency, held-with-presence -> balance. 'equanimity' rule: regulated calm -> balance, agitation -> excess, numb/flat -> deficiency.",
+  "default_rule": "intensity",
+  "attributes": {
+    "rati": "intensity",
+    "hasa": "intensity",
+    "shoka": "intensity",
+    "krodha": "intensity",
+    "utsaha": "intensity",
+    "bhaya": "intensity",
+    "jugupsa": "intensity",
+    "vismaya": "intensity",
+    "shama": "equanimity"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "dimension_id": 9,
+  "dimension_name": "Vyabhicaribhavas (transient states)",
+  "hypothesis_space": "plutchik_rasa_v1",
+  "edges": [
+    { "hypothesis": "fear",        "attribute": "cinta",    "weight": 0.70, "prefer": "transient", "pole_rule": "intensity",
+      "field_guard": { "motivation.avoidance": [0.4, 1.0] } },
+    { "hypothesis": "anxiety",     "attribute": "cinta",    "weight": 0.85, "prefer": "transient", "pole_rule": "intensity" },
+    { "hypothesis": "fear",        "attribute": "trasa",    "weight": 0.60, "prefer": "transient", "pole_rule": "intensity",
+      "field_guard": { "core.arousal": [0.6, 1.0] } },
+    { "hypothesis": "sadness",     "attribute": "vishada",  "weight": 0.80, "prefer": "transient", "pole_rule": "intensity",
+      "field_guard": { "temporal.continuity": [0.0, 0.5] } },
+    { "hypothesis": "sadness",     "attribute": "dainya",   "weight": 0.55, "prefer": "transient", "pole_rule": "intensity",
+      "field_guard": { "motivation.agency": [0.0, 0.4] } },
+    { "hypothesis": "grief",       "attribute": "vishada",  "weight": 0.65, "prefer": "transient", "pole_rule": "intensity" },
+    { "hypothesis": "anger",       "attribute": "amarsha",  "weight": 0.70, "prefer": "transient", "pole_rule": "intensity" },
+    { "hypothesis": "anger",       "attribute": "avega",    "weight": 0.55, "prefer": "transient", "pole_rule": "intensity",
+      "field_guard": { "regulation.volatility": [0.5, 1.0] } },
+    { "hypothesis": "joy",         "attribute": "harsha",   "weight": 0.80, "prefer": "transient", "pole_rule": "intensity" },
+    { "hypothesis": "amusement",   "attribute": "harsha",   "weight": 0.55, "prefer": "transient", "pole_rule": "intensity" },
+    { "hypothesis": "hope",        "attribute": "autsukya", "weight": 0.75, "prefer": "transient", "pole_rule": "intensity" },
+    { "hypothesis": "anticipation","attribute": "autsukya", "weight": 0.80, "prefer": "transient", "pole_rule": "intensity" },
+    { "hypothesis": "determination","attribute": "dhriti",  "weight": 0.65, "prefer": "transient", "pole_rule": "equanimity" },
+    { "hypothesis": "serenity",    "attribute": "dhriti",   "weight": 0.70, "prefer": "transient", "pole_rule": "equanimity" },
+    { "hypothesis": "calm",        "attribute": "dhriti",   "weight": 0.60, "prefer": "transient", "pole_rule": "equanimity" },
+    { "hypothesis": "sadness",     "attribute": "nirveda",  "weight": 0.45, "prefer": "transient", "pole_rule": "intensity",
+      "field_guard": { "core.vitality": [0.0, 0.4] } },
+    { "hypothesis": "disgust",     "attribute": "glani",    "weight": 0.50, "prefer": "transient", "pole_rule": "intensity" },
+    { "hypothesis": "surprise",    "attribute": "avega",    "weight": 0.40, "prefer": "transient", "pole_rule": "intensity" }
+  ]
+}
