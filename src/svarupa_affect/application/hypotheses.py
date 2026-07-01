@@ -13,6 +13,7 @@ from ..domain.models import (
     EmotionHypothesis,
     Evidence,
     ExperientialPattern,
+    SemanticAffectFeatures,
 )
 from ..domain.scoring import clip
 
@@ -21,6 +22,7 @@ _SUPPORT_AXES: dict[str, list[FieldAxis]] = {
     "joy": [FieldAxis.CORE_VALENCE, FieldAxis.CORE_VITALITY],
     "love": [FieldAxis.CORE_VALENCE, FieldAxis.REL_ATTACHMENT],
     "amusement": [FieldAxis.CORE_VALENCE, FieldAxis.CORE_AROUSAL],
+    "deflection": [FieldAxis.MOT_APPROACH, FieldAxis.CORE_AROUSAL, FieldAxis.REL_ATTACHMENT],
     "sadness": [FieldAxis.CORE_VALENCE, FieldAxis.CORE_AROUSAL, FieldAxis.CORE_VITALITY],
     "grief": [FieldAxis.CORE_VALENCE, FieldAxis.REL_ATTACHMENT],
     "anger": [FieldAxis.CORE_VALENCE, FieldAxis.CORE_AROUSAL, FieldAxis.MOT_APPROACH],
@@ -41,9 +43,9 @@ _SUPPORT_AXES: dict[str, list[FieldAxis]] = {
 # experiential pattern -> labels it tends to support
 _PATTERN_AFFINITY: dict[ExperientialPatternType, set[str]] = {
     ExperientialPatternType.WITHDRAWAL: {"sadness", "fear", "disgust", "moral_aversion"},
-    ExperientialPatternType.OPENNESS: {"joy", "love", "hope", "amusement", "wonder"},
+    ExperientialPatternType.OPENNESS: {"joy", "love", "hope", "amusement", "wonder", "deflection"},
     ExperientialPatternType.STRIVING: {"determination", "enthusiasm", "hope", "anticipation"},
-    ExperientialPatternType.AVOIDANCE: {"fear", "anxiety", "disgust", "anticipation", "moral_aversion"},
+    ExperientialPatternType.AVOIDANCE: {"fear", "anxiety", "disgust", "anticipation", "moral_aversion", "anger"},
     ExperientialPatternType.RUMINATION: {"sadness", "anxiety"},
     ExperientialPatternType.HYPERVIGILANCE: {"fear", "anxiety", "surprise", "anticipation"},
     ExperientialPatternType.SURRENDER: {"serenity", "calm", "sadness"},
@@ -54,6 +56,7 @@ _PATTERN_AFFINITY: dict[ExperientialPatternType, set[str]] = {
 
 _LEXICAL_TO_LABELS: dict[str, list[str]] = {
     "joy": ["joy", "amusement"],
+    "deflection": ["deflection"],
     "love": ["love"],
     "trust": ["love"],
     "sadness": ["sadness", "grief"],
@@ -64,7 +67,11 @@ _LEXICAL_TO_LABELS: dict[str, list[str]] = {
     "surprise": ["surprise", "wonder"],
     "wonder": ["wonder"],
     "anticipation": ["anticipation", "hope"],
+    "calm": ["calm", "serenity"],
 }
+
+
+_SEMANTIC_HYP_WEIGHT = 0.85
 
 
 class EmotionHypothesisGenerator:
@@ -73,6 +80,8 @@ class EmotionHypothesisGenerator:
         field: AffectiveField,
         patterns: list[ExperientialPattern],
         lexical: EmotionEvidence,
+        *,
+        semantic: SemanticAffectFeatures | None = None,
         top_k: int = 6,
     ) -> list[EmotionHypothesis]:
         v = field.core.valence.value
@@ -99,10 +108,14 @@ class EmotionHypothesisGenerator:
             "joy": pos * (0.5 + 0.5 * a) * (0.5 + 0.5 * vit),
             "love": pos * (0.4 + 0.6 * att),
             "amusement": pos * (0.4 + 0.6 * a),
+            "deflection": 0.15
+            * app
+            * (0.35 + 0.65 * a)
+            * (0.40 + 0.30 * equilibrium + 0.20 * max(0.0, v) + 0.15 * att),
             "sadness": neg * (0.6 + 0.4 * (1.0 - a)),
             "grief": neg * (0.4 + 0.6 * att) * (0.5 + 0.5 * (1.0 - a)),
-            "anger": neg * a * (0.4 + 0.6 * app),
-            "fear": neg * a * (0.4 + 0.6 * avo),
+            "anger": neg * a * (0.4 + 0.6 * app) + neg * a * avo * 0.45 * (1.0 - app),
+            "fear": neg * a * (0.4 + 0.6 * avo) + a * ant * 0.32 * (0.15 + 0.85 * avo + max(0.0, neg)),
             "anxiety": neg * (0.4 + 0.6 * ant) * (0.4 + 0.6 * avo),
             "determination": pos * (0.3 + 0.7 * app) * (0.4 + 0.6 * ag),
             "enthusiasm": pos * (0.4 + 0.6 * app) * (0.4 + 0.6 * vit),
@@ -119,13 +132,47 @@ class EmotionHypothesisGenerator:
             * (0.45 + 0.55 * vol)
             * (0.4 + 0.6 * (1.0 - per)),
             "wonder": pos * a * (0.35 + 0.65 * vit) * (0.4 + 0.6 * max(0.0, v)),
-            "anticipation": 0.3 + 0.7 * ant,
+            "anticipation": 0.15 + 0.7 * ant,
         }
 
         # fold lexical evidence as a supporting term
         for emo, prob in lexical.probs.items():
+            boost = 0.62 if prob >= 0.5 else 0.45
             for label in _LEXICAL_TO_LABELS.get(emo, []):
-                raw[label] = raw.get(label, 0.0) + 0.6 * prob
+                raw[label] = raw.get(label, 0.0) + boost * prob
+
+        if semantic and semantic.hypothesis_probs:
+            for label, prob in semantic.hypothesis_probs.items():
+                raw[label] = raw.get(label, 0.0) + _SEMANTIC_HYP_WEIGHT * prob
+
+        sadness_lex = lexical.probs.get("sadness", 0.0)
+        hope_lex = lexical.probs.get("anticipation", 0.0)
+        if sadness_lex >= 0.22 and ag < 0.58:
+            raw["sadness"] = raw.get("sadness", 0.0) + 0.42 * sadness_lex
+            if hope_lex >= 0.15:
+                raw["hope"] = raw.get("hope", 0.0) + 0.18 * hope_lex
+            raw["hope"] = raw.get("hope", 0.0) * 0.50
+
+        joy_lex = lexical.probs.get("joy", 0.0)
+        calm_lex = lexical.probs.get("calm", 0.0)
+        if calm_lex >= 0.25:
+            raw["calm"] = raw.get("calm", 0.0) + 0.42 * calm_lex
+            raw["sadness"] = raw.get("sadness", 0.0) * 0.55
+        if sadness_lex >= 0.25 and joy_lex >= 0.2 and vit < 0.52:
+            raw["joy"] = raw.get("joy", 0.0) + 0.28 * joy_lex
+            raw["calm"] = raw.get("calm", 0.0) + 0.24 * sadness_lex
+
+        if v >= 0.12 and vit < 0.48 and intensity >= 0.52:
+            depletion = (0.5 - vit) + sadness_lex * 0.35
+            raw["calm"] = raw.get("calm", 0.0) + 0.32 * depletion
+            raw["sadness"] = raw.get("sadness", 0.0) + 0.22 * depletion
+
+        if avo >= 0.42 and app < 0.28 and neg >= 0.15:
+            raw["anger"] = raw.get("anger", 0.0) + 0.28 * avo * (1.0 - app)
+
+        ant_lex = lexical.probs.get("anticipation", 0.0)
+        if ant_lex >= 0.3 and a >= 0.45:
+            raw["anticipation"] = raw.get("anticipation", 0.0) + 0.35 * ant_lex
 
         # pattern reinforcement
         present = {p.type: p.strength.value for p in patterns}

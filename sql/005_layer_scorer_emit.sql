@@ -95,7 +95,9 @@ VALUES
     ('AFF', 22, 'brahmavihara_tone', 'field_native', 'field/guna_synthesis.v1.json',
      NULL, NULL, 0, 4),
     ('AFF', 24, 'daivi_asuri_tone', 'field_native', 'field/guna_synthesis.v1.json',
-     NULL, NULL, 0, 5);
+     NULL, NULL, 0, 5),
+    ('AFF', 19, 'klesha_raga_dvesha', 'field_native', 'field/klesha_raga_dvesha.v1.json',
+     NULL, NULL, 0, 6);
 
 INSERT INTO svarupa_layer_scorer_concept (scorer_id, concept_id)
 SELECT s.scorer_id, cl.concept_id

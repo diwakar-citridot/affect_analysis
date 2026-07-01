@@ -23,7 +23,7 @@ from ..domain.models import (
     ReconstructedFeature,
     Regulation,
 )
-from ..domain.ports import IKnowledgeSteward, ILLMProvider
+from ..domain.ports import ILLMProvider
 from ..domain.scoring import clip
 from ..infrastructure.affect.lexicons import tokenize
 from ..infrastructure.llm.prompts import field_assist as prompt_mod
@@ -76,14 +76,12 @@ class FieldAssist:
     def __init__(
         self,
         provider: ILLMProvider,
-        steward: IKnowledgeSteward,
         *,
         model_id: str = "anthropic.claude-3-5-sonnet",
         timeout_s: float = 60.0,
         max_tokens: int = 4096,
     ) -> None:
         self._provider = provider
-        self._steward = steward
         self.model_id = model_id
         self.prompt_version = prompt_mod.PROMPT_VERSION
         self._timeout = timeout_s
@@ -98,8 +96,6 @@ class FieldAssist:
         lexical_valence: float,
         margin: float,
         irony: float,
-        candidate_d8: list[str],
-        candidate_d9: list[str],
         targets: list[str],
     ) -> AssistResult:
         if not ctx.enable_llm_assist:
@@ -116,14 +112,9 @@ class FieldAssist:
         if ctx.force_llm_assist:
             reasons = ["force_llm_assist", *reasons]
 
-        glosses_d8 = await self._steward.glosses(8, candidate_d8)
-        glosses_d9 = await self._steward.glosses(9, candidate_d9)
         prompt = prompt_mod.build_prompt(
             text=ctx.analysis_text,
             field=field,
-            candidate_d8=candidate_d8,
-            candidate_d9=candidate_d9,
-            glosses={**glosses_d8, **glosses_d9},
             targets=targets,
         )
         n = 3 if ctx.latency_mode == LatencyMode.DEEP else 1

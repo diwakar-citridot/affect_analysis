@@ -14,6 +14,7 @@ from .models import (
     EmotionEvidence,
     EmotionHypothesis,
     LayerContext,
+    SemanticAffectFeatures,
     VAD,
     DimensionalSignal,
 )
@@ -44,6 +45,13 @@ class ILinguisticCues(Protocol):
 
 
 @runtime_checkable
+class ISemanticAffectEncoder(Protocol):
+    """Similarity of lived-experience text to KG/steward hypothesis and axis anchors."""
+
+    async def encode(self, text: str) -> SemanticAffectFeatures: ...
+
+
+@runtime_checkable
 class IEmotionEvidence(Protocol):
     async def classify(self, text: str) -> tuple[EmotionEvidence, float]: ...
 
@@ -60,6 +68,10 @@ class IBridgeTable(Protocol):
 @runtime_checkable
 class IConceptRegistry(Protocol):
     def affinity(self, layer_code: str | None = None) -> frozenset[int]: ...
+
+    def primary_dimensions(self, layer_code: str | None = None) -> frozenset[int]: ...
+
+    def contributing_dimensions(self, layer_code: str | None = None) -> frozenset[int]: ...
 
     def slugs(self, dimension_id: int, layer_code: str | None = None) -> frozenset[str]: ...
 

@@ -36,7 +36,9 @@ def test_factual_text_abstains(layer):
             )
         )
     )
-    assert all(s.abstained for s in result.signals) or not result.signals
+    # D2 guṇa may still emit a weak climate read; enduring/transient Rasa dims should abstain.
+    rasa_signals = [s for s in result.signals if s.dimension_id in {8, 9}]
+    assert all(s.abstained for s in rasa_signals) or not rasa_signals
 
 
 def test_tension_implies_ambivalence(layer):

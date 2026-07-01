@@ -25,7 +25,15 @@ def test_fear_maps_to_bhaya_d8_when_persistent():
 
 def test_fear_guard_blocks_bhaya_when_not_persistent():
     d8, _ = _bridges()
-    field = make_field({"core.valence": -0.5, "core.arousal": 0.7, "regulation.persistence": 0.1})
+    field = make_field(
+        {
+            "core.valence": -0.5,
+            "core.arousal": 0.7,
+            "regulation.persistence": 0.1,
+            "motivation.avoidance": 0.05,
+            "temporal.anticipation": 0.05,
+        }
+    )
     hyps = [EmotionHypothesis(label="fear", probability=0.9)]
     attrs = d8.map(hyps, field)
     assert all(a.attribute != "bhaya" for a in attrs)

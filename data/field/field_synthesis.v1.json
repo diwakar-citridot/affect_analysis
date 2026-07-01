@@ -2,8 +2,8 @@
   "version": "1.0.0",
   "description": "Per-axis source weights for the AffectiveFieldBuilder. axis -> {source: weight}. Each axis value is the coverage-normalized weighted sum of contributing source signals.",
   "axes": {
-    "core.valence":               { "vad": 1.0, "lexical": 0.4 },
-    "core.arousal":               { "vad": 0.7, "lexical": 0.3, "cues": 0.3 },
+    "core.valence":               { "vad": 1.0, "lexical": 0.4, "phe": 0.6 },
+    "core.arousal":               { "vad": 0.7, "lexical": 0.3, "cues": 0.3, "phe": 0.5 },
     "core.vitality":              { "lexical": 0.5, "cues": 0.6, "vad": 0.2 },
     "core.intensity":             { "vad": 0.5, "lexical": 0.5, "cues": 0.3 },
     "motivation.agency":          { "cues": 1.0 },

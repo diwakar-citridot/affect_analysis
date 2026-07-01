@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Rasa attribute families for guṇa modulation of D8/D9 bridge scores (§5.5).",
   "families": {
     "agitation": [
@@ -7,9 +7,14 @@
       "utsaha",
       "cinta",
       "trasa",
-      "amarsa",
+      "amarsha",
       "avega",
-      "autsukya"
+      "autsukya",
+      "capalata",
+      "ugrata",
+      "unmada",
+      "vitarka",
+      "asuya"
     ],
     "heaviness": [
       "soka",
@@ -17,12 +22,26 @@
       "dainya",
       "nirveda",
       "glani",
-      "jugupsa"
+      "jugupsa",
+      "alasya",
+      "jadata",
+      "marana",
+      "srama",
+      "vyadhi",
+      "vrida",
+      "moha",
+      "apasmara"
     ],
     "equanimity": [
       "sama",
       "dhrti",
-      "hasa"
+      "hasa",
+      "mati",
+      "nidra",
+      "supta",
+      "smrti",
+      "vibodha",
+      "avahittha"
     ]
   },
   "family_to_guna": {

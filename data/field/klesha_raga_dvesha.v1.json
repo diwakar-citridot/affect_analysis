@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "description": "Placeholder scorer config for D19 Kleśas (rāga/dveṣa only). Maps approach/avoidance field axes to attachment/aversion kleśa readings. Scorer registered with emits_signals=0 until validated.",
+  "concepts": ["raga", "dvesha"],
+  "field_axes": {
+    "raga": { "motivation.approach": 0.8, "relational.attachment": 0.5 },
+    "dvesha": { "motivation.avoidance": 0.8, "core.valence": -0.4 }
+  }
+}

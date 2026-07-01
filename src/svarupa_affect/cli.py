@@ -247,9 +247,12 @@ def print_tables(result: AnalyzeResult, response=None) -> None:
     print(meta)
 
     # 9) Dimensional signals (fusion envelope)
+    emit_dims = sorted({s.dimension_id for s in signals}) if signals else sorted(
+        {s.dimension_id for s in result.signals}
+    )
     print(
         render_table(
-            "DIMENSIONAL SIGNALS (fusion envelope, affinity {2,8,9,22,24})",
+            f"DIMENSIONAL SIGNALS (fusion envelope, emit dimensions {emit_dims})",
             ["dimension", "top attribute", "pole", "relevance", "confidence", "abstained"],
             sig_rows,
         )

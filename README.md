@@ -4,10 +4,10 @@ A field-first implementation of **Layer 1 (AFF)** of the Svarupa Assistant: it r
 **affective organization of lived experience** rather than classifying emotions. It builds a
 hierarchical `AffectiveField`, separates background climate from foreground episodes, reconstructs
 the appraisal and drivers behind the affect, recognises experiential patterns, and only then derives
-emotion *hypotheses* mapped onto the Rasa-theoretic dimensions (D8/D9, contributing D2/D22/D24).
+emotion *hypotheses* mapped onto the Rasa-theoretic dimensions (D8/D9, contributing D2/D19/D22/D24).
 
 This code follows the design in
-[`documentation/design/aff_layer_design.md`](documentation/design/aff_layer_design.md) (v2.1).
+[`documentation/design/aff_layer_design.md`](documentation/design/aff_layer_design.md) (v2.2).
 
 ## Quick start
 

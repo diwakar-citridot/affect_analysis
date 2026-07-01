@@ -37,6 +37,9 @@ nrclex
 # --- observability (optional) ------------------------------------------------------
 opentelemetry-sdk
 
+# --- eval tooling (concept coverage Excel) -----------------------------------------
+openpyxl
+
 # --- dev / test --------------------------------------------------------------------
 pytest
 pytest-asyncio

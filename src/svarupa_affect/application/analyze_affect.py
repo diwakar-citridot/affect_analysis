@@ -137,7 +137,9 @@ class AffectLayer:
 
         # 10. emotion hypotheses (derived) — gated on affect presence (abstain on affect-free text)
         if self._affect_salient(bg_sig, background):
-            hypotheses = self._hypotheses.generate(background, patterns, bg_sig.lexical)
+            hypotheses = self._hypotheses.generate(
+                background, patterns, bg_sig.lexical, semantic=bg_sig.semantic
+            )
         else:
             hypotheses = []
 
@@ -198,10 +200,22 @@ class AffectLayer:
     @staticmethod
     def _affect_salient(bg_sig: FieldSignals, field) -> bool:
         """Affect-presence gate: abstain on affect-free / purely factual text (§7.1)."""
+        sem = bg_sig.semantic
+        if sem.hypothesis_probs:
+            top = max(sem.hypothesis_probs.values())
+            if sem.margin >= 0.28 or top >= 0.48:
+                return True
         if bg_sig.lexical.probs:
             return True
-        if abs(field.core.valence.value) >= 0.2:
+        intensity = field.core.intensity.value
+        regulation = field.regulation.regulation.value
+        if intensity >= 0.62 and regulation >= 0.32:
             return True
+        if regulation >= 0.45 and intensity >= 0.25 and abs(field.core.valence.value) <= 0.22:
+            return True
+        if abs(field.core.valence.value) >= 0.28 and intensity >= 0.58:
+            if bg_sig.lexical.probs or (sem.hypothesis_probs and sem.margin >= 0.30):
+                return True
         if field.core.arousal.value >= 0.55:
             return True
         if field.motivation.avoidance.value >= 0.5 or field.motivation.approach.value >= 0.5:
@@ -222,12 +236,6 @@ class AffectLayer:
 
         if self._field_assist is None:
             return AssistResult(field=background, used=False, reasons=["no_assist"])
-        candidate_d8 = (
-            getattr(self._bridge_d8, "attributes", list)() if self._bridge_d8 else []
-        )
-        candidate_d9 = (
-            getattr(self._bridge_d9, "attributes", list)() if self._bridge_d9 else []
-        )
         return await self._field_assist.maybe_assist(
             ctx,
             background,
@@ -235,8 +243,6 @@ class AffectLayer:
             lexical_valence=lexical_valence,
             margin=bg_sig.lexical.margin if bg_sig.lexical.probs else 0.4,
             irony=bg_sig.cues.scores.get("irony", 0.0),
-            candidate_d8=candidate_d8,
-            candidate_d9=candidate_d9,
             targets=bg_sig.cues.targets,
         )
 
@@ -377,12 +383,12 @@ def build_default_layer() -> AffectLayer:
     """Wire the lean deterministic adapters into the use case (the DI composition root)."""
     from ..infrastructure.affect.linguistic_cues import LinguisticCues
     from ..infrastructure.affect.nrclex_lexical import NRCLexLexicalAffect
+    from ..infrastructure.affect.semantic_encoder import build_semantic_encoder
     from ..infrastructure.affect.vader_textblob_vad import VaderTextBlobVAD
     from ..infrastructure.bridge.tables import JsonBridgeTable
     from ..infrastructure.config import Settings
     from ..infrastructure.kg.concept_registry import build_concept_registry
     from ..infrastructure.kg.scorer_registry import build_scorer_registry
-    from ..infrastructure.kg.steward_client import build_knowledge_steward
     from ..infrastructure.llm.bedrock_provider import BedrockLLMProvider, NullLLMProvider
     from .guna_scorer import GunaFamilyModulator, GunaScorer
 
@@ -393,6 +399,7 @@ def build_default_layer() -> AffectLayer:
         vad=VaderTextBlobVAD(),
         lexical=NRCLexLexicalAffect(),
         cues=LinguisticCues(),
+        semantic=build_semantic_encoder(settings=settings, concept_registry=concept_registry),
         synthesis_path=settings.field_synthesis,
     )
 
@@ -427,7 +434,6 @@ def build_default_layer() -> AffectLayer:
             provider = NullLLMProvider()
     field_assist = FieldAssist(
         provider=provider,  # type: ignore[arg-type]
-        steward=build_knowledge_steward(concept_registry),
         model_id=settings.bedrock_model_id,
         timeout_s=settings.llm_assist_timeout_s,
         max_tokens=settings.llm_assist_max_tokens,

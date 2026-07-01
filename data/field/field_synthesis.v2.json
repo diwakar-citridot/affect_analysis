@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "description": "Per-axis source weights for the AffectiveFieldBuilder. axis -> {source: weight}. Semantic KG-anchor similarity is the primary free-text signal; lexicons/cues are supporting.",
+  "axes": {
+    "core.valence":               { "semantic": 0.65, "vad": 0.5, "lexical": 0.25, "phe": 0.4 },
+    "core.arousal":               { "semantic": 0.6, "vad": 0.5, "lexical": 0.25, "cues": 0.2, "phe": 0.4 },
+    "core.vitality":              { "semantic": 0.5, "lexical": 0.35, "cues": 0.4, "vad": 0.15 },
+    "core.intensity":             { "semantic": 0.55, "vad": 0.4, "lexical": 0.35, "cues": 0.2 },
+    "motivation.agency":          { "semantic": 0.45, "cues": 0.7 },
+    "motivation.approach":        { "semantic": 0.55, "cues": 0.5, "vad": 0.2 },
+    "motivation.avoidance":       { "semantic": 0.7, "cues": 0.35, "vad": 0.15 },
+    "motivation.control":         { "semantic": 0.4, "cues": 0.6, "vad": 0.2 },
+    "regulation.stability":       { "semantic": 0.4, "cues": 0.6 },
+    "regulation.persistence":     { "semantic": 0.55, "cues": 0.45, "temporal": 0.5 },
+    "regulation.volatility":      { "semantic": 0.4, "cues": 0.6 },
+    "regulation.regulation":      { "semantic": 0.55, "cues": 0.7 },
+    "relational.attachment":      { "semantic": 0.45, "cues": 0.75 },
+    "relational.trust":           { "semantic": 0.4, "cues": 0.75 },
+    "relational.social_orientation": { "semantic": 0.4, "cues": 0.8 },
+    "temporal.continuity":        { "semantic": 0.45, "cues": 0.4, "temporal": 0.7 },
+    "temporal.anticipation":      { "semantic": 0.7, "cues": 0.35, "temporal": 0.5 },
+    "temporal.resolution":        { "semantic": 0.4, "cues": 0.6 }
+  }
+}

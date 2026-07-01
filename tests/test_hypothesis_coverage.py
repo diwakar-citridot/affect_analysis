@@ -99,6 +99,45 @@ def test_amusement_text_emits_hasa():
     assert any(a.attribute == "hasa" for a in d8.attribute_scores)
 
 
+def test_deflection_field_score_nonzero_under_mixed_valence():
+    field = make_field(
+        {
+            "core.valence": -0.45,
+            "core.arousal": 0.55,
+            "motivation.approach": 0.65,
+            "relational.attachment": 0.6,
+        }
+    )
+    lexical = EmotionEvidence(probs={"deflection": 0.75}, margin=0.5)
+    gen = EmotionHypothesisGenerator()
+    labels = {h.label for h in gen.generate(field, [], lexical)}
+    assert "deflection" in labels
+
+
+def test_deflection_lexical_boosts_hasa_bridge():
+    from svarupa_affect.domain.enums import Durability
+    from svarupa_affect.domain.models import EmotionHypothesis
+    from svarupa_affect.infrastructure.bridge.tables import JsonBridgeTable
+    from svarupa_affect.infrastructure.config import Settings
+
+    s = Settings.load()
+    d8 = JsonBridgeTable(s.bridge_d8)
+    field = make_field(
+        {
+            "motivation.approach": 0.7,
+            "core.arousal": 0.55,
+            "core.valence": -0.4,
+        }
+    )
+    hyps = [
+        EmotionHypothesis(
+            label="deflection", probability=0.75, durability=Durability.ENDURING
+        )
+    ]
+    attrs = d8.map(hyps, field)
+    assert any(a.attribute == "hasa" for a in attrs)
+
+
 def test_anticipation_maps_to_autsukya_via_bridge():
     from svarupa_affect.domain.enums import Durability
     from svarupa_affect.domain.models import EmotionHypothesis

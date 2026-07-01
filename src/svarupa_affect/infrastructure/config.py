@@ -158,6 +158,8 @@ class Settings:
     aws_region: str | None
     llm_assist_timeout_s: float
     llm_assist_max_tokens: int
+    semantic_encoder: str
+    bedrock_embed_model_id: str | None
     mysql_host: str | None
     mysql_port: int
     mysql_user: str | None
@@ -186,7 +188,7 @@ class Settings:
             data_dir=data_dir,
             bridge_d8=data_dir / "bridge" / "hyp2sthayi.v2.json",
             bridge_d9=data_dir / "bridge" / "hyp2vyabhi.v2.json",
-            field_synthesis=data_dir / "field" / "field_synthesis.v1.json",
+            field_synthesis=data_dir / "field" / "field_synthesis.v2.json",
             patterns=data_dir / "field" / "patterns.v1.json",
             appraisal_rules=data_dir / "field" / "appraisal_rules.v1.json",
             interactions=data_dir / "field" / "interactions.v1.json",
@@ -201,6 +203,9 @@ class Settings:
             aws_region=aws_region,
             llm_assist_timeout_s=_env_float("SVARUPA_LLM_ASSIST_TIMEOUT_S", 60.0),
             llm_assist_max_tokens=_env_int("SVARUPA_LLM_ASSIST_MAX_TOKENS", 4096),
+            semantic_encoder=_env("SVARUPA_SEMANTIC_ENCODER", "tfidf") or "tfidf",
+            bedrock_embed_model_id=_env("SVARUPA_BEDROCK_EMBED_MODEL_ID")
+            or _env("BEDROCK_EMBED_MODEL_ID"),
             mysql_host=_env("SVARUPA_MYSQL_HOST"),
             mysql_port=_env_int("SVARUPA_MYSQL_PORT", 3306),
             mysql_user=_env("SVARUPA_MYSQL_USER"),

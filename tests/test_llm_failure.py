@@ -6,7 +6,6 @@ from conftest import make_context, make_field, run
 
 from svarupa_affect.application.field_assist import FieldAssist, is_ambiguous
 from svarupa_affect.domain.exceptions import ModelUnavailable
-from svarupa_affect.infrastructure.kg.steward_client import StaticKnowledgeSteward
 from svarupa_affect.infrastructure.llm.bedrock_provider import NullLLMProvider
 
 
@@ -44,7 +43,7 @@ class _Good:
 
 
 def _assist(provider):
-    return FieldAssist(provider=provider, steward=StaticKnowledgeSteward())
+    return FieldAssist(provider=provider)
 
 
 def _neutral_field():
@@ -65,8 +64,6 @@ def _call(
             lexical_valence=lexical_valence,
             margin=margin,
             irony=irony,
-            candidate_d8=["bhaya"],
-            candidate_d9=["cinta"],
             targets=["self"],
         )
     )
@@ -105,8 +102,6 @@ def test_force_requires_enable_llm_assist():
             lexical_valence=-0.1,
             margin=0.4,
             irony=0.0,
-            candidate_d8=["bhaya"],
-            candidate_d9=["cinta"],
             targets=["self"],
         )
     )

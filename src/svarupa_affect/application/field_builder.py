@@ -24,10 +24,11 @@ from ..domain.models import (
     Regulation,
     Relational,
     SharedFeatures,
+    SemanticAffectFeatures,
     Temporal,
     VAD,
 )
-from ..domain.ports import ILexicalAffect, ILinguisticCues, IVADModel
+from ..domain.ports import ILexicalAffect, ILinguisticCues, ISemanticAffectEncoder, IVADModel
 from ..domain.scoring import clip
 from ..infrastructure.affect.lexicons import sentences
 
@@ -66,6 +67,7 @@ class FieldSignals:
     lexical: EmotionEvidence
     lexical_coverage: float
     cues: CueBundle
+    semantic: SemanticAffectFeatures
 
 
 def _vad_signal(axis: str, vad: VAD) -> float | None:
@@ -124,17 +126,38 @@ def _temporal_signal(axis: str, shared: SharedFeatures | None) -> float | None:
     }.get(axis)
 
 
+def _phe_signal(axis: str, shared: SharedFeatures | None) -> float | None:
+    """Reuse PHE valence/arousal when present (shared feature cache, not authority)."""
+    if not shared:
+        return None
+    return {
+        "core.valence": shared.valence,
+        "core.arousal": shared.arousal,
+    }.get(axis)
+
+
+def _semantic_signal(axis: str, semantic: SemanticAffectFeatures) -> float | None:
+    val = semantic.axis_scores.get(axis)
+    if val is None:
+        return None
+    if axis == "core.valence":
+        return clip(2.0 * val - 1.0, -1.0, 1.0)
+    return clip(val)
+
+
 class AffectiveFieldBuilder:
     def __init__(
         self,
         vad: IVADModel,
         lexical: ILexicalAffect,
         cues: ILinguisticCues,
+        semantic: ISemanticAffectEncoder,
         synthesis_path: Path,
     ) -> None:
         self._vad = vad
         self._lexical = lexical
         self._cues = cues
+        self._semantic = semantic
         data = json.loads(Path(synthesis_path).read_text(encoding="utf-8"))
         self.version: str = data["version"]
         self._weights: dict[str, dict[str, float]] = data["axes"]
@@ -143,8 +166,14 @@ class AffectiveFieldBuilder:
         vad, vad_cov = await self._vad.score(text)
         lex, lex_cov = await self._lexical.signals(text)
         cues = await self._cues.cues(text, history)
+        semantic = await self._semantic.encode(text)
         return FieldSignals(
-            vad=vad, vad_coverage=vad_cov, lexical=lex, lexical_coverage=lex_cov, cues=cues
+            vad=vad,
+            vad_coverage=vad_cov,
+            lexical=lex,
+            lexical_coverage=lex_cov,
+            cues=cues,
+            semantic=semantic,
         )
 
     def field_from_signals(
@@ -159,7 +188,9 @@ class AffectiveFieldBuilder:
             "vad": sig.vad_coverage,
             "lexical": sig.lexical_coverage,
             "cues": sig.cues.coverage,
+            "semantic": sig.semantic.coverage,
             "temporal": 1.0 if (shared and shared.temporal_cues) else 0.0,
+            "phe": 1.0 if (shared and (shared.valence is not None or shared.arousal is not None)) else 0.0,
         }
 
         for axis, weights in self._weights.items():
@@ -228,6 +259,7 @@ class AffectiveFieldBuilder:
         )
         for cue_ev in sig.cues.evidence:
             field_evidence.append(cue_ev)
+        field_evidence.extend(sig.semantic.evidence)
 
         return AffectiveField(
             core=CoreAffect(
@@ -278,15 +310,26 @@ class AffectiveFieldBuilder:
             return _lexical_signal(axis, sig.lexical)
         if source == "cues":
             return _cue_signal(axis, sig.cues)
+        if source == "semantic":
+            if not sig.semantic.hypothesis_probs:
+                return None
+            return _semantic_signal(axis, sig.semantic)
         if source == "temporal":
             return _temporal_signal(axis, shared)
+        if source == "phe":
+            return _phe_signal(axis, shared)
         return None
 
     @staticmethod
     def _ambiguity(sig: FieldSignals) -> float:
-        """Field ambiguity: low lexical margin + co-present approach/avoidance cues."""
-        margin_term = 1.0 - sig.lexical.margin if sig.lexical.probs else 0.4
+        """Field ambiguity: low lexical/semantic margin + co-present approach/avoidance."""
+        lex_margin = 1.0 - sig.lexical.margin if sig.lexical.probs else 0.4
+        sem_margin = 1.0 - sig.semantic.margin if sig.semantic.hypothesis_probs else 0.4
+        margin_term = 0.5 * lex_margin + 0.5 * sem_margin
         appr = sig.cues.scores.get("approach", 0.0)
-        avoid = sig.cues.scores.get("avoidance", 0.0)
+        avoid = max(
+            sig.cues.scores.get("avoidance", 0.0),
+            sig.semantic.axis_scores.get("motivation.avoidance", 0.0),
+        )
         conflict = min(appr, avoid)
         return clip(0.5 * margin_term + 0.5 * conflict * 2.0)

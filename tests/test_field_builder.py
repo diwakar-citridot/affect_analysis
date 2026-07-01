@@ -44,6 +44,19 @@ def test_background_and_foreground_views(layer):
         assert ep.field is not None
 
 
+def test_phe_shared_valence_arousal_fused_into_field(layer):
+    from svarupa_affect.domain.models import SharedFeatures
+
+    sig = run(layer._builder.signals_for("I feel okay.", []))
+    without = layer._builder.field_from_signals(sig, None)
+    with_phe = layer._builder.field_from_signals(
+        sig, SharedFeatures(valence=0.85, arousal=0.9)
+    )
+    assert with_phe.core.valence.value > without.core.valence.value
+    assert with_phe.core.arousal.value > without.core.arousal.value
+    assert any("phe" in e.detail for e in with_phe.core.valence.evidence)
+
+
 def test_negative_valence_raises_avoidance(layer):
     sig = run(layer._builder.signals_for("I am scared and I want to hide and run away.", []))
     field = layer._builder.field_from_signals(sig, None)

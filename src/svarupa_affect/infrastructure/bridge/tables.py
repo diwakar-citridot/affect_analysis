@@ -63,7 +63,13 @@ class JsonBridgeTable:
         canonical = canonical_slug(attribute)
         if self._allowed_slugs is None:
             return True
-        return canonical in self._allowed_slugs
+        return canonical in self._allowed_slugs or attribute in self._allowed_slugs
+
+    def _emit_slug(self, attribute: str) -> str:
+        """Prefer the registry slug spelling when the raw edge attribute is tagged."""
+        if self._allowed_slugs is not None and attribute in self._allowed_slugs:
+            return attribute
+        return canonical_slug(attribute)
 
     def map(
         self, hypotheses: list[EmotionHypothesis], field: AffectiveField
@@ -77,16 +83,18 @@ class JsonBridgeTable:
             hyp = edge["hypothesis"]
             if hyp not in prob:
                 continue
+            if prob[hyp] < 0.15:
+                continue
             guard = edge.get("field_guard")
             if guard and not _passes_guard(field, guard):
                 continue
             attr = edge["attribute"]
             if not self._edge_allowed(attr):
                 continue
-            canonical_attr = canonical_slug(attr)
-            acc[canonical_attr] = acc.get(canonical_attr, 0.0) + edge["weight"] * prob[hyp]
+            emit_slug = self._emit_slug(attr)
+            acc[emit_slug] = acc.get(emit_slug, 0.0) + edge["weight"] * prob[hyp]
             meta.setdefault(
-                canonical_attr,
+                emit_slug,
                 {
                     "pole_rule": edge.get("pole_rule", "intensity"),
                     "prefer": edge.get("prefer", "enduring"),

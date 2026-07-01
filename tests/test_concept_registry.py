@@ -26,12 +26,21 @@ def test_static_registry_exposes_d8_d9_glosses():
 
 def test_static_registry_affinity():
     reg = StaticConceptRegistry()
-    assert 8 in reg.affinity()
-    assert 9 in reg.affinity()
-    assert 2 in reg.affinity()
-    assert 22 in reg.affinity()
-    assert 24 in reg.affinity()
+    assert reg.affinity() == frozenset({2, 8, 9, 15, 19, 21, 22, 24})
+    assert reg.primary_dimensions() == frozenset({2, 8, 9})
+    assert 15 in reg.contributing_dimensions()
+    assert 21 in reg.contributing_dimensions()
     assert 5 not in reg.affinity()
+
+
+def test_static_registry_d9_full_vocabulary():
+    reg = StaticConceptRegistry()
+    assert len(reg.slugs(9)) == 33
+
+
+def test_static_registry_tridosha_contributing():
+    reg = StaticConceptRegistry()
+    assert reg.slugs(15) == frozenset({"vata", "pitta", "kapha"})
 
 
 def test_emission_intersects_db_affinity_with_implemented_scorers():

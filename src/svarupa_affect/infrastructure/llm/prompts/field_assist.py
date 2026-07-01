@@ -1,9 +1,9 @@
 """Field-reconstruction assist prompt (§6.2/§6.3).
 
 The LLM is asked to **reconstruct the affective organization of lived experience**, not to
-classify an emotion. Pinned ``PROMPT_VERSION`` + system contract + JSON schema live here and
-are recorded in provenance. A light, dependency-free validator checks the payload before any
-field is read (a full JSON Schema validator drops in if ``jsonschema`` is installed).
+classify an emotion or score Rasa attributes. D8/D9 signals are produced downstream by
+deterministic hypothesis bridges. Pinned ``PROMPT_VERSION`` + system contract + JSON schema
+live here and are recorded in provenance.
 """
 
 from __future__ import annotations
@@ -12,15 +12,16 @@ import json
 
 from ....domain.models import AffectiveField
 
-PROMPT_VERSION = "field_assist_v1"
+PROMPT_VERSION = "field_assist_v3"
 
 SYSTEM_PROMPT = (
     "You are the affect-reconstruction component of the Svarupa Assistant. "
     "You reconstruct the affective organization of lived experience carried by the text. "
-    "You do NOT classify the person's emotion, and you make no labels, predictions, "
-    "prescriptions, or verdicts about the person. Voice uncertainty honestly. "
-    "Every reconstructed value MUST carry a confidence in [0,1] and a justifying verbatim span. "
-    "Use ONLY the supplied candidate attribute vocabulary. Output JSON only, matching the schema."
+    "You do NOT classify the person's emotion, name Rasa attributes, or make labels, "
+    "predictions, prescriptions, or verdicts about the person. Voice uncertainty honestly. "
+    "Every reconstructed numeric value MUST carry a confidence in [0,1] and a justifying "
+    "verbatim span. Refine the supplied deterministic field prior; do not invent emotion "
+    "labels. Output JSON only, matching the schema."
 )
 
 # Manual range spec used by the dependency-free validator below.
@@ -51,8 +52,6 @@ FIELD_ASSIST_SCHEMA: dict = {
         "interactions": {"type": "array"},
         "dynamics": {"type": "array"},
         "unresolved": {"type": "boolean"},
-        "candidate_attributes_d8": {"type": "array"},
-        "candidate_attributes_d9": {"type": "array"},
         "confidence": {"type": "number", "min": 0.0, "max": 1.0},
         "abstain": {"type": "boolean"},
     },
@@ -63,12 +62,9 @@ def build_prompt(
     *,
     text: str,
     field: AffectiveField,
-    candidate_d8: list[str],
-    candidate_d9: list[str],
-    glosses: dict[str, str],
     targets: list[str],
 ) -> str:
-    """Render the user prompt: flagged text + deterministic field + closed vocabulary."""
+    """Render the user prompt: flagged text + deterministic field prior."""
     det = {
         "core": {
             "valence": field.core.valence.value,
@@ -95,13 +91,10 @@ def build_prompt(
         f"DETECTED TARGETS: {targets}\n\n"
         "DETERMINISTIC FIELD (your prior; refine, do not blindly echo):\n"
         f"{json.dumps(det, indent=2)}\n\n"
-        f"CANDIDATE D8 ATTRIBUTES (closed set): {candidate_d8}\n"
-        f"CANDIDATE D9 ATTRIBUTES (closed set): {candidate_d9}\n"
-        f"GLOSSES: {json.dumps(glosses)}\n\n"
-        "Reconstruct: background mood vs foreground reactions; enduring vs transient affect; "
-        "appraisal (novelty, goal_congruence, controllability, expectedness, responsibility, "
-        "certainty, fairness, agency); what drives/maintains it; experiential patterns; "
-        "tensions/interactions; what is unresolved; what changes across the narrative. "
+        "TASK: Refine this span's affective organization. Focus on background_field "
+        "(core, motivation, regulation) and appraisal "
+        "(novelty, goal_congruence, controllability, expectedness, responsibility, "
+        "certainty, fairness, agency). Do not name Rasa attributes or emotion labels. "
         "Every numeric value as {value, confidence, span}. Respond with JSON only.\n\n"
         "REQUIRED top-level keys (exact names): background_field, appraisal, confidence, abstain.\n"
         "background_field MUST wrap core/motivation/regulation/relational/temporal groups.\n"

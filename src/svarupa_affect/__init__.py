@@ -8,7 +8,8 @@ __version__ = "2.1.0"
 LAYER_CODE = "AFF"
 
 # Deprecated: use ``build_concept_registry().affinity()`` or ``AffectLayer.affinity``.
-AFFINITY = frozenset({2, 8, 9, 22, 24})
+# Mirrors ``data/kg/aff_concept_layer.v1.json`` (export of svarupa_concept_layer).
+AFFINITY = frozenset({2, 8, 9, 15, 19, 21, 22, 24})
 
 
 def get_affinity() -> frozenset[int]:

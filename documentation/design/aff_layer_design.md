@@ -1,4 +1,4 @@
-# Multi-Axis Affect (AFF) Layer — Design Document (Version 2.1)
+# Multi-Axis Affect (AFF) Layer — Design Document (Version 2.2)
 
 > Implementation design for **Layer 1 — Multi-Axis Affect Analysis** of the Svarupa Assistant.
 > This document turns the spec chapter (`Svarupa_Analytical_Layers_Technical_Specification.docx`,
@@ -11,7 +11,7 @@
 > **Affective Field** of the lived experience first, and treats emotion as a *derived hypothesis*
 > over that field.
 >
-> **What V2.1 refines (this revision).** A focused refinement to better feed the downstream
+> **What V2.1 refines.** A focused refinement to better feed the downstream
 > **Phenomenology (PHE)** layer while staying squarely on affective reconstruction: the
 > `AffectiveField` becomes **hierarchical**; an **`AppraisalProfile`** and **`AffectDriver`s**
 > explain *why* affect emerged; the field separates **background mood** from **foreground episodes**;
@@ -21,6 +21,12 @@
 > objects are never exposed directly. The hexagonal architecture, ports & adapters, explainability,
 > confidence model, bridge tables, versioning, and testing strategy are all **preserved and
 > extended** — this is a refinement, not a rewrite.
+>
+> **What V2.2 aligns (this revision).** Reconciles the implementation design with the Analytical
+> Layers Spec **computational design** for Layer 1: affinity now includes **D19 Kleśas (rāga/dveṣa
+> only)**; explicit **no-D7** boundary (AFF shares valence/arousal with PHE but does not emit a D7
+> signal); a dedicated **§1.1 Computational Design** section; PHE valence/arousal fusion in field
+> synthesis; and an **§7.7 Implementation Compliance** matrix tracking spec vs code.
 
 ## Document Control
 
@@ -28,8 +34,8 @@
 | --- | --- |
 | Component | `svarupa_assistant_components/affect_analysis` |
 | Layer code | `AFF` |
-| Affinity set | `{2, 8, 9, 22, 24}` (primary D8, D9; contributing D2, D22, D24) |
-| Document version | **v2.1** (field-first + hierarchical field + PhenomenologyInput); refines v2; supersedes v1 |
+| Affinity set | `{2, 8, 9, 19, 22, 24}` (primary D8, D9; contributing D2, D19 rāga/dveṣa, D22, D24) |
+| Document version | **v2.2** (spec-aligned computational design + D19 + PHE fusion); refines v2.1; supersedes v1 |
 | Status | Design draft — v1 lean-first deterministic stack, v2/v2.1 analytical philosophy |
 | Core representation | `AffectiveField` (immutable, **hierarchical**) — replaces VAD + EmotionDistribution as the canonical internal object |
 | Public output | `PhenomenologyInput` (the only externally consumed object) + the shared `DimensionalSignal[]` fusion envelope |
@@ -94,9 +100,11 @@ one or more of them. Where a feature and a principle ever conflict, **the princi
 
 These facts are already true in the repo and constrain the design:
 
-- **Affinity** `{2, 8, 9, 22, 24}` — the only `dimension_id`s AFF may emit. Primary for **D8
+- **Affinity** `{2, 8, 9, 19, 22, 24}` — the only `dimension_id`s AFF may emit. Primary for **D8
   Sthāyībhāvas** (9 enduring emotions) and **D9 Vyabhicārībhāvas** (33 transient states);
-  contributing for **D2 Triguṇa**, **D22 Brahmavihāras**, **D24 Daivī/Āsurī Sampat**.
+  contributing for **D2 Triguṇa**, **D19 Pañca Kleśa (rāga/dveṣa only)**, **D22 Brahmavihāras**,
+  **D24 Daivī/Āsurī Sampat**. **D7 is not in affinity** — AFF shares valence/arousal features with
+  PHE (§22.4) but does not emit a D7 `DimensionalSignal`.
 - **Canonical state poles** are `{deficiency, balance, excess}` (+ `unclear`), defined in
   [sql/001_svarupa_dimensions_concepts.sql](sql/001_svarupa_dimensions_concepts.sql)
   (`svarupa_status`, with `legacy_aliases` mapping `negative/neutral/positive`,
@@ -121,7 +129,7 @@ These facts are already true in the repo and constrain the design:
    overall scalar still exists, but its sources are now explicit.
 3. **Abstention is meaningful.** Absence of a signal for an in-affinity dimension = "assessed, not
    implicated"; out-of-affinity = "not assessed". Never fabricate a signal on thin input.
-4. **Stay in your lane.** AFF emits only `{2, 8, 9, 22, 24}`. Dimensions are **data, not code** —
+4. **Stay in your lane.** AFF emits only `{2, 8, 9, 19, 22, 24}`. Dimensions are **data, not code** —
    no `if dimension == X` branching anywhere.
 5. **Field before emotion (V2).** The `AffectiveField` is the canonical internal representation.
    Emotions, Rasa attributes, dynamics, and interactions are all *derived from* the field with
@@ -156,8 +164,9 @@ oscillation, persistence, collapse, recovery) and the **interactions** between c
 (fear+hope, love+grief, relief+anxiety), and recognises the **`ExperientialPattern`s** the person is
 living (withdrawal, openness, striving, rumination, hypervigilance, surrender, …). Only then does it
 derive **emotion hypotheses** and map them onto the Rasa-theoretic dimensions: enduring emotions
-(D8), transient states (D9), with contributing readings of guṇa coloration (D2) and relational/
-character tone (D22, D24). It is **model-first, LLM-assisted**: deterministic signals build the
+(D8), transient states (D9), with contributing readings of guṇa coloration (D2), attachment/aversion
+kleśa tone (D19 rāga/dveṣa), and relational/character tone (D22, D24). It is **model-first,
+LLM-assisted**: deterministic signals build the
 field for the ~80–90% common case; Claude (Bedrock) is invoked only to *reconstruct the field* for
 flagged ambiguity (ambivalence, conflicting motivations, irony, unresolved/identity/relational
 conflict).
@@ -212,6 +221,60 @@ interaction) behind stable ports, all feeding the `AffectiveFieldBuilder`. Heavi
 implementations drop in later as adapter swaps with **zero changes above `infrastructure/`**. Note
 the V2 reframing: the discrete-emotion model is now a *supporting evidence source for the field*,
 not the layer's centre. See §4 and §7 (Roadmap).
+
+### 1.1 Computational Design (Analytical Layers Spec — Layer 1)
+
+This subsection is the canonical computational contract. V2/V2.1 field-first architecture (below)
+is the *implementation strategy* for delivering it; where the lean v1 stack deviates from the
+spec's model choices, the deviation is explicit and behind ports (§7.6).
+
+**Inputs**
+
+| Input | Required | Role |
+| --- | --- | --- |
+| `analysis_text` | yes | Primary text to reconstruct affect from |
+| PHE `valence` / `arousal` | no | Shared cross-layer features via `SharedFeatures` / `IFeatureCache`; fused into `core.valence` and `core.arousal` when present (not authoritative — AFF recomputes if absent) |
+| NAR `temporal_cues` | no | Shared temporal-language cues for enduring-vs-transient discrimination and `temporal.*` / `regulation.persistence` axes |
+
+**Outputs (`DimensionalSignal[]` + `PhenomenologyInput`)**
+
+| Dimension | Role | AFF emission |
+| --- | --- | --- |
+| **D8** Sthāyībhāvas | Primary | yes — enduring bhāvas via `hyp2sthayi` bridge |
+| **D9** Vyabhicārībhāvas | Primary | yes — transient bhāvas via `hyp2vyabhi` bridge |
+| **D2** Triguṇa | Contributing | yes — guṇa field scorer + modulation of D8/D9 |
+| **D19** Kleśas | Contributing | yes — **rāga/dveṣa only** (not full Pañca Kleśa set) |
+| **D22** Brahmavihāras | Contributing | yes — relational warmth tone |
+| **D24** Daivī/Āsurī | Contributing | yes — character-tone reading |
+| **D7** Phenomenological | — | **no** — owned by PHE; AFF may consume shared valence/arousal (§22.4) |
+
+**Methodology**
+
+1. Score the expression on **VAD** axes and on a **discrete-emotion set** (supporting evidence, not primary output).
+2. Perform **aspect-based attribution** — which target the emotion attaches to (`self` / `other` / `situation`); v1 uses linguistic-cue target attribution; full ABSA is roadmap (§7.6).
+3. Map the affect profile onto **enduring vs transient bhāvas** using a curated **correspondence table** (`hyp2sthayi.v2.json`, `hyp2vyabhi.v2.json`) with **`field_guard`** regions.
+4. Apply **guṇa modulation** — D2 Triguṇa weights D8/D9 attribute relevances via `guna_families.v1.json`.
+
+**Algorithm**
+
+| Step | Spec target | v1 implementation | Port |
+| --- | --- | --- | --- |
+| Axes + discrete emotions | Fine-tuned multi-label affect classifier | VADER/TextBlob VAD + NRCLex/lexicon discrete emotions → hierarchical field | `IVADModel`, `ILexicalAffect`, `IEmotionEvidence` |
+| Affect → bhāva | Deterministic mapping + guṇa-conditioned weighting | `BridgeTable` edge aggregation + `apply_guna_modulation()` | `IBridgeTable` |
+| Enduring vs transient | Temporal-language cues (shared with NAR) + bridge `prefer` + `field_guard` | NAR `temporal_cues` in `SharedFeatures`; persistence/continuity cues; hypothesis durability | `ILinguisticCues`, `SharedFeatures` |
+
+**Prompting**
+
+Optional **LLM assist** (Bedrock/Claude) for subtle or mixed affect — invoked only when the
+ambiguity gate fires; reconstructs the **field**, never classifies emotions directly. Disabled by
+default; deterministic path covers ~80–90% of cases (§6).
+
+**Validation**
+
+- Affect-annotated corpora + **Rasa-mapped gold set** (`data/ground_truth/affect_gold.jsonl`).
+- Inter-annotator agreement (IAA) treated as a **ceiling**, not a bitwise target.
+- Philosophy-regression (no verdict language), property invariants, macro-F1 on dominant attribute +
+  MAE on field axes (§7.5).
 
 ## 2. Architecture & Hexagonal Layering
 
@@ -398,7 +461,7 @@ flowchart TD
     S9 --> S10["11. Map hypotheses -> Rasa - hyp2sthayi (D8) + hyp2vyabhi (D9) + durability; guna (D2); relational tone (D22/D24)"]
     S10 --> S11["12. Score + UncertaintyProfile + assemble PhenomenologyInput"]
     S11 --> G2{"Validation gate - ranges, schema, attr registry, monotonicity, field-axis bounds, per-feature confidence present"}
-    G2 -->|pass| Emit["Emit DimensionalSignal[] for subset of 2,8,9,22,24 + PhenomenologyInput (public)"]
+    G2 -->|pass| Emit["Emit DimensionalSignal[] for subset of 2,8,9,19,22,24 + PhenomenologyInput (public)"]
     G2 -->|fail| FB["Lexical fallback - degraded field, reduced confidence"]
     FB --> Emit
     G2 -->|total failure| Absent["Emit nothing - layer absent, lowers downstream coverage"]
@@ -534,7 +597,7 @@ from typing import Protocol
 class IAnalyticalLayer(Protocol):
     code: str                 # "AFF"
     version: str              # semver, recorded in provenance
-    affinity: frozenset[int]  # frozenset({2, 8, 9, 22, 24})
+    affinity: frozenset[int]  # frozenset({2, 8, 9, 19, 22, 24})
     async def analyze(self, ctx: "LayerContext") -> list["DimensionalSignal"]: ...
 ```
 
@@ -832,7 +895,7 @@ The API DTOs mirror the spec's `affect_input.json` / `affect_output.json` one-to
   temporal_cues[]}`, `candidate_dimensions[]`, `kg_context`, `options {latency_mode,
   enable_llm_assist}`.
 - **Output** (`AnalyzeResponse`): `request_id`, `layer="AFF"`, `layer_version`, `signals[]`
-  (each constrained to `dimension_id ∈ {2,8,9,22,24}`, with `attribute_scores`, `state_hint`,
+  (each constrained to `dimension_id ∈ {2,8,9,19,22,24}`, with `attribute_scores`, `state_hint`,
   `uncertainty`, `evidence`, `abstained`), the **`phenomenology_input`** object (the curated public
   contract, §3.3), and `provenance`.
 
@@ -1192,7 +1255,7 @@ sequenceDiagram
     end
     AFF->>AFF: experiential patterns, dynamics+trajectory+interactions, derive hypotheses, map->Rasa, guna
     AFF->>AFF: score + UncertaintyProfile, assemble PhenomenologyInput, validate
-    AFF-->>ORCH: DimensionalSignal[] (subset of 2,8,9,22,24) + PhenomenologyInput (public)
+    AFF-->>ORCH: DimensionalSignal[] (subset of 2,8,9,19,22,24) + PhenomenologyInput (public)
 ```
 
 ## 6. LLM Orchestration (model-first, LLM-assisted)
@@ -1322,7 +1385,7 @@ flowchart LR
     Cache --> AFF
     AFF -->|"publishes valence/arousal first"| Cache
     KS["Knowledge Steward - read-only Neo4j"] -->|"attribute glosses"| AFF
-    AFF -->|"DimensionalSignal[] for 2,8,9,22,24 + UncertaintyProfile"| Fusion["Fusion Agent"]
+    AFF -->|"DimensionalSignal[] for 2,8,9,19,22,24 + UncertaintyProfile"| Fusion["Fusion Agent"]
     AFF -->|"PhenomenologyInput (the ONLY public AFF object)"| PHE["Phenomenology Layer"]
     Fusion --> Integration["Integration Agent + Composer"]
     PHE --> Fusion
@@ -1374,7 +1437,7 @@ Order of work: **per-layer first**, then fusion (mocked JSON), then gold standar
 - **LLM-failure mocks** (`test_llm_failure.py`): timeout, schema-invalid (×3 → drop), provider down
   → assert graceful degradation to the deterministic field, never a crash, never a fabricated field.
 - **Property / invariants** (`test_property_invariants.py`): all field axes + `relevance,
-  confidence ∈` their ranges; emitted `dimension_id ⊆ {2,8,9,22,24}`; relevance and confidence never
+  confidence ∈` their ranges; emitted `dimension_id ⊆ {2,8,9,19,22,24}`; relevance and confidence never
   collapsed; `UncertaintyProfile` components independent and in `[0,1]`; thin input → `abstained`;
   `excess` pole ⇒ above-band intensity; an interaction with `is_tension` ⇒ ambivalence > 0;
   **only `PhenomenologyInput` + `DimensionalSignal[]` cross the public boundary** (no internal object
@@ -1404,11 +1467,38 @@ Order of work: **per-layer first**, then fusion (mocked JSON), then gold standar
 | Interactions | template match (`interactions.v1.json`) | learned co-occurrence model | appraisal-based interaction reasoning |
 | Bridge | curated JSON `v2` (hypothesis + field guards) | calibrated weights on gold data | learned hypothesis→Rasa bridge (curated table as prior) |
 | Guṇa modulation | heuristic | calibrated | trained modulation model |
-| Multimodality | text-only | — | optional prosody/journaling-cadence; possible D19 (rāga/dveṣa) once validated |
+| D19 rāga/dveṣa | placeholder scorer (`emits_signals=0`) | field-axis mapping from `klesha_raga_dvesha.v1.json` | validated kleśa head once gold set ready |
+| Aspect attribution (ABSA) | cue-based self/other/situation | spaCy dependency + target spans | transformer ABSA behind port |
+| Multimodality | text-only | — | optional prosody/journaling-cadence |
 
 The port seam (`IVADModel`, `ILexicalAffect`, `ILinguisticCues`, `IEmotionEvidence`, `IBridgeTable`,
 `ILLMProvider`) guarantees each upgrade is an `infrastructure/` swap with **no changes** to
 `application/` (the `AffectiveFieldBuilder` consumes the same ports) or `domain/`.
+
+### 7.7 Implementation Compliance (spec vs code)
+
+Last verified against Analytical Layers Spec Layer 1 computational design. Status key: **✓** aligned,
+**~** partial, **✗** not yet implemented.
+
+| Requirement | Status | Notes |
+| --- | --- | --- |
+| Input: `analysis_text` | ✓ | `LayerContext.analysis_text`, API `POST /analyze` |
+| Input: optional PHE valence/arousal | ✓ | `SharedFeatures` fused into `core.valence` / `core.arousal` via `phe` source in `field_synthesis.v1.json` |
+| Input: NAR temporal cues | ✓ | `SharedFeatures.temporal_cues` → `temporal.*`, `regulation.persistence` |
+| Output: primary D8, D9 | ✓ | `hyp2sthayi` / `hyp2vyabhi` bridge scorers, `emits_signals=1` |
+| Output: contributing D2 | ✓ | `guna_field` scorer + `GunaFamilyModulator` |
+| Output: contributing D19 (rāga/dveṣa only) | ~ | In affinity; scorer registered (`klesha_raga_dvesha`) with `emits_signals=0` pending validation |
+| Output: contributing D22, D24 | ~ | In affinity; scorers registered with `emits_signals=0` |
+| No D7 emission | ✓ | D7 not in affinity; valence/arousal consumed/shared only |
+| VAD + discrete-emotion scoring | ✓ | `IVADModel` + `ILexicalAffect`; emotions are supporting evidence |
+| Aspect-based attribution | ~ | Cue-based self/other/situation + driver spans; no ABSA yet |
+| Correspondence table + guṇa modulation | ✓ | Versioned bridge JSON + `apply_guna_modulation()` |
+| Enduring vs transient discrimination | ✓ | Bridge `prefer` + `field_guard` + NAR temporal cues + hypothesis durability |
+| Multi-label classifier (spec) | ~ | Heuristic field synthesis; transformer classifier is roadmap (§7.6) |
+| Optional LLM for mixed/subtle affect | ✓ | `field_assist.py` ambiguity gate + Bedrock reconcile |
+| Validation: gold set + IAA ceiling | ~ | `affect_gold.jsonl` + invariant tests; full IAA pipeline not automated |
+| `IFeatureCache` orchestrator wiring | ~ | Port + in-memory impl exist; orchestrator does not wire cache yet |
+| `PhenomenologyInput` public contract | ✓ | Single curated output for PHE |
 
 ## 8. Conclusion
 

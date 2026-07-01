@@ -70,6 +70,17 @@ class CueBundle(Frozen):
     evidence: list[Evidence] = []
 
 
+class SemanticAffectFeatures(Frozen):
+    """KG-anchor semantic similarity scores for hypotheses and field axes."""
+
+    hypothesis_probs: dict[str, float] = {}
+    axis_scores: dict[str, float] = {}
+    coverage: float = Field(default=0.0, ge=0.0, le=1.0)
+    margin: float = Field(default=0.0, ge=0.0, le=1.0)
+    evidence: list[Evidence] = []
+    encoder_version: str = "tfidf_v1"
+
+
 class SharedFeatures(Frozen):
     """Cross-layer features reused via the per-request cache (PHE valence/arousal, NAR temporal)."""
 
