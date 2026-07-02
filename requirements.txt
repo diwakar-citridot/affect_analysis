@@ -8,6 +8,7 @@
 # --- core (required) ---------------------------------------------------------------
 pydantic>=2
 fastapi
+PyMySQL>=1.1.0          # dimension/concept registries import mysql_client at load time
 
 # --- HTTP API server ---------------------------------------------------------------
 uvicorn
@@ -24,8 +25,8 @@ boto3
 neo4j
 
 # --- Dimension registry (MySQL svarupa_dimensions) --------------------------------
-# Optional: loads dimension names from SVARUPA_MYSQL_* when configured; static seed otherwise.
-pymysql
+# PyMySQL is in core (see above). These settings load live rows when configured;
+# static seeds are used otherwise.
 
 # --- lean NLP backends (optional) --------------------------------------------------
 # When present these replace the self-contained lexicon adapters. The layer works

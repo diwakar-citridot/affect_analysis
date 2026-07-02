@@ -34,10 +34,14 @@ svarupa-affect "..."
 
 ### HTTP API (FastAPI)
 
+Use the project venv — Homebrew/system `python3` / `uvicorn` use a different interpreter
+and will not see `boto3`, `PyMySQL`, etc. even after `pip install -r requirements.txt`.
+
 ```bash
-pip install -e ".[api]"
-# IMPORTANT: use the venv's Python, not Homebrew's `uvicorn` (different interpreter → no boto3)
-PYTHONPATH=src .venv/bin/python -m uvicorn svarupa_affect.api.app:app --reload --port 8000
+pip install -r requirements.txt
+./scripts/run_api.sh
+# equivalent:
+# PYTHONPATH=src .venv/bin/python -m uvicorn svarupa_affect.api.app:app --reload --port 8000
 # POST /analyze  {"analysis_text": "..."}   ->   signals[] + phenomenology_input
 # GET  /health
 # interactive docs at /docs

@@ -325,6 +325,7 @@ class EvidenceSummary(Core):
 
 class Provenance(Core):
     layer_version: str
+    affect_mode: str | None = None
     model_id: str | None = None
     prompt_version: str | None = None
     bridge_table_version: str | None = None
@@ -336,6 +337,10 @@ class Provenance(Core):
     llm_assist_attempted: bool = False
     llm_assist_failure: str | None = None
     llm_assist_gate_reasons: list[str] = []
+    llm_primary_used: bool = False
+    llm_primary_attempted: bool = False
+    llm_primary_failure: str | None = None
+    llm_primary_gate_reasons: list[str] = []
     samples: int = 0
 
 
@@ -350,6 +355,7 @@ class AttributeScore(Frozen):
     state: StatePole
     dimension_id: int
     durability: Durability = Durability.UNKNOWN
+    reasoning: str | None = None
 
 
 class StateHint(Frozen):
@@ -413,3 +419,6 @@ class LayerContext(Frozen):
     latency_mode: LatencyMode = LatencyMode.STANDARD
     enable_llm_assist: bool = True
     force_llm_assist: bool = False
+    affect_mode: str = "legacy_deterministic"
+    enable_llm_primary: bool = True
+    force_llm_primary: bool = False

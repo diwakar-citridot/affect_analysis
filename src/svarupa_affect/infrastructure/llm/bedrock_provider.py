@@ -10,6 +10,7 @@ import asyncio
 import json
 import re
 import sys
+from pathlib import Path
 
 from ...domain.exceptions import ModelUnavailable, SchemaValidationError
 from ...infrastructure.logging_config import log_llm_prompt_to_console
@@ -24,12 +25,16 @@ def _import_boto3():
 
         return boto3
     except ImportError as exc:
+        venv_python = Path(__file__).resolve().parents[4] / ".venv" / "bin" / "python"
+        run_api = Path(__file__).resolve().parents[4] / "scripts" / "run_api.sh"
+        venv_hint = (
+            f"Use the project venv: {run_api}"
+            if run_api.is_file()
+            else f"PYTHONPATH=src {venv_python} -m uvicorn svarupa_affect.api.app:app"
+        )
         raise ModelUnavailable(
-            f"boto3 is not available in this Python interpreter "
-            f"({sys.executable}). Install it here: "
-            f"'{sys.executable} -m pip install boto3', then start the API with "
-            f"'{sys.executable} -m uvicorn svarupa_affect.api.app:app' "
-            f"(not the Homebrew/system uvicorn if it points at a different Python)."
+            f"boto3 is not available in this Python interpreter ({sys.executable}). "
+            f"{venv_hint} — or install here: '{sys.executable} -m pip install boto3'."
         ) from exc
 
 

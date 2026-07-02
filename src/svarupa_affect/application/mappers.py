@@ -21,19 +21,32 @@ from ..infrastructure.kg.dimension_registry import build_dimension_registry
 from .analyze_affect import AnalyzeResult
 
 
-def _resolve_llm_flags(req: AnalyzeRequest) -> tuple[bool, bool]:
+def _resolve_llm_flags(req: AnalyzeRequest) -> tuple[bool, bool, str, bool, bool]:
     settings = Settings.load()
-    enable = (
+    enable_assist = (
         settings.enable_llm_assist
         if req.options.enable_llm_assist is None
         else req.options.enable_llm_assist
     )
-    force = (
+    force_assist = (
         settings.force_llm_assist
         if req.options.force_llm_assist is None
         else req.options.force_llm_assist
     )
-    return enable, force
+    affect_mode = (
+        settings.affect_mode if req.options.affect_mode is None else req.options.affect_mode
+    )
+    enable_primary = (
+        settings.enable_llm_primary
+        if req.options.enable_llm_primary is None
+        else req.options.enable_llm_primary
+    )
+    force_primary = (
+        settings.force_llm_primary
+        if req.options.force_llm_primary is None
+        else req.options.force_llm_primary
+    )
+    return enable_assist, force_assist, affect_mode, enable_primary, force_primary
 
 
 def to_context(req: AnalyzeRequest) -> LayerContext:
@@ -44,7 +57,9 @@ def to_context(req: AnalyzeRequest) -> LayerContext:
             arousal=req.shared_features.arousal,
             temporal_cues=req.shared_features.temporal_cues,
         )
-    enable_llm_assist, force_llm_assist = _resolve_llm_flags(req)
+    enable_llm_assist, force_llm_assist, affect_mode, enable_llm_primary, force_llm_primary = (
+        _resolve_llm_flags(req)
+    )
     return LayerContext(
         request_id=req.request_id,
         analysis_text=req.analysis_text,
@@ -56,6 +71,9 @@ def to_context(req: AnalyzeRequest) -> LayerContext:
         latency_mode=req.options.latency_mode,
         enable_llm_assist=enable_llm_assist,
         force_llm_assist=force_llm_assist,
+        affect_mode=affect_mode,
+        enable_llm_primary=enable_llm_primary,
+        force_llm_primary=force_llm_primary,
     )
 
 
@@ -101,6 +119,7 @@ def _signal_to_dto(signal: DimensionalSignal, registry: IDimensionRegistry) -> D
                 state=score.state,
                 dimension_name=registry.name_for(score.dimension_id),
                 durability=score.durability,
+                reasoning=score.reasoning,
             )
             for score in signal.attribute_scores
         ],

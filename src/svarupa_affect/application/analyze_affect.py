@@ -11,10 +11,12 @@ import logging
 from dataclasses import dataclass
 
 from .. import LAYER_CODE, __version__
-from ..domain.enums import Durability, EvidenceKind, StatePole, UncertaintyType
+from ..domain.enums import EvidenceKind, StatePole
 from ..domain.exceptions import ModelUnavailable
 from ..domain.models import (
+    AffectTrajectory,
     AttributeScore,
+    CueBundle,
     DimensionalSignal,
     Evidence,
     ForegroundEpisode,
@@ -27,13 +29,15 @@ from ..domain.models import (
 from ..domain.ports import IBridgeTable, IConceptRegistry, IScorerRegistry
 from ..domain.scoring import build_uncertainty_profile, clip, dimension_relevance
 from ..infrastructure.affect.lexicons import sentences, tokenize
+from ..infrastructure.config import Settings
 from .appraisal import AppraisalReconstructor
 from .drivers import AffectDriverReconstructor
 from .dynamics import AffectDynamicsAnalyzer
 from .field_assist import FieldAssist
 from .field_builder import AffectiveFieldBuilder, FieldSignals
-from .guna_scorer import GunaFamilyModulator, GunaScoreResult, GunaScorer
+from .guna_scorer import GunaFamilyModulator, GunaScorer, GunaScoreResult
 from .hypotheses import EmotionHypothesisGenerator
+from .lived_experience_orchestrator import LivedExperienceOrchestrator, LivedExperienceResult
 from .patterns import ExperientialPatternRecognizer
 from .phenomenology_input import PhenomenologyInputAssembler
 
@@ -65,7 +69,9 @@ class AffectLayer:
         bridges: dict[int, IBridgeTable],
         guna_modulator: GunaFamilyModulator,
         field_assist: FieldAssist | None = None,
+        lived_experience: LivedExperienceOrchestrator | None = None,
         *,
+        affect_mode: str = "legacy_deterministic",
         concept_registry: IConceptRegistry | None = None,
         scorer_registry: IScorerRegistry | None = None,
         affinity: frozenset[int] | None = None,
@@ -106,6 +112,8 @@ class AffectLayer:
         self._bridges = bridges
         self._guna_modulator = guna_modulator
         self._field_assist = field_assist
+        self._lived_experience = lived_experience
+        self._affect_mode = affect_mode
         self._bridge_d8 = bridges.get(8)
         self._bridge_d9 = bridges.get(9)
 
@@ -113,6 +121,12 @@ class AffectLayer:
         return (await self.analyze_full(ctx)).signals
 
     async def analyze_full(self, ctx: LayerContext) -> AnalyzeResult:
+        mode = ctx.affect_mode or self._affect_mode
+        if mode == "llm_primary":
+            return await self._analyze_llm_primary(ctx)
+        return await self._analyze_legacy(ctx)
+
+    async def _analyze_legacy(self, ctx: LayerContext) -> AnalyzeResult:
         text = ctx.analysis_text
         shared = ctx.shared_features
 
@@ -179,6 +193,57 @@ class AffectLayer:
             provenance,
         )
 
+        phenomenology = self._assembler.assemble(
+            request_id=ctx.request_id,
+            layer_version=self.version,
+            background_field=background,
+            appraisal=appraisal,
+            episodes=episodes,
+            trajectory=trajectory,
+            interactions=interactions,
+            drivers=drivers,
+            patterns=patterns,
+            hypotheses=hypotheses,
+            uncertainty=uncertainty,
+            provenance=provenance,
+        )
+        return AnalyzeResult(signals=signals, phenomenology_input=phenomenology)
+
+    async def _analyze_llm_primary(self, ctx: LayerContext) -> AnalyzeResult:
+        text = ctx.analysis_text
+        if self._lived_experience is None:
+            raise ModelUnavailable(
+                "affect_mode=llm_primary but LivedExperienceOrchestrator is not configured"
+            )
+
+        lx = await self._lived_experience.score(ctx)
+        background = lx.field
+        appraisal = lx.appraisal
+        patterns = lx.patterns
+        hypotheses: list = []
+        drivers = self._drivers.reconstruct(text, background, appraisal, CueBundle())
+        episodes = [
+            ForegroundEpisode(
+                field=background,
+                span=(0, len(text)),
+                text=text,
+                drivers=drivers,
+                patterns=patterns,
+            )
+        ]
+        trajectory = AffectTrajectory(sequence=episodes)
+        interactions: list = []
+        uncertainty = self._lived_experience.build_uncertainty(
+            lx, text, n_segments=len(sentences(text))
+        )
+        provenance = self._provenance_llm_primary(lx)
+        signals = self._build_signals_llm_primary(
+            ctx,
+            lx.scores_by_dimension,
+            lx.evidence_by_dimension,
+            uncertainty,
+            provenance,
+        )
         phenomenology = self._assembler.assemble(
             request_id=ctx.request_id,
             layer_version=self.version,
@@ -349,6 +414,7 @@ class AffectLayer:
         fa = self._field_assist
         return Provenance(
             layer_version=self.version,
+            affect_mode="legacy_deterministic",
             model_id=fa.model_id if (fa and (used or attempted)) else None,
             prompt_version=fa.prompt_version if (fa and (used or attempted)) else None,
             bridge_table_version=(
@@ -367,6 +433,58 @@ class AffectLayer:
             samples=assist.samples if used else 0,
         )
 
+    def _provenance_llm_primary(self, lx: LivedExperienceResult) -> Provenance:
+        le = self._lived_experience
+        return Provenance(
+            layer_version=self.version,
+            affect_mode="llm_primary",
+            model_id=le.model_id if le else None,
+            prompt_version=le.prompt_version if le else None,
+            llm_primary_used=lx.used,
+            llm_primary_attempted=lx.attempted,
+            llm_primary_failure=lx.failure if (lx.attempted and not lx.used) else None,
+            llm_primary_gate_reasons=list(lx.reasons),
+            samples=lx.samples if lx.used else 0,
+        )
+
+    def _build_signals_llm_primary(
+        self,
+        ctx: LayerContext,
+        scores_by_dimension: dict[int, list[AttributeScore]],
+        evidence_by_dimension: dict[int, list[Evidence]],
+        uncertainty: UncertaintyProfile,
+        provenance: Provenance,
+    ) -> list[DimensionalSignal]:
+        signals: list[DimensionalSignal] = []
+        for dimension_id in sorted(self._emit_dimensions):
+            attrs = scores_by_dimension.get(dimension_id, [])
+            relevance = dimension_relevance([a.relevance for a in attrs])
+            abstained = relevance < _RELEVANCE_FLOOR or not attrs
+            kept = [] if abstained else attrs[:5]
+            state_hint = (
+                StateHint(state=kept[0].state, confidence=uncertainty.overall)
+                if kept
+                else StateHint(state=StatePole.UNCLEAR, confidence=uncertainty.overall)
+            )
+            evidence = list(evidence_by_dimension.get(dimension_id, []))[:3]
+            signals.append(
+                DimensionalSignal(
+                    request_id=ctx.request_id,
+                    layer=self.code,
+                    layer_version=self.version,
+                    dimension_id=dimension_id,
+                    relevance=round(0.0 if abstained else relevance, 4),
+                    confidence=uncertainty.overall,
+                    uncertainty=uncertainty,
+                    attribute_scores=kept,
+                    state_hint=state_hint,
+                    evidence=evidence,
+                    abstained=abstained,
+                    provenance=provenance,
+                )
+            )
+        return signals
+
 
 def _allowed_slugs(
     concept_registry: IConceptRegistry,
@@ -379,6 +497,76 @@ def _allowed_slugs(
     return concept_registry.slugs(dimension_id)
 
 
+def _build_field_assist(settings: Settings, provider: object) -> FieldAssist:
+    return FieldAssist(
+        provider=provider,  # type: ignore[arg-type]
+        model_id=settings.bedrock_model_id,
+        timeout_s=settings.llm_assist_timeout_s,
+        max_tokens=settings.llm_assist_max_tokens,
+    )
+
+
+def _build_llm_assist_provider(settings: Settings) -> object:
+    from ..infrastructure.llm.bedrock_provider import BedrockLLMProvider, NullLLMProvider
+
+    if not settings.enable_llm_assist:
+        return NullLLMProvider()
+    try:
+        provider = BedrockLLMProvider(
+            region_name=settings.aws_region,
+            read_timeout_s=settings.llm_assist_timeout_s + 10.0,
+        )
+        logger.info(
+            "LLM field-assist enabled (Bedrock model_id=%s, timeout=%.0fs)",
+            settings.bedrock_model_id,
+            settings.llm_assist_timeout_s,
+        )
+        return provider
+    except Exception as exc:  # noqa: BLE001
+        if settings.llm_strict:
+            raise ModelUnavailable(
+                f"LLM field-assist is enabled but the Bedrock provider could not be "
+                f"initialized: {exc}"
+            ) from exc
+        logger.error(
+            "LLM field-assist is ENABLED but the Bedrock provider failed to initialize "
+            "(%s: %s); falling back to deterministic-only (NullLLMProvider).",
+            type(exc).__name__,
+            exc,
+        )
+        return NullLLMProvider()
+
+
+def _build_primary_provider(settings: Settings) -> object:
+    from ..infrastructure.llm.bedrock_provider import BedrockLLMProvider, NullLLMProvider
+
+    if not (settings.enable_llm_primary or settings.affect_mode == "llm_primary"):
+        return NullLLMProvider()
+    try:
+        provider = BedrockLLMProvider(
+            region_name=settings.aws_region,
+            read_timeout_s=settings.llm_primary_timeout_s + 10.0,
+        )
+        logger.info(
+            "LLM-primary enabled (Bedrock model_id=%s, timeout=%.0fs, mode=%s)",
+            settings.bedrock_model_id,
+            settings.llm_primary_timeout_s,
+            settings.affect_mode,
+        )
+        return provider
+    except Exception as exc:  # noqa: BLE001
+        if settings.llm_strict and settings.affect_mode == "llm_primary":
+            raise ModelUnavailable(
+                f"affect_mode=llm_primary but Bedrock could not initialize: {exc}"
+            ) from exc
+        logger.error(
+            "LLM-primary provider failed (%s: %s); llm_primary mode will abstain on failure",
+            type(exc).__name__,
+            exc,
+        )
+        return NullLLMProvider()
+
+
 def build_default_layer() -> AffectLayer:
     """Wire the lean deterministic adapters into the use case (the DI composition root)."""
     from ..infrastructure.affect.linguistic_cues import LinguisticCues
@@ -386,11 +574,10 @@ def build_default_layer() -> AffectLayer:
     from ..infrastructure.affect.semantic_encoder import build_semantic_encoder
     from ..infrastructure.affect.vader_textblob_vad import VaderTextBlobVAD
     from ..infrastructure.bridge.tables import JsonBridgeTable
-    from ..infrastructure.config import Settings
     from ..infrastructure.kg.concept_registry import build_concept_registry
     from ..infrastructure.kg.scorer_registry import build_scorer_registry
-    from ..infrastructure.llm.bedrock_provider import BedrockLLMProvider, NullLLMProvider
     from .guna_scorer import GunaFamilyModulator, GunaScorer
+    from .safety_shell import SafetyShell
 
     settings = Settings.load()
     concept_registry = build_concept_registry()
@@ -403,40 +590,22 @@ def build_default_layer() -> AffectLayer:
         synthesis_path=settings.field_synthesis,
     )
 
-    provider: object = NullLLMProvider()
-    if settings.enable_llm_assist:
-        try:
-            provider = BedrockLLMProvider(
-                region_name=settings.aws_region,
-                read_timeout_s=settings.llm_assist_timeout_s + 10.0,
-            )
-            logger.info(
-                "LLM field-assist enabled (Bedrock model_id=%s, timeout=%.0fs)",
-                settings.bedrock_model_id,
-                settings.llm_assist_timeout_s,
-            )
-        except Exception as exc:  # noqa: BLE001
-            # Do NOT fall back silently: surface the real cause loudly, then degrade
-            # (unless strict mode is requested, in which case fail fast).
-            if settings.llm_strict:
-                raise ModelUnavailable(
-                    f"LLM field-assist is enabled but the Bedrock provider could not be "
-                    f"initialized: {exc}"
-                ) from exc
-            logger.error(
-                "LLM field-assist is ENABLED but the Bedrock provider failed to initialize "
-                "(%s: %s); falling back to deterministic-only (NullLLMProvider). "
-                "Install boto3 and configure AWS credentials/region, or set "
-                "SVARUPA_ENABLE_LLM_ASSIST=0 to silence this.",
-                type(exc).__name__,
-                exc,
-            )
-            provider = NullLLMProvider()
-    field_assist = FieldAssist(
-        provider=provider,  # type: ignore[arg-type]
+    assist_provider = _build_llm_assist_provider(settings)
+    field_assist = _build_field_assist(settings, assist_provider)
+    primary_provider = _build_primary_provider(settings)
+
+    safety_shell = SafetyShell(
+        pole_map_d8=settings.pole_map_d8,
+        relevance_floor=settings.abstain_relevance_floor,
+    )
+    lived_experience = LivedExperienceOrchestrator(
+        provider=primary_provider,  # type: ignore[arg-type]
+        concept_registry=concept_registry,
+        scorer_registry=scorer_registry,
+        safety_shell=safety_shell,
         model_id=settings.bedrock_model_id,
-        timeout_s=settings.llm_assist_timeout_s,
-        max_tokens=settings.llm_assist_max_tokens,
+        timeout_s=settings.llm_primary_timeout_s,
+        max_tokens=settings.llm_primary_max_tokens,
     )
 
     guna_scorer: GunaScorer | None = None
@@ -474,6 +643,8 @@ def build_default_layer() -> AffectLayer:
         bridges=bridges,
         guna_modulator=GunaFamilyModulator(modulator_path),
         field_assist=field_assist,
+        lived_experience=lived_experience,
+        affect_mode=settings.affect_mode,
         concept_registry=concept_registry,
         scorer_registry=scorer_registry,
         affinity=concept_registry.affinity(),

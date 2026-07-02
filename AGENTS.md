@@ -4,6 +4,33 @@ This component implements **Layer 1 (AFF)** of the Svarupa Assistant: the emotio
 specialist that maps a user's expression onto the affective dimensions of the 31-Dimension
 framework. It is one of seven independent analytical layers and is independently useful.
 
+## Runtime modes (v1 vs v2)
+
+AFF supports two pipelines selected by **`SVARUPA_AFFECT_MODE`** (or request `options.affect_mode`):
+
+| Mode | Pipeline | When to use |
+|------|----------|-------------|
+| `legacy_deterministic` (default) | Lexicons → field synthesis JSON → hypotheses → `hyp2*` bridges | Regression, offline eval, no Bedrock |
+| `llm_primary` | Single Bedrock call (`lived_experience_v1`) → safety shell → signals | Free-text lived experience (target production path) |
+
+**v2 design:** `documentation/design/aff_layer_design_v2_llm_native.md`  
+**v1 design:** `documentation/design/aff_layer_design.md`
+
+Enable v2:
+
+```bash
+export SVARUPA_AFFECT_MODE=llm_primary
+export AWS_REGION=us-east-1   # Bedrock
+PYTHONPATH=src python -m svarupa_affect.cli "your lived experience text"
+```
+
+Key v2 modules:
+
+- `application/lived_experience_orchestrator.py` — primary scorer
+- `application/safety_shell.py` — whitelist, poles, abstention
+- `infrastructure/llm/prompts/lived_experience_v1.py` — pinned prompt + schema
+- `api/routes_v2.py`, `api/app_v2.py` — FastAPI v2 surface (`POST /v2/analyze`)
+
 ## What AFF does (and only does)
 
 Applicability is defined in **`svarupa_assistant_v1.svarupa_concept_layer`** where
@@ -46,11 +73,20 @@ D24 tone scorers when enabled).
 
 **Does not emit D7** (PHE owns phenomenological valence/arousal; AFF may consume shared readings).
 
-- **Model-first, LLM-assisted:** deterministic affect models (VAD axes, NRCLex, VADER, TextBlob,
-  embeddings) do the work; Claude (Bedrock) is invoked only for flagged ambiguity.
-- Reads emotion onto Rasa theory: separates *enduring* dispositions from *transient* weather,
-  and reads guṇa coloration. Shares valence/arousal with PHE and temporal cues with NAR via a
-  per-request feature cache.
+### v2 (`llm_primary`)
+
+- **LLM-primary:** one structured Bedrock call scores field organization + D2/D8/D9 from text and KG glosses.
+- Deterministic **safety shell** only: slug whitelist, pole math, abstention, provenance.
+- No `hyp2*` JSON bridges on the primary path.
+
+### v1 (`legacy_deterministic`)
+
+- **Model-first, LLM-assisted:** deterministic affect models (VAD, NRCLex, TF-IDF anchors) do the work;
+  Claude (Bedrock) is invoked only for flagged field ambiguity (`field_assist`).
+- Hypothesis bridges: `hyp2sthayi.v2.json`, `hyp2vyabhi.v2.json`, `guna_families.v1.json`.
+
+Both modes: reads emotion onto Rasa theory (enduring vs transient bhāvas, guṇa coloration).
+Shares valence/arousal with PHE and temporal cues with NAR via `SharedFeatures`.
 
 ## Non-negotiable design philosophy
 
@@ -62,8 +98,8 @@ D24 tone scorers when enabled).
 ## Architecture
 
 Clean/hexagonal: `api/` → `application/` → `domain/` (ports) ← `infrastructure/` (adapters).
-LLM and KG sit behind ports (`ILLMProvider`, Knowledge Steward). AFF is read-only against the KG.
-Dimensions are data, not code — no `if dimension == X` branching.
+LLM and KG sit behind ports (`ILLMProvider`, `IConceptRegistry`). AFF is read-only against the KG.
+Dimensions are data, not code — no `if dimension == X` branching in scoring logic.
 `build_concept_registry()` loads affinity from MySQL when configured; else
 `data/kg/aff_concept_layer.v1.json`.
 
@@ -76,9 +112,9 @@ Dimensions are data, not code — no `if dimension == X` branching.
 ## Testing methodology
 
 Per-layer tests first (deterministic math + mocked LLM failures), then fusion (mocked JSON),
-then gold-standard eval cases in `data/ground_truth/`. This is a subjective domain: assert
-invariants, property tests, and philosophy-regression (no verdict language) rather than
-bitwise-perfect LLM output.
+then gold-standard eval cases in `data/ground_truth/`. For v2: `tests/test_lived_experience_primary.py`
+with mocked `ILLMProvider`. This is a subjective domain: assert invariants, property tests, and
+philosophy-regression (no verdict language) rather than bitwise-perfect LLM output.
 
 ## Source of truth
 
@@ -87,6 +123,6 @@ bitwise-perfect LLM output.
    via `scripts/seed_concept_layer_from_excel.py`).
 2. **Scorer wiring:** `svarupa_layer_scorer` + `svarupa_layer_scorer_concept`
    (`sql/005_layer_scorer_emit.sql`, `scripts/seed_aff_layer_scorers.py`).
-3. **Layer design:** specs in sibling repo `svarupa-assist-server/documentations/dimensions/`
-   (31-Dimension Spec v7.1, Analytical Layers Spec v1.0). File-scoped conventions live in
-   `.cursor/rules/`.
+3. **Layer design:** v2 `documentation/design/aff_layer_design_v2_llm_native.md`; v1
+   `documentation/design/aff_layer_design.md`; specs in sibling repo
+   `svarupa-assist-server/documentations/dimensions/` (31-Dimension Spec v7.1, Analytical Layers Spec v1.0).

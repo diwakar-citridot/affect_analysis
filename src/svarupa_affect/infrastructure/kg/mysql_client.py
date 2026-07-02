@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
-import pymysql  # type: ignore[import-untyped]
-from pymysql.connections import Connection
-from pymysql.cursors import DictCursor
+from typing import TYPE_CHECKING
 
 from ..config import Settings
+
+if TYPE_CHECKING:
+    from pymysql.connections import Connection
+    from pymysql.cursors import DictCursor
 
 
 def open_mysql(settings: Settings, *, database: str | None = None) -> Connection[DictCursor]:
@@ -15,6 +17,13 @@ def open_mysql(settings: Settings, *, database: str | None = None) -> Connection
     db = database or settings.mysql_database
     if not db:
         raise RuntimeError("MySQL database not configured")
+    try:
+        import pymysql  # type: ignore[import-untyped]
+        from pymysql.cursors import DictCursor
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "PyMySQL is required for MySQL-backed KG adapters. Install with: pip install PyMySQL"
+        ) from exc
     return pymysql.connect(
         host=settings.mysql_host,
         port=settings.mysql_port,

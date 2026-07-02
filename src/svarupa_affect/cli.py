@@ -247,8 +247,10 @@ def print_tables(result: AnalyzeResult, response=None) -> None:
     print(meta)
 
     # 9) Dimensional signals (fusion envelope)
-    emit_dims = sorted({s.dimension_id for s in signals}) if signals else sorted(
-        {s.dimension_id for s in result.signals}
+    emit_dims = (
+        sorted({s.dimension_name for s in signals})
+        if signals
+        else sorted({s.dimension_id for s in result.signals})
     )
     print(
         render_table(
@@ -318,6 +320,9 @@ def main(argv: list[str] | None = None) -> int:
         latency_mode=latency,
         enable_llm_assist=settings.enable_llm_assist,
         force_llm_assist=settings.force_llm_assist,
+        affect_mode=settings.affect_mode,
+        enable_llm_primary=settings.enable_llm_primary,
+        force_llm_primary=settings.force_llm_primary,
     )
     result = asyncio.run(layer.analyze_full(ctx))
     registry = build_dimension_registry()

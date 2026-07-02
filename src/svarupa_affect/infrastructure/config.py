@@ -151,9 +151,15 @@ class Settings:
     guna_synthesis: Path
     pole_map_d2: Path
     guna_families: Path
+    affect_mode: str
     enable_llm_assist: bool
     force_llm_assist: bool
+    enable_llm_primary: bool
+    force_llm_primary: bool
     llm_strict: bool
+    llm_primary_timeout_s: float
+    llm_primary_max_tokens: int
+    abstain_relevance_floor: float
     bedrock_model_id: str
     aws_region: str | None
     llm_assist_timeout_s: float
@@ -196,9 +202,15 @@ class Settings:
             guna_synthesis=data_dir / "field" / "guna_synthesis.v1.json",
             pole_map_d2=data_dir / "pole_maps" / "d2_poles.v1.json",
             guna_families=data_dir / "bridge" / "guna_families.v1.json",
+            affect_mode=_env("SVARUPA_AFFECT_MODE", "legacy_deterministic") or "legacy_deterministic",
             enable_llm_assist=_env_bool("SVARUPA_ENABLE_LLM_ASSIST", default=False),
             force_llm_assist=_env_bool("SVARUPA_FORCE_LLM_ASSIST", default=False),
+            enable_llm_primary=_env_bool("SVARUPA_ENABLE_LLM_PRIMARY", default=True),
+            force_llm_primary=_env_bool("SVARUPA_FORCE_LLM_PRIMARY", default=False),
             llm_strict=_env_bool("SVARUPA_LLM_STRICT", default=False),
+            llm_primary_timeout_s=_env_float("SVARUPA_LLM_PRIMARY_TIMEOUT_S", 60.0),
+            llm_primary_max_tokens=_env_int("SVARUPA_LLM_PRIMARY_MAX_TOKENS", 4096),
+            abstain_relevance_floor=_env_float("SVARUPA_ABSTAIN_RELEVANCE_FLOOR", 0.12),
             bedrock_model_id=bedrock_model_id,
             aws_region=aws_region,
             llm_assist_timeout_s=_env_float("SVARUPA_LLM_ASSIST_TIMEOUT_S", 60.0),

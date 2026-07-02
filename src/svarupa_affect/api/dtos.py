@@ -26,6 +26,10 @@ class AnalyzeOptions(BaseModel):
     enable_llm_assist: bool | None = None
     # None = use SVARUPA_FORCE_LLM_ASSIST from .env
     force_llm_assist: bool | None = None
+    # None = use SVARUPA_AFFECT_MODE from .env (legacy_deterministic | llm_primary)
+    affect_mode: str | None = None
+    enable_llm_primary: bool | None = None
+    force_llm_primary: bool | None = None
 
 
 class AnalyzeRequest(BaseModel):
@@ -45,6 +49,7 @@ class AttributeScoreDTO(BaseModel):
     state: StatePole
     dimension_name: str  # sanskrit_term from svarupa_dimensions
     durability: Durability = Durability.UNKNOWN
+    reasoning: str | None = None
 
 
 class FieldAxisDTO(BaseModel):
