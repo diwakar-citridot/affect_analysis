@@ -6,7 +6,7 @@ Pipeline:
      (``svarupa_concept_descriptions`` × ``svarupa_status``), or the static
      concept-layer snapshot with default deficiency/balance/excess poles when
      MySQL is not configured.
-  2. For each Dimension → Concept → State triplet, generate 10 first-person
+  2. For each Dimension → Concept → State triplet, generate 2 first-person
      lived-experience prompts (Bedrock or template fallback) and write rows to Excel.
   3. POST each question to ``POST /v2/analyze`` with ``options.force=true``.
   4. Mark the row ``match`` when any ``attribute_scores[].attribute`` equals the row's
@@ -58,7 +58,7 @@ STATIC_CONCEPT_LAYER = (
     Path(__file__).resolve().parents[1] / "data" / "kg" / "aff_concept_layer.v1.json"
 )
 
-PROMPTS_PER_TRIPLET = 10
+PROMPTS_PER_TRIPLET = 2
 
 HEADERS = [
     "dimension_id",
@@ -82,7 +82,7 @@ HEADERS = [
 
 QUESTION_GEN_SYSTEM = """\
 Act as an expert psychometrician and qualitative researcher specializing in dimensional models of human experience.
-Your goal is to generate a "gold standard" set of 10 human lived-experience prompts designed to isolate and reveal ONE specific state of a concept, within a given dimension. You will be given a Dimension → Concept → State triplet (e.g., Emotions → Krodha → Excessive).
+Your goal is to generate a "gold standard" set of 2 human lived-experience prompts designed to isolate and reveal ONE specific state of a concept, within a given dimension. You will be given a Dimension → Concept → State triplet (e.g., Emotions → Krodha → Excessive).
 Every single question must be framed as a first-person narration ("I" statement) describing a specific scenario, physical sensation, or thought process. The respondent should read these "I" statements and rate how accurately it reflects their current or recent state.
 I will give you the target triplet at the end. For that triplet, generate prompts based on these strict criteria:
 
@@ -99,15 +99,15 @@ Temporal Variety: Include narrations looking back at recent memories, current re
 Please format your output into 5 clear sections:
 
 Triplet Fingerprint Summary: A 2-3 sentence breakdown of what distinguishes this specific state of this concept — cognitively, physically, and behaviorally — from (a) the same concept's other states, and (b) neighboring concepts in the dimension.
-The 10 Gold-Standard First-Person Prompts: A numbered list of the "I" statements.
+The 2 Gold-Standard First-Person Prompts: A numbered list of the "I" statements.
 Validation Note: A 1-sentence explanation for EACH prompt detailing exactly why it activates this specific state (and not a sibling state or neighboring concept).
 Sibling-State Contrast Table: A brief table or list showing how this state would sound different if the same triggering scenario were instead expressed as another state of the same concept.
 Edge-Case Warning: One trap to avoid when analyzing answers, so the researcher doesn't collapse this state into a neighboring state or concept.
 
 Return your complete analysis as a single JSON object with these keys:
 - fingerprint_summary (string; section 1)
-- prompts (array of exactly 10 first-person "I" statement strings; section 2)
-- validation_notes (array of exactly 10 one-sentence strings, one per prompt; section 3)
+- prompts (array of exactly 2 first-person "I" statement strings; section 2)
+- validation_notes (array of exactly 2 one-sentence strings, one per prompt; section 3)
 - sibling_contrast (string; section 4)
 - edge_case_warning (string; section 5)
 
