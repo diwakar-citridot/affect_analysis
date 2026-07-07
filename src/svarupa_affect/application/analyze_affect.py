@@ -8,7 +8,7 @@ public object) for downstream consumers such as the Phenomenology layer.
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .. import LAYER_CODE, __version__
 from ..domain.enums import EvidenceKind, StatePole
@@ -50,6 +50,7 @@ _RELEVANCE_FLOOR = 0.12
 class AnalyzeResult:
     signals: list[DimensionalSignal]
     phenomenology_input: PhenomenologyInput
+    usage: dict[str, int] = field(default_factory=dict)
 
 
 class AffectLayer:
@@ -258,7 +259,9 @@ class AffectLayer:
             uncertainty=uncertainty,
             provenance=provenance,
         )
-        return AnalyzeResult(signals=signals, phenomenology_input=phenomenology)
+        return AnalyzeResult(
+            signals=signals, phenomenology_input=phenomenology, usage=lx.usage
+        )
 
     # -- helpers ----------------------------------------------------------------------
 
@@ -576,12 +579,14 @@ def build_default_layer() -> AffectLayer:
     from ..infrastructure.bridge.tables import JsonBridgeTable
     from ..infrastructure.kg.concept_registry import build_concept_registry
     from ..infrastructure.kg.scorer_registry import build_scorer_registry
+    from ..infrastructure.kg.triplet_registry import build_triplet_vocabulary
     from .guna_scorer import GunaFamilyModulator, GunaScorer
     from .safety_shell import SafetyShell
 
     settings = Settings.load()
     concept_registry = build_concept_registry()
     scorer_registry = build_scorer_registry()
+    triplet_vocabulary = build_triplet_vocabulary()
     builder = AffectiveFieldBuilder(
         vad=VaderTextBlobVAD(),
         lexical=NRCLexLexicalAffect(),
@@ -606,6 +611,7 @@ def build_default_layer() -> AffectLayer:
         model_id=settings.bedrock_model_id,
         timeout_s=settings.llm_primary_timeout_s,
         max_tokens=settings.llm_primary_max_tokens,
+        triplet_vocabulary=triplet_vocabulary,
     )
 
     guna_scorer: GunaScorer | None = None

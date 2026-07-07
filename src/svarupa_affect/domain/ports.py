@@ -84,6 +84,17 @@ class IConceptRegistry(Protocol):
 
 
 @runtime_checkable
+class ITripletVocabulary(Protocol):
+    """Per-status (deficiency/balance/excess) descriptions for a concept.
+
+    Backed by the pinned ``aff_triplet_descriptions.v1.json`` snapshot; used as
+    LLM grounding vocabulary. Returns only the statuses that have text.
+    """
+
+    def status_descriptions(self, dimension_id: int, slug: str) -> dict[str, str]: ...
+
+
+@runtime_checkable
 class IScorerRegistry(Protocol):
     def scorers(self, layer_code: str | None = None) -> tuple[object, ...]: ...
 
@@ -118,6 +129,7 @@ class ILLMProvider(Protocol):
         max_tokens: int = 4096,
         request_id: str | None = None,
         attempt: int = 1,
+        metrics: dict | None = None,
     ) -> dict: ...
 
 

@@ -51,6 +51,15 @@ class LivedExperienceMetaResponse(BaseModel):
     bedrock_model_configured: bool = False
 
 
+class TokenUsageDTO(BaseModel):
+    """Bedrock token usage for the request (summed across samples/retries)."""
+
+    input_tokens: int = 0
+    output_tokens: int = 0
+    cache_read_input_tokens: int = 0
+    cache_creation_input_tokens: int = 0
+
+
 class LivedExperienceAnalyzeResponse(BaseModel):
     """Public v2 response: fusion envelope + phenomenology + LLM-primary status."""
 
@@ -69,5 +78,6 @@ class LivedExperienceAnalyzeResponse(BaseModel):
     attribute_scores: list[AttributeScoreDTO] = []
     field_axes: list[FieldAxisDTO] = []
     signals: list[DimensionalSignalDTO] = []
+    usage: TokenUsageDTO = Field(default_factory=TokenUsageDTO)
     phenomenology_input: PhenomenologyInput
     provenance: Provenance

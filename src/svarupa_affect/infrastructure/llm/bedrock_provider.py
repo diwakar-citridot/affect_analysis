@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import re
 import sys
 from pathlib import Path
@@ -15,7 +16,18 @@ from pathlib import Path
 from ...domain.exceptions import ModelUnavailable, SchemaValidationError
 from ...infrastructure.logging_config import log_llm_prompt_to_console
 
+logger = logging.getLogger("svarupa_affect.bedrock_provider")
+
 _JSON_FENCE_RE = re.compile(r"```(?:json)?\s*([\s\S]*?)\s*```", re.IGNORECASE)
+
+# Newer Claude models removed the sampling parameters — sending `temperature`
+# (or top_p/top_k) returns a ValidationException. Steer via prompting instead.
+_NO_SAMPLING_MARKERS = ("fable-5", "mythos-5", "opus-4-7", "opus-4-8", "sonnet-5")
+
+
+def _supports_sampling(model_id: str) -> bool:
+    mid = model_id.lower()
+    return not any(marker in mid for marker in _NO_SAMPLING_MARKERS)
 
 
 def _import_boto3():
@@ -83,6 +95,7 @@ class NullLLMProvider:
         max_tokens: int = 4096,
         request_id: str | None = None,
         attempt: int = 1,
+        metrics: dict | None = None,
     ) -> dict:
         raise ModelUnavailable("LLM field-assist is not configured (NullLLMProvider)")
 
@@ -118,14 +131,28 @@ class BedrockLLMProvider:
         max_tokens: int = 4096,
         request_id: str | None = None,
         attempt: int = 1,
+        metrics: dict | None = None,
     ) -> dict:  # pragma: no cover - requires live AWS credentials
-        body = {
+        # Cache the static system prefix (contract + closed vocabulary + task rules)
+        # so repeat requests within the ~5-minute TTL read it at ~0.1x input price
+        # instead of reprocessing ~9k tokens each call. Manual cache_control is
+        # required on Bedrock (no automatic caching); the model must support prompt
+        # caching (Claude Sonnet 5 does). Below-minimum prefixes silently don't cache.
+        body: dict = {
             "anthropic_version": "bedrock-2023-05-31",
             "max_tokens": max(256, max_tokens),
-            "temperature": temperature,
-            "system": system,
+            "system": [
+                {
+                    "type": "text",
+                    "text": system,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
             "messages": [{"role": "user", "content": prompt}],
         }
+        # Newer Claude models (Sonnet 5, Opus 4.7/4.8, Fable 5) reject `temperature`.
+        if _supports_sampling(model_id):
+            body["temperature"] = temperature
 
         log_llm_prompt_to_console(
             system=system,
@@ -142,12 +169,39 @@ class BedrockLLMProvider:
         def _invoke() -> dict:
             resp = self._client.invoke_model(modelId=model_id, body=json.dumps(body))
             payload = json.loads(resp["body"].read())
+            usage = payload.get("usage") or {}
+            if metrics is not None:
+                for key in (
+                    "input_tokens",
+                    "output_tokens",
+                    "cache_read_input_tokens",
+                    "cache_creation_input_tokens",
+                ):
+                    metrics[key] = int(usage.get(key) or 0)
+            logger.debug(
+                "bedrock usage model_id=%s cache_read=%s cache_write=%s input=%s output=%s",
+                model_id,
+                usage.get("cache_read_input_tokens"),
+                usage.get("cache_creation_input_tokens"),
+                usage.get("input_tokens"),
+                usage.get("output_tokens"),
+            )
             stop_reason = payload.get("stop_reason")
-            text = payload["content"][0]["text"]
             if stop_reason == "max_tokens":
                 raise SchemaValidationError(
                     "Bedrock response was truncated (stop_reason=max_tokens); "
                     "increase SVARUPA_LLM_ASSIST_MAX_TOKENS"
+                )
+            # Newer models (adaptive thinking on by default) may lead with a
+            # thinking block, so pick the first text block rather than content[0].
+            blocks = payload.get("content") or []
+            text = next(
+                (b.get("text") for b in blocks if b.get("type") == "text" and b.get("text")),
+                None,
+            )
+            if text is None:
+                raise SchemaValidationError(
+                    f"Bedrock response had no text block (stop_reason={stop_reason})"
                 )
             return _parse_llm_json(text)
 

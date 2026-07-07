@@ -1,0 +1,348 @@
+{
+  "schema_version": "1.0.0",
+  "layer_code": "MET",
+  "role_filter": "primary",
+  "source_table": "svarupa_assistant_v1.svarupa_concept_descriptions",
+  "statuses": [
+    "deficiency",
+    "balance",
+    "excess"
+  ],
+  "primary_dimensions": [
+    1,
+    5,
+    6,
+    15
+  ],
+  "coverage_summary": {
+    "concepts": 19,
+    "status_slots": 57,
+    "filled": 45,
+    "missing": 12
+  },
+  "concepts": [
+    {
+      "concept_id": 1129,
+      "dimension_id": 1,
+      "slug": "air",
+      "name": "Air",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "## Deficient — the element depleted\n\nDepleted Air brings stagnation of movement — the person feels stuck, unable to change, adapt, or open.\n\nSomatic (body): Reduced circulation and range of motion, slowed nerve impulses, shallow mechanical breath, and stalled vitality (with the danger of ischemia from blocked flow).\n\nEmotional current: Emotional flatness, apathy, coldness, and a rigidity that prevents the heart from opening; an underactive Anāhata leaving the person unfriendly and unable to access genuine connection.\n\nCognitive map: Mental sluggishness and an inability to think creatively or shift perspective; the lightness and agility of air are lost.\n\nInner presence (psychic): The soul stagnates; without movement the heart cannot open and creativity stalls, and a cold rigidity replaces the free flow of life and love.",
+        "balance": "## Balanced — the element well-proportioned\n\nBalanced Air gives freedom and lightness — movement through life with grace, adaptability, and openness, and a heart that gives and receives love without grasping.\n\nSomatic (body): A smoothly functioning nervous system, deep and steady breath, easy circulation, and supple, coordinated movement.\n\nEmotional current: Lightness, motivation, and a great capacity for love without attachment — warmth that extends to all beings; an open, balanced Anāhata.\n\nCognitive map: Mental agility, innovation, and the free flow of ideas; a mind that is quick, flexible, and able to shift perspective.\n\nInner presence (psychic): The soul moves with lightness and grace, open to change, giving and receiving freely; the breath that steadies the body becomes the medium of an unattached, flowing love.",
+        "excess": "## In excess — the element overwhelming the system\n\nExcess Air produces scattering, instability, and anxiety — the Vāta imbalance whose derangement, governing all movement, disturbs every other system.\n\nSomatic (body): Dryness, tremors, twitches, joint pain and hypermobility, irregular or rapid heartbeat, variable digestion (Viṣamāgni), constipation, and broken sleep; the body grows light, cold, and rough.\n\nEmotional current: Anxiety, fear, restlessness, and a sense of being scattered and uncontained — as though uprooted and blown about by forces beyond control; an overactive Anāhata can produce a suffocating, obsessive love.\n\nCognitive map: Racing thoughts, inability to focus, cognitive fragmentation, and a mind that jumps from idea to idea without completion — mental overload from too much stimulation.\n\nInner presence (psychic): The soul scatters, uprooted and blown about, unable to land or contain itself; restless movement becomes anxiety, and it loses the still center from which to act."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1130,
+      "dimension_id": 1,
+      "slug": "earth",
+      "name": "Earth",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "## Deficient — the element depleted\n\nDepleted Earth removes the ground from under the person — a loss of anchoring that leaves body and psyche unsupported and insecure.\n\nSomatic (body): Low bone density, weak teeth and structural tissues, instability in the legs and feet, and a pervasive sense of being physically ‘unanchored’ (osteoporosis, joint instability).\n\nEmotional current: Insecurity, rootlessness, anxiety, and difficulty trusting others or the world; an underactive Mūlādhāra produces fearfulness and a persistent sense of not belonging, driving a constant search for external validation.\n\nCognitive map: Scattered, unanchored thinking with no stable foundation from which to build; difficulty settling or following a line of thought to completion.\n\nInner presence (psychic): Cut off from its base, the soul feels it has no place in the world; without roots it cannot rest, and the inner work has no foundation on which to build.",
+        "balance": "## Balanced — the element well-proportioned\n\nWell-proportioned Earth gives groundedness, physical stability, and a secure sense of belonging — the down-to-earth steadiness that brings reliability to any situation and can weather emotional storms without losing its foundation.\n\nSomatic (body): Structural integrity: strong bones and teeth, firm musculature, resilient skin, and a body that feels solid, supported, and at home in itself.\n\nEmotional current: Rooted, patient, and reliable; able to relate to the material world without being consumed by it, and to stay steady when feelings run high.\n\nCognitive map: Practical, detail-oriented, methodical thinking; a stable foundation from which to build coherent understanding and follow things patiently through.\n\nInner presence (psychic): The soul finds in groundedness a stable seat from which to meet life; rooted in the body and the earth, it can turn toward the depths without fear of losing itself.",
+        "excess": "## In excess — the element overwhelming the system\n\nDisproportionate Earth brings heaviness and stagnation — a density that pervades body, feeling, and mind, leaving the person ‘stuck,’ clinging to the familiar well past its usefulness.\n\nSomatic (body): Weight gain, lethargy, congestion, sluggish digestion (mandāgni), edema, and stiffening joints; the body feels dense, heavy, and resistant to movement (a Kapha vitiation).\n\nEmotional current: Attachment, possessiveness, dull stubbornness, and a marked resistance to change; the person clings to old routines, relationships, and beliefs.\n\nCognitive map: Mental rigidity and fixed thinking; a fog of dullness settles over the mind, learning slows, creativity stagnates, and new perspectives feel impossible to entertain.\n\nInner presence (psychic): The soul over-identifies with form and security, clinging to the solid and the familiar; weighed down by matter, it forgets it is more than the ground it stands on."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1131,
+      "dimension_id": 1,
+      "slug": "ether",
+      "name": "Ether",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "## Deficient — the element depleted\n\nDepleted Space brings a claustrophobia of the soul — constriction, an inability to express, and a cutting-off from higher awareness.\n\nSomatic (body): Narrowed inner spaces and congestion — blocked channels, impeded circulation, and poor elimination of waste.\n\nEmotional current: Constriction and a blocked Vishuddhi producing shyness, dishonesty, and an inability to voice one’s truth; reliance on others for direction and susceptibility to confusion.\n\nCognitive map: A cluttered, congested mind with no room for new information or insight — and no silence from which wisdom can emerge.\n\nInner presence (psychic): The soul is constricted, walled in by congested thought, cut off from higher awareness; without inner room there is no silence from which wisdom or true expression can emerge.",
+        "balance": "## Balanced — the element well-proportioned\n\nBalanced Space provides the inner room all other elements need — expansiveness without ungroundedness, openness without diffusion, and the capacity for higher perception.\n\nSomatic (body): Open, unobstructed channels and cavities through which nourishment reaches the cells and waste is eliminated; a sense of physical ease and room.\n\nEmotional current: Trust, wonder, humility, and receptivity — a beginner’s mind that is spacious and at home in itself.\n\nCognitive map: Clear communication and higher cognition; attunement to the silent space between thoughts from which thought itself arises — the ground of meditation, with a free Vishuddhi, an insightful Ājñā, and a transcendent Sahasrāra.\n\nInner presence (psychic): The soul rests in inner spaciousness, the silent room from which thought, word, and insight arise; expansive yet contained, it touches the transcendent without losing the ground.",
+        "excess": "## In excess — the element overwhelming the system\n\nExcess Space creates emptiness, dissociation, and disconnection — the person feels uncontained, lost in their own vastness, unable to locate themselves.\n\nSomatic (body): Hollowness and a feeling of physical insubstantiality — emaciation and weakness as excess space intensifies Vāta.\n\nEmotional current: Pervasive emptiness, loneliness, and disconnection; an overactive Vishuddhi producing excessive talk and poor listening, while an overstimulated Ājñā drifts into fantasy and, in the extreme, hallucination.\n\nCognitive map: Mental absence, spaciness, dissociation, and forgetfulness; the mind loses its tether to practical reality.\n\nInner presence (psychic): The soul dissolves into its own vastness, unmoored and dispersed; lost in abstraction and emptiness, it cannot locate itself or stay tethered to lived reality."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1132,
+      "dimension_id": 1,
+      "slug": "fire",
+      "name": "Fire",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "## Deficient — the element depleted\n\nWeak Fire dims the inner light — digestion, motivation, and discrimination all falter, and disease finds its opening.\n\nSomatic (body): Poor metabolism, loss of appetite, sluggish digestion (Manda Agni), accumulation of toxins, and poor nutrient absorption — the state most likely, in Āyurveda, to breed disease.\n\nEmotional current: Low self-esteem, lack of passion and warmth, reluctance, and a directionless deferring to others; an inability to assert one’s needs or values.\n\nCognitive map: Confusion, dullness of intellect, and an impaired capacity to discriminate or perceive clearly — since perception itself depends on the fire element.\n\nInner presence (psychic): The inner light dims; without the flame of discrimination and will, the soul drifts directionless, unable to decide, transform, or assert its own truth.",
+        "balance": "## Balanced — the element well-proportioned\n\nBalanced Fire produces clear vision, sharp discrimination, and decisive action — the warmth and natural authority that come from inner clarity rather than domination.\n\nSomatic (body): Strong digestion and metabolism (balanced Jāṭharāgni), good appetite, clear eyesight, and the capacity to transform food and experience into nourishment.\n\nEmotional current: Healthy self-esteem, courage, warmth, and the passion to inspire; the fire of discernment that cuts through doubt and insecurity with clarity.\n\nCognitive map: Keen discrimination, clear perception, and the ability to decide and illuminate situations — turning experience into wisdom.\n\nInner presence (psychic): The soul’s inner flame illumines without consuming; discernment and warmth let it transform experience into wisdom and meet the world with clear, steady purpose.",
+        "excess": "## In excess — the element overwhelming the system\n\nExcess Fire creates burning — literal and figurative — a consuming intensity that scorches body, relationships, and peace of mind.\n\nSomatic (body): Inflammation, hyperacidity, skin rashes, fevers, burning sensations, and a digestive fire so sharp (Tīkṣṇa Agni) it begins to consume the body’s own tissues (an aggravated Pitta).\n\nEmotional current: Irritability, anger, jealousy, impatience, aggression, obsession, and egotism; ambition that consumes relationships and inner peace; an overactive Maṇipūra turned imperious and domineering.\n\nCognitive map: An overly critical, judgmental mind that demands perfection and control — a compulsive need to dominate every thought and decision.\n\nInner presence (psychic): The soul’s fire turns devouring; driven to control, dominate, and burn through all resistance, it consumes its own peace and the bonds around it."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1133,
+      "dimension_id": 1,
+      "slug": "water",
+      "name": "Water",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "## Deficient — the element depleted\n\nDepleted Water brings dryness and rigidity — a barrenness in body and feeling where flow should be.\n\nSomatic (body): Dry skin, parched mouth, creaking joints, dehydration, strained elimination, and impaired taste (which depends directly on the water element).\n\nEmotional current: Coldness, distance, and emotional dryness — an inability to feel deeply, connect empathically, or experience the joy that is balanced Water’s signature; an underactive Svādhiṣṭhāna producing impassivity and withdrawal.\n\nCognitive map: Rigid, brittle thinking that lacks the fluidity needed for creative problem-solving and adaptive reasoning.\n\nInner presence (psychic): The soul’s feeling-life runs dry; walled off from tenderness and joy, it cannot connect, and the heart’s natural sweetness is forgotten.",
+        "balance": "## Balanced — the element well-proportioned\n\nBalanced Water gives emotional fluidity — the capacity to feel deeply without being overwhelmed, to adapt with grace, and to sustain healthy intimacy and creative expression.\n\nSomatic (body): Fluids circulate properly: smooth digestion, sound reproductive health, supple tissues, and skin with a healthy luster.\n\nEmotional current: Joy, sensuality, empathy, and creative vitality; deep feeling that flows and connects without excessive attachment.\n\nCognitive map: Fluid, adaptive reasoning and a gift for deep, patient analysis — moving through complexity with cohesion and care.\n\nInner presence (psychic): The soul lets feeling flow and move it without being swept away; emotion becomes a current that carries it toward connection and creative life rather than a flood that drowns it.",
+        "excess": "## In excess — the element overwhelming the system\n\nExcess Water creates emotional flooding and waterlogged heaviness — the person drowns in feeling and cannot easily release it.\n\nSomatic (body): Edema, fluid retention, excessive mucus and congestion, heaviness and coldness in the lower abdomen, sluggish lymphatic function, and weakened digestive fire with accumulation of āma (a Kapha vitiation).\n\nEmotional current: Hypersensitivity, sentimentality, over-attachment, and clinging in relationships; grief and melancholy that become persistent and hard to release; an overactive Svādhiṣṭhāna with emotional and sexual preoccupation.\n\nCognitive map: Over-analysis and rumination — ‘paralysis by analysis’ — the mind clouded and slowed, unable to come to a clear conclusion.\n\nInner presence (psychic): The soul is submerged in its own feeling, identity dissolving into sentiment and attachment; it mistakes the intensity of emotion for the depth of being."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1176,
+      "dimension_id": 5,
+      "slug": "ananda_mimamsa",
+      "name": "Ananda Mimamsa",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Virochana-like settling at first level—body taken as Self and going home happy. Maximum loss.\n\nSomatic (body): Body taken as final reality.\n\nEmotional current: Emotional satisfaction with body-identity.\n\nCognitive map: Mind doesn't probe deeper into Self-nature.\n\nInner presence (psychic): The soul never inquires into joy at all, settling for the lowest sensory pleasures as if they were the whole.",
+        "balance": "### Balanced expression\n\nOverview: Indra-like persistence—not settling at any partial realization but inquiring through all levels until the true Self is found.\n\nSomatic (body): Body engaged in continued spiritual labor across long time.\n\nEmotional current: Emotional readiness to be unsettled, willing to admit each realization is incomplete.\n\nCognitive map: Mind continuously checking realization against the deepest truth.\n\nInner presence (psychic): The soul inquires into the gradations of bliss, ascending from sensory pleasure toward the unconditioned joy of Brahman.",
+        "excess": "### In excess\n\nOverview: Endless dissatisfaction with all realizations, never settling—the inquiry becomes neurotic.\n\nSomatic (body): Body exhausted by perpetual seeking.\n\nEmotional current: Chronic spiritual dissatisfaction.\n\nCognitive map: Mind always finding fault, never resting in any realization.\n\nInner presence (psychic): The soul gets lost cataloguing bliss-levels, the inquiry an intellectual exercise."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1177,
+      "dimension_id": 5,
+      "slug": "anandamaya",
+      "name": "Anandamaya",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: No glimpse of inner bliss—life of joyless duty or pleasure-seeking. Anandamaya unknown.\n\nSomatic (body): Body without bliss-experience.\n\nEmotional current: Emotional flatness, no inner joy.\n\nCognitive map: Mind doesn't conceive of inner bliss.\n\nInner presence (psychic): The soul never touches the bliss-sheath, seeking joy only in outer things and finding none that lasts.",
+        "balance": "### Balanced expression\n\nOverview: Glimpses of anandamaya in meditation and devotion. Recognition that ultimate bliss is one's nature.\n\nSomatic (body): Body experiences subtle bliss in meditation.\n\nEmotional current: Emotional bliss as recognition of deeper nature.\n\nCognitive map: Mind dwelling in or moving toward anandamaya.\n\nInner presence (psychic): The soul recognizes the bliss-sheath as the subtlest covering, a reflection of the Self's joy, and presses on toward the source.",
+        "excess": "### In excess\n\nOverview: Addiction to bliss-states, spiritual hedonism, attachment to anandamaya.\n\nSomatic (body): Body seeking bliss-experiences obsessively.\n\nEmotional current: Emotional dependence on bliss-states.\n\nCognitive map: Mind grasping for ananda, missing the further depth.\n\nInner presence (psychic): The soul clings to blissful states as the final goal, mistaking the sheath for the Self it veils."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1178,
+      "dimension_id": 5,
+      "slug": "anandamaya_kosha",
+      "name": "Anandamaya Kosha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1179,
+      "dimension_id": 5,
+      "slug": "anandamaya_vidya",
+      "name": "Anandamaya Vidya",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: No glimpse of inner bliss—life of joyless duty or pleasure-seeking. Anandamaya unknown.\n\nSomatic (body): Body without bliss-experience.\n\nEmotional current: Emotional flatness, no inner joy.\n\nCognitive map: Mind doesn't conceive of inner bliss.\n\nInner presence (psychic): The soul never meditates on bliss, its happiness left wholly hostage to circumstance.",
+        "balance": "### Balanced expression\n\nOverview: Glimpses of anandamaya in deep meditation. Recognition that ultimate bliss is one's nature.\n\nSomatic (body): Body experiences subtle bliss in meditation.\n\nEmotional current: Emotional bliss as recognition of deeper nature.\n\nCognitive map: Mind dwelling in or moving toward anandamaya.\n\nInner presence (psychic): The soul meditates on the bliss-sheath, recognizing all happiness as a spark of the infinite joy that is the Self.",
+        "excess": "### In excess\n\nOverview: Addiction to bliss-states, spiritual hedonism.\n\nSomatic (body): Body seeking bliss-experiences obsessively.\n\nEmotional current: Emotional dependence on bliss-states.\n\nCognitive map: Mind grasping for ananda, missing the further depth.\n\nInner presence (psychic): The soul chases blissful meditative states, grasping the experience over the awareness behind it."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1180,
+      "dimension_id": 5,
+      "slug": "annamaya_kosha",
+      "name": "Annamaya Kosha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Neglect of body, ascetic damage, malnutrition—rejecting the annamaya kosha.\n\nSomatic (body): Damaged body from neglect.\n\nEmotional current: Emotional rejection of embodiment.\n\nCognitive map: Mind dismissive of body's needs.\n\nInner presence (psychic): The soul neglects the body, treating the food-sheath with contempt as if it did not matter.",
+        "balance": "### Balanced expression\n\nOverview: Body well-nourished, healthy, recognized as a sheath of Self (not Self itself). Proper relationship with food.\n\nSomatic (body): Healthy body, balanced nutrition.\n\nEmotional current: Emotional appreciation of body without identification.\n\nCognitive map: Mental recognition of body as sheath, not Self.\n\nInner presence (psychic): The soul tends the food-body well as the outermost vessel, neither despising nor over-identifying with it.",
+        "excess": "### In excess\n\nOverview: Obsession with food, body, physical perfection—identifying entirely with annamaya.\n\nSomatic (body): Body-obsession, eating disorders, perfectionism.\n\nEmotional current: Emotional life tied to body-image.\n\nCognitive map: Mind dominated by body-concerns.\n\nInner presence (psychic): The soul takes the physical body as its whole self, all identity invested in form and sensation."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1181,
+      "dimension_id": 5,
+      "slug": "five_koshas",
+      "name": "Five Koshas",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: No awareness of the koshas—life lived entirely at one level without recognition of others.\n\nSomatic (body): Body taken as final self, no recognition of subtler levels.\n\nEmotional current: Emotional life without recognition of subtler dimensions.\n\nCognitive map: Mind without map of inner reality.\n\nInner presence (psychic): The soul is fused to the outermost sheath, the body, with no sense of the depths within.",
+        "balance": "### Balanced expression\n\nOverview: Recognition of all five sheaths and the Self beyond them. Progressive penetration through each level.\n\nSomatic (body): Annamaya-kosha healthy.\n\nEmotional current: Pranamaya, manomaya healthy and integrated.\n\nCognitive map: Vijnanamaya developed, anandamaya glimpsed, Self recognized as beyond all.\n\nInner presence (psychic): The soul recognizes the five sheaths as coverings it wears, peeling inward toward the Self they conceal.",
+        "excess": "### In excess\n\nOverview: Identification with one kosha (commonly body or mind), or claiming to be 'beyond koshas' without realization.\n\nSomatic (body): Identifying solely with annamaya.\n\nEmotional current: Identifying with pranamaya-emotions only.\n\nCognitive map: Identifying with manomaya or vijnanamaya as ultimate.\n\nInner presence (psychic): The soul mistakes a subtler sheath — even the blissful one — for the Self, stopping short of the center."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1182,
+      "dimension_id": 5,
+      "slug": "four_states_and_five_sheaths",
+      "name": "Four States And Five Sheaths",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Unconscious cycling through states—no awareness of transitions, no recognition of the witness present in each.\n\nSomatic (body): Mechanical sleep-wake cycles.\n\nEmotional current: Emotional contents of each state taken as ultimate.\n\nCognitive map: Mind without awareness of state-transitions.\n\nInner presence (psychic): The soul identifies wholly with the active sheath of the moment, never sensing what lies beneath.",
+        "balance": "### Balanced expression\n\nOverview: Awareness through all states—waking activity, dream awareness, deep sleep recognition. The witness present in all.\n\nSomatic (body): Body's three states clearly recognized.\n\nEmotional current: Emotional clarity about state-shifts.\n\nCognitive map: Mind aware of its own modulations through states.\n\nInner presence (psychic): The soul maps how the sheaths operate across waking, dream, and sleep, locating itself beyond all of them.",
+        "excess": "### In excess\n\nOverview: Pathological imbalance between states—insomnia, dream-disturbance, oversleeping.\n\nSomatic (body): Sleep dysfunction.\n\nEmotional current: Emotional dysregulation from state imbalance.\n\nCognitive map: Mental dysfunction from inadequate state-cycling.\n\nInner presence (psychic): The soul over-systematizes the correspondences, lost in the scheme rather than the Self it reveals."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1183,
+      "dimension_id": 5,
+      "slug": "manomaya_kosha",
+      "name": "Manomaya Kosha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1184,
+      "dimension_id": 5,
+      "slug": "pranamaya_kosha",
+      "name": "Pranamaya Kosha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1185,
+      "dimension_id": 5,
+      "slug": "vijnanamaya_kosha",
+      "name": "Vijnanamaya Kosha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1202,
+      "dimension_id": 6,
+      "slug": "prana",
+      "name": "Prana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Neither matter nor energy in healthy state—malnourishment and depletion of vital force.\n\nSomatic (body): Body starved and depleted.\n\nEmotional current: Emotional emptiness, no vital flow.\n\nCognitive map: Mind without nourishment or energy.\n\nInner presence (psychic): The soul sees only inert matter, blind to the life-force that animates it.",
+        "balance": "### Balanced expression\n\nOverview: Balanced relationship with both matter (Rayi) and life-force (Prana). Neither materialism nor escapism.\n\nSomatic (body): Body well-fed (Rayi) and well-energized (Prana).\n\nEmotional current: Emotional groundedness in matter and uplift through prana.\n\nCognitive map: Mind understanding both dimensions of existence.\n\nInner presence (psychic): The soul honors the pair of matter and life-force as the two principles whose union produces all beings.",
+        "excess": "### In excess\n\nOverview: Imbalance—either over-matter (gluttony, materialism) or over-prana (manic activity).\n\nSomatic (body): Either over-eating or burnt-out energy.\n\nEmotional current: Either heavy materialism or anxious activity.\n\nCognitive map: Mental fixation on one pole only.\n\nInner presence (psychic): The soul over-emphasizes one pole, exalting spirit and despising matter or the reverse."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1329,
+      "dimension_id": 15,
+      "slug": "kapha",
+      "name": "Kapha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "## 3. Kapha in Deficiency: The Crumbling Foundation\n\n### Internal Landscape\n\nSomatic Base (Physical): When Kapha is deficient, the body loses its structural integrity. Joints dry out and begin to ache—not with Vāta’s sharp, migrating pain but with a deep, bone-level stiffness that speaks of insufficient lubrication. The mucous membranes thin; the throat is chronically dry, the sinuses empty and irritated. Weight drops below what is healthy for the constitution—not into Vāta’s angular thinness but into a kind of wasted quality that suggests the body is consuming its own reserves. The immune system falters; infections linger, wounds heal slowly, and there is a general vulnerability that is new and disturbing. Sleep becomes thin and unrestorative—not from Vāta’s racing mind but from the absence of the deep, nourishing quality that Kapha sleep normally provides.\n\nEmotional Current (Vital): The emotional ground gives way. The steadiness and loyalty that defined the Kapha temperament are replaced by a rootless, insecure quality that the individual finds deeply disorienting. Commitments feel less binding, relationships less sustaining. There is an uncharacteristic restlessness—not Vāta’s creative buzz but a homeless feeling, as though the floor one has always stood on has been pulled away. The capacity for unconditional love thins out; the individual finds themselves calculating rather than giving, measuring rather than trusting—a Pitta-like vigilance that is foreign to their nature and exhausting in practice.\n\nCognitive Map (Mental): The reliable, steady mind becomes scattered and forgetful—not with Vāta’s fast-moving distraction but with a fog-like quality, as though the memories are still there but can no longer be accessed. The deep comprehension that is Kapha’s cognitive gift is replaced by surface-level processing. The internal narrative takes on an unfamiliar quality of anxiety: “Is anything solid? Can I count on anything? Who will hold things together if I cannot?”\n\nInner Presence (Psychic): The soul-level experience is one of lost sanctuary—the earth-connection that once provided unshakeable belonging has been severed. The individual feels spiritually homeless in a way that no amount of external comfort can address. This is the state the classical texts warn about when they speak of Kapha being “dried out” by excess Vāta or “burned up” by excess Pitta. The spiritual lesson here is rebuilding the inner home—the patient, deliberate reconstruction of the foundations of trust, stability, and belonging that allow the soul to rest.",
+        "balance": "## 1. Kapha in Equilibrium: The Generous Ground of Being\n\n### Internal Landscape\n\nSomatic Base (Physical): The body feels substantial, solid, and deeply comfortable in itself. There is a natural sturdiness—thick bones, well-padded joints, strong muscles that may not be visibly defined but possess remarkable endurance. The skin is smooth, cool, and slightly moist with good elasticity. Hair is thick and lustrous. Digestion is steady if not spectacular—the Kapha constitution processes food slowly but thoroughly, extracting maximum nutrition. Sleep is the crown jewel: deep, restorative, dreamless sleep that leaves the individual genuinely refreshed. The immune system is robust; this is the constitution least likely to fall ill, and when it does, recovery is steady and complete. There is a physical groundedness that others can feel—sitting next to a balanced Kapha individual is like sitting next to a very old, very calm tree.\n\nEmotional Current (Vital): The dominant emotional tone is one of unconditional steadiness. The Kapha temperament in balance is the most emotionally stable of the three—not because they lack feeling but because their feelings are deep, slow-moving, and enduring rather than quick, reactive, and volatile. Love, once given, is not easily withdrawn. Commitments, once made, are held. There is a natural compassion that arises not from intellectual understanding (Pitta) or empathic attunement (Vāta) but from a bone-deep sense of shared humanity. The balanced Kapha individual is the friend you call at 3 AM—not for advice, but for the silent, unshakeable presence that tells you everything will eventually be all right.\n\nCognitive Map (Mental): Thought is slow, deliberate, and thorough. The Kapha mind does not generate ideas at Vāta’s pace or analyze them with Pitta’s precision, but what it does do is understand them deeply and remember them permanently. This is the constitution with the best long-term memory—not for facts and figures (which belong more to Pitta) but for the emotional texture of experiences, the faces of people met decades ago, the exact quality of a childhood afternoon. Decision-making is careful, sometimes maddeningly so, but the decisions, once made, are wise and rarely regretted. The internal narrative is calm and present-tense: “All is well. There is time. Let me consider this properly.”\n\nInner Presence (Psychic): At the soul level, balanced Kapha is the experience of pṛthivī as sanctuary—the feeling of being held by the earth, of having a place, of belonging. There is a natural devotional quality to this dosha—a readiness to surrender not from weakness but from a deep trust in the sustaining order of things. This is the dosha most closely connected to the Annamaya Kośa (physical sheath) in its preservative aspect, and in equilibrium, it grants an almost elemental sense of being rooted, as though one’s existence has the same unquestionable reality as a mountain. The spiritual lesson is one of grounded service—the understanding that the highest expression of stability is to become the ground on which others can stand.",
+        "excess": "## 2. Kapha in Excess: The Quicksand of Comfortable Stagnation\n\n### Internal Landscape\n\nSomatic Base (Physical): The sturdiness that was once an asset becomes heaviness. Weight accumulates, especially around the abdomen, hips, and thighs, and resists all efforts at reduction. The body feels waterlogged—puffy, swollen, sluggish. Sinuses congest; there is a chronic, low-grade stuffiness that dulls the senses. The skin, once smooth, becomes oily and congested. Digestion slows to a crawl: food sits in the stomach for hours, producing a dull, heavy fullness that is not quite nausea but removes all appetite for anything other than more heavy, sweet, comforting food—precisely what the imbalance least needs. Sleep, once restorative, becomes excessive; eight hours is not enough, ten is not enough, and waking feels like swimming upward through thick mud. There is a physical inertia that is genuinely alarming to the Kapha individual’s friends, if not to the individual themselves: every movement requires an act of will.\n\nEmotional Current (Vital): The steadiness has become inertia, and the unconditional love has thickened into possessiveness. The emotional landscape of excess Kapha is dominated by attachment—a clinging to people, to habits, to possessions, to the familiar, that is driven by a deep, unacknowledged fear of change. The individual becomes emotionally needy in a way that is smothering rather than nurturing—their care comes with invisible strings, their generosity carries the expectation of reciprocal loyalty. Grief, when it comes, is oceanic and endless; the Kapha constitution, which processes everything slowly, processes loss slowest of all, and may remain stuck in mourning for years. There is a particular flavor of sadness to excess Kapha that is not the sharp anguish of loss but the dull ache of stagnation—the slow suffocation of a life that has stopped growing.\n\nCognitive Map (Mental): The deliberate mind has become a resistant mind. Change, novelty, and challenge are not just unwelcome but actively threatening. The internal narrative is one of defensive conservatism: “Why change what works? Why risk what we have? Things are fine the way they are.” Decision-making is not just slow but avoidant; the individual will endure remarkable discomfort rather than face the uncertainty of change. Memory, once a gift, becomes a cage—the Kapha mind’s excellent retention means that old hurts, old fears, and old patterns are preserved with high fidelity and replayed with tiresome regularity.\n\nInner Presence (Psychic): The soul-level experience of excess Kapha is one of spiritual hibernation—the deep sleep of consciousness that has mistaken comfort for peace and routine for practice. The devotional quality that was once a strength has become spiritual passivity: “God will provide” becomes an excuse for not providing for oneself. The earth-connection that was once grounding has become gravity—a force that pulls the individual downward into matter rather than supporting their upward evolution. The spiritual lesson that is asking to be learned is sacred discomfort—the recognition that growth requires leaving the comfortable cave, that love must include the willingness to let go, and that the earth’s purpose is not to hold you down but to give you something firm to push off from."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1330,
+      "dimension_id": 15,
+      "slug": "pitta",
+      "name": "Pitta",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "## 3. Pitta in Deficiency: The Dying Ember of Lost Purpose\n\n### Internal Landscape\n\nSomatic Base (Physical): When Pitta is deficient, the metabolic fire dims. Digestion becomes weak and incomplete—food sits in the stomach like a stone, not because of Vāta’s erratic peristalsis or Kapha’s excessive mucus, but because the combustive intelligence itself is diminished. The body feels cool when it should feel warm; the skin loses its luster and takes on a pallid, washed-out quality. The eyes, once bright and penetrating, become dull. There may be an inability to tolerate cold that is unusual for a Pitta constitution. Appetite weakens, and with it the body’s ability to extract nutrition from what is consumed. Energy drops—not into Vāta’s wired exhaustion or Kapha’s heavy lethargy, but into a muted, colorless fatigue that lacks even the vitality to feel properly tired.\n\nEmotional Current (Vital): The fire of purpose goes out. What replaces it is not anxiety or heaviness but a grey indifference—a loss of the passionate engagement that defined the Pitta temperament. Decisions that once felt urgent and important now feel arbitrary. The moral clarity dims; right and wrong, which once had sharp edges, blur into a relativistic haze. There is a particular flavor of depression that belongs to deficient Pitta: it is not the sadness of loss but the emptiness of purposelessness. The individual who once organized their life around achievement and contribution now cannot find a reason to get out of bed.\n\nCognitive Map (Mental): The sharp, analytical mind becomes foggy and uncertain. The ability to discriminate—to see clearly what is true and what is false, what matters and what does not—is compromised. Thought loses its directional quality; there is no internal compass pointing toward a goal. Decision-making is impaired not by Vāta’s excess of options or Kapha’s resistance to change, but by a genuine inability to generate the evaluative heat needed to weigh alternatives. The internal narrative becomes flat: “I don’t know. I don’t care. It doesn’t matter.”\n\nInner Presence (Psychic): The soul-level experience is one of spiritual amnesia—a forgetting of purpose, of dharma, of the reason the individual came into this life. The inner fire that once illuminated the path forward has gone dark, and the individual is left standing in a landscape they can no longer read. The spiritual lesson here is rekindling through meaningful action—the rediscovery of purpose not through grand ambition but through the simple, faithful performance of small duties that gradually feed the flame back to life.",
+        "balance": "## 1. Pitta in Equilibrium: The Steady Flame of Purpose\n\n### Internal Landscape\n\nSomatic Base (Physical): The body runs warm but not hot. Digestion is strong and predictable—hunger arrives at regular intervals and is satisfied cleanly, without lingering heaviness or acid reflux. The skin has a healthy luster, slightly oily but not greasy, with good color. The eyes are bright and penetrating. Musculature is well-defined without being bulky—a medium, athletic build that speaks of efficient metabolism. Sleep is deep and sufficient; six or seven hours feels like enough because the quality is high. There is a natural physical confidence, a sense that the body is a reliable instrument that does what you ask of it.\n\nEmotional Current (Vital): The dominant emotional tone is one of purposeful warmth. There is a natural charisma—the kind of person others look to when a decision needs to be made, not because they are domineering but because their clarity is reassuring. Anger, when it arises, is clean and proportional: it flares in response to genuine injustice and subsides once the situation is addressed. There is a deep sense of fairness, an almost visceral reaction to dishonesty or incompetence. In relationships, the balanced Pitta individual is warm, direct, and loyal—the friend who will tell you the truth even when it is uncomfortable, but who will also be the first to show up when you need help.\n\nCognitive Map (Mental): Thought is sharp, logical, and goal-directed. The balanced Pitta mind excels at analysis, at breaking complex problems into manageable components, and at executing plans with precision. There is a natural gift for strategy and a preference for efficiency that borders on elegance. The internal narrative is organized around purpose: “What needs to be done? What is the most effective way to do it? How do we measure success?” Memory is excellent, especially for facts, sequences, and arguments.\n\nInner Presence (Psychic): At the soul level, balanced Pitta is the experience of agni as illumination—the inner fire that burns away confusion and reveals things as they are. There is a natural discrimination (viveka) that allows this person to distinguish signal from noise, essence from appearance, truth from comfortable fiction. This is the dosha most closely connected to the Manomaya Kośa (mental sheath) in its analytic capacity, and in equilibrium, it grants the ability to see clearly without the distortion of wishful thinking or denial. The spiritual lesson is one of right use of power—the understanding that clarity and strength are gifts to be placed in service, not weapons to be wielded for dominance.",
+        "excess": "## 2. Pitta in Excess: The Scorching Flame of Domination\n\n### Internal Landscape\n\nSomatic Base (Physical): The warmth that was once comfortable becomes oppressive heat. The body runs hot—flushing, sweating disproportionately, and radiating a palpable intensity. Digestion, once the crown jewel of the Pitta constitution, goes into overdrive: acid reflux, heartburn, loose and burning stools, an appetite that is ravenous and irritable if not immediately satisfied. The skin erupts—acne, rashes, rosacea, inflammatory patches that speak of an immune system that has turned its fire inward. The eyes become red, dry, and hypersensitive to light. Headaches arrive with sharp, piercing quality, often behind the eyes. Sleep becomes lighter, more easily disrupted by heat; waking at 2 or 3 AM is common, not with Vāta’s anxious mind but with Pitta’s restless, strategizing brain that cannot stop planning and problem-solving.\n\nEmotional Current (Vital): The purposeful warmth has become anger—not always explosive, but always present as a low, persistent irritability that sharpens into fury at the slightest provocation. The sense of fairness has curdled into judgmentalism; everyone is being measured against a standard they cannot meet, and the dominant inner experience is one of frustrated contempt. Impatience becomes a defining trait: conversations feel too slow, colleagues feel too incompetent, traffic feels like a personal affront. There is a particular Pitta flavor of loneliness that comes from the progressive alienation caused by this intensity—people begin to tiptoe around you, and the resulting distance is experienced not as a consequence of your behavior but as further evidence of their inadequacy.\n\nCognitive Map (Mental): The sharp, analytical mind has become a weapon—not a tool for understanding but an instrument of domination. Thought is now hyper-critical, finding flaws in everything and everyone. The internal narrative shifts from “What is the most effective approach?” to “Why can’t anyone do this right?” There is an obsessive quality to mental activity: the mind locks onto a problem or a perceived slight and chews on it relentlessly, generating rebuttals, counterarguments, and devastating retorts to conversations that may have ended hours ago. Decision-making becomes autocratic—not because other perspectives are unavailable, but because considering them feels like an intolerable waste of time.\n\nInner Presence (Psychic): The soul-level experience of excess Pitta is one of agni consuming its own vessel. The discriminative intelligence that was once a lamp has become a forest fire, burning through relationships, health, and inner peace with equal ferocity. The ego has identified completely with its competence and its standards; any failure to meet those standards—in self or others—is experienced as an existential threat. The spiritual lesson that is asking to be learned is surrender of control—the humbling recognition that not everything can be optimized, that imperfection is not a character flaw, and that the purpose of fire is to illuminate, not to incinerate."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1331,
+      "dimension_id": 15,
+      "slug": "vata",
+      "name": "Vata",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "## 3. Vāta in Deficiency: The Paralysis of Arrested Motion\n\n### Internal Landscape\n\nSomatic Base (Physical): When Vāta is deficient, the kinetic principle of the body slows to a crawl. Peristalsis weakens, leading to a sluggish gut and chronic constipation of a different character than excess Vāta—here it is not dryness that stalls the system but sheer lack of propulsive force. Circulation becomes poor, not from cold alone but from insufficient vascular motility. Breathing may become shallow and monotonous, lacking the natural variability that signifies a responsive nervous system. Reflexes are dulled. There is a heaviness that mimics Kapha excess but differs in quality: it is not the heaviness of substance but the heaviness of stagnation, like a river that has stopped flowing and become a murky pool.\n\nEmotional Current (Vital): The creative spark has gone out. What replaces it is not Kapha’s contented stillness but a flat, affectless state—a numbness that is neither peace nor despair but simply the absence of vitality. Enthusiasm evaporates; nothing seems interesting or worth initiating. There is a profound passivity that goes beyond introversion—it is the emotional equivalent of paralysis. Social engagement becomes effortful, not because of anxiety (as in excess Vāta) but because the motivational energy to reach out simply is not there.\n\nCognitive Map (Mental): The quick, associative mind has gone dark. Thought is slow, effortful, and uncreative. There is a cognitive rigidity that is unusual for a Vāta constitution—the natural flexibility has been replaced by a dull inability to see alternatives. Decision-making is impaired not by excessive options (as in excess) but by an absence of the generative energy needed to even formulate choices. The internal narrative is minimal: not the anxious chatter of excess, but a kind of silence that feels more like shutdown than serenity.\n\nInner Presence (Psychic): The soul-level experience is one of prāṇic depletion—the life-force itself feels diminished. The subtle sensitivity that characterizes Vāta has withdrawn, leaving a strange opacity where there was once transparency. This is the state the classical texts warn about when they speak of Vāta being “suppressed” by excess Kapha or overwhelmed by chronic exhaustion. The spiritual lesson here is reanimation through purpose—the rediscovery of a reason to move, to breathe, to engage.",
+        "balance": "## 1. Vāta in Equilibrium: The Dance of Inspired Motion\n\n### Internal Landscape\n\nSomatic Base (Physical): The body feels light but not ungrounded. There is an effortless quality to movement—limbs respond crisply, digestion proceeds with quiet regularity, the breath flows in a gentle, unforced rhythm. Joints are supple without being hypermobile. The skin, while naturally on the drier side, maintains a healthy glow. There is a pleasant coolness to the hands and feet that feels refreshing rather than uncomfortable. Sleep comes easily and, while perhaps lighter than a Kapha constitution’s deep slumber, it is restorative. The nervous system is alert without being hypervigilant—like a well-tuned instrument, it registers stimuli accurately and responds proportionately.\n\nEmotional Current (Vital): The dominant emotional tone is one of creative enthusiasm. There is a natural buoyancy, a sense that possibilities are everywhere and that life is interesting. This is not the driven intensity of Pitta’s ambition but a lighter, more playful engagement—the delight of a mind that makes unexpected connections. Socially, there is a genuine warmth and a gift for conversation; the Vāta-balanced person is often the one who puts a room at ease with a well-timed observation or a spontaneous laugh. Fear, when it arises, is appropriate and quickly processed—the healthy startle that keeps you alert, not the lingering dread that steals your sleep.\n\nCognitive Map (Mental): Thought is quick, flexible, and associative. The balanced Vāta mind excels at brainstorming, at seeing patterns across disparate domains, and at initiating projects with infectious optimism. There is a natural adaptability—when plans change, this mind pivots without excessive distress. Memory may not have the photographic precision of a Pitta mind, but it captures the essential thread of an experience with vivid sensory detail. The internal narrative is forward-looking: “What if we tried this?” “I wonder what would happen if…”\n\nInner Presence (Psychic): At the soul level, balanced Vāta is the experience of prāṇa as grace—the feeling that the life-force is moving through you unimpeded, that you are a channel rather than a dam. There is a natural attunement to subtle energies: the shift of seasons, the emotional atmosphere of a room, the unspoken needs of another person. This is the dosha most closely connected to the Prāṇamaya Kośa (vital sheath), and in equilibrium, it grants an almost intuitive sense of being carried by something larger than oneself. The spiritual lesson is one of trust in the flow—the understanding that not everything needs to be controlled or predicted for life to unfold beautifully.",
+        "excess": "## 2. Vāta in Excess: The Storm of Ungrounded Motion\n\n### Internal Landscape\n\nSomatic Base (Physical): The lightness that was once liberating now becomes a kind of brittle fragility. The body dries out—skin roughens, lips crack, joints begin to click and pop with a new stiffness. Digestion becomes erratic: bloating, gas, and constipation replace the quiet regularity of the balanced state. Sleep fragments; you wake at 2 AM with a racing mind and cannot return to rest. The hands and feet are not just cool but cold, and the cold feels like it has seeped into the bones. There is a quality of restlessness in the muscles themselves—a twitching, a trembling, a sense that the body cannot quite settle. Weight drops involuntarily; the face becomes more angular, the eyes more prominent. The nervous system is now hypervigilant, registering every sound, every movement, every slight change in environment as a potential threat.\n\nEmotional Current (Vital): The buoyancy has become anxiety—a persistent, free-floating apprehension that attaches itself to whatever is at hand. It is the feeling of a spinning top that has lost its axis: the energy is still there, but it has no center to organize around. Fear is no longer appropriate and proportional; it is now a background hum that colors everything. The creative enthusiasm has tipped into scattered hyperactivity—you start twelve projects and finish none, not from laziness but from a nervous inability to sustain attention on any single thing. Socially, the warmth can become a kind of anxious clinginess, or it can reverse into sudden withdrawal, as the overstimulated system seeks solitude to recover. There is a loneliness to excess Vāta—the feeling of being profoundly ungrounded, as though you might simply blow away.\n\nCognitive Map (Mental): Thought becomes rapid, fragmented, and repetitive. The associative brilliance of balanced Vāta degrades into rumination—the mind loops endlessly over the same worries, generating catastrophic scenarios with vivid and terrible specificity. Decision-making becomes agonizing: every option spawns a dozen “what-ifs,” and the mind cannot rest in a choice. The internal narrative shifts from “What if we tried?” to “What if it goes wrong?” Memory becomes unreliable—not because information is lost, but because the mind is too agitated to encode new experiences clearly. There is a sense of cognitive overload, as though the bandwidth of the mind has been exceeded.\n\nInner Presence (Psychic): The soul-level experience of excess Vāta is one of disconnection from ground. The attunement to subtle energies that was once a gift now becomes a liability—you absorb the anxiety of others, you are overwhelmed by stimuli, you cannot distinguish your own feelings from those of the environment. The prāṇa that once felt like grace now feels like a wind that has broken free of its banks. The spiritual lesson that is asking to be learned is embodiment—the return to the body, to the earth, to the simple anchor of physical sensation as a counterweight to the mind’s flight."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    }
+  ]
+}

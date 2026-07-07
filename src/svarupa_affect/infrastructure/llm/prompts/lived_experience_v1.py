@@ -31,7 +31,20 @@ from ....domain.models import (
 )
 from ....domain.scoring import clip
 
-PROMPT_VERSION = "lived_experience_v1"
+PROMPT_VERSION = "lived_experience_v2"
+
+# Per-concept keys rendered into the closed-vocabulary block, in stable order.
+# Poles come from the triplet snapshot; ``gloss`` is the legacy single-text fallback.
+_POLE_KEYS = ("deficiency", "balance", "excess", "gloss")
+
+# Human-readable labels for the primary dimensions in the closed vocabulary.
+# The model still SCORES under the output keys d2/d8/d9 (see the task text +
+# schema); these names only make the vocabulary block legible.
+_DIMENSION_LABELS = {
+    2: "Three Gunas",
+    8: "Nine Enduring Emotions",
+    9: "Thirty-Three Transient States",
+}
 
 SYSTEM_PROMPT = (
     "You are the affect-recognition component of the Svarupa Assistant. "
@@ -43,6 +56,19 @@ SYSTEM_PROMPT = (
     "Output JSON only, matching the required schema."
 )
 
+_SCORED_ITEM_SCHEMA: dict = {
+    "type": "object",
+    "required": ["attribute", "relevance", "state"],
+    "properties": {
+        "attribute": {"type": "string"},
+        "relevance": {"type": "number", "min": 0.0, "max": 1.0},
+        "state": {"type": "string", "enum": ["deficiency", "balance", "excess"]},
+        "durability": {"type": "string"},
+        "rationale": {"type": "string"},
+        "span": {"type": "string"},
+    },
+}
+
 LIVED_EXPERIENCE_SCHEMA: dict = {
     "type": "object",
     "required": ["abstain", "confidence", "background_field", "d8", "d9", "d2"],
@@ -52,9 +78,9 @@ LIVED_EXPERIENCE_SCHEMA: dict = {
         "background_field": {"type": "object"},
         "appraisal": {"type": "object"},
         "experiential_patterns": {"type": "array"},
-        "d8": {"type": "array", "maxItems": 5},
-        "d9": {"type": "array", "maxItems": 5},
-        "d2": {"type": "array", "maxItems": 3},
+        "d8": {"type": "array", "maxItems": 5, "items": _SCORED_ITEM_SCHEMA},
+        "d9": {"type": "array", "maxItems": 5, "items": _SCORED_ITEM_SCHEMA},
+        "d2": {"type": "array", "maxItems": 3, "items": _SCORED_ITEM_SCHEMA},
     },
 }
 
@@ -95,15 +121,77 @@ class LivedExperienceValidationError(ValueError):
     """Raised when the LLM payload fails schema or philosophy checks."""
 
 
+def build_system(vocabulary: dict[int, list[dict[str, str]]]) -> str:
+    """Static system prefix: contract + closed vocabulary + task/format rules.
+
+    This content is identical across requests, so the provider sends it as the
+    (cacheable) system prefix — see ``BedrockLLMProvider`` prompt caching. Keep it
+    byte-stable (sorted keys, no per-request data) or cross-request cache reads
+    will miss. Only the lived-experience text + hints (see :func:`build_prompt`)
+    vary per request.
+    """
+    vocab_block = {
+        _DIMENSION_LABELS.get(dim, f"d{dim}"): [
+            {"concept": item["slug"], **{k: item[k] for k in _POLE_KEYS if k in item}}
+            for item in items
+        ]
+        for dim, items in sorted(vocabulary.items())
+    }
+    return (
+        f"{SYSTEM_PROMPT}\n\n"
+        "CLOSED VOCABULARY (use the exact concept values only; do not invent attributes). "
+        "Concepts are grouped by dimension; score each concept under its output key — "
+        "Three Gunas→d2, Nine Enduring Emotions→d8, Thirty-Three Transient States→d9. "
+        "Each concept lists its poles — deficiency / balance / excess — with a "
+        "description of each; match the text to the pole it best fits:\n"
+        f"{json.dumps(vocab_block, indent=2)}\n\n"
+        "TASK: Reconstruct background_field (core, motivation, regulation, relational, temporal), "
+        "optional appraisal and experiential_patterns, and score d8 (Nine Enduring Emotions — enduring), "
+        "d9 (Thirty-Three Transient States — transient), d2 (Three Gunas — sattva/rajas/tamas felt tone). "
+        "Each scored item must include "
+        '"attribute" (an exact concept value from the vocabulary above), '
+        '"relevance", "state", and optional "durability", "rationale", "span". '
+        'The "state" is the pole of the attribute and MUST be one of: '
+        '"deficiency" (the quality is blocked, flat, numb, absent or under-expressed), '
+        '"balance" (the quality is present and well-regulated), or '
+        '"excess" (the quality is over-activated, dysregulated or overwhelming). '
+        "Choose the pole whose description above best matches the text; where only a "
+        "balance description is given, still infer deficiency or excess from the text. "
+        "Do not default to balance. "
+        "Be exhaustive within each dimension: list every concept whose pole description "
+        "plausibly matches the text (up to 5 per dimension), including secondary and "
+        "borderline readings at lower relevance — do not stop at the single strongest "
+        "concept. A deficiency pole describes the ABSENCE of the concept's quality; "
+        "consider deficiency readings even when the concept itself is not overtly present. "
+        "Set abstain:true when affect is absent or too thin. "
+        "Keep output compact: omit rationale, span, experiential_patterns, and appraisal "
+        "unless strictly necessary; background_field axes need numeric values only. "
+        "JSON only.\n\n"
+        "REQUIRED top-level keys (exact names): abstain, confidence, background_field, d8, d9, d2.\n"
+        "background_field MUST be an object wrapping core/motivation/regulation/relational/temporal.\n"
+        'Example skeleton: {"abstain":false,"confidence":0.65,"background_field":{"core":{"valence":0.1,'
+        '"arousal":0.6,"vitality":0.5,"intensity":0.55},"motivation":{"agency":0.5,"approach":0.4,'
+        '"avoidance":0.3,"control":0.45},"regulation":{"stability":0.5,"persistence":0.4,"volatility":0.35,'
+        '"regulation":0.5},"relational":{"attachment":0.4,"trust":0.5,"social_orientation":0.0},'
+        '"temporal":{"continuity":0.5,"anticipation":0.6,"resolution":0.4}},'
+        '"d8":[{"attribute":"<concept>","relevance":0.6,"state":"balance"}],"d9":[],"d2":[]}'
+    )
+
+
 def build_prompt(
     *,
     text: str,
-    vocabulary: dict[int, list[dict[str, str]]],
     shared_valence: float | None = None,
     shared_arousal: float | None = None,
     temporal_cues: list[str] | None = None,
 ) -> str:
-    """Render the user prompt: text + closed vocabulary blocks + optional fusion hints."""
+    """Render the per-request user turn: lived-experience text + optional hints.
+
+    The static grounding (system contract, closed vocabulary, task/format rules)
+    lives in :func:`build_system` so it can be cached as a stable prefix. Keeping
+    the volatile text here — after the cached prefix — is what makes cross-request
+    prompt caching effective.
+    """
     hints: dict[str, object] = {}
     if shared_valence is not None:
         hints["shared_valence_hint"] = shared_valence
@@ -111,30 +199,11 @@ def build_prompt(
         hints["shared_arousal_hint"] = shared_arousal
     if temporal_cues:
         hints["temporal_cues_hint"] = temporal_cues
-
-    vocab_block = {
-        str(dim): [{"slug": item["slug"], "gloss": item["gloss"]} for item in items]
-        for dim, items in sorted(vocabulary.items())
-    }
     return (
         "LIVED EXPERIENCE TEXT:\n"
         f'"""{text}"""\n\n'
-        f"OPTIONAL CROSS-LAYER HINTS (supporting only, not authoritative):\n"
-        f"{json.dumps(hints, indent=2)}\n\n"
-        f"CLOSED VOCABULARY (use slug values only; do not invent attributes):\n"
-        f"{json.dumps(vocab_block, indent=2)}\n\n"
-        "TASK: Reconstruct background_field (core, motivation, regulation, relational, temporal), "
-        "optional appraisal and experiential_patterns, and score d8 (enduring), d9 (transient), "
-        "d2 (sattva/rajas/tamas felt tone). Each scored item must include "
-        '"attribute", "relevance", optional "state", "durability", "rationale", "span". '
-        "Set abstain:true when affect is absent or too thin. JSON only.\n\n"
-        "REQUIRED top-level keys (exact names): abstain, confidence, background_field, d8, d9, d2.\n"
-        "background_field MUST be an object wrapping core/motivation/regulation/relational/temporal.\n"
-        'Example skeleton: {"abstain":false,"confidence":0.65,"background_field":{"core":{"valence":0.1,'
-        '"arousal":0.6,"vitality":0.5,"intensity":0.55},"motivation":{"agency":0.5,"approach":0.4,'
-        '"avoidance":0.3,"control":0.45},"regulation":{"stability":0.5,"persistence":0.4,"volatility":0.35,'
-        '"regulation":0.5},"relational":{"attachment":0.4,"trust":0.5,"social_orientation":0.0},'
-        '"temporal":{"continuity":0.5,"anticipation":0.6,"resolution":0.4}},"d8":[],"d9":[],"d2":[]}\n'
+        "OPTIONAL CROSS-LAYER HINTS (supporting only, not authoritative):\n"
+        f"{json.dumps(hints, indent=2)}"
     )
 
 

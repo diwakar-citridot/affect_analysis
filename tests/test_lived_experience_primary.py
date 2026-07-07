@@ -218,3 +218,20 @@ def test_legacy_mode_unchanged_without_llm_primary_flag():
     )
     result = run(layer.analyze_full(ctx))
     assert result.phenomenology_input.provenance.affect_mode == "legacy_deterministic"
+
+
+def test_nirveda_pole_descriptions_discriminate_eval_failure_modes():
+    """Regression: nirveda deficiency/excess lead text must survive the 700-char trim."""
+    from pathlib import Path
+
+    from svarupa_affect.application.lived_experience_orchestrator import _trim_description
+    from svarupa_affect.infrastructure.kg.triplet_registry import build_triplet_vocabulary
+
+    vocab = build_triplet_vocabulary(path=Path("data/kg/aff_triplet_descriptions.v1.json"))
+    nirveda = vocab.status_descriptions(9, "nirveda")
+    def_trim = _trim_description(nirveda["deficiency"])
+    exc_trim = _trim_description(nirveda["excess"])
+    assert "contagious" in def_trim.lower()
+    assert "not bhaya" in def_trim.lower()
+    assert "metallic" in exc_trim.lower()
+    assert "unlike balanced" in exc_trim.lower()

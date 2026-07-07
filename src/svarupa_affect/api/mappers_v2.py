@@ -6,7 +6,11 @@ from ..application.analyze_affect import AnalyzeResult
 from ..domain.models import LayerContext, SharedFeatures
 from ..domain.ports import IDimensionRegistry
 from ..infrastructure.kg.dimension_registry import build_dimension_registry
-from .dtos_v2 import LivedExperienceAnalyzeRequest, LivedExperienceAnalyzeResponse
+from .dtos_v2 import (
+    LivedExperienceAnalyzeRequest,
+    LivedExperienceAnalyzeResponse,
+    TokenUsageDTO,
+)
 from ..application.mappers import to_response
 
 
@@ -53,6 +57,7 @@ def to_v2_response(
         attribute_scores=base.attribute_scores,
         field_axes=base.field_axes,
         signals=base.signals,
+        usage=TokenUsageDTO(**(result.usage or {})),
         phenomenology_input=base.phenomenology_input,
         provenance=prov,
     )

@@ -6,7 +6,7 @@ from fastapi import FastAPI
 
 from .. import __version__
 from ..infrastructure.logging_config import setup_console_logging
-from .dependencies import get_dimension_registry, get_layer
+from .dependencies import get_dimension_registry, get_layer, get_metaphor_layer
 from .routes import router
 from .routes_v2 import router as v2_router
 
@@ -33,6 +33,8 @@ def create_app() -> FastAPI:
         validate_runtime()
         get_layer.cache_clear()
         get_layer()
+        get_metaphor_layer.cache_clear()
+        get_metaphor_layer()
         get_dimension_registry.cache_clear()
         get_dimension_registry()
 

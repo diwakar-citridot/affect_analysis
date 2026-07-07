@@ -35,11 +35,20 @@ Key v2 modules:
 
 Applicability is defined in **`svarupa_assistant_v1.svarupa_concept_layer`** where
 `layer_code = 'AFF'`. Each row tags a concept with `role` (`primary` | `contributing`).
-Regenerate the offline snapshot after KG changes:
+Regenerate the offline snapshots after KG changes:
 
 ```bash
+# applicability + concept glosses -> data/kg/aff_concept_layer.v1.json
 PYTHONPATH=src python scripts/export_aff_concept_layer.py
+# per-status triplet descriptions (LLM grounding vocabulary)
+#   -> data/kg/aff_triplet_descriptions.v1.json
+PYTHONPATH=src python scripts/export_aff_triplet_descriptions.py
 ```
+
+`aff_triplet_descriptions.v1.json` carries all three statuses
+(deficiency / balance / excess) per AFF concept, de-duplicated across the
+`perspective` axis, with a `coverage` flag per status so gaps are explicit
+(currently only D9 transient states are partially covered).
 
 ### Dimension applicability vs signal emission
 

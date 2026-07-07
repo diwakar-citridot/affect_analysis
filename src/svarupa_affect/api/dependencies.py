@@ -8,6 +8,7 @@ from __future__ import annotations
 from functools import lru_cache
 
 from ..application.analyze_affect import AffectLayer, build_default_layer
+from ..application.analyze_metaphor import MetaphorLayer, build_default_metaphor_layer
 from ..infrastructure.kg.concept_registry import StaticConceptRegistry, build_concept_registry
 from ..infrastructure.kg.dimension_registry import StaticDimensionRegistry, build_dimension_registry
 
@@ -16,6 +17,12 @@ from ..infrastructure.kg.dimension_registry import StaticDimensionRegistry, buil
 def get_layer() -> AffectLayer:
     """Composition root: build (and cache) the wired AffectLayer."""
     return build_default_layer()
+
+
+@lru_cache(maxsize=1)
+def get_metaphor_layer() -> MetaphorLayer:
+    """Composition root: build (and cache) the wired MetaphorLayer (MET)."""
+    return build_default_metaphor_layer()
 
 
 @lru_cache(maxsize=1)

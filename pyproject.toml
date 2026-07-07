@@ -38,6 +38,7 @@ dev = [
 
 [project.scripts]
 svarupa-affect = "svarupa_affect.cli:main"
+svarupa-narrative = "svarupa_narrative.cli:main"
 
 [build-system]
 requires = ["setuptools>=68"]

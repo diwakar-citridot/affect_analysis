@@ -23,7 +23,12 @@ from ..domain.models import (
     ExperientialPattern,
     LayerContext,
 )
-from ..domain.ports import IConceptRegistry, ILLMProvider, IScorerRegistry
+from ..domain.ports import (
+    IConceptRegistry,
+    ILLMProvider,
+    IScorerRegistry,
+    ITripletVocabulary,
+)
 from ..domain.scoring import build_uncertainty_profile, clip, softmax
 from ..infrastructure.affect.lexicons import tokenize
 from ..infrastructure.llm.prompts import lived_experience_v1 as prompt_mod
@@ -35,6 +40,32 @@ _FACTUAL_RE = re.compile(
     r"\b(meeting|scheduled|conference room|agenda|minutes|second floor)\b",
     re.IGNORECASE,
 )
+
+# Max chars per pole description injected into the closed-vocabulary prompt block.
+# Generous because the system prefix is prompt-cached (reads bill at ~0.1x); the
+# discriminative detail of a pole description is usually in its later sentences.
+_STATUS_DESC_MAXLEN = 700
+
+
+def _trim_description(text: str, max_len: int = _STATUS_DESC_MAXLEN) -> str:
+    """Trim to ``max_len`` at a sentence boundary (mid-sentence cuts lose the
+    discriminative tail of a pole description)."""
+    if len(text) <= max_len:
+        return text
+    cut = text[:max_len]
+    for stop in (". ", ".\n", "! ", "? "):
+        idx = cut.rfind(stop)
+        if idx > max_len // 2:
+            return cut[: idx + 1]
+    return cut
+
+
+def _add_usage(dst: dict[str, int], src: dict[str, int] | None) -> None:
+    """Accumulate token-usage counts into ``dst`` (across samples/retries)."""
+    if not src:
+        return
+    for key, val in src.items():
+        dst[key] = dst.get(key, 0) + int(val or 0)
 
 
 @dataclass(frozen=True)
@@ -51,6 +82,7 @@ class LivedExperienceResult:
     reasons: list[str] = dc_field(default_factory=list)
     failure: str | None = None
     samples: int = 0
+    usage: dict[str, int] = dc_field(default_factory=dict)
 
 
 class LivedExperienceOrchestrator:
@@ -65,9 +97,11 @@ class LivedExperienceOrchestrator:
         timeout_s: float = 60.0,
         max_tokens: int = 4096,
         emit_dimensions: frozenset[int] | None = None,
+        triplet_vocabulary: ITripletVocabulary | None = None,
     ) -> None:
         self._provider = provider
         self._registry = concept_registry
+        self._triplets = triplet_vocabulary
         self._scorer_registry = scorer_registry
         self._shell = safety_shell
         self.model_id = model_id
@@ -113,9 +147,12 @@ class LivedExperienceOrchestrator:
                 }
             )
 
+        # Static grounding (contract + closed vocabulary + task rules) is identical
+        # across requests, so it goes in the cacheable system prefix; only the text
+        # and hints vary per request.
+        system = prompt_mod.build_system(vocabulary)
         prompt = prompt_mod.build_prompt(
             text=ctx.analysis_text,
-            vocabulary=vocabulary,
             shared_valence=ctx.shared_features.valence if ctx.shared_features else None,
             shared_arousal=ctx.shared_features.arousal if ctx.shared_features else None,
             temporal_cues=ctx.shared_features.temporal_cues if ctx.shared_features else None,
@@ -130,7 +167,9 @@ class LivedExperienceOrchestrator:
             n,
         )
 
-        samples, last_error = await self._collect_samples(prompt, n, request_id=ctx.request_id)
+        samples, last_error, usage = await self._collect_samples(
+            system, prompt, n, request_id=ctx.request_id
+        )
         if not samples:
             field = prompt_mod.field_from_payload(
                 {"background_field": _neutral_background()}, process_confidence=0.25
@@ -147,6 +186,7 @@ class LivedExperienceOrchestrator:
                 abstained=True,
                 reasons=gate_reasons + ["llm_unusable"],
                 failure=last_error or "LLM returned no valid payload",
+                usage=usage,
             )
 
         merged = self._reconcile(samples)
@@ -165,6 +205,7 @@ class LivedExperienceOrchestrator:
                 abstained=True,
                 reasons=gate_reasons + ["llm_abstain"],
                 samples=len(samples),
+                usage=usage,
             )
 
         conf = float(merged.get("confidence", 0.5))
@@ -195,6 +236,7 @@ class LivedExperienceOrchestrator:
             abstained=abstained,
             reasons=gate_reasons,
             samples=len(samples),
+            usage=usage,
         )
 
     def build_uncertainty(
@@ -266,19 +308,39 @@ class LivedExperienceOrchestrator:
         return True, []
 
     def _vocabulary_blocks(self) -> dict[int, list[dict[str, str]]]:
+        """Closed vocabulary for the primary dimensions (D2/D8/D9).
+
+        Each concept carries its three pole descriptions (deficiency / balance /
+        excess) from the pinned triplet snapshot so the model can discriminate
+        against explicit poles. Balance falls back to the concept gloss, and if
+        no triplet text exists at all the item degrades to a single ``gloss``.
+        """
         out: dict[int, list[dict[str, str]]] = {}
         for dim_id in sorted(self._emit_dimensions):
             if dim_id not in (2, 8, 9):
                 continue
             slugs = sorted(self._allowed_slugs(dim_id))
             glosses = self._registry.glosses(dim_id, list(slugs))
-            out[dim_id] = [
-                {
-                    "slug": slug,
-                    "gloss": glosses.get(slug, slug)[:400],
-                }
-                for slug in slugs
-            ]
+            items: list[dict[str, str]] = []
+            for slug in slugs:
+                states = (
+                    self._triplets.status_descriptions(dim_id, slug)
+                    if self._triplets is not None
+                    else {}
+                )
+                item: dict[str, str] = {"slug": slug}
+                poles = (
+                    ("deficiency", states.get("deficiency")),
+                    ("balance", states.get("balance") or glosses.get(slug)),
+                    ("excess", states.get("excess")),
+                )
+                for status, text in poles:
+                    if text:
+                        item[status] = _trim_description(text)
+                if len(item) == 1:  # no pole text at all -> legacy single gloss
+                    item["gloss"] = glosses.get(slug, slug)[:400]
+                items.append(item)
+            out[dim_id] = items
         return out
 
     def _allowed_slugs(self, dimension_id: int) -> frozenset[str]:
@@ -288,12 +350,13 @@ class LivedExperienceOrchestrator:
         return self._registry.slugs(dimension_id)
 
     async def _collect_samples(
-        self, prompt: str, n: int, *, request_id: str | None
-    ) -> tuple[list[dict], str | None]:
+        self, system: str, prompt: str, n: int, *, request_id: str | None
+    ) -> tuple[list[dict], str | None, dict[str, int]]:
         last_error: str | None = None
 
-        async def one() -> dict | None:
+        async def one() -> tuple[dict | None, dict[str, int]]:
             nonlocal last_error
+            sample_usage: dict[str, int] = {}
             for attempt in range(3):
                 try:
                     attempt_prompt = prompt
@@ -303,8 +366,9 @@ class LivedExperienceOrchestrator:
                             "Return corrected JSON with background_field as an object wrapping "
                             "core, motivation, regulation, relational, and temporal."
                         )
+                    metrics: dict[str, int] = {}
                     raw = await self._provider.complete_json(
-                        system=prompt_mod.SYSTEM_PROMPT,
+                        system=system,
                         prompt=attempt_prompt,
                         schema=prompt_mod.LIVED_EXPERIENCE_SCHEMA,
                         model_id=self.model_id,
@@ -313,20 +377,26 @@ class LivedExperienceOrchestrator:
                         max_tokens=self._max_tokens,
                         request_id=request_id,
                         attempt=attempt + 1,
+                        metrics=metrics,
                     )
-                    return prompt_mod.validate_lived_experience(raw)
+                    _add_usage(sample_usage, metrics)
+                    return prompt_mod.validate_lived_experience(raw), sample_usage
                 except (prompt_mod.LivedExperienceValidationError, ModelUnavailable) as exc:
+                    _add_usage(sample_usage, metrics)
                     last_error = str(exc)
                     logger.warning(
                         "LLM-primary invalid payload (attempt %d/3): %s", attempt + 1, exc
                     )
                     if isinstance(exc, ModelUnavailable):
-                        return None
+                        return None, sample_usage
                     continue
-            return None
+            return None, sample_usage
 
         results = await asyncio.gather(*[one() for _ in range(n)])
-        return [r for r in results if r is not None], last_error
+        usage_total: dict[str, int] = {}
+        for _, sample_usage in results:
+            _add_usage(usage_total, sample_usage)
+        return [r for r, _ in results if r is not None], last_error, usage_total
 
     @staticmethod
     def _reconcile(samples: list[dict]) -> dict:
