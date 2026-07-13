@@ -355,6 +355,8 @@ class AttributeScore(Frozen):
     state: StatePole
     dimension_id: int
     durability: Durability = Durability.UNKNOWN
+    rationale: str | None = None
+    span: str | None = None
     reasoning: str | None = None
 
 

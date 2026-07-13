@@ -54,7 +54,7 @@ def export_triplet_descriptions(*, out_path: Path = OUT_PATH) -> dict[str, objec
 
     sql = """
         SELECT cl.dimension_id, cl.role, c.concept_id, c.slug, c.name,
-               s.code AS status, cd.perspective, cd.description
+               s.code AS status, cd.perspective, cd.description, cd.overview
           FROM svarupa_concept_layer cl
           JOIN svarupa_concepts c ON c.concept_id = cl.concept_id
           LEFT JOIN svarupa_concept_descriptions cd ON cd.concept_id = c.concept_id
@@ -89,12 +89,12 @@ def export_triplet_descriptions(*, out_path: Path = OUT_PATH) -> dict[str, objec
             concepts[cid] = c
 
         status = row["status"]
-        desc = row["description"]
-        if status is None or desc is None or not str(desc).strip():
+        text = str(row.get("overview") or "").strip() or str(row.get("description") or "").strip()
+        if status is None or not text:
             continue
         candidates.setdefault((cid, str(status)), {})[
             str(row["perspective"] or "")
-        ] = str(desc).strip()
+        ] = text
 
     def pick(cid: int, status: str) -> str | None:
         by_persp = candidates.get((cid, status))

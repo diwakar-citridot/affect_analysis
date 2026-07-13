@@ -6,6 +6,7 @@ Output concept slugs are loaded from ``svarupa_layer_scorer_concept`` (FK -> con
 
 from __future__ import annotations
 
+import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
@@ -15,6 +16,13 @@ from ..config import Settings
 from .mysql_client import open_mysql
 
 logger = logging.getLogger("svarupa_affect.scorer_registry")
+
+_DATA_DIR = Settings.load().data_dir
+_LAYER_SCORER_SNAPSHOTS: dict[str, Path] = {
+    "NAR": _DATA_DIR / "kg" / "nar_layer_scorers.v1.json",
+    "MET": _DATA_DIR / "kg" / "met_layer_scorers.v1.json",
+    "PSY": _DATA_DIR / "kg" / "psy_layer_scorers.v1.json",
+}
 
 _STATIC_SPECS: tuple[dict[str, object], ...] = (
     {
@@ -112,7 +120,12 @@ class StaticScorerRegistry:
         self.layer_code = layer_code
         root = data_dir or Settings.load().data_dir
         if specs is None:
-            specs = tuple(_spec_from_dict(root, row) for row in _STATIC_SPECS)
+            layer_rows = _specs_for_layer(layer_code, root)
+            specs = tuple(_spec_from_dict(root, row) for row in layer_rows) if layer_rows else (
+                tuple(_spec_from_dict(root, row) for row in _STATIC_SPECS)
+                if layer_code == LAYER_CODE
+                else ()
+            )
         self._specs: tuple[LayerScorerSpec, ...] = specs
         self._by_dimension = {s.dimension_id: s for s in self._specs}
         self._output_slugs: dict[int, frozenset[str]] = {}
@@ -139,6 +152,23 @@ class StaticScorerRegistry:
 
     def set_output_slugs(self, dimension_id: int, slugs: frozenset[str]) -> None:
         self._output_slugs[dimension_id] = slugs
+
+
+def _load_layer_static_specs(layer_code: str, data_dir: Path) -> tuple[dict[str, object], ...]:
+    path = _LAYER_SCORER_SNAPSHOTS.get(layer_code)
+    if path is None or not path.is_file():
+        return ()
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return tuple(raw.get("scorers", ()))
+
+
+def _specs_for_layer(layer_code: str, data_dir: Path) -> tuple[dict[str, object], ...]:
+    if layer_code == LAYER_CODE:
+        return _STATIC_SPECS
+    layer_specs = _load_layer_static_specs(layer_code, data_dir)
+    if layer_specs:
+        return layer_specs
+    return ()
 
 
 def _spec_from_dict(data_dir: Path, row: dict[str, object]) -> LayerScorerSpec:

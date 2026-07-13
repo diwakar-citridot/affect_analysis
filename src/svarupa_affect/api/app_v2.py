@@ -8,8 +8,16 @@ Combined v1+v2 on one server (v2 under ``/v2``)::
 
     PYTHONPATH=src uvicorn svarupa_affect.api.app:app --reload --port 8000
 
-Endpoints are at the root on ``app_v2``: ``GET /health``, ``GET /meta``, ``POST /analyze``.
-On the combined app: ``GET /v2/health``, ``GET /v2/meta``, ``POST /v2/analyze``.
+Endpoints are at the root on ``app_v2``: ``GET /health``, ``GET /affect/meta``,
+``POST /affect/analyze``, ``GET /affect/fyi/meta``, ``POST /affect/fyi``,
+``GET /narrative-arc/meta``, ``POST /narrative-arc/analyze``,
+``GET /psycholinguistic/meta``, ``POST /psycholinguistic/analyze``,
+``GET /metaphor/meta``, ``POST /metaphor/analyze``.
+On the combined app: ``GET /v2/health``, ``GET /v2/affect/meta``, ``POST /v2/affect/analyze``,
+``GET /v2/affect/fyi/meta``, ``POST /v2/affect/fyi``,
+``GET /v2/narrative-arc/meta``, ``POST /v2/narrative-arc/analyze``,
+``GET /v2/psycholinguistic/meta``, ``POST /v2/psycholinguistic/analyze``,
+``GET /v2/metaphor/meta``, ``POST /v2/metaphor/analyze``.
 """
 
 from __future__ import annotations
@@ -18,7 +26,14 @@ from fastapi import FastAPI
 
 from .. import __version__
 from ..infrastructure.logging_config import setup_console_logging
-from .dependencies import get_dimension_registry, get_layer, get_metaphor_layer
+from .dependencies import (
+    get_dimension_registry,
+    get_fyi_layer,
+    get_layer,
+    get_metaphor_layer,
+    get_narrative_arc_layer,
+    get_psycholinguistic_layer,
+)
 from .routes_v2 import router
 
 
@@ -40,6 +55,12 @@ def create_v2_app() -> FastAPI:
         get_layer()
         get_metaphor_layer.cache_clear()
         get_metaphor_layer()
+        get_fyi_layer.cache_clear()
+        get_fyi_layer()
+        get_narrative_arc_layer.cache_clear()
+        get_narrative_arc_layer()
+        get_psycholinguistic_layer.cache_clear()
+        get_psycholinguistic_layer()
         get_dimension_registry.cache_clear()
         get_dimension_registry()
 

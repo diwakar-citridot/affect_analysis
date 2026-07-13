@@ -12,6 +12,7 @@ from ..domain.enums import Durability, EvidenceKind, StatePole
 from ..domain.models import AffectiveField, AttributeScore, Evidence
 from ..domain.scoring import GAMMA, dimension_relevance, saturate, select_pole
 from ..infrastructure.kg.concept_registry import canonical_slug
+from .rationale import compose_insightful_rationale
 
 _RELEVANCE_ITEM_FLOOR = 0.15
 _TOP_K = 5
@@ -30,6 +31,7 @@ class SafetyShell:
         items: list[dict],
         *,
         dimension_id: int,
+        dimension_name: str | None = None,
         field: AffectiveField,
         allowed_slugs: frozenset[str],
         default_durability: Durability,
@@ -54,12 +56,17 @@ class SafetyShell:
                 item, emit_slug, intensity, arousal, regulation
             )
             durability, durability_from_llm = self._resolve_durability(item, default_durability)
-            rationale = str(item.get("rationale", "")).strip()
+            llm_rationale = str(item.get("rationale", "")).strip()
             span_text = str(item.get("span", "")).strip()
-            reasoning = _format_attribute_reasoning(
-                emit_slug=emit_slug,
-                rationale=rationale,
-                span_text=span_text,
+            rationale = compose_insightful_rationale(
+                dimension_id=dimension_id,
+                dimension_name=dimension_name,
+                attribute=emit_slug,
+                state=state,
+                llm_rationale=llm_rationale,
+                span=span_text or None,
+            )
+            reasoning = _format_processing_reasoning(
                 raw_relevance=raw_rel,
                 final_relevance=rel,
                 state=state,
@@ -78,6 +85,8 @@ class SafetyShell:
                     state=state,
                     dimension_id=dimension_id,
                     durability=durability,
+                    rationale=rationale,
+                    span=span_text or None,
                     reasoning=reasoning,
                 )
             )
@@ -132,11 +141,8 @@ class SafetyShell:
         return dimension_relevance([a.relevance for a in attrs]) < self.relevance_floor
 
 
-def _format_attribute_reasoning(
+def _format_processing_reasoning(
     *,
-    emit_slug: str,
-    rationale: str,
-    span_text: str,
     raw_relevance: float,
     final_relevance: float,
     state: StatePole,
@@ -149,16 +155,6 @@ def _format_attribute_reasoning(
     durability_from_llm: bool,
 ) -> str:
     parts: list[str] = []
-    if rationale:
-        basis = f"Selected {emit_slug} because {rationale}"
-        if span_text:
-            basis += f' (supporting text: "{span_text}")'
-        parts.append(basis + ".")
-    elif span_text:
-        parts.append(f'Selected {emit_slug} from supporting text: "{span_text}".')
-    else:
-        parts.append(f"Selected {emit_slug} from LLM dimension scoring.")
-
     saturated = saturate(raw_relevance)
     if abs(saturated - raw_relevance) > 0.001:
         parts.append(

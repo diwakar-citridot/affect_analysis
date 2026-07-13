@@ -25,12 +25,14 @@ from ..domain.models import (
 )
 from ..domain.ports import (
     IConceptRegistry,
+    IDimensionRegistry,
     ILLMProvider,
     IScorerRegistry,
     ITripletVocabulary,
 )
 from ..domain.scoring import build_uncertainty_profile, clip, softmax
 from ..infrastructure.affect.lexicons import tokenize
+from ..infrastructure.kg.dimension_registry import build_dimension_registry
 from ..infrastructure.llm.prompts import lived_experience_v1 as prompt_mod
 from .safety_shell import SafetyShell
 
@@ -98,10 +100,12 @@ class LivedExperienceOrchestrator:
         max_tokens: int = 4096,
         emit_dimensions: frozenset[int] | None = None,
         triplet_vocabulary: ITripletVocabulary | None = None,
+        dimension_registry: IDimensionRegistry | None = None,
     ) -> None:
         self._provider = provider
         self._registry = concept_registry
         self._triplets = triplet_vocabulary
+        self._dimensions = dimension_registry or build_dimension_registry()
         self._scorer_registry = scorer_registry
         self._shell = safety_shell
         self.model_id = model_id
@@ -281,6 +285,7 @@ class LivedExperienceOrchestrator:
             attrs, ev = self._shell.apply_dimension_scores(
                 items,
                 dimension_id=dimension_id,
+                dimension_name=self._dimensions.name_for(dimension_id),
                 field=field,
                 allowed_slugs=allowed,
                 default_durability=default_dur,

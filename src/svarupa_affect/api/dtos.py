@@ -49,6 +49,8 @@ class AttributeScoreDTO(BaseModel):
     state: StatePole
     dimension_name: str  # sanskrit_term from svarupa_dimensions
     durability: Durability = Durability.UNKNOWN
+    rationale: str | None = None
+    span: str | None = None
     reasoning: str | None = None
 
 

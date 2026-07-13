@@ -8,7 +8,7 @@ Pipeline:
      MySQL is not configured.
   2. For each Dimension → Concept → State triplet, generate 2 first-person
      lived-experience prompts (Bedrock or template fallback) and write rows to Excel.
-  3. POST each question to ``POST /v2/analyze`` with ``options.force=true``.
+  3. POST each question to ``POST /v2/affect/analyze`` with ``options.force=true``.
   4. Mark the row ``match`` when any ``attribute_scores[].attribute`` equals the row's
      ``concept_slug``; otherwise ``no match``.
 
@@ -672,8 +672,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--api-url",
-        default="http://localhost:8000/v2/analyze",
-        help="AFF v2 analyze endpoint (default: http://localhost:8000/v2/analyze)",
+        default="http://localhost:8000/v2/affect/analyze",
+        help="AFF v2 analyze endpoint (default: http://localhost:8000/v2/affect/analyze)",
     )
     parser.add_argument(
         "--limit",
@@ -690,12 +690,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--api-timeout",
         type=float,
         default=120.0,
-        help="HTTP timeout per /v2/analyze call in seconds (default: 120)",
+        help="HTTP timeout per /v2/affect/analyze call in seconds (default: 120)",
     )
     parser.add_argument(
         "--no-api-force",
         action="store_true",
-        help="do not set options.force=true on /v2/analyze (salience gate may abstain)",
+        help="do not set options.force=true on /v2/affect/analyze (salience gate may abstain)",
     )
     parser.add_argument(
         "--force",

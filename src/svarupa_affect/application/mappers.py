@@ -119,6 +119,8 @@ def _signal_to_dto(signal: DimensionalSignal, registry: IDimensionRegistry) -> D
                 state=score.state,
                 dimension_name=registry.name_for(score.dimension_id),
                 durability=score.durability,
+                rationale=score.rationale,
+                span=score.span,
                 reasoning=score.reasoning,
             )
             for score in signal.attribute_scores

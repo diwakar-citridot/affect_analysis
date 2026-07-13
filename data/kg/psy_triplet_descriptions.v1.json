@@ -1,0 +1,347 @@
+{
+  "schema_version": "1.0.0",
+  "layer_code": "PSY",
+  "role_filter": "primary",
+  "source_table": "svarupa_assistant_v1.svarupa_concept_descriptions",
+  "statuses": [
+    "deficiency",
+    "balance",
+    "excess"
+  ],
+  "primary_dimensions": [
+    2,
+    12,
+    17
+  ],
+  "coverage_summary": {
+    "concepts": 19,
+    "status_slots": 57,
+    "filled": 45,
+    "missing": 12
+  },
+  "concepts": [
+    {
+      "concept_id": 1135,
+      "dimension_id": 2,
+      "slug": "rajas",
+      "name": "Rajas",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Deficiency of Rajas results in laziness, lack of motivation, inability to take action, apathy, lethargy, procrastination, depression, and stagnation.\n\nSomatic (body): Low energy and fatigue, poor appetite or overeating, weak digestion, sluggish metabolism, poor posture and muscle tone, tendency toward sedentary lifestyle, obesity or weight gain, slow recovery from illness, heaviness in body.\n\nEmotional current: Apathy and lack of interest, depression and melancholy, emotional flatness, lack of enthusiasm for life, inability to feel joy, low self-worth, hopelessness about future, emotional withdrawal from others.\n\nCognitive map: Lack of motivation and drive, poor concentration and focus, difficulty making decisions, procrastination and avoidance, poor learning capacity, inability to plan or strategize, sluggish thinking, mental fog and heaviness.\n\nInner presence (psychic): Rajas is so deficient the soul cannot rouse itself to act at all, sunk in inertia.",
+        "balance": "### Balanced expression\n\nOverview: When Rajas is balanced, a person is motivated, ambitious, and productive. They take appropriate action, pursue goals with enthusiasm, engage meaningfully with work, and balance activity with rest.\n\nSomatic (body): Good energy and vitality, healthy appetite, varied food preferences, good metabolism, strength and stamina for work, balanced sleep patterns, active lifestyle without exhaustion, resilient immune system.\n\nEmotional current: Enthusiasm and motivation, healthy passion for life, joy in accomplishment, appropriate ambition, confidence in abilities, ability to feel excitement without becoming manic, genuine interest in relationships and work.\n\nCognitive map: Clear goals and purposeful thinking, ability to strategize and execute, creative problem-solving, motivated learning, good memory function, ability to focus on desired outcomes, adaptability to changing situations.\n\nInner presence (psychic): The soul harnesses rajasic energy as fuel, putting drive and passion into the service of a higher aim.",
+        "excess": "### In excess\n\nOverview: Excessive Rajas leads to constant restlessness, anxiety, worry, greed, anger, jealousy, and addiction to activity. A person becomes driven by desires and attachment to outcomes.\n\nSomatic (body): Hyperactivity, high blood pressure, insomnia and sleep disturbances, rapid heartbeat and palpitations, muscle tension and tremors, frequent infections due to stress, excessive appetite or eating disorders, overstimulation of nervous system, restlessness in body.\n\nEmotional current: Anxiety and worry, anger and irritability, jealousy and possessiveness, emotional volatility and mood swings, impatience with others, frustration when goals aren't met, emotional exhaustion from constant striving, inability to relax emotionally.\n\nCognitive map: Racing thoughts, scattered attention, inability to focus deeply, obsessive thinking about goals and outcomes, hypervigilance, excessive planning without execution, attachment to results causing suffering, inability to be present, mental exhaustion.\n\nInner presence (psychic): The soul is consumed by restless activity and craving, driven without pause and never at peace."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1137,
+      "dimension_id": 2,
+      "slug": "sattva",
+      "name": "Sattva",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Deficiency of Sattva results in confusion, mental fog, lack of wisdom, poor health, difficulty distinguishing right from wrong.\n\nSomatic (body): Poor health, chronic disease, low energy, lethargy, weak digestion, heavy or unhealthy food preferences (meat, alcohol, stimulants), susceptibility to infections, poor immune function, unclear skin.\n\nEmotional current: Emotional confusion and instability, lack of inner peace, difficulty with self-compassion, frustration and irritability, emotional heaviness, depression and melancholy, emotional reactivity without understanding.\n\nCognitive map: Mental fog and confusion, difficulty concentrating, poor decision-making ability, inability to distinguish right from wrong, lack of wisdom, living according to false beliefs, poor learning capacity, scattered thinking.\n\nInner presence (psychic): Sattva is absent; the soul lives in the murk of rajas and tamas, with no clarity through which truth could shine.",
+        "balance": "### Balanced expression\n\nOverview: When Sattva is balanced, a person experiences mental clarity, emotional stability, good health, virtuous behavior, wisdom, compassion, and inner peace.\n\nSomatic (body): Good health, stable energy levels, natural sleep patterns, clear complexion, strong immune function, light and energizing food preferences (fruits, vegetables, dairy), absence of disease.\n\nEmotional current: Emotional stability, inner peace, compassion, contentment, equanimity in face of challenges, natural joy and happiness, absence of mood swings, sense of inner fulfillment.\n\nCognitive map: Mental clarity, focused concentration, ability to discern truth from falsehood, wisdom in decision-making, spiritual insight, organized thinking, ability to learn and retain knowledge easily.\n\nInner presence (psychic): The soul rests most easily in sattva, where clarity and lightness let its inner light shine through; yet it remembers even sattva is a veil to pass beyond.",
+        "excess": "### In excess\n\nOverview: Excessive Sattva can lead to spiritual pride, attachment to virtue, and a sense of superiority. It may cause difficulty in taking action when needed.\n\nSomatic (body): Over-sensitivity to physical environment, tendency to over-regulate diet, potential nutritional deficiencies from excessive restriction, fatigue from lack of stimulation, tendency to isolate from physical world, fragility in facing harsh conditions.\n\nEmotional current: Spiritual arrogance and pride, judgment of those perceived as less pure, detachment from emotional engagement with others, difficulty experiencing joy from worldly activities, emotional coldness masked as enlightenment, superiority complex.\n\nCognitive map: Analysis paralysis due to excessive mental refinement, difficulty with practical problem-solving, over-intellectualization of simple issues, detachment from pragmatic thinking, judgment and criticism of others' choices, inability to engage with complex worldly situations.\n\nInner presence (psychic): The soul clings to sattvic states — purity, peace, knowledge — as attainments, attached to the very luminosity meant to be transcended."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1138,
+      "dimension_id": 2,
+      "slug": "tamas",
+      "name": "Tamas",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Deficiency of Tamas results in inability to rest or sleep, excessive mental activity, inability to ground oneself, anxiety, and disconnection from the body.\n\nSomatic (body): Insomnia and sleep disturbances, hyperactivity and restlessness, disconnection from physical body, fragility and poor grounding, anxiety-related physical symptoms, tension in muscles, inability to be still, overstimulation of nervous system.\n\nEmotional current: Anxiety and nervousness, inability to feel calm, emotional instability and reactivity, excessive emotional sensitivity, difficulty with acceptance, racing emotions, disconnection from grounding emotions.\n\nCognitive map: Overactive mind, racing thoughts, inability to stop thinking, difficulty focusing on one thing, excessive idealism disconnected from reality, inability to sleep due to mental activity, overthinking and analysis paralysis.\n\nInner presence (psychic): With too little tamas the soul cannot rest or sleep, ungrounded and unable to stop.",
+        "balance": "### Balanced expression\n\nOverview: When Tamas is minimized and balanced, it provides necessary rest, sleep, and groundedness. The person has adequate rest and is connected to the earth with stability.\n\nSomatic (body): Healthy sleep patterns, good rest and recovery, grounded and stable physical presence, connection to nature and earth, ability to be still when needed, physical resilience, good digestion and elimination, capacity to relax and recover.\n\nEmotional current: Emotional stability and groundedness, ability to let go of past hurts, acceptance of what cannot be changed, emotional resilience in face of change, calmness and peace, sense of belonging and connection.\n\nCognitive map: Ability to rest the mind when needed, acceptance of limitations of knowledge, wisdom in knowing when to act and when to be still, good memory integration, capacity for deep sleep and restoration of mind.\n\nInner presence (psychic): The soul accepts tamas in its rightful place — as rest, sleep, and ground of stability — without being ruled by it.",
+        "excess": "### In excess\n\nOverview: Excessive Tamas leads to ignorance, confusion, delusion, depression, lethargy, disease, and self-destructive behavior. A person becomes unmotivated and disorganized.\n\nSomatic (body): Heaviness and sluggishness in body, chronic fatigue and lack of energy, poor health and disease, slow metabolism and weight gain, poor digestion and elimination problems, tendency toward addiction (alcohol, drugs), poor hygiene and appearance, weak immune system.\n\nEmotional current: Depression and hopelessness, emotional numbness and disconnection, despair and dark thoughts, inability to feel joy or pleasure, emotional heaviness and burden, mood of despair and resignation, self-destructive tendencies.\n\nCognitive map: Dullness and mental fog, confusion and inability to understand, poor memory and learning capacity, negative and destructive thinking patterns, delusion and false beliefs, ignorance and inability to discriminate, absent-mindedness and forgetfulness.\n\nInner presence (psychic): The soul is buried in tamas: dullness, inertia, and ignorance darken everything, even the wish for freedom."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1302,
+      "dimension_id": 12,
+      "slug": "deha_vasana",
+      "name": "Deha Vasana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency: The Abandoned Vehicle\n\nSomatic Base: The body is neglected—under-fed or poorly nourished, under-rested, unexercised. Physical signals of distress are ignored or suppressed.\n\nEmotional Current: A flat indifference toward physical wellbeing. This is not the serene detachment of the sage but the nihilistic dismissal of the body as “just matter.”\n\nCognitive Map: The mind rationalises neglect through pseudo-spiritual reasoning: “The body is an illusion anyway.” This is intellectual laziness disguised as transcendence.\n\nInner Presence: The lesson is that the body, as the Annamaya Kośa, is the necessary foundation for all higher work. Ignoring it does not transcend it; it merely ensures that its unmet needs will sabotage every other layer.",
+        "balance": "Equilibrium\n\nSomatic Base: The body is maintained as a fit vehicle for engagement—fed well, exercised, rested—without obsession. You notice physical sensations without being enslaved by them.\n\nEmotional Current: There is a neutral affection for the body, like the feeling of a craftsman toward a well-maintained tool. Neither vanity nor neglect.\n\nCognitive Map: Thoughts about the body are practical and proportionate. You do not spend the morning in front of the mirror, nor do you ignore the body’s signals.\n\nInner Presence: The witness recognises the body as a temporary dwelling—precious but impermanent. There is care without clinging.",
+        "excess": "Excess: The Imprisoned Self\n\nSomatic Base: Every physical sensation is amplified. A minor blemish, a new wrinkle, a slight pain becomes an emotional crisis. The body is no longer an instrument but a cage whose walls are inspected obsessively.\n\nEmotional Current: The dominant transient states are Mada (vanity) and Glāni (a heavy, draining exhaustion tied to bodily anxiety). Every ageing sign is met with terror; every physical compliment is hoarded as proof of worth.\n\nCognitive Map: Thought is dominated by the body’s appearance and condition. Hours are spent on grooming routines, health forums, or hypochondriac research. The mind cannot think about anything else because the body has absorbed the entire identity.\n\nInner Presence: The soul is being confronted with a fundamental question: “Am I this body, or am I the awareness that inhabits it?” The excess is the teacher, pushing the identification to its breaking point."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1303,
+      "dimension_id": 12,
+      "slug": "jiveshana",
+      "name": "Jiveshana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency\n\nSomatic Base: A reckless disregard for physical safety. The body is thrown into dangerous situations not out of courage but out of a nihilistic disconnection from its own value.\n\nEmotional Current: A flat emotional relationship to one’s own continuation. Not the serene acceptance of the sage, but the exhausted indifference of someone who has stopped caring.\n\nCognitive Map: A cognitive pattern that minimises the value of embodied life: “It doesn’t matter.” “Nothing lasts anyway.” These thoughts are not wisdom but the Tāmasic collapse of the survival instinct.\n\nInner Presence: The spiritual correction is a renewed appreciation for the preciousness of embodied life—not because the body is permanent, but because it is the vehicle through which the soul can do its work.\n\nPART TWO\n\nThe Interlocking System in Motion",
+        "balance": "Equilibrium\n\nSomatic Base: The body’s survival instincts are intact and functional without being hyper-activated. You wear a seatbelt without obsessing about car accidents. You eat healthily without treating every meal as a battle against death.\n\nEmotional Current: There is a healthy respect for life and its fragility, combined with a willingness to engage with risk when the situation demands it. Fear is present but proportionate.\n\nCognitive Map: The mind acknowledges mortality without being paralysed by it. There is a philosophical ease with the fact of impermanence that allows full engagement with the present.\n\nInner Presence: The witness holds the body’s survival drive with compassion but does not confuse the drive with identity. The deepest question—“Who dies?”—has been sincerely engaged.",
+        "excess": "Excess: The Fortress Builder\n\nSomatic Base: The nervous system is perpetually in a low-grade fight-or-flight state. The body reads every change—a new symptom, a corporate restructuring, a shift in a relationship—as a mortal threat. Chronic hyper-vigilance depletes the adrenal system.\n\nEmotional Current: Trāsa (terror) is the dominant note—not the acute terror of a crisis, but the chronic, slow-burning dread that colours every day. Dainya (helplessness) descends when the dread becomes overwhelming, and Mohā (delusion) manifests as a frantic attempt to cling to the past, refusing to accept the reality of change.\n\nCognitive Map: The mind is consumed by risk assessment and catastrophic projection. Every health article is a prophecy. Every news headline is a harbinger. The cognitive style is anticipatory grief—mourning losses that have not yet occurred.\n\nInner Presence: The soul is being presented with its most fundamental examination: “Am I the body that will die, or am I the awareness that observes the body’s changes?” This Eśana, more than any other, forces the ultimate philosophical question."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1304,
+      "dimension_id": 12,
+      "slug": "kama_vasana",
+      "name": "Kama Vasana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1305,
+      "dimension_id": 12,
+      "slug": "kriyamana_karma",
+      "name": "Kriyamana Karma",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1306,
+      "dimension_id": 12,
+      "slug": "loka_vasana",
+      "name": "Loka Vasana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency: The Hermit Without Purpose\n\nSomatic Base: The body withdraws from social space. Physical presentation is neglected—not as an ascetic discipline, but as a symptom of disconnection.\n\nEmotional Current: A cynical flatness replaces healthy social feeling. The person has not transcended the need for connection; they have merely armoured against the vulnerability it requires.\n\nCognitive Map: A self-reinforcing narrative of misanthropy: “People are not worth the effort.” “Society is a fraud.” These thoughts protect the ego from the risk of genuine engagement.\n\nInner Presence: The lesson here is that withdrawal from others, when driven by fear rather than genuine inner fullness, is just another form of bondage.",
+        "balance": "Equilibrium\n\nSomatic Base: The body is at ease in social settings. Posture is open but not performative. Eye contact is natural rather than strategic. There is a physical relaxation that comes from not needing the room to approve of you.\n\nEmotional Current: Social engagement carries a quality of genuine interest. You participate in community not because you need validation but because connection is inherently nourishing. The emotional tone is warmth without neediness.\n\nCognitive Map: The mind navigates social situations with a healthy awareness of social responsibility and etiquette. You respect community standards because they foster harmony, not because you are desperate for praise.\n\nInner Presence: The witness sees the social self as a useful interface, not a core identity. You can play social roles without becoming the mask.",
+        "excess": "Excess: The Performer\n\nSomatic Base: The body is perpetually “on stage.” Posture is managed. Facial expressions are curated. After social events, there is a particular exhaustion that comes not from activity but from performance—the maintenance of a persona.\n\nEmotional Current: The dominant transient states are Trāsa (anxiety about judgment), Asūyā (envy of those with higher status), and Mada (pride when recognition arrives). Self-worth oscillates violently between inflation and deflation based entirely on external feedback.\n\nCognitive Map: Every sentence in every conversation is pre-edited for impression management. The mind runs a constant background process: “How did that land? What do they think of me now? Did I say the right thing?” This consumes enormous cognitive bandwidth.\n\nInner Presence: The soul is being taught that the social self is a projection—a useful tool that has been mistaken for the master. The spiritual task is to discover who remains when the audience leaves."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1307,
+      "dimension_id": 12,
+      "slug": "lokeshana",
+      "name": "Lokeshana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency\n\nSomatic Base: A withdrawal from public space. The body retreats into smallness—hunched shoulders, averted gaze, minimal physical presence.\n\nEmotional Current: Not humility but shame. Not transcendence of status but terror of judgment. The person avoids visibility not because they have outgrown the need for it, but because they cannot bear the risk of receiving negative feedback.\n\nCognitive Map: A narrative of unworthiness: “I have nothing to contribute.” “No one wants to hear from me.” These thoughts are not realistic self-assessment but the cognitive signature of a Lokeśana that has collapsed inward.\n\nInner Presence: The spiritual invitation is to reconnect with the intrinsic worth of contributing to the world—not for the sake of recognition, but because service is the natural expression of an awakened being.",
+        "balance": "Equilibrium\n\nSomatic Base: The body is relaxed in public spaces. There is no compulsive self-monitoring—no checking of reflection in shop windows, no adjusting of posture when a perceived authority enters the room.\n\nEmotional Current: A quiet sense of purpose that does not require external affirmation. You contribute your best work because the work itself demands it, not because the audience is watching.\n\nCognitive Map: The mind evaluates feedback on its merits. Criticism does not destabilise; praise does not inflate. There is a steady internal compass that social weather cannot permanently alter.\n\nInner Presence: The witness understands that reputation is a shadow cast by action—useful but ultimately insubstantial. Identity rests in the witness, not in the reflection.",
+        "excess": "Excess: The Prisoner of the Gaze\n\nSomatic Base: Chronic tension in the face and throat—the muscles of “presentation.” The body is perpetually braced for evaluation. Heart rate spikes at the ping of a notification.\n\nEmotional Current: A volatile emotional economy where self-worth is denominated in likes, titles, and invitations. The transient states are Trāsa (fear of being “cancelled”), Asūyā (envy of those with higher visibility), and the particular agony of Autsukya (impatient longing for the next validation hit).\n\nCognitive Map: Every action is pre-filtered through the question: “How will this look?” Authenticity is sacrificed at the altar of optics. The person tailors every sentence to sound impressive rather than true.\n\nInner Presence: The soul is trapped behind a mask it has mistaken for its own face. The spiritual lesson is that the social self is a projection; the real self persists even when the audience leaves."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1308,
+      "dimension_id": 12,
+      "slug": "prarabdha_karma",
+      "name": "Prarabdha Karma",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency: The Flight from Facticity\n\nSomatic Base: The body is neglected because the person refuses to accept its current state. They may chase extreme interventions, jump between diets and surgeries, unable to sit with the body as it actually is.\n\nEmotional Current: A persistent dissatisfaction with the “terrain” of one’s life. Rather than working the soil they have, the person fantasises about living in someone else’s field.\n\nCognitive Map: A cognitive pattern of perpetual comparison: “If only I had been born into that family, that country, that body.” The mind spends its energy on hypothetical alternatives rather than present possibilities.\n\nInner Presence: The soul’s lesson is that liberation is possible not despite constraints but through them. The prison becomes the monastery when the perspective shifts.\n\nDeficiency: The Tāmasic Avoidance\n\nSomatic Base: The body is sluggish, resistant to engagement. Getting out of bed requires an act of will that seems disproportionate to the task. There is a physical shrinking from the world—a desire to make oneself small and unnoticed.\n\nEmotional Current: A flat, grey emotional tone. Not sadness exactly, but the absence of any motivating force—what the tradition calls ālasya (laziness) at the deepest level. Fear of failure has calcified into refusal to try.\n\nCognitive Map: The mind generates rationalisations for inaction: “It won’t matter anyway.” “Why bother when the outcome is uncertain?” These are not philosophical conclusions but the cognitive exhaust of Tāmasic inertia.\n\nInner Presence: The spiritual lesson is that inaction is itself a form of action—it creates its own Samskāra of withdrawal and contraction. The soul is being called to engage, even imperfectly, because engagement is the precondition for growth.",
+        "balance": "Equilibrium\n\nSomatic Base: The body is accepted as it is—its strengths, its limitations, its particular shape and rhythm. You wake with a chronic condition and manage it without resentment, treating the body as a “sacred constraint” rather than a punishment.\n\nEmotional Current: A quality of philosophical acceptance permeates the emotional field. Difficult circumstances are met with a kind of dignified composure—not denial, but the recognition that resistance to the unchangeable consumes energy without producing change.\n\nCognitive Map: The mind focuses its analytical power not on “Why did this happen to me?” but on “Given that this is so, what is the wisest response?” This is the cognitive signature of high epistemic integrity in the face of Prārabdha.\n\nInner Presence: The witness understands that Prārabdha is not arbitrary but the precise curriculum needed for this particular soul’s growth. There is a deep, quiet trust in the intelligence of the process.\n\nEquilibrium\n\nSomatic Base: The body acts with what the Yoga tradition calls “effortless effort.” Movements are purposeful without being tense. The hands do their work without gripping.\n\nEmotional Current: There is engagement without obsession. You care about the outcome of your action but you are not chained to it. The Bhagavad Gītā’s instruction to “act without attachment to the fruit” is not philosophical abstraction here—it is the felt quality of a particular emotional stance.\n\nCognitive Map: The mind is focused on process rather than result. Thoughts are instruments of service rather than vehicles of self-promotion. There is clarity about why you are acting and what the action is meant to accomplish beyond personal gain.\n\nInner Presence: The witness performs action as an offering. This is Karma Yoga in its purest form: the action is fully engaged, but the actor has stepped aside. The residue left by such action is minimal because the seeds of attachment were not planted.",
+        "excess": "Excess: The Overwhelming Givens\n\nSomatic Base: The body feels besieged by conditions it did not choose. Chronic pain, disability, or persistent illness dominate the somatic field, making every physical act a negotiation.\n\nEmotional Current: A sense of cosmic injustice simmers beneath the surface. The emotional signature is a mix of helplessness and resentment—the feeling that the dice were loaded before you were ever born.\n\nCognitive Map: Victimhood narratives crystallize: “Life is fundamentally unfair.” “I never had a chance.” These stories are not entirely wrong—the facticity is genuinely heavy—but they foreclose the possibility of agency within constraint.\n\nInner Presence: The spiritual challenge here is immense: to find meaning within severe limitation. This is the territory of Bhakti—the path of devotion—where surrender to the larger intelligence becomes not resignation but a radical form of trust.\n\nExcess: The Rajasic Overdrive\n\nSomatic Base: The body is wired, over-caffeinated, perpetually “on.” Muscles remain partially engaged even during rest. The jaw clenches. Sleep is shallow and dream-filled with action sequences.\n\nEmotional Current: A compulsive, driven quality infects every task. The emotional signature is obsession—not passion but its distortion. You cannot stop working, not because the work is meaningful, but because stopping would require you to feel what lies beneath the busyness.\n\nCognitive Map: Thought is dominated by planning, strategising, and outcome-tracking. The mind generates to-do lists inside to-do lists. Every conversation is evaluated for its utility toward the goal.\n\nInner Presence: The soul is being taught that there is a difference between right action and compulsive action. The lesson is that doing more does not always mean doing better, and that the quality of intention matters more than the quantity of output."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1309,
+      "dimension_id": 12,
+      "slug": "putreshana",
+      "name": "Putreshana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency\n\nSomatic Base: A physical sense of futility—the shoulders slump, the eyes lose their forward orientation. The body communicates that there is nothing ahead worth investing in.\n\nEmotional Current: A nihilistic indifference to the future. Not the wise acceptance of impermanence, but the despairing conclusion that nothing matters because nothing lasts.\n\nCognitive Map: The mind generates variations of “What is the point?” without the energy to answer the question.\n\nInner Presence: The soul is being invited to discover that meaning does not require permanence—that the act of giving, in the moment of giving, is already complete.",
+        "balance": "Equilibrium\n\nSomatic Base: The body is at peace with its temporality. You hold a child, mentor a student, or tend a creative project with full presence, knowing that the act of nurturing is complete in itself, regardless of what endures.\n\nEmotional Current: There is joy in contributing to the next generation or the next iteration without needing it to bear your name. The emotional quality is one of open-handed giving.\n\nCognitive Map: The mind sees the difference between contributing to the river and damming the river. You understand that true legacy is not in what bears your signature but in the quality of consciousness you transmit.\n\nInner Presence: The witness knows that continuity at the deepest level is not of the body or the name but of the Dharma—the universal order that persists beyond any individual expression.",
+        "excess": "Excess: The Puppet Master\n\nSomatic Base: A clutching energy in the hands and arms—the physical signature of someone who cannot let go. Shoulders are raised as though bracing against the current of time.\n\nEmotional Current: Asūyā (envy of other families’ or successors’ achievements), Mohā (delusion regarding the importance of one’s family name), and Amarsha (impatience when a student or child challenges your “wisdom”). The successor becomes a canvas for the ego’s unfinished self-portrait.\n\nCognitive Map: A narrative of ownership: “They are my legacy. They must do things my way.” The mind confuses guidance with control, love with possession.\n\nInner Presence: The soul is being asked: “Are you loving this person, or are you loving your own reflection in them?”"
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1310,
+      "dimension_id": 12,
+      "slug": "sanchita_karma",
+      "name": "Sanchita Karma",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency: The Rootless Feeling\n\nSomatic Base: The body feels unmoored, as though it has arrived in this life without adequate “installation.” There is a lightness that is not freedom but disorientation—a lack of the embodied knowing that comes from having “been through” things.\n\nEmotional Current: An inner emptiness that is not the spacious emptiness of meditative clarity but the thin emptiness of inexperience. The emotional range feels narrow, as though the instrument has few strings.\n\nCognitive Map: The mind struggles to find precedent. Each situation feels novel in a way that is disorienting rather than refreshing. Decision-making is slow and uncertain because there is little accumulated wisdom to draw upon.\n\nInner Presence: The soul’s lesson here is to engage fully with life rather than withdraw from it. The deficiency is an invitation to accumulate meaningful experience through the Path of Karma—not avoidance of action, but the wholehearted embrace of it.",
+        "balance": "Equilibrium\n\nSomatic Base: The body feels like an instrument that has been well-played but carries no obvious tension from the playing. There is a neutral readiness in the musculature, a sense of being “settled into” the body without excess weight.\n\nEmotional Current: A stable hum of quiet capability. You sense reserves of skill and intuition that seem to arrive without being summoned—what others call “natural talent.” There is no anxiety about these reserves; they simply exist, like groundwater.\n\nCognitive Map: Thoughts carry a quality of coherence. When faced with a new situation, the mind draws on a vast and varied library of past experience without becoming overwhelmed by it. Decisions feel informed rather than burdened.\n\nInner Presence: The witness recognizes that all current capacities are borrowed from a deep well—none are “personal achievements” in the egoic sense. There is gratitude without pride, capacity without inflation.",
+        "excess": "Excess: The Weight of Accumulated History\n\nSomatic Base: A heaviness that cannot be attributed to any single cause—a sense of being “haunted” at the cellular level. The shoulders carry a load that no massage can release because the tension is not muscular but karmic.\n\nEmotional Current: A pervasive undertow of “something unfinished.” The emotional landscape is tinged with a restless incompleteness, as though a debt exists that you cannot name. This may surface as chronic, low-grade anxiety or a sense of destiny that feels more like a cage than a calling.\n\nCognitive Map: Thought patterns spiral into fatalism. The mind tells stories of inevitability: “This is just who I am.” “I’ve always been this way.” The sheer volume of accumulated impression crowds out the possibility of genuine novelty.\n\nInner Presence: The spiritual lesson is one of purification through discernment. The witness sees the weight and recognises that not all of it must be carried forward. This is the territory where Jñāna Yoga—the path of discriminative knowledge—burns through layers of stored karmic residue."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1311,
+      "dimension_id": 12,
+      "slug": "shastra_vasana",
+      "name": "Shastra Vasana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency: The Unexamined Life\n\nSomatic Base: The body moves through life on autopilot. Without the intellectual framework to recognise patterns, physical habits are never questioned.\n\nEmotional Current: A vague sense that “something is off” but no vocabulary to name it. Emotional states wash through without being understood or integrated.\n\nCognitive Map: The mind lacks the conceptual tools for self-reflection. Life is lived reactively, governed by impulse and circumstance rather than by discernment.\n\nInner Presence: The soul is calling for engagement with the question “Why?”—the beginning of the Path of Jñāna.",
+        "balance": "Equilibrium\n\nSomatic Base: Study is balanced with practice. The body is used as a laboratory for the theories the mind has absorbed. You read about Prāṇāyāma and then practice it; you study the Guṇas and then observe them in your own behaviour.\n\nEmotional Current: Knowledge brings a quiet joy—the satisfaction of understanding aligned with the humility of knowing how much remains unknown.\n\nCognitive Map: The mind uses scriptures as a map, not a destination. Knowledge refines conduct and deepens perception. You do not study to win arguments; you study to see more clearly.\n\nInner Presence: The witness holds knowledge lightly, knowing that the finger pointing at the moon is not the moon.",
+        "excess": "Excess: The Intellectual Hoarder\n\nSomatic Base: The body atrophies. Hours are spent in sedentary study. The physical world recedes as the mind builds elaborate conceptual structures that have no foundation in embodied experience.\n\nEmotional Current: The dominant transient states are Mada (intellectual pride), Garva (haughtiness), and Amarsha (impatience with those who know less). Debate becomes blood sport.\n\nCognitive Map: The mind is a fortress of definitions, citations, and arguments. Every conversation is an opportunity to display knowledge. The irony is devastating: the person has read every text about ego-dissolution but their ego has never been larger.\n\nInner Presence: The soul is learning that information is not realisation, that knowing about fire is not the same as being warm."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1312,
+      "dimension_id": 12,
+      "slug": "shraddha",
+      "name": "Shraddha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1313,
+      "dimension_id": 12,
+      "slug": "subha_vasana",
+      "name": "Subha Vasana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1314,
+      "dimension_id": 12,
+      "slug": "vitteshana",
+      "name": "Vitteshana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "Deficiency\n\nSomatic Base: Chronic insecurity manifesting as physical anxiety—sleepless nights, digestive disturbance, the body braced for deprivation.\n\nEmotional Current: A pervasive sense of scarcity that has calcified into identity. Even in objective abundance, the person feels poor. Generosity feels dangerous because every gift is experienced as a diminishment.\n\nCognitive Map: Scarcity thinking dominates: “There is never enough.” “I cannot afford to be generous.” These thoughts have become background radiation, colouring every decision.\n\nInner Presence: The spiritual invitation is to discover the inner abundance that does not depend on external resources—the wealth of awareness itself.",
+        "balance": "Equilibrium\n\nSomatic Base: The body is comfortable with enough. There is no hoarding impulse in the muscles, no clenched fist around possessions. Material resources are managed with the steady hand of a custodian rather than the tight grip of an owner.\n\nEmotional Current: Financial matters are handled with equanimity. A downturn in the market does not produce existential terror; a windfall does not produce euphoria. Wealth is a tool, and tools do not define their wielder.\n\nCognitive Map: The mind understands the difference between sufficiency and excess. Financial planning is pragmatic rather than obsessive. Generosity flows naturally because there is no core belief in scarcity.\n\nInner Presence: The witness sees wealth as a trust to be managed for the benefit of the Whole, not a fortress to be defended.",
+        "excess": "Excess: The Bottomless Pit\n\nSomatic Base: A physical tightness in the chest and stomach—the somatic signature of “not enough.” The body is in a permanent state of low-grade acquisition mode. Shopping, checking investment portfolios, counting—these activities produce a brief somatic release followed by a deeper contraction.\n\nEmotional Current: The dominant transient states are Lobha (greed—a tightening hunger that no amount of accumulation satisfies), Trāsa (anxiety about losing what has been gained), and the relentless Autsukya (impatient longing for the next acquisition). Financial loss is experienced not as a practical setback but as an assault on identity.\n\nCognitive Map: The mind reduces all relationships and opportunities to their financial dimension. People are evaluated for their economic utility. The internal monologue is dominated by calculations, projections, and scenarios of loss.\n\nInner Presence: The soul is learning that material security, pursued to its limit, reveals itself as a mirage—each destination recedes as you approach it."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1725,
+      "dimension_id": 17,
+      "slug": "the_adhibhautika_perspective",
+      "name": "The Adhibhautika Perspective",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep",
+        "balance": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep",
+        "excess": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep"
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1726,
+      "dimension_id": 17,
+      "slug": "the_adhidaivika_perspective",
+      "name": "The Adhidaivika Perspective",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep",
+        "balance": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep",
+        "excess": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep"
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1727,
+      "dimension_id": 17,
+      "slug": "the_adhyatmika_perspective",
+      "name": "The Ādhyātmika Perspective",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep",
+        "balance": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep",
+        "excess": "A person in whom the Earth element is well-proportioned experiences groundedness, physical stability, and a secure sense of belonging. There is structural integrity in the body—strong bones, healthy teeth, firm musculature, and resilient skin. Psychologically, such a person feels rooted, patient, and reliable. They relate well to the material world without being consumed by it. There is a quality of steadiness in their personality, and they can weather emotional storms without losing their foundation.', NULL, NULL, NULL\n  FROM svarupa_concepts c\n  JOIN svarupa_status   s ON s.code = 'balance'\n WHERE c.dimension_id = 6 AND c.slug = 'earth';\nINSERT INTO svarupa_concept_descriptions\n    (concep"
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    }
+  ]
+}

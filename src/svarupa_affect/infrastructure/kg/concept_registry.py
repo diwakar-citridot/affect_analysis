@@ -31,7 +31,14 @@ BRIDGE_SLUG_ALIASES: dict[str, str] = {
     "dhriti": "dhrti",
 }
 
-_STATIC_SNAPSHOT = Settings.load().data_dir / "kg" / "aff_concept_layer.v1.json"
+_DATA_DIR = Settings.load().data_dir
+_STATIC_SNAPSHOT = _DATA_DIR / "kg" / "aff_concept_layer.v1.json"
+_LAYER_SNAPSHOTS: dict[str, Path] = {
+    "AFF": _STATIC_SNAPSHOT,
+    "NAR": _DATA_DIR / "kg" / "nar_concept_layer.v1.json",
+    "MET": _DATA_DIR / "kg" / "met_concept_layer.v1.json",
+    "PSY": _DATA_DIR / "kg" / "psy_concept_layer.v1.json",
+}
 
 
 def canonical_slug(slug: str) -> str:
@@ -48,13 +55,18 @@ class ConceptInfo:
     role: str = "contributing"
 
 
-def _load_static_snapshot(path: Path = _STATIC_SNAPSHOT) -> tuple[
+def _snapshot_path(layer_code: str) -> Path:
+    return _LAYER_SNAPSHOTS.get(layer_code, _STATIC_SNAPSHOT)
+
+
+def _load_static_snapshot(path: Path | None = None, *, layer_code: str = LAYER_CODE) -> tuple[
     frozenset[int],
     frozenset[int],
     frozenset[int],
     dict[int, dict[str, ConceptInfo]],
 ]:
-    raw = json.loads(path.read_text(encoding="utf-8"))
+    snap = path or _snapshot_path(layer_code)
+    raw = json.loads(snap.read_text(encoding="utf-8"))
     by_dimension: dict[int, dict[str, ConceptInfo]] = {}
     for row in raw["concepts"]:
         dim_id = int(row["dimension_id"])
@@ -76,8 +88,22 @@ def _load_static_snapshot(path: Path = _STATIC_SNAPSHOT) -> tuple[
 
 
 _STATIC_AFFINITY, _STATIC_PRIMARY, _STATIC_CONTRIBUTING, _STATIC_BY_DIMENSION = (
-    _load_static_snapshot()
+    _load_static_snapshot(layer_code=LAYER_CODE)
 )
+_STATIC_LAYER_CACHE: dict[str, tuple[frozenset[int], frozenset[int], frozenset[int], dict]] = {
+    LAYER_CODE: (_STATIC_AFFINITY, _STATIC_PRIMARY, _STATIC_CONTRIBUTING, _STATIC_BY_DIMENSION),
+}
+
+
+def _static_layer_data(layer_code: str) -> tuple[
+    frozenset[int],
+    frozenset[int],
+    frozenset[int],
+    dict[int, dict[str, ConceptInfo]],
+]:
+    if layer_code not in _STATIC_LAYER_CACHE:
+        _STATIC_LAYER_CACHE[layer_code] = _load_static_snapshot(layer_code=layer_code)
+    return _STATIC_LAYER_CACHE[layer_code]
 
 
 class StaticConceptRegistry:
@@ -93,13 +119,22 @@ class StaticConceptRegistry:
         contributing_dimensions: frozenset[int] | None = None,
     ) -> None:
         self.layer_code = layer_code
-        source = by_dimension or _STATIC_BY_DIMENSION
+        if by_dimension is None and affinity is None:
+            aff, prim, contrib, snap = _static_layer_data(layer_code)
+            source = snap
+            self._affinity = aff
+            self._primary_dimensions = primary_dimensions or prim
+            self._contributing_dimensions = contributing_dimensions or contrib
+        else:
+            source = by_dimension or _static_layer_data(layer_code)[3]
+            self._affinity = affinity or _static_layer_data(layer_code)[0]
+            self._primary_dimensions = primary_dimensions or _static_layer_data(layer_code)[1]
+            self._contributing_dimensions = (
+                contributing_dimensions or _static_layer_data(layer_code)[2]
+            )
         self._by_dimension: dict[int, dict[str, ConceptInfo]] = {
             dim: dict(slugs) for dim, slugs in source.items()
         }
-        self._affinity = affinity or _STATIC_AFFINITY
-        self._primary_dimensions = primary_dimensions or _STATIC_PRIMARY
-        self._contributing_dimensions = contributing_dimensions or _STATIC_CONTRIBUTING
 
     def affinity(self, layer_code: str | None = None) -> frozenset[int]:
         if layer_code and layer_code != self.layer_code:
@@ -235,4 +270,11 @@ def build_concept_registry(*, layer_code: str = LAYER_CODE) -> StaticConceptRegi
                 "Could not load svarupa_concept_layer from MySQL (%s); using static snapshot",
                 exc,
             )
-    return StaticConceptRegistry(layer_code=layer_code)
+    affinity, primary, contributing, by_dimension = _static_layer_data(layer_code)
+    return StaticConceptRegistry(
+        layer_code=layer_code,
+        by_dimension=by_dimension,
+        affinity=affinity,
+        primary_dimensions=primary,
+        contributing_dimensions=contributing,
+    )

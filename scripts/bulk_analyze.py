@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bulk-run passages through the AFF v2 LLM-primary API (``POST /v2/analyze``).
+"""Bulk-run passages through the AFF v2 LLM-primary API (``POST /v2/affect/analyze``).
 
 Reads an input file, sends one request per passage (concurrently), and writes a
 JSONL where each line is ``{id, analysis_text, ok, http_status, latency_s,
@@ -113,7 +113,7 @@ def main() -> int:
     if not rows:
         print(f"No passages found in {args.input}", file=sys.stderr)
         return 1
-    url = args.base_url.rstrip("/") + "/v2/analyze"
+    url = args.base_url.rstrip("/") + "/v2/affect/analyze"
     print(f"Analyzing {len(rows)} passage(s) -> {url}  (concurrency={args.concurrency}, "
           f"latency={args.latency}, force={args.force})", file=sys.stderr)
 

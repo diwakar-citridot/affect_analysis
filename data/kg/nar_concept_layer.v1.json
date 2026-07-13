@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0.0",
+  "layer_code": "NAR",
+  "source_table": "svarupa_assistant_v1.svarupa_concept_layer",
+  "affinity_dimensions": [
+    10,
+    12,
+    13,
+    14,
+    16,
+    29
+  ],
+  "primary_dimensions": [
+    10,
+    12,
+    13,
+    14,
+    16,
+    29
+  ],
+  "contributing_dimensions": [],
+  "concepts": [
+    {
+      "dimension_id": 10,
+      "slug": "bhakti_yoga",
+      "name": "Bhakti Yoga",
+      "role": "primary",
+      "concept_id": 9004,
+      "gloss": "Bhakti Yoga"
+    },
+    {
+      "dimension_id": 10,
+      "slug": "jnana_yoga",
+      "name": "Jñāna Yoga",
+      "role": "primary",
+      "concept_id": 9002,
+      "gloss": "Jñāna Yoga"
+    },
+    {
+      "dimension_id": 10,
+      "slug": "karma_yoga",
+      "name": "Karma Yoga",
+      "role": "primary",
+      "concept_id": 9001,
+      "gloss": "Karma Yoga"
+    },
+    {
+      "dimension_id": 10,
+      "slug": "raja_yoga",
+      "name": "Rāja Yoga",
+      "role": "primary",
+      "concept_id": 9003,
+      "gloss": "Rāja Yoga"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "agami_karma",
+      "name": "Āgami Karma",
+      "role": "primary",
+      "concept_id": 9007,
+      "gloss": "Āgami Karma"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "deha_vasana",
+      "name": "Deha-vāsanā",
+      "role": "primary",
+      "concept_id": 9009,
+      "gloss": "Deha-vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "jivesana",
+      "name": "Jīveśana",
+      "role": "primary",
+      "concept_id": 9016,
+      "gloss": "Jīveśana"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "kama_vasana",
+      "name": "Kāma Vāsanā",
+      "role": "primary",
+      "concept_id": 9011,
+      "gloss": "Kāma Vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "loka_vasana",
+      "name": "Loka-vāsanā",
+      "role": "primary",
+      "concept_id": 9008,
+      "gloss": "Loka-vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "lokesana",
+      "name": "Lokeśana",
+      "role": "primary",
+      "concept_id": 9013,
+      "gloss": "Lokeśana"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "prarabdha_karma",
+      "name": "Prārabdha Karma",
+      "role": "primary",
+      "concept_id": 9006,
+      "gloss": "Prārabdha Karma"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "putresana",
+      "name": "Putreśana",
+      "role": "primary",
+      "concept_id": 9015,
+      "gloss": "Putreśana"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "sanchita_karma",
+      "name": "Sanchita Karma",
+      "role": "primary",
+      "concept_id": 9005,
+      "gloss": "Sanchita Karma"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "sastra_vasana",
+      "name": "Śāstra-vāsanā",
+      "role": "primary",
+      "concept_id": 9010,
+      "gloss": "Śāstra-vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "subha_vasana",
+      "name": "Subha Vāsanā",
+      "role": "primary",
+      "concept_id": 9012,
+      "gloss": "Subha Vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "vittesana",
+      "name": "Vitteśana",
+      "role": "primary",
+      "concept_id": 9014,
+      "gloss": "Vitteśana"
+    },
+    {
+      "dimension_id": 13,
+      "slug": "the_ascending_arc",
+      "name": "The Ascending Arc",
+      "role": "primary",
+      "concept_id": 9019,
+      "gloss": "The Ascending Arc"
+    },
+    {
+      "dimension_id": 13,
+      "slug": "the_descending_arc",
+      "name": "The Descending Arc",
+      "role": "primary",
+      "concept_id": 9017,
+      "gloss": "The Descending Arc"
+    },
+    {
+      "dimension_id": 13,
+      "slug": "the_nadir",
+      "name": "The Nadir",
+      "role": "primary",
+      "concept_id": 9018,
+      "gloss": "The Nadir"
+    },
+    {
+      "dimension_id": 14,
+      "slug": "dvapara_yuga",
+      "name": "Dvāpara Yuga",
+      "role": "primary",
+      "concept_id": 9022,
+      "gloss": "Dvāpara Yuga"
+    },
+    {
+      "dimension_id": 14,
+      "slug": "kali_yuga",
+      "name": "Kali Yuga",
+      "role": "primary",
+      "concept_id": 9023,
+      "gloss": "Kali Yuga"
+    },
+    {
+      "dimension_id": 14,
+      "slug": "satya_yuga",
+      "name": "Satya Yuga",
+      "role": "primary",
+      "concept_id": 9020,
+      "gloss": "Satya Yuga"
+    },
+    {
+      "dimension_id": 14,
+      "slug": "treta_yuga",
+      "name": "Tretā Yuga",
+      "role": "primary",
+      "concept_id": 9021,
+      "gloss": "Tretā Yuga"
+    },
+    {
+      "dimension_id": 16,
+      "slug": "svabhava",
+      "name": "Svabhāva",
+      "role": "primary",
+      "concept_id": 9024,
+      "gloss": "Svabhāva"
+    },
+    {
+      "dimension_id": 16,
+      "slug": "svadharma",
+      "name": "Svadharma",
+      "role": "primary",
+      "concept_id": 9025,
+      "gloss": "Svadharma"
+    },
+    {
+      "dimension_id": 29,
+      "slug": "adhyasa",
+      "name": "Superimposition (Adhyāsa)",
+      "role": "primary",
+      "gloss": "Superimposition (Adhyāsa)",
+      "concept_id": 9030
+    },
+    {
+      "dimension_id": 29,
+      "slug": "bondage",
+      "name": "Bondage (Bandha)",
+      "role": "primary",
+      "gloss": "Bondage (Bandha)",
+      "concept_id": 9026
+    },
+    {
+      "dimension_id": 29,
+      "slug": "liberation",
+      "name": "Liberation (Mokṣa)",
+      "role": "primary",
+      "gloss": "Liberation (Mokṣa)",
+      "concept_id": 9029
+    },
+    {
+      "dimension_id": 29,
+      "slug": "seeking",
+      "name": "Seeking / Inquiry",
+      "role": "primary",
+      "gloss": "Seeking / Inquiry",
+      "concept_id": 9027
+    },
+    {
+      "dimension_id": 29,
+      "slug": "turning_point",
+      "name": "Turning Point",
+      "role": "primary",
+      "gloss": "Turning Point",
+      "concept_id": 9028
+    }
+  ]
+}

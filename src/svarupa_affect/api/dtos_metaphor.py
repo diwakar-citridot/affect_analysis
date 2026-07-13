@@ -1,6 +1,6 @@
 """API DTOs for MET v2 — LLM-native metaphor analysis.
 
-These types describe the ``/v2/metaphor_analyze`` surface. Requests always run
+These types describe the ``/v2/metaphor/*`` surface. Requests always run
 the LLM-primary metaphor path. Mirrors ``dtos_v2`` (AFF).
 """
 
@@ -11,8 +11,9 @@ import uuid
 from pydantic import BaseModel, Field
 
 from ..domain.enums import LatencyMode
+from ..domain.models import Provenance
 from .dtos import AttributeScoreDTO, DimensionalSignalDTO
-from .dtos_v2 import TokenUsageDTO
+from .dtos_narrative_arc import TokenUsageDTO
 
 
 class MetaphorOptions(BaseModel):
@@ -38,10 +39,10 @@ class MetaphorMetaResponse(BaseModel):
     """Service metadata for MET v2 clients."""
 
     layer: str = "MET"
-    analysis_mode: str = "llm_primary"
+    affect_mode: str = "llm_primary"
     prompt_version: str
     api_version: str
-    primary_dimensions: list[int] = []
+    emit_dimensions: list[int] = []
     bedrock_model_configured: bool = False
 
 
@@ -61,7 +62,7 @@ class MetaphorAnalyzeResponse(BaseModel):
     request_id: str
     layer: str = "MET"
     layer_version: str
-    analysis_mode: str = "llm_primary"
+    affect_mode: str = "llm_primary"
     llm_primary_used: bool = False
     llm_primary_attempted: bool = False
     llm_primary_failure: str | None = None
@@ -74,3 +75,4 @@ class MetaphorAnalyzeResponse(BaseModel):
     attribute_scores: list[AttributeScoreDTO] = []
     signals: list[DimensionalSignalDTO] = []
     usage: TokenUsageDTO = Field(default_factory=TokenUsageDTO)
+    provenance: Provenance | None = None

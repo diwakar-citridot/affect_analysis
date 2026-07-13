@@ -57,6 +57,22 @@ class StaticDimensionRegistry:
     def name_for(self, dimension_id: int) -> str:
         return self._names.get(dimension_id, f"dimension_{dimension_id}")
 
+    def id_for_name(self, dimension_name: str) -> int | None:
+        """Resolve dimension_id from sanskrit_term label (exact, then prefix match)."""
+        needle = dimension_name.strip().lower()
+        if not needle:
+            return None
+        exact: int | None = None
+        prefix: int | None = None
+        for dim_id, label in self._names.items():
+            label_lower = label.lower()
+            if label_lower == needle:
+                return dim_id
+            head = label_lower.split("—")[0].strip()
+            if label_lower.startswith(needle) or needle.startswith(head):
+                prefix = dim_id
+        return prefix
+
 
 def _load_names_from_mysql(settings: Settings) -> dict[int, str]:
     if not settings.mysql_host or not settings.mysql_database:

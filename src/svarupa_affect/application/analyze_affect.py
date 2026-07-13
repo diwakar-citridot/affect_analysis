@@ -579,6 +579,7 @@ def build_default_layer() -> AffectLayer:
     from ..infrastructure.bridge.tables import JsonBridgeTable
     from ..infrastructure.kg.concept_registry import build_concept_registry
     from ..infrastructure.kg.scorer_registry import build_scorer_registry
+    from ..infrastructure.kg.dimension_registry import build_dimension_registry
     from ..infrastructure.kg.triplet_registry import build_triplet_vocabulary
     from .guna_scorer import GunaFamilyModulator, GunaScorer
     from .safety_shell import SafetyShell
@@ -586,6 +587,7 @@ def build_default_layer() -> AffectLayer:
     settings = Settings.load()
     concept_registry = build_concept_registry()
     scorer_registry = build_scorer_registry()
+    dimension_registry = build_dimension_registry()
     triplet_vocabulary = build_triplet_vocabulary()
     builder = AffectiveFieldBuilder(
         vad=VaderTextBlobVAD(),
@@ -612,6 +614,7 @@ def build_default_layer() -> AffectLayer:
         timeout_s=settings.llm_primary_timeout_s,
         max_tokens=settings.llm_primary_max_tokens,
         triplet_vocabulary=triplet_vocabulary,
+        dimension_registry=dimension_registry,
     )
 
     guna_scorer: GunaScorer | None = None

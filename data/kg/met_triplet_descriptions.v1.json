@@ -15,10 +15,10 @@
     15
   ],
   "coverage_summary": {
-    "concepts": 19,
-    "status_slots": 57,
-    "filled": 45,
-    "missing": 12
+    "concepts": 47,
+    "status_slots": 141,
+    "filled": 75,
+    "missing": 66
   },
   "concepts": [
     {
@@ -277,6 +277,210 @@
       }
     },
     {
+      "concept_id": 1186,
+      "dimension_id": 6,
+      "slug": "ajna",
+      "name": "Ajna",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1187,
+      "dimension_id": 6,
+      "slug": "alambusha",
+      "name": "Alambusha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1188,
+      "dimension_id": 6,
+      "slug": "anahata",
+      "name": "Anahata",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1190,
+      "dimension_id": 6,
+      "slug": "eulogy_of_chant_on_breath",
+      "name": "Eulogy Of Chant On Breath",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Chanting disconnected from breath—mechanical recitation without somatic integration.\n\nSomatic (body): Body's breath ignored during recitation.\n\nEmotional current: Emotional emptiness in chant practice.\n\nCognitive map: Mind chants without integrating breath.\n\nInner presence (psychic): The soul reveres nothing in the breath, taking respiration as mere mechanics.",
+        "balance": "### Balanced expression\n\nOverview: Chanting integrated with breath cycle—creating protective and transformative cosmic resonance.\n\nSomatic (body): Body's chanting follows natural breath, no strain.\n\nEmotional current: Emotional warmth from breath-chant integration.\n\nCognitive map: Mind unified with breath through sacred chant.\n\nInner presence (psychic): The soul reveres the breath as the one power negative forces cannot corrupt, and centers its practice there.",
+        "excess": "### In excess\n\nOverview: Forced breath-chant techniques creating pranic disturbance—rushing past natural rhythm.\n\nSomatic (body): Body strain from forced chant-breath combinations.\n\nEmotional current: Emotional disturbance from improper practice.\n\nCognitive map: Mental disturbance from advanced techniques without preparation.\n\nInner presence (psychic): The soul over-ritualizes the praise, the form outrunning the recognition."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1191,
+      "dimension_id": 6,
+      "slug": "five_pranas",
+      "name": "Five Pranas",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Disregard for prana—poor breathing, bad digestion, depleted vitality, no awareness of life-force.\n\nSomatic (body): Shallow breathing, weak digestion, low energy.\n\nEmotional current: Emotional life undernourished by prana.\n\nCognitive map: Mental dullness from depleted pranas.\n\nInner presence (psychic): The soul is ignorant of the vital forces, its energy uncoordinated and dispersed.",
+        "balance": "### Balanced expression\n\nOverview: All five pranas in harmony—breathing, digestion, elimination, energy ascent, circulation all healthy.\n\nSomatic (body): All five pranas functioning optimally.\n\nEmotional current: Emotional life supported by balanced pranas.\n\nCognitive map: Mental clarity from harmonious prana flow.\n\nInner presence (psychic): The soul works with the five life-forces, each governing its sphere, the body's energy intelligently coordinated.",
+        "excess": "### In excess\n\nOverview: Excessive focus on prana-manipulation creating imbalances—forced yoga practices disturbing natural flow.\n\nSomatic (body): Pranic imbalances from over-practice.\n\nEmotional current: Emotional disturbance from forced practices.\n\nCognitive map: Mental disturbance from prana-disorders.\n\nInner presence (psychic): The soul over-technicalizes the five, lost in subtle anatomy rather than living practice."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1192,
+      "dimension_id": 6,
+      "slug": "gandhari",
+      "name": "Gandhari",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1193,
+      "dimension_id": 6,
+      "slug": "hastijihva",
+      "name": "Hastijihva",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1195,
+      "dimension_id": 6,
+      "slug": "kuhu",
+      "name": "Kuhu",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1196,
+      "dimension_id": 6,
+      "slug": "manipuraka",
+      "name": "Manipuraka",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1198,
+      "dimension_id": 6,
+      "slug": "pancha_agni_vidya",
+      "name": "Pancha Agni Vidya",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: No understanding of cyclic nature—taking this life as isolated event, terror of death, no continuity recognized.\n\nSomatic (body): Body taken as one-time event, no awareness of cycle.\n\nEmotional current: Maximum death-terror, no understanding of continuity.\n\nCognitive map: Mind sees life as isolated phenomenon.\n\nInner presence (psychic): The soul takes birth and death as isolated facts, blind to the great cycle that holds them.",
+        "balance": "### Balanced expression\n\nOverview: Recognition of the cosmic sacrificial cycle—each death is offering becoming new life. Understanding karma and rebirth through the continuous cycle.\n\nSomatic (body): Body recognized as transient form in the great cycle.\n\nEmotional current: Emotional peace with mortality through understanding the continuity.\n\nCognitive map: Mind grasps the systematic nature of life-death-rebirth.\n\nInner presence (psychic): The soul contemplates the cosmic fire-cycle, seeing its life woven into the great sacrificial round of existence.",
+        "excess": "### In excess\n\nOverview: Fatalistic interpretation—'everything is just the cycle' as escape from responsibility.\n\nSomatic (body): Body neglected as 'just part of cycle.'\n\nEmotional current: Emotional disengagement claiming cosmic perspective.\n\nCognitive map: Doctrinal acceptance without genuine understanding.\n\nInner presence (psychic): The soul over-literalizes the doctrine, lost in cosmological detail rather than its meaning."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1199,
+      "dimension_id": 6,
+      "slug": "pancha_prana",
+      "name": "Pancha Prana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Depleted pranas—chronic fatigue, poor digestion, sluggish circulation, weak voice, low vitality.\n\nSomatic (body): All systems depleted, low vitality.\n\nEmotional current: Emotional depression from pranic depletion.\n\nCognitive map: Mental fog from inadequate prana.\n\nInner presence (psychic): The soul lives unaware of the vital forces, its energy leaking through unconscious habit.",
+        "balance": "### Balanced expression\n\nOverview: All five pranas balanced and harmoniously functioning. Body and mind animated by integrated vital force.\n\nSomatic (body): All five pranas in harmony—healthy breathing, digestion, elimination, speech, circulation.\n\nEmotional current: Emotional vitality from balanced pranic flow.\n\nCognitive map: Mental clarity from healthy prana distribution.\n\nInner presence (psychic): The soul senses the five vital forces animating its body, learning to harmonize them through conscious breath.",
+        "excess": "### In excess\n\nOverview: Forced manipulation of pranas through advanced techniques without preparation—pranic disorders.\n\nSomatic (body): Pranic disturbances, kundalini complications.\n\nEmotional current: Emotional volatility from pranic imbalance.\n\nCognitive map: Mental disturbance from forced pranayama.\n\nInner presence (psychic): The soul over-manipulates the forces, straining for energetic effects."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1200,
+      "dimension_id": 6,
+      "slug": "payaswini",
+      "name": "Payaswini",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
       "concept_id": 1202,
       "dimension_id": 6,
       "slug": "prana",
@@ -291,6 +495,278 @@
         "deficiency": true,
         "balance": true,
         "excess": true
+      }
+    },
+    {
+      "concept_id": 1203,
+      "dimension_id": 6,
+      "slug": "prana_as_ruler_of_the_body",
+      "name": "Prana As Ruler Of The Body",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Prana depleted—chronic low energy, every system suffering, depression, weakness.\n\nSomatic (body): Chronic fatigue, weak vital functions.\n\nEmotional current: Emotional depression, no energy for engagement.\n\nCognitive map: Mental fog, unable to function.\n\nInner presence (psychic): The soul ignores the ruling life-force, neglecting the breath on which all its faculties depend.",
+        "balance": "### Balanced expression\n\nOverview: Recognition of Prana as the central power, cultivation through proper breath, awareness, vitality.\n\nSomatic (body): Healthy prana sustaining body, all systems functioning.\n\nEmotional current: Vital emotions, healthy energy.\n\nCognitive map: Mind supported by sufficient prana.\n\nInner presence (psychic): The soul recognizes prāṇa as chief among the body's powers, tending the breath as the master key to all the rest.",
+        "excess": "### In excess\n\nOverview: Forced pranayama or breath-manipulation causing imbalance—prana-disorders, kundalini complications.\n\nSomatic (body): Pranic disorders from forced practices.\n\nEmotional current: Emotional volatility from prana imbalance.\n\nCognitive map: Mental disturbance from forced energy work.\n\nInner presence (psychic): The soul fixates on prāṇa-manipulation, mistaking energetic control for the goal."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1204,
+      "dimension_id": 6,
+      "slug": "prana_vidya",
+      "name": "Prana Vidya",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Prana unrecognized—life lived through senses with no awareness of the unifying vital principle.\n\nSomatic (body): Body's prana neglected, depleted.\n\nEmotional current: Emotional dysregulation from poor prana.\n\nCognitive map: Mind without recognition of its prana-dependence.\n\nInner presence (psychic): The soul never meditates on the life-force, taking the breath as mere physiology.",
+        "balance": "### Balanced expression\n\nOverview: Prana recognized as the supreme principle in body; all functions seen as Prana's manifestations. Direct contact with the Life-Principle.\n\nSomatic (body): Body's prana cultivated and recognized as foundational, healthy vital function.\n\nEmotional current: Emotional vitality from Prana-recognition.\n\nCognitive map: Mind acknowledges Prana as the source of all its functions.\n\nInner presence (psychic): The soul meditates on prāṇa as Brahman itself, the chief life-force revered as the doorway to the absolute.",
+        "excess": "### In excess\n\nOverview: Forced pranayama techniques without preparation, pranic disorders.\n\nSomatic (body): Pranic imbalances from forced practice.\n\nEmotional current: Emotional volatility from improper Prana work.\n\nCognitive map: Mental disturbance from forced prana techniques.\n\nInner presence (psychic): The soul fixates on prāṇa-phenomena, chasing energetic experience over realization."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1205,
+      "dimension_id": 6,
+      "slug": "pranayama",
+      "name": "Pranayama",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Breath ignored, allowed to follow stress\n\nSomatic (body): Shallow chest-breathing, chronic tension\n\nEmotional current: Anxiety has no off-switch\n\nCognitive map: Mind trapped in fight-flight loops\n\nInner presence (psychic): The soul leaves the breath unregulated, the uneven breath keeping the mind forever stirred.\n\n### Deficient\n\nOverview: Stuck in one-sided activation or shutdown\n\nSomatic (body): Chronic congestion, autonomic dysregulation\n\nEmotional current: Swings between agitation and torpor\n\nCognitive map: Either over-analytical or scattered\n\nInner presence (psychic): The soul never balances its channels, one current chronically dominating the other.\n\n### Deficient\n\nOverview: Never explores the breath pause\n\nSomatic (body): Reactive, jumpy nervous system\n\nEmotional current: Can't tolerate stillness or silence\n\nCognitive map: No space between thoughts ever felt\n\nInner presence (psychic): The soul never retains the breath, the gathering pause unknown.\n\n### Deficient\n\nOverview: Misses this simple all-day tool\n\nSomatic (body): Breath remains shallow and reactive\n\nEmotional current: No anchor for stress moments\n\nCognitive map: No internal soundscape to settle into\n\nInner presence (psychic): The soul never deepens the breath this way, its respiration shallow and quick.\n\n### Deficient\n\nOverview: Body stuck in low-energy default\n\nSomatic (body): Cold extremities, weak digestion\n\nEmotional current: Apathy, low motivation\n\nCognitive map: Slowness, brain fog persistent\n\nInner presence (psychic): The soul never rouses its energy this way, the channels left dull and unstirred.\n\n### Deficient\n\nOverview: Lets heat build unchecked\n\nSomatic (body): Inflammation, acid, skin problems\n\nEmotional current: Anger flares unmanaged\n\nCognitive map: Burnout from sustained mental heat\n\nInner presence (psychic): The soul never cools its excess heat, left feverish and agitated.\n\n### Deficient\n\nOverview: Misses this powerful self-soothing tool\n\nSomatic (body): No vagal-tone practice\n\nEmotional current: Anxiety unsoothed by accessible means\n\nCognitive map: Cannot find 'off-switch' for thinking\n\nInner presence (psychic): The soul never uses the calming resonance, its agitation unsoothed.\n\n### Deficient\n\nOverview: Life lived in chronic low-energy state\n\nSomatic (body): Fatigue, low libido, weak digestion\n\nEmotional current: Flatness, anhedonia, no aliveness\n\nCognitive map: Dull, uninspired, mechanical\n\nInner presence (psychic): The soul leaves the power dormant, never sensing the latent force it carries.\n\n### Deficient\n\nOverview: Completely entangled, unaware of bondage\n\nSomatic (body): Body addictions dominate\n\nEmotional current: Lost in attachments and aversions\n\nCognitive map: Rigidly identified with thoughts/roles\n\nInner presence (psychic): The soul is bound at the knots unawares, its energy unable to rise past its attachments.\n\n### Deficient\n\nOverview: Stuck in one mode constantly\n\nSomatic (body): Sympathetic dominance — chronic stress\n\nEmotional current: Either over-active or under-engaged\n\nCognitive map: Either over-analyzing or scattered\n\nInner presence (psychic): The soul's currents stay unbalanced, the central channel closed and the energy earthbound.",
+        "balance": "### Balanced expression\n\nOverview: Breath as conscious daily ally for state regulation\n\nSomatic (body): Diaphragmatic, slow, even breathing as baseline\n\nEmotional current: Access to calm anytime via breath\n\nCognitive map: Mind-body coordination via breath\n\nInner presence (psychic): The soul regulates the breath to still the mind, knowing as the breath steadies the thoughts steady too.\n\n### Balanced expression\n\nOverview: Balanced flow between active and receptive modes\n\nSomatic (body): Both nostrils clear, autonomic balance\n\nEmotional current: Even-keeled, neither anxious nor depressed\n\nCognitive map: Both hemispheres engaged, integrated thinking\n\nInner presence (psychic): The soul balances the currents through alternate-nostril breathing, harmonizing the solar and lunar channels.\n\n### Balanced expression\n\nOverview: Comfortable retention proportionate to capacity\n\nSomatic (body): Increased CO2 tolerance, calm under pressure\n\nEmotional current: Steadiness in the 'gap between' breaths/states\n\nCognitive map: Mind suspended naturally in the pause\n\nInner presence (psychic): The soul rests in the retained breath, the held pause where the life-force gathers and the mind grows still.\n\n### Balanced expression\n\nOverview: Portable calm anytime via subtle throat sound\n\nSomatic (body): Slows breath rate, warms body gently\n\nEmotional current: Anchoring quality of internal sound\n\nCognitive map: Audible breath becomes meditation object\n\nInner presence (psychic): The soul breathes the ocean-sounding breath, the gentle constriction lengthening and steadying each cycle.\n\n### Balanced expression\n\nOverview: Strategic energizer at moments of lethargy\n\nSomatic (body): Boost of energy, warmth, alertness\n\nEmotional current: Dispels heaviness, brings vitality\n\nCognitive map: Clears mental fog, sharpens focus\n\nInner presence (psychic): The soul practices the bellows breath in measure, the rapid cycles kindling energy and clearing the channels.\n\n### Balanced expression\n\nOverview: Reliable cooling tool for heat states\n\nSomatic (body): Lowers body temperature, soothes inflammation\n\nEmotional current: Cools anger, irritation, frustration\n\nCognitive map: Settles overheated, racing mind\n\nInner presence (psychic): The soul cools itself through the curled-tongue breath, balancing heat and quieting the system.\n\n### Balanced expression\n\nOverview: Direct dial-down for anxiety via sound vibration\n\nSomatic (body): Throat, sinuses resonate, vagus nerve activates\n\nEmotional current: Tangible peace, almost euphoric calm\n\nCognitive map: Mind held by sound, thinking slows\n\nInner presence (psychic): The soul hums the bee-breath, the resonant sound dissolving tension and gathering the mind.\n\n### Balanced expression\n\nOverview: Energy serving consciousness, life lived from fullness\n\nSomatic (body): Vitality, glow, strong but supple body\n\nEmotional current: Aliveness, ecstatic moments arising naturally\n\nCognitive map: Inspired thinking, creative insight\n\nInner presence (psychic): The soul honors the coiled power at the base, awakening it gradually and safely toward the higher centers.\n\n### Balanced expression\n\nOverview: Aware of attachments at all three levels, working with each\n\nSomatic (body): Body cared for but not enslaving\n\nEmotional current: Emotions felt fully but not enthralling\n\nCognitive map: Identity held lightly, not gripped\n\nInner presence (psychic): The soul recognizes the three psychic knots and patiently works to loosen each as the energy ascends.\n\n### Balanced expression\n\nOverview: Conscious oscillation between active and receptive modes\n\nSomatic (body): Both nostrils balanced, autonomic regulation\n\nEmotional current: Equanimity from inner balance\n\nCognitive map: Both analytical and intuitive faculties available\n\nInner presence (psychic): The soul balances the lunar and solar currents so the central channel can open and the energy rise.",
+        "excess": "### In excess\n\nOverview: Forced, manipulated breathing damaging system\n\nSomatic (body): Hyperventilation, dizziness, panic from over-practice\n\nEmotional current: Anxiety from too-aggressive techniques\n\nCognitive map: Technique obsession losing the purpose\n\nInner presence (psychic): The soul over-manipulates the breath, forcing techniques that agitate rather than calm.\n\n### In excess\n\nOverview: Over-practiced; trying to force perfect balance\n\nSomatic (body): Light-headedness from excessive practice\n\nEmotional current: Anxiety about 'getting it right'\n\nCognitive map: Technical obsession over felt experience\n\nInner presence (psychic): The soul over-practices, straining for perfect balance and creating tension.\n\n### In excess\n\nOverview: Forced long retention causing real harm\n\nSomatic (body): Pressure in ears/eyes, headaches, fainting\n\nEmotional current: Panic, fear during forced holds\n\nCognitive map: Bravado-driven practice, ego-led\n\nInner presence (psychic): The soul forces excessive retention, straining the heart and nerves for effect.\n\n### In excess\n\nOverview: Loud, forced Darth-Vader breathing\n\nSomatic (body): Throat irritation, tension in neck\n\nEmotional current: Performance breathing for show\n\nCognitive map: Self-conscious technique replaces flow\n\nInner presence (psychic): The soul over-constricts, the forced sound producing strain rather than steadiness.\n\n### In excess\n\nOverview: Used compulsively, addictively, stimulant-like\n\nSomatic (body): Dizziness, hyperventilation, anxiety attacks\n\nEmotional current: Aggressive, manic energy\n\nCognitive map: Substitutes for true grounding\n\nInner presence (psychic): The soul over-does the forceful breathing, over-stimulating the system into agitation.\n\n### In excess\n\nOverview: Over-cooling, especially in cold climates\n\nSomatic (body): Chills, weakened digestion\n\nEmotional current: Emotional flatness, withdrawal\n\nCognitive map: Mental lethargy from over-cooling\n\nInner presence (psychic): The soul over-cools, draining its needed warmth in pursuit of calm.\n\n### In excess\n\nOverview: Used to bypass rather than process emotion\n\nSomatic (body): Throat strain from forced humming\n\nEmotional current: Spiritual bypass via sound\n\nCognitive map: Avoidance disguised as practice\n\nInner presence (psychic): The soul over-practices the hum, attached to its pleasant buzz.\n\n### In excess\n\nOverview: Premature/forced awakening causing chaos\n\nSomatic (body): Symptoms of kundalini syndrome — heat, tremors\n\nEmotional current: Overwhelming emotional surges\n\nCognitive map: Psychic phenomena disrupting daily life\n\nInner presence (psychic): The soul forces the awakening prematurely, the roused energy destabilizing body and mind.\n\n### In excess\n\nOverview: Tries to forcibly break all knots\n\nSomatic (body): Ascetic body-rejection\n\nEmotional current: Suppression of healthy attachment\n\nCognitive map: Spiritual ego replacing worldly ego\n\nInner presence (psychic): The soul forces against the knots, straining to break through before it is ready.\n\n### In excess\n\nOverview: Forced central-channel pursuit, ignoring polarity\n\nSomatic (body): Over-meditation, withdrawal from life\n\nEmotional current: Trying to skip polarities entirely\n\nCognitive map: Bypass instead of integration\n\nInner presence (psychic): The soul over-emphasizes one current, throwing the system out of balance."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1206,
+      "dimension_id": 6,
+      "slug": "pusha",
+      "name": "Pusha",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1207,
+      "dimension_id": 6,
+      "slug": "rayi_and_prana",
+      "name": "Rayi And Prana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Neither matter nor energy in healthy state—malnourishment and depletion of vital force.\n\nSomatic (body): Body starved and depleted.\n\nEmotional current: Emotional emptiness, no vital flow.\n\nCognitive map: Mind without nourishment or energy.\n\nInner presence (psychic): The soul sees only inert matter, blind to the life-force that animates it.",
+        "balance": "### Balanced expression\n\nOverview: Balanced relationship with both matter (Rayi) and life-force (Prana). Neither materialism nor escapism.\n\nSomatic (body): Body well-fed (Rayi) and well-energized (Prana).\n\nEmotional current: Emotional groundedness in matter and uplift through prana.\n\nCognitive map: Mind understanding both dimensions of existence.\n\nInner presence (psychic): The soul honors the pair of matter and life-force as the two principles whose union produces all beings.",
+        "excess": "### In excess\n\nOverview: Imbalance—either over-matter (gluttony, materialism) or over-prana (manic activity).\n\nSomatic (body): Either over-eating or burnt-out energy.\n\nEmotional current: Either heavy materialism or anxious activity.\n\nCognitive map: Mental fixation on one pole only.\n\nInner presence (psychic): The soul over-emphasizes one pole, exalting spirit and despising matter or the reverse."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1208,
+      "dimension_id": 6,
+      "slug": "sahasrara",
+      "name": "Sahasrara",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1209,
+      "dimension_id": 6,
+      "slug": "samana",
+      "name": "Samana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1210,
+      "dimension_id": 6,
+      "slug": "samvarga_vidya",
+      "name": "Samvarga Vidya",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: No recognition that Prana is the cosmic absorber—life lived as fragmented sense-engagements with no unifying principle.\n\nSomatic (body): Body's pranas scattered, no integration.\n\nEmotional current: Emotional fragmentation across senses.\n\nCognitive map: Mind doesn't recognize Prana as the unifying principle.\n\nInner presence (psychic): The soul never gathers its powers, its energies scattered with nothing to absorb them.",
+        "balance": "### Balanced expression\n\nOverview: Recognition that Prana absorbs all individual functions; Vayu absorbs cosmic. One becomes the all-absorbing Life-Principle through this meditation.\n\nSomatic (body): Body unified through balanced Prana, all sense-functions harmoniously gathered.\n\nEmotional current: Emotional absorption into Cosmic Life-Principle.\n\nCognitive map: Mind absorbs all distinctions through Samvarga, recognizing one Life behind all life.\n\nInner presence (psychic): The soul meditates on the all-absorbing principle, gathering the scattered powers into a single unity.",
+        "excess": "### In excess\n\nOverview: Forced absorption practices creating pranic disturbance, attempt to control cosmic forces.\n\nSomatic (body): Pranic disorders from forced Samvarga.\n\nEmotional current: Emotional grandiosity claiming cosmic Prana-status.\n\nCognitive map: Mental claim of being Hiranyagarbha without realization.\n\nInner presence (psychic): The soul fixates on the technique, collecting subtle experiences rather than dissolving into unity."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1211,
+      "dimension_id": 6,
+      "slug": "saraswati",
+      "name": "Saraswati",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1212,
+      "dimension_id": 6,
+      "slug": "shankhini",
+      "name": "Shankhini",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1213,
+      "dimension_id": 6,
+      "slug": "sixteen_kalas",
+      "name": "Sixteen Kalas",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": "### Deficient\n\nOverview: Total identification with the kalas as ultimately real—missing the deeper Purusha they manifest from.\n\nSomatic (body): Body taken as ultimate reality, no underlying.\n\nEmotional current: Emotional life taken as final reality.\n\nCognitive map: Mind doesn't recognize that all kalas are temporary manifestations.\n\nInner presence (psychic): The soul sees only a heap of parts, with no sense of the whole person they compose.",
+        "balance": "### Balanced expression\n\nOverview: Recognition that all sixteen kalas are parts of Self, ultimately merging into pure consciousness.\n\nSomatic (body): Body's elements seen as kalas of Self.\n\nEmotional current: Emotional patterns recognized as kalas merging into Self.\n\nCognitive map: Mind understands its own components as parts of greater Self.\n\nInner presence (psychic): The soul contemplates the sixteen parts that constitute the person, tracing them back toward the indivisible Self.",
+        "excess": "### In excess\n\nOverview: Fragmented identification with each kala separately—missing the underlying unity.\n\nSomatic (body): Body identified piecemeal with each element.\n\nEmotional current: Emotional fragmentation.\n\nCognitive map: Mind fragmented across the 16 kalas without unity.\n\nInner presence (psychic): The soul over-analyzes the parts, lost in enumeration rather than the unity behind them."
+      },
+      "coverage": {
+        "deficiency": true,
+        "balance": true,
+        "excess": true
+      }
+    },
+    {
+      "concept_id": 1214,
+      "dimension_id": 6,
+      "slug": "svadhisthana",
+      "name": "Svadhisthana",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1216,
+      "dimension_id": 6,
+      "slug": "varuni",
+      "name": "Varuni",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1217,
+      "dimension_id": 6,
+      "slug": "vishuddhi",
+      "name": "Vishuddhi",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1218,
+      "dimension_id": 6,
+      "slug": "visvodhari",
+      "name": "Visvodhari",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
+      }
+    },
+    {
+      "concept_id": 1220,
+      "dimension_id": 6,
+      "slug": "yasasvini",
+      "name": "Yasasvini",
+      "role": "primary",
+      "descriptions": {
+        "deficiency": null,
+        "balance": null,
+        "excess": null
+      },
+      "coverage": {
+        "deficiency": false,
+        "balance": false,
+        "excess": false
       }
     },
     {

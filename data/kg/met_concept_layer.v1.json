@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0.0",
+  "layer_code": "MET",
+  "source_table": "svarupa_assistant_v1.svarupa_concept_layer",
+  "affinity_dimensions": [
+    1,
+    5,
+    6,
+    15
+  ],
+  "primary_dimensions": [
+    1,
+    5,
+    6,
+    15
+  ],
+  "contributing_dimensions": [],
+  "concepts": [
+    {
+      "dimension_id": 1,
+      "slug": "air",
+      "name": "Air (Vāyu)",
+      "role": "primary",
+      "concept_id": 9201,
+      "gloss": "Air (Vāyu)"
+    },
+    {
+      "dimension_id": 1,
+      "slug": "earth",
+      "name": "Earth (Pṛthivī)",
+      "role": "primary",
+      "concept_id": 9202,
+      "gloss": "Earth (Pṛthivī)"
+    },
+    {
+      "dimension_id": 1,
+      "slug": "ether",
+      "name": "Ether (Ākāśa)",
+      "role": "primary",
+      "concept_id": 9203,
+      "gloss": "Ether (Ākāśa)"
+    },
+    {
+      "dimension_id": 1,
+      "slug": "fire",
+      "name": "Fire (Agni)",
+      "role": "primary",
+      "concept_id": 9204,
+      "gloss": "Fire (Agni)"
+    },
+    {
+      "dimension_id": 1,
+      "slug": "water",
+      "name": "Water (Apas)",
+      "role": "primary",
+      "concept_id": 9205,
+      "gloss": "Water (Apas)"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "ananda_mimamsa",
+      "name": "Ānanda Mīmāṃsā",
+      "role": "primary",
+      "concept_id": 9206,
+      "gloss": "Ānanda Mīmāṃsā"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "anandamaya",
+      "name": "Ānandamaya",
+      "role": "primary",
+      "concept_id": 9207,
+      "gloss": "Ānandamaya"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "anandamaya_kosha",
+      "name": "Ānandamaya Kośa",
+      "role": "primary",
+      "concept_id": 9208,
+      "gloss": "Ānandamaya Kośa"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "anandamaya_vidya",
+      "name": "Ānandamaya Vidyā",
+      "role": "primary",
+      "concept_id": 9209,
+      "gloss": "Ānandamaya Vidyā"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "annamaya_kosha",
+      "name": "Annamaya Kośa",
+      "role": "primary",
+      "concept_id": 9210,
+      "gloss": "Annamaya Kośa"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "five_koshas",
+      "name": "Five Kośas",
+      "role": "primary",
+      "concept_id": 9211,
+      "gloss": "Five Kośas"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "four_states_and_five_sheaths",
+      "name": "Four States & Five Sheaths",
+      "role": "primary",
+      "concept_id": 9212,
+      "gloss": "Four States & Five Sheaths"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "manomaya_kosha",
+      "name": "Manomaya Kośa",
+      "role": "primary",
+      "concept_id": 9213,
+      "gloss": "Manomaya Kośa"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "pranamaya_kosha",
+      "name": "Prāṇamaya Kośa",
+      "role": "primary",
+      "concept_id": 9214,
+      "gloss": "Prāṇamaya Kośa"
+    },
+    {
+      "dimension_id": 5,
+      "slug": "vijnanamaya_kosha",
+      "name": "Vijñānamaya Kośa",
+      "role": "primary",
+      "concept_id": 9215,
+      "gloss": "Vijñānamaya Kośa"
+    },
+    {
+      "dimension_id": 6,
+      "slug": "prana",
+      "name": "Prāṇa",
+      "role": "primary",
+      "concept_id": 9216,
+      "gloss": "Prāṇa"
+    },
+    {
+      "dimension_id": 15,
+      "slug": "kapha",
+      "name": "Kapha",
+      "role": "primary",
+      "concept_id": 9217,
+      "gloss": "Kapha"
+    },
+    {
+      "dimension_id": 15,
+      "slug": "pitta",
+      "name": "Pitta",
+      "role": "primary",
+      "concept_id": 9218,
+      "gloss": "Pitta"
+    },
+    {
+      "dimension_id": 15,
+      "slug": "vata",
+      "name": "Vāta",
+      "role": "primary",
+      "concept_id": 9219,
+      "gloss": "Vāta"
+    }
+  ]
+}

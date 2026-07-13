@@ -1,0 +1,71 @@
+{
+  "layer_code": "NAR",
+  "scorers": [
+    {
+      "scorer_id": 101,
+      "dimension_id": 10,
+      "scorer_slug": "nar_d10",
+      "scorer_kind": "field_native",
+      "data_ref": "field/nar_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/nar_d10_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 1
+    },
+    {
+      "scorer_id": 101,
+      "dimension_id": 12,
+      "scorer_slug": "nar_d12",
+      "scorer_kind": "field_native",
+      "data_ref": "field/nar_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/nar_d12_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 2
+    },
+    {
+      "scorer_id": 101,
+      "dimension_id": 13,
+      "scorer_slug": "nar_d13",
+      "scorer_kind": "field_native",
+      "data_ref": "field/nar_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/nar_d13_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 3
+    },
+    {
+      "scorer_id": 101,
+      "dimension_id": 14,
+      "scorer_slug": "nar_d14",
+      "scorer_kind": "field_native",
+      "data_ref": "field/nar_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/nar_d14_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 4
+    },
+    {
+      "scorer_id": 101,
+      "dimension_id": 16,
+      "scorer_slug": "nar_d16",
+      "scorer_kind": "field_native",
+      "data_ref": "field/nar_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/nar_d16_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 5
+    },
+    {
+      "scorer_id": 101,
+      "dimension_id": 29,
+      "scorer_slug": "nar_d29",
+      "scorer_kind": "field_native",
+      "data_ref": "field/nar_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/nar_d29_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 6
+    }
+  ]
+}

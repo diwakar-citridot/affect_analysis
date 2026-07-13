@@ -1,10 +1,8 @@
 """LLM-primary metaphor orchestration (MET v1).
 
-One Bedrock call detects the live metaphors in a passage, extracts each
-source→target structure, and maps the source imagery onto the closed KG
-vocabulary of the metaphor layer's PRIMARY dimensions (D1/D5/D6/D15).
-Failures degrade to abstention — never fabricate signals. Mirrors the AFF
-``LivedExperienceOrchestrator`` contract.
+One Bedrock call detects live metaphors and maps source imagery onto closed KG
+vocabulary for MET emit dimensions (from concept ∩ scorer registries). Failures
+degrade to abstention — never fabricate signals.
 """
 
 from __future__ import annotations
@@ -18,21 +16,26 @@ from dataclasses import field as dc_field
 from ..domain.enums import Durability, EvidenceKind, LatencyMode, StatePole
 from ..domain.exceptions import ModelUnavailable
 from ..domain.models import AttributeScore, Evidence, LayerContext
-from ..domain.ports import IConceptRegistry, ILLMProvider, ITripletVocabulary
+from ..domain.ports import (
+    IConceptRegistry,
+    IDimensionRegistry,
+    ILLMProvider,
+    IScorerRegistry,
+    ITripletVocabulary,
+)
 from ..domain.scoring import dimension_relevance, saturate
 from ..infrastructure.affect.lexicons import tokenize
 from ..infrastructure.kg.concept_registry import canonical_slug
+from ..infrastructure.kg.dimension_registry import build_dimension_registry
 from ..infrastructure.llm.prompts import metaphor_v1 as prompt_mod
+from .lived_experience_orchestrator import _trim_description
 
 logger = logging.getLogger("svarupa_affect.metaphor_primary")
 
-# Max chars per pole description injected into the closed-vocabulary prompt block.
+LAYER_CODE = "MET"
 _STATUS_DESC_MAXLEN = 320
 _RELEVANCE_ITEM_FLOOR = 0.15
 _TOP_K = 5
-
-# The metaphor layer's primary target ontology.
-MET_PRIMARY_DIMENSIONS = frozenset({1, 5, 6, 15})
 
 
 def _add_usage(dst: dict[str, int], src: dict[str, int] | None) -> None:
@@ -73,27 +76,30 @@ class MetaphorOrchestrator:
         self,
         provider: ILLMProvider,
         concept_registry: IConceptRegistry,
+        scorer_registry: IScorerRegistry,
         *,
         model_id: str,
         timeout_s: float = 60.0,
         max_tokens: int = 4096,
         emit_dimensions: frozenset[int] | None = None,
         triplet_vocabulary: ITripletVocabulary | None = None,
-        layer_code: str = "MET",
+        dimension_registry: IDimensionRegistry | None = None,
+        layer_code: str = LAYER_CODE,
     ) -> None:
         self._provider = provider
         self._registry = concept_registry
         self._triplets = triplet_vocabulary
+        self._dimensions = dimension_registry or build_dimension_registry()
+        self._scorer_registry = scorer_registry
         self.model_id = model_id
         self.prompt_version = prompt_mod.PROMPT_VERSION
         self._timeout = timeout_s
         self._max_tokens = max_tokens
         self._layer_code = layer_code
-        primary = concept_registry.primary_dimensions(layer_code)
+        db_emit = scorer_registry.emit_dimensions(layer_code)
+        affinity = concept_registry.primary_dimensions(layer_code)
         self._emit_dimensions = (
-            emit_dimensions
-            if emit_dimensions is not None
-            else (primary & MET_PRIMARY_DIMENSIONS if primary else MET_PRIMARY_DIMENSIONS)
+            emit_dimensions if emit_dimensions is not None else affinity & db_emit
         )
 
     async def score(self, ctx: LayerContext) -> MetaphorResult:
@@ -112,8 +118,9 @@ class MetaphorOrchestrator:
                 failure="no vocabulary for emit dimensions",
             )
 
-        system = prompt_mod.build_system(vocabulary)
+        system = prompt_mod.build_system(vocabulary, dimension_registry=self._dimensions)
         prompt = prompt_mod.build_prompt(text=ctx.analysis_text)
+        schema = prompt_mod.build_schema(self._emit_dimensions)
         n = 3 if ctx.latency_mode == LatencyMode.DEEP else 1
 
         logger.info(
@@ -125,22 +132,22 @@ class MetaphorOrchestrator:
         )
 
         samples, last_error, usage = await self._collect_samples(
-            system, prompt, n, request_id=ctx.request_id
+            system, prompt, schema, n, request_id=ctx.request_id
         )
         if not samples:
             return self._neutral(
                 reasons=gate_reasons + ["llm_unusable"],
                 attempted=True,
+                abstained=True,
                 failure=last_error or "LLM returned no valid payload",
                 usage=usage,
-                process_confidence=0.25,
             )
 
         merged = self._reconcile(samples)
         conf = float(merged.get("confidence", 0.5))
         metaphors = self._metaphors_from_payload(merged)
 
-        if merged.get("abstain", False) or not metaphors:
+        if merged.get("abstain", False):
             return MetaphorResult(
                 metaphors=metaphors,
                 scores_by_dimension={},
@@ -172,8 +179,6 @@ class MetaphorOrchestrator:
             usage=usage,
         )
 
-    # -- helpers ----------------------------------------------------------------------
-
     def _neutral(
         self,
         *,
@@ -182,13 +187,12 @@ class MetaphorOrchestrator:
         abstained: bool = False,
         failure: str | None = None,
         usage: dict[str, int] | None = None,
-        process_confidence: float = 0.2,
     ) -> MetaphorResult:
         return MetaphorResult(
             metaphors=[],
             scores_by_dimension={},
             evidence_by_dimension={},
-            process_confidence=process_confidence,
+            process_confidence=0.2,
             used=False,
             attempted=attempted,
             abstained=abstained,
@@ -206,16 +210,12 @@ class MetaphorOrchestrator:
         return True, []
 
     def _allowed_slugs(self, dimension_id: int) -> frozenset[str]:
+        slugs = self._scorer_registry.output_slugs(dimension_id, self._layer_code)
+        if slugs:
+            return slugs
         return self._registry.slugs(dimension_id, self._layer_code)
 
     def _vocabulary_blocks(self) -> dict[int, list[dict[str, str]]]:
-        """Closed vocabulary for the primary dimensions (D1/D5/D6/D15).
-
-        Each concept carries its three pole descriptions (deficiency / balance /
-        excess) from the pinned MET triplet snapshot. Balance falls back to the
-        concept gloss, and if no triplet text exists the item degrades to a
-        single ``gloss``.
-        """
         out: dict[int, list[dict[str, str]]] = {}
         for dim_id in sorted(self._emit_dimensions):
             slugs = sorted(self._allowed_slugs(dim_id))
@@ -228,16 +228,16 @@ class MetaphorOrchestrator:
                     else {}
                 )
                 item: dict[str, str] = {"slug": slug}
-                poles = (
-                    ("deficiency", states.get("deficiency")),
-                    ("balance", states.get("balance") or glosses.get(slug)),
-                    ("excess", states.get("excess")),
-                )
-                for status, text in poles:
+                for status in ("deficiency", "balance", "excess"):
+                    text = states.get(status)
                     if text:
-                        item[status] = text[:_STATUS_DESC_MAXLEN]
-                if len(item) == 1:  # no pole text at all -> single gloss
-                    item["gloss"] = glosses.get(slug, slug)[:400]
+                        item[status] = _trim_description(text)[:_STATUS_DESC_MAXLEN]
+                # No pole rows in svarupa_concept_descriptions → use svarupa_concepts
+                # description/name as the balance pole (not a separate gloss key).
+                if not any(k in item for k in ("deficiency", "balance", "excess")):
+                    fallback = glosses.get(slug, slug)[:400]
+                    if fallback:
+                        item["balance"] = fallback
                 items.append(item)
             if items:
                 out[dim_id] = items
@@ -307,6 +307,8 @@ class MetaphorOrchestrator:
                     state=state,
                     dimension_id=dimension_id,
                     durability=Durability.UNKNOWN,
+                    rationale=rationale or None,
+                    span=span_text or None,
                     reasoning=reasoning,
                 )
             )
@@ -331,9 +333,16 @@ class MetaphorOrchestrator:
         return dimension_relevance([a.relevance for a in attrs]) < _RELEVANCE_ITEM_FLOOR
 
     async def _collect_samples(
-        self, system: str, prompt: str, n: int, *, request_id: str | None
+        self,
+        system: str,
+        prompt: str,
+        schema: dict,
+        n: int,
+        *,
+        request_id: str | None,
     ) -> tuple[list[dict], str | None, dict[str, int]]:
         last_error: str | None = None
+        blocks = ", ".join(prompt_mod.dimension_blocks(self._emit_dimensions))
 
         async def one() -> tuple[dict | None, dict[str, int]]:
             nonlocal last_error
@@ -346,12 +355,12 @@ class MetaphorOrchestrator:
                         attempt_prompt = (
                             f"{prompt}\n\nPREVIOUS RESPONSE WAS INVALID: {last_error}\n"
                             "Return corrected JSON with the exact top-level keys "
-                            "abstain, confidence, metaphors, d1, d5, d6, d15."
+                            f"abstain, confidence, metaphors, {blocks}."
                         )
                     raw = await self._provider.complete_json(
                         system=system,
                         prompt=attempt_prompt,
-                        schema=prompt_mod.METAPHOR_SCHEMA,
+                        schema=schema,
                         model_id=self.model_id,
                         temperature=0.2,
                         timeout_s=self._timeout,
@@ -361,7 +370,10 @@ class MetaphorOrchestrator:
                         metrics=metrics,
                     )
                     _add_usage(sample_usage, metrics)
-                    return prompt_mod.validate_metaphor(raw), sample_usage
+                    return (
+                        prompt_mod.validate_metaphor(raw, self._emit_dimensions),
+                        sample_usage,
+                    )
                 except (prompt_mod.MetaphorValidationError, ModelUnavailable) as exc:
                     _add_usage(sample_usage, metrics)
                     last_error = str(exc)
@@ -379,8 +391,7 @@ class MetaphorOrchestrator:
             _add_usage(usage_total, sample_usage)
         return [r for r, _ in results if r is not None], last_error, usage_total
 
-    @staticmethod
-    def _reconcile(samples: list[dict]) -> dict:
+    def _reconcile(self, samples: list[dict]) -> dict:
         if len(samples) == 1:
             return samples[0]
         abstain_votes = sum(1 for s in samples if s.get("abstain"))
@@ -390,7 +401,6 @@ class MetaphorOrchestrator:
         merged = dict(samples[0])
         merged["confidence"] = conf
         merged["abstain"] = False
-        # metaphors: union deduped by lowercased source
         seen: set[str] = set()
         metaphors: list[dict] = []
         for s in samples:
@@ -403,7 +413,7 @@ class MetaphorOrchestrator:
                 seen.add(key)
                 metaphors.append(m)
         merged["metaphors"] = metaphors[:8]
-        for dim in sorted(MET_PRIMARY_DIMENSIONS):
+        for dim in sorted(self._emit_dimensions):
             block = prompt_mod.dim_key(dim)
             merged[block] = _merge_score_blocks([s.get(block, []) for s in samples])
         return merged

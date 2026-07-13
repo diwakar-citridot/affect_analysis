@@ -31,7 +31,7 @@ from ....domain.models import (
 )
 from ....domain.scoring import clip
 
-PROMPT_VERSION = "lived_experience_v2"
+PROMPT_VERSION = "lived_experience_v3"
 
 # Per-concept keys rendered into the closed-vocabulary block, in stable order.
 # Poles come from the triplet snapshot; ``gloss`` is the legacy single-text fallback.
@@ -58,7 +58,7 @@ SYSTEM_PROMPT = (
 
 _SCORED_ITEM_SCHEMA: dict = {
     "type": "object",
-    "required": ["attribute", "relevance", "state"],
+    "required": ["attribute", "relevance", "state", "rationale"],
     "properties": {
         "attribute": {"type": "string"},
         "relevance": {"type": "number", "min": 0.0, "max": 1.0},
@@ -150,7 +150,7 @@ def build_system(vocabulary: dict[int, list[dict[str, str]]]) -> str:
         "d9 (Thirty-Three Transient States — transient), d2 (Three Gunas — sattva/rajas/tamas felt tone). "
         "Each scored item must include "
         '"attribute" (an exact concept value from the vocabulary above), '
-        '"relevance", "state", and optional "durability", "rationale", "span". '
+        '"relevance", "state", "rationale", and optional "durability", "span". '
         'The "state" is the pole of the attribute and MUST be one of: '
         '"deficiency" (the quality is blocked, flat, numb, absent or under-expressed), '
         '"balance" (the quality is present and well-regulated), or '
@@ -163,10 +163,15 @@ def build_system(vocabulary: dict[int, list[dict[str, str]]]) -> str:
         "borderline readings at lower relevance — do not stop at the single strongest "
         "concept. A deficiency pole describes the ABSENCE of the concept's quality; "
         "consider deficiency readings even when the concept itself is not overtly present. "
+        'For every scored triple, "rationale" MUST be 1–2 sentences explaining why that '
+        "attribute and state belong in the response: name the dimension (Three Gunas / "
+        "Nine Enduring Emotions / Thirty-Three Transient States), cite how the lived "
+        "experience aligns with that concept's pole description, and describe the "
+        "recognition in observational language — never diagnose, label the person, or "
+        'prescribe. When helpful, add "span" with a short verbatim phrase from the text. '
         "Set abstain:true when affect is absent or too thin. "
-        "Keep output compact: omit rationale, span, experiential_patterns, and appraisal "
-        "unless strictly necessary; background_field axes need numeric values only. "
-        "JSON only.\n\n"
+        "Keep background_field axes numeric only; omit experiential_patterns and appraisal "
+        "unless they materially clarify the reading. JSON only.\n\n"
         "REQUIRED top-level keys (exact names): abstain, confidence, background_field, d8, d9, d2.\n"
         "background_field MUST be an object wrapping core/motivation/regulation/relational/temporal.\n"
         'Example skeleton: {"abstain":false,"confidence":0.65,"background_field":{"core":{"valence":0.1,'
@@ -174,7 +179,9 @@ def build_system(vocabulary: dict[int, list[dict[str, str]]]) -> str:
         '"avoidance":0.3,"control":0.45},"regulation":{"stability":0.5,"persistence":0.4,"volatility":0.35,'
         '"regulation":0.5},"relational":{"attachment":0.4,"trust":0.5,"social_orientation":0.0},'
         '"temporal":{"continuity":0.5,"anticipation":0.6,"resolution":0.4}},'
-        '"d8":[{"attribute":"<concept>","relevance":0.6,"state":"balance"}],"d9":[],"d2":[]}'
+        '"d8":[{"attribute":"<concept>","relevance":0.6,"state":"balance",'
+        '"rationale":"Brief why this enduring emotion and pole fit the text.",'
+        '"span":"optional verbatim phrase"}],"d9":[],"d2":[]}'
     )
 
 
@@ -320,8 +327,10 @@ def validate_lived_experience(payload: dict) -> dict:
             rel = float(item["relevance"])
             if not (0.0 <= rel <= 1.0):
                 raise LivedExperienceValidationError(f"{block} relevance out of range")
-            rationale = str(item.get("rationale", ""))
-            if rationale and _DIAGNOSTIC_DENYLIST.search(rationale):
+            rationale = str(item.get("rationale", "")).strip()
+            if not rationale:
+                raise LivedExperienceValidationError(f"{block} items need a non-empty rationale")
+            if _DIAGNOSTIC_DENYLIST.search(rationale):
                 raise LivedExperienceValidationError("rationale uses diagnostic phrasing")
     return data
 

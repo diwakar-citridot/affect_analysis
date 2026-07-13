@@ -6,6 +6,7 @@ import uuid
 
 import pytest
 
+from svarupa_affect.application.rationale import compose_insightful_rationale
 from svarupa_affect.application.analyze_affect import AffectLayer, build_default_layer
 from svarupa_affect.application.lived_experience_orchestrator import LivedExperienceOrchestrator
 from svarupa_affect.application.safety_shell import SafetyShell
@@ -61,9 +62,24 @@ _FEAR_PAYLOAD = {
         }
     ],
     "d2": [
-        {"attribute": "rajas", "relevance": 0.7, "state": "excess"},
-        {"attribute": "sattva", "relevance": 0.2, "state": "balance"},
-        {"attribute": "tamas", "relevance": 0.1, "state": "deficiency"},
+        {
+            "attribute": "rajas",
+            "relevance": 0.7,
+            "state": "excess",
+            "rationale": "Restless activation and urgency color the waiting as rajasic excess",
+        },
+        {
+            "attribute": "sattva",
+            "relevance": 0.2,
+            "state": "balance",
+            "rationale": "A thread of clarity remains but does not organize the field",
+        },
+        {
+            "attribute": "tamas",
+            "relevance": 0.1,
+            "state": "deficiency",
+            "rationale": "No settling or withdrawal tone is present in the text",
+        },
     ],
 }
 
@@ -113,6 +129,23 @@ def _build_primary_layer(provider: _MockPrimaryProvider) -> AffectLayer:
     )
 
 
+def test_compose_insightful_rationale_frames_triplet():
+    text = compose_insightful_rationale(
+        dimension_id=8,
+        dimension_name="Sthāyībhāvas",
+        attribute="bhaya",
+        state=StatePole.EXCESS,
+        llm_rationale="Language holds ongoing apprehension before an outcome is known",
+        span="bracing until I hear back",
+    )
+    assert "Nine Enduring Emotions" in text
+    assert "Sthāyībhāvas" in text
+    assert "bhaya" in text
+    assert "excess" in text
+    assert "apprehension" in text
+    assert "bracing until I hear back" in text
+
+
 def test_validate_lived_experience_accepts_fear_payload():
     validated = prompt_mod.validate_lived_experience(_FEAR_PAYLOAD)
     assert validated["d8"][0]["attribute"] == "bhaya"
@@ -156,6 +189,7 @@ def test_safety_shell_whitelists_and_sorts():
     scores, _ = shell.apply_dimension_scores(
         _FEAR_PAYLOAD["d8"],
         dimension_id=8,
+        dimension_name="Sthāyībhāvas",
         field=field,
         allowed_slugs=allowed,
         default_durability=Durability.ENDURING,
@@ -163,10 +197,15 @@ def test_safety_shell_whitelists_and_sorts():
     assert scores
     assert scores[0].attribute == "bhaya"
     assert scores[0].state == StatePole.EXCESS
+    assert scores[0].rationale
+    assert "Nine Enduring Emotions" in scores[0].rationale
+    assert "bhaya" in scores[0].rationale
+    assert "excess" in scores[0].rationale
+    assert "apprehension" in scores[0].rationale
+    assert scores[0].span == "bracing until I hear back"
     assert scores[0].reasoning
-    assert "bhaya" in scores[0].reasoning
-    assert "apprehension" in scores[0].reasoning
     assert "0.85" in scores[0].reasoning
+    assert "apprehension" not in scores[0].reasoning
 
 
 def test_llm_primary_analyze_maps_fear_to_bhaya_and_cinta():
@@ -188,8 +227,12 @@ def test_llm_primary_analyze_maps_fear_to_bhaya_and_cinta():
     assert any(a.attribute == "cinta" for a in d9.attribute_scores)
     bhaya = next(a for a in d8.attribute_scores if a.attribute == "bhaya")
     cinta = next(a for a in d9.attribute_scores if a.attribute == "cinta")
-    assert bhaya.reasoning and "bracing" in bhaya.reasoning
-    assert cinta.reasoning and "checking" in cinta.reasoning
+    assert bhaya.rationale and "Nine Enduring Emotions" in bhaya.rationale
+    assert "apprehension" in bhaya.rationale
+    assert bhaya.span and "bracing" in bhaya.span
+    assert cinta.rationale and "worry" in cinta.rationale
+    assert cinta.span and "checking" in cinta.span
+    assert bhaya.reasoning and "0.85" in bhaya.reasoning
     assert result.phenomenology_input.provenance.llm_primary_used is True
     assert result.phenomenology_input.provenance.affect_mode == "llm_primary"
 

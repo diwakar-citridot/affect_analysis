@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "layer_code": "PSY",
+  "source_table": "svarupa_assistant_v1.svarupa_concept_layer",
+  "affinity_dimensions": [
+    2,
+    12,
+    17
+  ],
+  "primary_dimensions": [
+    2,
+    12,
+    17
+  ],
+  "contributing_dimensions": [],
+  "concepts": [
+    {
+      "concept_id": 1135,
+      "dimension_id": 2,
+      "slug": "rajas",
+      "name": "Rajas",
+      "role": "primary",
+      "gloss": "### Balanced expression\n\nOverview: When Rajas is balanced, a person is motivated, ambitious, and productive. They take appropriate action, pursue goals with enthusiasm, engage meaningfully with work, and balance activity with rest.\n\nSomatic (body): Good energy and vitality, healthy appetite, varied food preferences, good metabolism, strength and stamina for work, balanced sleep patterns, active lifestyle without exhaustion, resilient immune system.\n\nEmotional current: Enthusiasm and motivation, healthy passion for life, joy in accomplishment, appropriate ambition, confidence in abilities, ability to feel excitement without becoming manic, genuine interest in relationships and work.\n\nCognitive map: Clear goals and purposeful thinking, ability to strategize and execute, creative problem-solving, motivated learning, good memory function, ability to focus on desired outcomes, adaptability to changing situations.\n\nInner presence (psychic): The soul harnesses rajasic energy as fuel, putting drive and passion into the service of a higher aim."
+    },
+    {
+      "concept_id": 1137,
+      "dimension_id": 2,
+      "slug": "sattva",
+      "name": "Sattva",
+      "role": "primary",
+      "gloss": "### Balanced expression\n\nOverview: When Sattva is balanced, a person experiences mental clarity, emotional stability, good health, virtuous behavior, wisdom, compassion, and inner peace.\n\nSomatic (body): Good health, stable energy levels, natural sleep patterns, clear complexion, strong immune function, light and energizing food preferences (fruits, vegetables, dairy), absence of disease.\n\nEmotional current: Emotional stability, inner peace, compassion, contentment, equanimity in face of challenges, natural joy and happiness, absence of mood swings, sense of inner fulfillment.\n\nCognitive map: Mental clarity, focused concentration, ability to discern truth from falsehood, wisdom in decision-making, spiritual insight, organized thinking, ability to learn and retain knowledge easily.\n\nInner presence (psychic): The soul rests most easily in sattva, where clarity and lightness let its inner light shine through; yet it remembers even sattva is a veil to pass beyond."
+    },
+    {
+      "concept_id": 1138,
+      "dimension_id": 2,
+      "slug": "tamas",
+      "name": "Tamas",
+      "role": "primary",
+      "gloss": "### Balanced expression\n\nOverview: When Tamas is minimized and balanced, it provides necessary rest, sleep, and groundedness. The person has adequate rest and is connected to the earth with stability.\n\nSomatic (body): Healthy sleep patterns, good rest and recovery, grounded and stable physical presence, connection to nature and earth, ability to be still when needed, physical resilience, good digestion and elimination, capacity to relax and recover.\n\nEmotional current: Emotional stability and groundedness, ability to let go of past hurts, acceptance of what cannot be changed, emotional resilience in face of change, calmness and peace, sense of belonging and connection.\n\nCognitive map: Ability to rest the mind when needed, acceptance of limitations of knowledge, wisdom in knowing when to act and when to be still, good memory integration, capacity for deep sleep and restoration of mind.\n\nInner presence (psychic): The soul accepts tamas in its rightful place — as rest, sleep, and ground of stability — without being ruled by it."
+    },
+    {
+      "dimension_id": 12,
+      "slug": "agami_karma",
+      "name": "Āgami Karma",
+      "role": "primary",
+      "concept_id": 9007,
+      "gloss": "Āgami Karma"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "deha_vasana",
+      "name": "Deha-vāsanā",
+      "role": "primary",
+      "concept_id": 9009,
+      "gloss": "Deha-vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "jivesana",
+      "name": "Jīveśana",
+      "role": "primary",
+      "concept_id": 9016,
+      "gloss": "Jīveśana"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "kama_vasana",
+      "name": "Kāma Vāsanā",
+      "role": "primary",
+      "concept_id": 9011,
+      "gloss": "Kāma Vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "loka_vasana",
+      "name": "Loka-vāsanā",
+      "role": "primary",
+      "concept_id": 9008,
+      "gloss": "Loka-vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "lokesana",
+      "name": "Lokeśana",
+      "role": "primary",
+      "concept_id": 9013,
+      "gloss": "Lokeśana"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "prarabdha_karma",
+      "name": "Prārabdha Karma",
+      "role": "primary",
+      "concept_id": 9006,
+      "gloss": "Prārabdha Karma"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "putresana",
+      "name": "Putreśana",
+      "role": "primary",
+      "concept_id": 9015,
+      "gloss": "Putreśana"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "sanchita_karma",
+      "name": "Sanchita Karma",
+      "role": "primary",
+      "concept_id": 9005,
+      "gloss": "Sanchita Karma"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "sastra_vasana",
+      "name": "Śāstra-vāsanā",
+      "role": "primary",
+      "concept_id": 9010,
+      "gloss": "Śāstra-vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "subha_vasana",
+      "name": "Subha Vāsanā",
+      "role": "primary",
+      "concept_id": 9012,
+      "gloss": "Subha Vāsanā"
+    },
+    {
+      "dimension_id": 12,
+      "slug": "vittesana",
+      "name": "Vitteśana",
+      "role": "primary",
+      "concept_id": 9014,
+      "gloss": "Vitteśana"
+    },
+    {
+      "dimension_id": 17,
+      "slug": "the_adhibhautika_perspective",
+      "name": "The Adhibhautika Perspective",
+      "role": "primary",
+      "concept_id": 9101,
+      "gloss": "The Adhibhautika Perspective"
+    },
+    {
+      "dimension_id": 17,
+      "slug": "the_adhidaivika_perspective",
+      "name": "The Adhidaivika Perspective",
+      "role": "primary",
+      "concept_id": 9102,
+      "gloss": "The Adhidaivika Perspective"
+    },
+    {
+      "dimension_id": 17,
+      "slug": "the_adhyatmika_perspective",
+      "name": "The Ādhyātmika Perspective",
+      "role": "primary",
+      "concept_id": 9103,
+      "gloss": "The Ādhyātmika Perspective"
+    }
+  ]
+}

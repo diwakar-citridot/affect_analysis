@@ -109,6 +109,8 @@ class IScorerRegistry(Protocol):
 class IDimensionRegistry(Protocol):
     def name_for(self, dimension_id: int) -> str: ...
 
+    def id_for_name(self, dimension_name: str) -> int | None: ...
+
 
 @runtime_checkable
 class IKnowledgeSteward(Protocol):

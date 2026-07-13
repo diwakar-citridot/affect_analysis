@@ -31,11 +31,11 @@ def test_v2_health_on_combined_app():
 
 def test_v2_meta_returns_prompt_version():
     client = TestClient(create_app())
-    resp = client.get("/v2/meta")
+    resp = client.get("/v2/affect/meta")
     assert resp.status_code == 200
     body = resp.json()
     assert body["affect_mode"] == "llm_primary"
-    assert body["prompt_version"] == "lived_experience_v2"
+    assert body["prompt_version"] == "lived_experience_v3"
     assert 8 in body["emit_dimensions"]
 
 
@@ -44,7 +44,7 @@ def test_v2_analyze_with_mocked_layer():
     app.dependency_overrides[get_layer] = _primary_layer
     client = TestClient(app)
     resp = client.post(
-        "/v2/analyze",
+        "/v2/affect/analyze",
         json={
             "request_id": str(uuid.uuid4()),
             "analysis_text": "I keep bracing until I hear back and cannot stop checking my phone.",
@@ -59,9 +59,12 @@ def test_v2_analyze_with_mocked_layer():
     assert "bhaya" in slugs
     assert "cinta" in slugs
     for score in body["attribute_scores"]:
+        assert score.get("rationale"), f"missing rationale for {score['attribute']}"
         assert score.get("reasoning"), f"missing reasoning for {score['attribute']}"
     bhaya = next(a for a in body["attribute_scores"] if a["attribute"] == "bhaya")
-    assert "bracing" in bhaya["reasoning"]
+    assert "Nine Enduring Emotions" in bhaya["rationale"]
+    assert "apprehension" in bhaya["rationale"]
+    assert "bracing" in bhaya["span"]
     app.dependency_overrides.clear()
 
 
@@ -70,7 +73,7 @@ def test_v2_standalone_app_analyze():
     app.dependency_overrides[get_layer] = _primary_layer
     client = TestClient(app)
     resp = client.post(
-        "/analyze",
+        "/affect/analyze",
         json={
             "analysis_text": "I keep bracing until I hear back.",
             "options": {"force": True},
@@ -86,7 +89,7 @@ def test_v2_factual_text_abstains_without_force():
     app.dependency_overrides[get_layer] = _primary_layer
     client = TestClient(app)
     resp = client.post(
-        "/analyze",
+        "/affect/analyze",
         json={
             "analysis_text": (
                 "The meeting is scheduled for 3pm in conference room B on the second floor."

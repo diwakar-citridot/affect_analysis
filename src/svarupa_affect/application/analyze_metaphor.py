@@ -2,8 +2,8 @@
 
 Mirrors the AFF ``AffectLayer.analyze_full`` shape: one Bedrock call produces the
 extracted metaphors plus a ``DimensionalSignal[]`` fusion envelope over the
-metaphor layer's PRIMARY dimensions (D1/D5/D6/D15). Failures degrade to
-abstention — never fabricate signals.
+metaphor layer's emit dimensions (from concept ∩ scorer registries). Failures
+degrade to abstention — never fabricate signals.
 """
 
 from __future__ import annotations
@@ -15,9 +15,7 @@ from .. import __version__
 from ..domain.enums import StatePole
 from ..domain.exceptions import ModelUnavailable
 from ..domain.models import (
-    AttributeScore,
     DimensionalSignal,
-    Evidence,
     LayerContext,
     Provenance,
     StateHint,
@@ -25,11 +23,10 @@ from ..domain.models import (
 )
 from ..domain.scoring import dimension_relevance
 from ..infrastructure.config import Settings
-from .metaphor_orchestrator import MetaphorMapping, MetaphorOrchestrator, MetaphorResult
+from .metaphor_orchestrator import LAYER_CODE, MetaphorMapping, MetaphorOrchestrator, MetaphorResult
 
 logger = logging.getLogger("svarupa_affect.metaphor")
 
-LAYER_CODE = "MET"
 _RELEVANCE_FLOOR = 0.12
 
 
@@ -80,8 +77,6 @@ class MetaphorLayer:
             usage=result.usage,
         )
 
-    # -- helpers ----------------------------------------------------------------------
-
     def _uncertainty(self, result: MetaphorResult) -> UncertaintyProfile:
         return UncertaintyProfile(overall=round(float(result.process_confidence), 4))
 
@@ -108,7 +103,7 @@ class MetaphorLayer:
     ) -> list[DimensionalSignal]:
         signals: list[DimensionalSignal] = []
         for dimension_id in sorted(self._emit_dimensions):
-            attrs: list[AttributeScore] = result.scores_by_dimension.get(dimension_id, [])
+            attrs: list = result.scores_by_dimension.get(dimension_id, [])
             relevance = dimension_relevance([a.relevance for a in attrs])
             abstained = relevance < _RELEVANCE_FLOOR or not attrs
             kept = [] if abstained else attrs[:5]
@@ -117,7 +112,7 @@ class MetaphorLayer:
                 if kept
                 else StateHint(state=StatePole.UNCLEAR, confidence=uncertainty.overall)
             )
-            evidence: list[Evidence] = list(result.evidence_by_dimension.get(dimension_id, []))[:3]
+            evidence = list(result.evidence_by_dimension.get(dimension_id, []))[:3]
             signals.append(
                 DimensionalSignal(
                     request_id=ctx.request_id,
@@ -169,20 +164,25 @@ def _build_primary_provider(settings: Settings) -> object:
 def build_default_metaphor_layer() -> MetaphorLayer:
     """Wire the metaphor orchestrator into the use case (the DI composition root)."""
     from ..infrastructure.kg.concept_registry import build_concept_registry
+    from ..infrastructure.kg.dimension_registry import build_dimension_registry
+    from ..infrastructure.kg.scorer_registry import build_scorer_registry
     from ..infrastructure.kg.triplet_registry import build_metaphor_triplet_vocabulary
 
     settings = Settings.load()
     concept_registry = build_concept_registry(layer_code=LAYER_CODE)
+    scorer_registry = build_scorer_registry(layer_code=LAYER_CODE)
     triplet_vocabulary = build_metaphor_triplet_vocabulary()
     provider = _build_primary_provider(settings)
 
     orchestrator = MetaphorOrchestrator(
         provider=provider,  # type: ignore[arg-type]
         concept_registry=concept_registry,
+        scorer_registry=scorer_registry,
         model_id=settings.bedrock_model_id,
         timeout_s=settings.llm_primary_timeout_s,
         max_tokens=settings.llm_primary_max_tokens,
         triplet_vocabulary=triplet_vocabulary,
+        dimension_registry=build_dimension_registry(),
         layer_code=LAYER_CODE,
     )
     return MetaphorLayer(orchestrator)

@@ -1,0 +1,49 @@
+{
+  "layer_code": "MET",
+  "scorers": [
+    {
+      "scorer_id": 301,
+      "dimension_id": 1,
+      "scorer_slug": "met_d1",
+      "scorer_kind": "field_native",
+      "data_ref": "field/met_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/met_d1_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 1
+    },
+    {
+      "scorer_id": 301,
+      "dimension_id": 5,
+      "scorer_slug": "met_d5",
+      "scorer_kind": "field_native",
+      "data_ref": "field/met_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/met_d5_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 2
+    },
+    {
+      "scorer_id": 301,
+      "dimension_id": 6,
+      "scorer_slug": "met_d6",
+      "scorer_kind": "field_native",
+      "data_ref": "field/met_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/met_d6_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 3
+    },
+    {
+      "scorer_id": 301,
+      "dimension_id": 15,
+      "scorer_slug": "met_d15",
+      "scorer_kind": "field_native",
+      "data_ref": "field/met_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/met_d15_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 4
+    }
+  ]
+}

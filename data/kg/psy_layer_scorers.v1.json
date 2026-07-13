@@ -1,0 +1,38 @@
+{
+  "layer_code": "PSY",
+  "scorers": [
+    {
+      "scorer_id": 201,
+      "dimension_id": 2,
+      "scorer_slug": "psy_d2",
+      "scorer_kind": "field_native",
+      "data_ref": "field/psy_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/psy_d2_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 1
+    },
+    {
+      "scorer_id": 201,
+      "dimension_id": 12,
+      "scorer_slug": "psy_d12",
+      "scorer_kind": "field_native",
+      "data_ref": "field/psy_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/psy_d12_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 2
+    },
+    {
+      "scorer_id": 201,
+      "dimension_id": 17,
+      "scorer_slug": "psy_d17",
+      "scorer_kind": "field_native",
+      "data_ref": "field/psy_llm_primary.v1.json",
+      "pole_map_ref": "pole_maps/psy_d17_poles.v1.json",
+      "modulator_ref": null,
+      "emits_signals": true,
+      "sort_order": 3
+    }
+  ]
+}
