@@ -13,8 +13,9 @@ from __future__ import annotations
 
 import json
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
+from typing import Sequence
 
 from ... import LAYER_CODE
 from ..config import Settings
@@ -53,6 +54,45 @@ class ConceptInfo:
     name: str
     gloss: str
     role: str = "contributing"
+    coordinate: dict[str, str] | None = None
+
+
+def _normalize_coordinate(raw: object) -> dict[str, str] | None:
+    """Coerce MySQL JSON / snapshot value into a string-keyed coordinate map."""
+    if raw is None:
+        return None
+    value: object = raw
+    if isinstance(raw, (bytes, bytearray)):
+        value = raw.decode("utf-8")
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return None
+        try:
+            value = json.loads(text)
+        except json.JSONDecodeError:
+            return {"raw": text}
+    if not isinstance(value, dict) or not value:
+        return None
+    out: dict[str, str] = {}
+    for key, item in value.items():
+        if item is None:
+            continue
+        text = str(item).strip()
+        if text:
+            out[str(key)] = text
+    return out or None
+
+
+def _compact_coordinate(coordinate: dict[str, str] | None) -> dict[str, str] | None:
+    """Drop redundant ``raw`` when structured fields are present (prompt token budget)."""
+    if not coordinate:
+        return None
+    structured = {k: v for k, v in coordinate.items() if k != "raw" and v}
+    if structured:
+        return structured
+    raw = coordinate.get("raw")
+    return {"raw": raw} if raw else None
 
 
 def _snapshot_path(layer_code: str) -> Path:
@@ -78,6 +118,7 @@ def _load_static_snapshot(path: Path | None = None, *, layer_code: str = LAYER_C
             name=str(row["name"]),
             gloss=str(row.get("gloss") or row["name"]),
             role=str(row.get("role", "contributing")),
+            coordinate=_normalize_coordinate(row.get("coordinate")),
         )
         by_dimension.setdefault(dim_id, {})[slug] = info
 
@@ -177,6 +218,40 @@ class StaticConceptRegistry:
                 out[attr] = info.gloss or info.name
         return out
 
+    def coordinates(
+        self,
+        dimension_id: int,
+        attributes: list[str],
+        layer_code: str | None = None,
+    ) -> dict[str, dict[str, str]]:
+        """Return compact concept coordinates keyed by requested attribute slug."""
+        if layer_code and layer_code != self.layer_code:
+            return {}
+        table = self._by_dimension.get(dimension_id, {})
+        out: dict[str, dict[str, str]] = {}
+        for attr in attributes:
+            info = table.get(canonical_slug(attr))
+            if not info:
+                continue
+            compact = _compact_coordinate(info.coordinate)
+            if compact:
+                out[attr] = compact
+        return out
+
+
+def _mysql_has_coordinate_column(cur: object) -> bool:
+    cur.execute(  # type: ignore[attr-defined]
+        """
+        SELECT 1
+          FROM information_schema.COLUMNS
+         WHERE TABLE_SCHEMA = DATABASE()
+           AND TABLE_NAME = 'svarupa_concepts'
+           AND COLUMN_NAME = 'coordinate'
+         LIMIT 1
+        """
+    )
+    return cur.fetchone() is not None  # type: ignore[attr-defined]
+
 
 def _load_from_mysql(
     settings: Settings, layer_code: str
@@ -186,22 +261,25 @@ def _load_from_mysql(
     frozenset[int],
     dict[int, dict[str, ConceptInfo]],
 ]:
-    sql = """
-        SELECT
-            c.concept_id,
-            cl.dimension_id,
-            c.slug,
-            c.name,
-            cl.role,
-            COALESCE(NULLIF(TRIM(c.description), ''), c.name) AS gloss
-        FROM svarupa_concept_layer cl
-        JOIN svarupa_concepts c ON c.concept_id = cl.concept_id
-        WHERE cl.layer_code = %s
-        ORDER BY cl.dimension_id, cl.role DESC, c.sort_order, c.slug
-    """
     conn = open_mysql(settings)
     try:
         with conn.cursor() as cur:
+            has_coordinate = _mysql_has_coordinate_column(cur)
+            coordinate_select = "c.coordinate" if has_coordinate else "NULL AS coordinate"
+            sql = f"""
+                SELECT
+                    c.concept_id,
+                    cl.dimension_id,
+                    c.slug,
+                    c.name,
+                    cl.role,
+                    COALESCE(NULLIF(TRIM(c.description), ''), c.name) AS gloss,
+                    {coordinate_select}
+                FROM svarupa_concept_layer cl
+                JOIN svarupa_concepts c ON c.concept_id = cl.concept_id
+                WHERE cl.layer_code = %s
+                ORDER BY cl.dimension_id, cl.role DESC, c.sort_order, c.slug
+            """
             cur.execute(sql, (layer_code,))
             rows = cur.fetchall()
     finally:
@@ -230,6 +308,7 @@ def _load_from_mysql(
             name=str(row["name"]),
             gloss=str(row["gloss"] or row["name"]),
             role=role,
+            coordinate=_normalize_coordinate(row.get("coordinate")),
         )
         by_dimension.setdefault(dim_id, {})[slug] = info
 
@@ -259,22 +338,138 @@ class MySQLConceptRegistry(StaticConceptRegistry):
         )
 
 
+def fetch_concept_coordinates(
+    settings: Settings,
+    *,
+    dimension_id: int,
+    slugs: Sequence[str],
+) -> dict[str, dict[str, str]]:
+    """Load compact coordinates from ``svarupa_concepts`` for ``(dimension_id, slug)``.
+
+    Independent of ``svarupa_concept_layer`` so coordinates still reach the LLM
+    prompt when layer affinity falls back to the static snapshot.
+    """
+    if not settings.mysql_host or not settings.mysql_database or not slugs:
+        return {}
+    requested = [s for s in slugs if s]
+    if not requested:
+        return {}
+    # Include canonical spellings so bridge aliases still resolve.
+    lookup_slugs = sorted({*(requested), *(canonical_slug(s) for s in requested)})
+    placeholders = ", ".join(["%s"] * len(lookup_slugs))
+    sql = f"""
+        SELECT slug, coordinate
+          FROM svarupa_concepts
+         WHERE dimension_id = %s
+           AND slug IN ({placeholders})
+           AND coordinate IS NOT NULL
+    """
+    try:
+        conn = open_mysql(settings)
+        try:
+            with conn.cursor() as cur:
+                if not _mysql_has_coordinate_column(cur):
+                    return {}
+                cur.execute(sql, (dimension_id, *lookup_slugs))
+                rows = cur.fetchall()
+        finally:
+            conn.close()
+    except Exception as exc:
+        logger.warning("Could not load svarupa_concepts.coordinate from MySQL (%s)", exc)
+        return {}
+
+    by_db_slug: dict[str, dict[str, str]] = {}
+    for row in rows:
+        compact = _compact_coordinate(_normalize_coordinate(row.get("coordinate")))
+        if compact:
+            by_db_slug[str(row["slug"])] = compact
+
+    out: dict[str, dict[str, str]] = {}
+    for slug in requested:
+        compact = by_db_slug.get(slug) or by_db_slug.get(canonical_slug(slug))
+        if compact:
+            out[slug] = compact
+    return out
+
+
+def enrich_registry_coordinates(
+    registry: StaticConceptRegistry, settings: Settings
+) -> int:
+    """Overlay ``svarupa_concepts.coordinate`` onto an in-memory registry by slug."""
+    if not settings.mysql_host or not settings.mysql_database:
+        return 0
+    try:
+        conn = open_mysql(settings)
+        try:
+            with conn.cursor() as cur:
+                if not _mysql_has_coordinate_column(cur):
+                    return 0
+                cur.execute(
+                    """
+                    SELECT dimension_id, slug, coordinate
+                      FROM svarupa_concepts
+                     WHERE coordinate IS NOT NULL
+                    """
+                )
+                rows = cur.fetchall()
+        finally:
+            conn.close()
+    except Exception as exc:
+        logger.warning("Could not enrich concept coordinates from MySQL (%s)", exc)
+        return 0
+
+    by_key = {
+        (int(row["dimension_id"]), str(row["slug"])): _normalize_coordinate(row.get("coordinate"))
+        for row in rows
+    }
+    updated = 0
+    for dim_id, table in registry._by_dimension.items():
+        for slug, info in list(table.items()):
+            coordinate = by_key.get((dim_id, slug)) or by_key.get((dim_id, canonical_slug(slug)))
+            if coordinate and coordinate != info.coordinate:
+                table[slug] = replace(info, coordinate=coordinate)
+                updated += 1
+    if updated:
+        logger.info(
+            "Enriched %d concept(s) with svarupa_concepts.coordinate from MySQL",
+            updated,
+        )
+    return updated
+
+
 def build_concept_registry(*, layer_code: str = LAYER_CODE) -> StaticConceptRegistry:
-    """Composition root: MySQL when configured and reachable, else static snapshot."""
+    """Composition root: MySQL when configured and reachable, else static snapshot.
+
+    Always overlays ``svarupa_concepts.coordinate`` from MySQL when available so
+    LLM grounding receives coordinates even if affinity came from the static
+    snapshot (e.g. empty ``svarupa_concept_layer`` after a concepts reseeds).
+    """
     settings = Settings.load()
+    registry: StaticConceptRegistry
     if settings.mysql_host and settings.mysql_database:
         try:
-            return MySQLConceptRegistry(settings, layer_code=layer_code)
+            registry = MySQLConceptRegistry(settings, layer_code=layer_code)
         except Exception as exc:
             logger.warning(
                 "Could not load svarupa_concept_layer from MySQL (%s); using static snapshot",
                 exc,
             )
-    affinity, primary, contributing, by_dimension = _static_layer_data(layer_code)
-    return StaticConceptRegistry(
-        layer_code=layer_code,
-        by_dimension=by_dimension,
-        affinity=affinity,
-        primary_dimensions=primary,
-        contributing_dimensions=contributing,
-    )
+            affinity, primary, contributing, by_dimension = _static_layer_data(layer_code)
+            registry = StaticConceptRegistry(
+                layer_code=layer_code,
+                by_dimension=by_dimension,
+                affinity=affinity,
+                primary_dimensions=primary,
+                contributing_dimensions=contributing,
+            )
+    else:
+        affinity, primary, contributing, by_dimension = _static_layer_data(layer_code)
+        registry = StaticConceptRegistry(
+            layer_code=layer_code,
+            by_dimension=by_dimension,
+            affinity=affinity,
+            primary_dimensions=primary,
+            contributing_dimensions=contributing,
+        )
+    enrich_registry_coordinates(registry, settings)
+    return registry

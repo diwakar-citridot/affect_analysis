@@ -31,11 +31,13 @@ from ....domain.models import (
 )
 from ....domain.scoring import clip
 
-PROMPT_VERSION = "lived_experience_v3"
+PROMPT_VERSION = "lived_experience_v4"
 
 # Per-concept keys rendered into the closed-vocabulary block, in stable order.
 # Poles come from the triplet snapshot; ``gloss`` is the legacy single-text fallback.
+# ``coordinate`` is the concept's KG location (seat/guna/scale/…) when available.
 _POLE_KEYS = ("deficiency", "balance", "excess", "gloss")
+_META_KEYS = ("coordinate",)
 
 # Human-readable labels for the primary dimensions in the closed vocabulary.
 # The model still SCORES under the output keys d2/d8/d9 (see the task text +
@@ -121,7 +123,7 @@ class LivedExperienceValidationError(ValueError):
     """Raised when the LLM payload fails schema or philosophy checks."""
 
 
-def build_system(vocabulary: dict[int, list[dict[str, str]]]) -> str:
+def build_system(vocabulary: dict[int, list[dict[str, object]]]) -> str:
     """Static system prefix: contract + closed vocabulary + task/format rules.
 
     This content is identical across requests, so the provider sends it as the
@@ -132,7 +134,11 @@ def build_system(vocabulary: dict[int, list[dict[str, str]]]) -> str:
     """
     vocab_block = {
         _DIMENSION_LABELS.get(dim, f"d{dim}"): [
-            {"concept": item["slug"], **{k: item[k] for k in _POLE_KEYS if k in item}}
+            {
+                "concept": item["slug"],
+                **{k: item[k] for k in _POLE_KEYS if k in item},
+                **{k: item[k] for k in _META_KEYS if k in item},
+            }
             for item in items
         ]
         for dim, items in sorted(vocabulary.items())
@@ -143,7 +149,10 @@ def build_system(vocabulary: dict[int, list[dict[str, str]]]) -> str:
         "Concepts are grouped by dimension; score each concept under its output key — "
         "Three Gunas→d2, Nine Enduring Emotions→d8, Thirty-Three Transient States→d9. "
         "Each concept lists its poles — deficiency / balance / excess — with a "
-        "description of each; match the text to the pole it best fits:\n"
+        "description of each; match the text to the pole it best fits. "
+        "When a concept includes a \"coordinate\" object (seat, ontic mode, valence, "
+        "guṇa, scale, causal status, key relation), use it as grounding for how and "
+        "where that concept typically shows up — do not invent coordinates:\n"
         f"{json.dumps(vocab_block, indent=2)}\n\n"
         "TASK: Reconstruct background_field (core, motivation, regulation, relational, temporal), "
         "optional appraisal and experiential_patterns, and score d8 (Nine Enduring Emotions — enduring), "
@@ -166,7 +175,8 @@ def build_system(vocabulary: dict[int, list[dict[str, str]]]) -> str:
         'For every scored triple, "rationale" MUST be 1–2 sentences explaining why that '
         "attribute and state belong in the response: name the dimension (Three Gunas / "
         "Nine Enduring Emotions / Thirty-Three Transient States), cite how the lived "
-        "experience aligns with that concept's pole description, and describe the "
+        "experience aligns with that concept's pole description (and coordinate when "
+        "present), and describe the "
         "recognition in observational language — never diagnose, label the person, or "
         'prescribe. When helpful, add "span" with a short verbatim phrase from the text. '
         "Set abstain:true when affect is absent or too thin. "

@@ -82,6 +82,13 @@ class IConceptRegistry(Protocol):
         layer_code: str | None = None,
     ) -> dict[str, str]: ...
 
+    def coordinates(
+        self,
+        dimension_id: int,
+        attributes: list[str],
+        layer_code: str | None = None,
+    ) -> dict[str, dict[str, str]]: ...
+
 
 @runtime_checkable
 class ITripletVocabulary(Protocol):

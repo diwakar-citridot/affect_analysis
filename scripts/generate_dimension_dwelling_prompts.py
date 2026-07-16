@@ -6,7 +6,7 @@ Reads distinct (dimension, concept) slug pairs from ``svarupa_concepts`` (joined
 ``svarupa_dimensions``), with source meaning from ``svarupa_concepts.description``
 or the best ``svarupa_concept_descriptions`` row, then builds a prompt from the
 dimension-dwelling template
-(including concept-specific Step 2 bullets and ``## Examples of the Target Quality``),
+(including concept-specific Step 2 bullets and ``## 6. Worked Examples for This Concept``),
 and writes text files under ``prompts/dd-mm-yyyy/``.
 
 Usage
@@ -215,6 +215,7 @@ def _fetch_concepts(
     *,
     dimension: str | None,
     concept: str | None,
+    allowed_dimension_slugs: frozenset[str] | None = None,
 ) -> list[ConceptRecord]:
     """Load one row per logical concept with the best available source meaning."""
     db = str(cfg["database"])
@@ -246,6 +247,12 @@ def _fetch_concepts(
     if dimension:
         filters.append("d.slug = %s")
         params.append(dimension)
+    if allowed_dimension_slugs is not None:
+        if not allowed_dimension_slugs:
+            return []
+        placeholders = ", ".join("%s" for _ in allowed_dimension_slugs)
+        filters.append(f"d.slug IN ({placeholders})")
+        params.extend(sorted(allowed_dimension_slugs))
     if concept:
         filters.append("c.slug = %s")
         params.append(concept)
@@ -398,7 +405,7 @@ def _save_lived_experience_checkpoint(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-_LIVED_EXPERIENCE_COLUMNS = [
+LIVED_EXPERIENCE_COLUMNS = [
     "dimension",
     "concept",
     "display_name",
@@ -407,6 +414,8 @@ _LIVED_EXPERIENCE_COLUMNS = [
     "statement_number",
     "statement",
 ]
+# Backward-compatible alias.
+_LIVED_EXPERIENCE_COLUMNS = LIVED_EXPERIENCE_COLUMNS
 
 
 def _require_openpyxl():
@@ -514,6 +523,12 @@ def _generate_lived_experiences(
                 model_id=model_id,
                 region=region,
                 max_tokens=max_tokens,
+                extra={
+                    "dimension": record.dimension,
+                    "concept": record.concept,
+                    "display_name": infer_profile(record).display_name,
+                    "prompt_path": str(prompt_path),
+                },
             )
             statements = parse_lived_experience_json(raw)
         except Exception as exc:
@@ -556,6 +571,154 @@ def _generate_lived_experiences(
     return succeeded, failed
 
 
+def run_dimension_dwelling_generation(
+    *,
+    output_dir: Path | None = None,
+    dimension: str | None = None,
+    concept: str | None = None,
+    allowed_dimension_slugs: frozenset[str] | None = None,
+    limit: int | None = None,
+    combined_only: bool = False,
+    generate_lived_experience: bool = False,
+    lived_experience_output: Path | None = None,
+    model_id: str | None = None,
+    region: str | None = None,
+    lived_experience_model_id: str | None = None,
+    lived_experience_max_tokens: int = LIVED_EXPERIENCE_MAX_TOKENS,
+    resume: bool = True,
+    verbose: bool = False,
+    log_file: Path | None = None,
+    no_log_file: bool = False,
+    setup_logging: bool = True,
+) -> tuple[int, Path | None]:
+    """Build dwelling prompts (and optionally the lived-experience Excel).
+
+    Returns ``(exit_code, lived_experience_excel_path_or_None)``.
+
+    ``allowed_dimension_slugs`` restricts generation to dimensions applicable for
+    the caller's selected analytical layers (from ``svarupa_concept_layer``).
+    """
+    if generate_lived_experience and combined_only:
+        raise ValueError(
+            "--generate-lived-experience requires per-concept prompt files; remove --combined-only."
+        )
+    if generate_lived_experience:
+        _require_openpyxl()
+
+    resolved_output_dir = output_dir or _default_output_dir()
+    resolved_log_file: Path | None = None
+    if setup_logging:
+        if not no_log_file:
+            resolved_log_file = log_file or (resolved_output_dir / "generation.log")
+        _setup_logging(verbose=verbose, log_file=resolved_log_file)
+
+    reset_step2_bedrock_client()
+    cfg = _cfg()
+
+    logger.info(
+        "Starting prompt generation | output_dir=%s dimension_filter=%r concept_filter=%r "
+        "allowed_dimensions=%s limit=%s combined_only=%s bedrock_model=%r bedrock_region=%r",
+        resolved_output_dir,
+        dimension,
+        concept,
+        sorted(allowed_dimension_slugs) if allowed_dimension_slugs is not None else None,
+        limit,
+        combined_only,
+        model_id,
+        region,
+    )
+    logger.info(
+        "Connecting to MySQL | user=%s host=%s database=%s",
+        cfg["user"],
+        cfg["host"],
+        cfg["database"],
+    )
+
+    conn = pymysql.connect(
+        host=str(cfg["host"]),
+        port=int(cfg["port"]),
+        user=str(cfg["user"]),
+        password=str(cfg["password"]),
+        database=str(cfg["database"]),
+        charset="utf8mb4",
+        cursorclass=pymysql.cursors.DictCursor,
+    )
+    try:
+        with conn.cursor() as cur:
+            records = _fetch_concepts(
+                cur,
+                cfg,
+                dimension=dimension,
+                concept=concept,
+                allowed_dimension_slugs=allowed_dimension_slugs,
+            )
+            logger.info("Fetched %s concept(s) from database", len(records))
+    finally:
+        conn.close()
+
+    if limit is not None:
+        records = records[: max(0, limit)]
+        logger.info("Applied concept limit=%s → %s concept(s)", limit, len(records))
+
+    if not records:
+        logger.error("No concepts found matching filters.")
+        return 1, None
+
+    combined_path, written, succeeded, failed = _write_prompts(
+        records,
+        resolved_output_dir,
+        combined_only=combined_only,
+        model_id=model_id,
+        region=region,
+    )
+
+    logger.info(
+        "Generation complete | concepts=%s succeeded=%s failed=%s per_concept_files=%s combined_file=%s",
+        len(records),
+        succeeded,
+        failed,
+        len(written),
+        combined_path,
+    )
+
+    le_failed = 0
+    excel_path: Path | None = None
+    if generate_lived_experience:
+        excel_path = lived_experience_output or (
+            resolved_output_dir / "dimension_dwelling_lived_experience.xlsx"
+        )
+        checkpoint_path = resolved_output_dir / "lived_experience_checkpoint.json"
+        le_model_id = lived_experience_model_id or model_id
+        logger.info(
+            "Starting lived-experience generation | concepts=%s output=%s checkpoint=%s "
+            "bedrock_model=%r bedrock_region=%r resume=%s",
+            len(written),
+            excel_path,
+            checkpoint_path,
+            le_model_id,
+            region,
+            resume,
+        )
+        le_succeeded, le_failed = _generate_lived_experiences(
+            written,
+            output_path=excel_path,
+            checkpoint_path=checkpoint_path,
+            resume=resume,
+            model_id=le_model_id,
+            region=region,
+            max_tokens=lived_experience_max_tokens,
+        )
+        logger.info(
+            "Lived-experience generation complete | concepts=%s succeeded=%s failed=%s output=%s",
+            len(written),
+            le_succeeded,
+            le_failed,
+            excel_path,
+        )
+
+    return (0 if failed == 0 and le_failed == 0 else 1), excel_path
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Generate dimension-dwelling lived-experience prompts for all concepts."
@@ -577,6 +740,12 @@ def main() -> int:
         type=str,
         default="",
         help="Optional filter: only this concept slug (e.g. annamaya_kosha).",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Optional: process only the first N concepts after filters.",
     )
     parser.add_argument(
         "--combined-only",
@@ -666,111 +835,25 @@ def main() -> int:
         except RuntimeError as exc:
             parser.error(str(exc))
 
-    output_dir = args.output_dir or _default_output_dir()
-    log_file: Path | None = None
-    if not args.no_log_file:
-        log_file = args.log_file or (output_dir / "generation.log")
-
-    _setup_logging(verbose=args.verbose, log_file=log_file)
-    reset_step2_bedrock_client()
-    cfg = _cfg()
-    model_id = args.model_id.strip() or None
-    region = args.region.strip() or None
-
-    logger.info(
-        "Starting prompt generation | output_dir=%s dimension_filter=%r concept_filter=%r "
-        "combined_only=%s bedrock_model=%r bedrock_region=%r",
-        output_dir,
-        args.dimension.strip() or None,
-        args.concept.strip() or None,
-        args.combined_only,
-        model_id,
-        region,
-    )
-    logger.info(
-        "Connecting to MySQL | user=%s host=%s database=%s",
-        cfg["user"],
-        cfg["host"],
-        cfg["database"],
-    )
-
-    conn = pymysql.connect(
-        host=str(cfg["host"]),
-        port=int(cfg["port"]),
-        user=str(cfg["user"]),
-        password=str(cfg["password"]),
-        database=str(cfg["database"]),
-        charset="utf8mb4",
-        cursorclass=pymysql.cursors.DictCursor,
-    )
-    try:
-        with conn.cursor() as cur:
-            records = _fetch_concepts(
-                cur,
-                cfg,
-                dimension=args.dimension.strip() or None,
-                concept=args.concept.strip() or None,
-            )
-            logger.info("Fetched %s concept(s) from database", len(records))
-    finally:
-        conn.close()
-
-    if not records:
-        logger.error("No concepts found matching filters.")
-        return 1
-
-    combined_path, written, succeeded, failed = _write_prompts(
-        records,
-        output_dir,
+    exit_code, _excel = run_dimension_dwelling_generation(
+        output_dir=args.output_dir,
+        dimension=args.dimension.strip() or None,
+        concept=args.concept.strip() or None,
+        limit=args.limit,
         combined_only=args.combined_only,
-        model_id=model_id,
-        region=region,
+        generate_lived_experience=args.generate_lived_experience,
+        lived_experience_output=args.lived_experience_output,
+        model_id=args.model_id.strip() or None,
+        region=args.region.strip() or None,
+        lived_experience_model_id=args.lived_experience_model_id.strip() or None,
+        lived_experience_max_tokens=args.lived_experience_max_tokens,
+        resume=not args.no_resume,
+        verbose=args.verbose,
+        log_file=args.log_file,
+        no_log_file=args.no_log_file,
+        setup_logging=True,
     )
-
-    logger.info(
-        "Generation complete | concepts=%s succeeded=%s failed=%s per_concept_files=%s combined_file=%s",
-        len(records),
-        succeeded,
-        failed,
-        len(written),
-        combined_path,
-    )
-
-    le_failed = 0
-    if args.generate_lived_experience:
-        lived_experience_output = args.lived_experience_output or (
-            output_dir / "dimension_dwelling_lived_experience.xlsx"
-        )
-        checkpoint_path = output_dir / "lived_experience_checkpoint.json"
-        le_model_id = args.lived_experience_model_id.strip() or model_id
-        logger.info(
-            "Starting lived-experience generation | concepts=%s output=%s checkpoint=%s "
-            "bedrock_model=%r bedrock_region=%r resume=%s",
-            len(written),
-            lived_experience_output,
-            checkpoint_path,
-            le_model_id,
-            region,
-            not args.no_resume,
-        )
-        le_succeeded, le_failed = _generate_lived_experiences(
-            written,
-            output_path=lived_experience_output,
-            checkpoint_path=checkpoint_path,
-            resume=not args.no_resume,
-            model_id=le_model_id,
-            region=region,
-            max_tokens=args.lived_experience_max_tokens,
-        )
-        logger.info(
-            "Lived-experience generation complete | concepts=%s succeeded=%s failed=%s output=%s",
-            len(written),
-            le_succeeded,
-            le_failed,
-            lived_experience_output,
-        )
-
-    return 0 if failed == 0 and le_failed == 0 else 1
+    return exit_code
 
 
 if __name__ == "__main__":

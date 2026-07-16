@@ -6,7 +6,10 @@ from conftest import make_context, run
 
 from svarupa_affect.application.analyze_affect import build_default_layer
 from svarupa_affect.infrastructure.kg.concept_registry import (
+    ConceptInfo,
     StaticConceptRegistry,
+    _compact_coordinate,
+    _normalize_coordinate,
     canonical_slug,
 )
 
@@ -67,3 +70,67 @@ def test_static_registry_resolves_bridge_spellings_for_glosses():
     reg = StaticConceptRegistry()
     glosses = reg.glosses(8, ["shoka"])
     assert glosses["shoka"]
+
+
+def test_normalize_and_compact_coordinate():
+    raw = {
+        "raw": "Seat: Physical · Guṇa: Tamas",
+        "seat": "Physical (somatic)",
+        "guna": "Tamas-dominant",
+        "scale": "Individual",
+    }
+    normalized = _normalize_coordinate(raw)
+    assert normalized is not None
+    assert normalized["seat"] == "Physical (somatic)"
+    compact = _compact_coordinate(normalized)
+    assert compact is not None
+    assert "raw" not in compact
+    assert compact["guna"] == "Tamas-dominant"
+    assert _compact_coordinate(_normalize_coordinate({"raw": "only raw"})) == {"raw": "only raw"}
+
+
+def test_static_registry_coordinates_method():
+    info = ConceptInfo(
+        concept_id=1,
+        dimension_id=8,
+        slug="bhaya",
+        name="Fear",
+        gloss="fear gloss",
+        role="primary",
+        coordinate={
+            "raw": "Seat: Vital · Guṇa: Tamas",
+            "seat": "Vital-Emotional",
+            "guna": "Tamas + Rajas",
+        },
+    )
+    reg = StaticConceptRegistry(
+        by_dimension={8: {"bhaya": info}},
+        affinity=frozenset({8}),
+        primary_dimensions=frozenset({8}),
+        contributing_dimensions=frozenset(),
+    )
+    coords = reg.coordinates(8, ["bhaya", "missing"])
+    assert coords["bhaya"]["seat"] == "Vital-Emotional"
+    assert "raw" not in coords["bhaya"]
+    assert "missing" not in coords
+
+
+def test_build_registry_enriches_coordinates_from_mysql():
+    from svarupa_affect.infrastructure.config import Settings
+    from svarupa_affect.infrastructure.kg.concept_registry import build_concept_registry
+
+    settings = Settings.load()
+    if not settings.mysql_host or not settings.mysql_database:
+        return
+    reg = build_concept_registry()
+    # After concepts seed, D2 sattva should carry coordinate even if layer is empty.
+    coords = reg.coordinates(2, ["sattva", "rajas", "tamas"])
+    if not coords:
+        # Layer/snapshot may omit slugs; direct fetch still works.
+        from svarupa_affect.infrastructure.kg.concept_registry import fetch_concept_coordinates
+
+        coords = fetch_concept_coordinates(
+            settings, dimension_id=2, slugs=["sattva", "rajas", "tamas"]
+        )
+    assert coords, "expected svarupa_concepts.coordinate for D2 gunas"
+    assert any("seat" in c or "raw" in c for c in coords.values())

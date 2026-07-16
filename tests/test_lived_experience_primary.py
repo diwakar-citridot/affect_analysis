@@ -151,6 +151,28 @@ def test_validate_lived_experience_accepts_fear_payload():
     assert validated["d8"][0]["attribute"] == "bhaya"
 
 
+def test_build_system_includes_concept_coordinate():
+    vocabulary = {
+        8: [
+            {
+                "slug": "bhaya",
+                "balance": "steady caution without panic",
+                "coordinate": {
+                    "seat": "Vital-Emotional",
+                    "guna": "Tamas + Rajas",
+                    "scale": "Individual",
+                },
+            }
+        ]
+    }
+    system = prompt_mod.build_system(vocabulary)
+    assert prompt_mod.PROMPT_VERSION == "lived_experience_v4"
+    assert '"coordinate"' in system
+    assert "Vital-Emotional" in system
+    assert "do not invent coordinates" in system
+    assert "bhaya" in system
+
+
 @pytest.mark.parametrize(
     "payload",
     [

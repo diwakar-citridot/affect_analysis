@@ -27,652 +27,1444 @@
   ],
   "concepts": [
     {
-      "concept_id": 1134,
+      "concept_id": 9,
       "dimension_id": 2,
       "slug": "abhibhuya",
-      "name": "Abhibhuya",
+      "name": "Abhibhüya",
       "role": "contributing",
-      "gloss": "### Balanced expression\n\nOverview: When understood, this perpetual battle of gunas can be observed without identification. The wise person watches the inner shifts without being a participant, transcending the conflict.\n\nSomatic (body): Awareness of body's shifting energy states without being controlled, physical adaptability across guna shifts, healthy integration of states.\n\nEmotional current: Emotional awareness of shifting inner states, ability to observe internal conflict without being swept, emotional witness consciousness, peace amid changes.\n\nCognitive map: Clear mental awareness of inner battles between qualities, witness consciousness of the gunas, mental detachment from the war within, wisdom about guna play.\n\nInner presence (psychic): The soul watches the gunas contend within it, and by awareness gives sattva the upper hand."
+      "gloss": "Abhibhüya is the state of inner conflict between the gunas (sattva, rajas, tamas) where each tries to displace or neutralize the others. It is the perpetual psychological battle within the human system as the qualities compete for dominance.",
+      "coordinate": {
+        "raw": "Seat: Mental–Psychic (the inner theater of contention) · Ontic mode: Process (the shifting dominance among the guṇas, moment to moment) · Valence: Neutral dynamic — witnessing it is the practice · Guṇa: all three in flux (a rajasic dynamic) · Scale: Individual (ādhyātmika) · Causal status: Mechanism (how one’s dominant mode rises and yields) · Key relation: The guṇa triad in motion — the dynamic relation among the three.",
+        "guna": "all three in flux (a rajasic dynamic)",
+        "seat": "Mental–Psychic (the inner theater of contention)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Neutral dynamic — witnessing it is the practice",
+        "ontic_mode": "Process (the shifting dominance among the guṇas, moment to moment)",
+        "key_relation": "The guṇa triad in motion — the dynamic relation among the three.",
+        "causal_status": "Mechanism (how one’s dominant mode rises and yields)"
+      }
     },
     {
-      "concept_id": 1136,
+      "concept_id": 12,
       "dimension_id": 2,
-      "slug": "rajas_projects_tamas_veils_sattva_reveals",
-      "name": "Rajas Projects Tamas Veils Sattva Reveals",
+      "slug": "rajas-projects-tamas-veils-sattva-reveals",
+      "name": "Rajas Projects, Tamas Veils, Sattva Reveals",
       "role": "contributing",
-      "gloss": "### Balanced expression\n\nOverview: Sattva predominantly cultivated; rajas channeled toward goal; tamas reduced. Eventually transcending even sattva.\n\nSomatic (body): Body's biology shifted toward sattvic balance.\n\nEmotional current: Emotional clarity from sattva-predominance.\n\nCognitive map: Mind discriminating, calm, revealing—sattvic-quality dominant.\n\nInner presence (psychic): The soul grasps the gunas' functions — tamas veils, rajas projects, sattva reveals — and cultivates the revealing power."
+      "gloss": "The three gunas each have specific functions in obstructing or revealing truth: Tamas veils (hides truth); Rajas projects (creates illusory appearance); Sattva reveals (clears the veiling). Liberation requires reducing tamas, channeling rajas, cultivating sattva, then transcending even sattva.",
+      "coordinate": {
+        "raw": "Seat: Mental (discernment of guṇa-function) · Ontic mode: Functional schema (the operations of the three guṇas) · Valence: Neutral — a discriminative tool · Guṇa: all three (each named by its function) · Scale: Individual, with cosmic ground · Causal status: Mechanism (the operational role of each guṇa) · Key relation: Summary schema of the guṇa triad; pairs with the veiling teaching.",
+        "guna": "all three (each named by its function)",
+        "seat": "Mental (discernment of guṇa-function)",
+        "scale": "Individual, with cosmic ground",
+        "valence": "Neutral — a discriminative tool",
+        "ontic_mode": "Functional schema (the operations of the three guṇas)",
+        "key_relation": "Summary schema of the guṇa triad; pairs with the veiling teaching.",
+        "causal_status": "Mechanism (the operational role of each guṇa)"
+      }
     },
     {
-      "concept_id": 1139,
+      "concept_id": 10,
       "dimension_id": 2,
-      "slug": "three_gunas_as_daily_veils",
-      "name": "Three Gunas As Daily Veils",
+      "slug": "three-gunas-as-daily-veils",
+      "name": "Three Gunas as Daily Veils",
       "role": "contributing",
-      "gloss": "### Balanced expression\n\nOverview: Active awareness of guna-states. Daily choices consciously shifting toward sattva. Recognition without rigidity.\n\nSomatic (body): Body's food, sleep, activity chosen to cultivate sattva.\n\nEmotional current: Emotional patterns recognized as guna-driven.\n\nCognitive map: Mind aware of guna-dominance moment to moment.\n\nInner presence (psychic): The soul recognizes the three gunas as veils over the Divine, and learns to see the light through and beyond them."
+      "gloss": "The Bhagavata’s teaching: the Divine is hidden behind three gunas which veil. In daily life: develop guna-awareness. Notice moment-to-moment: am I in rajas (restless, ambitious, agitated), tamas (lazy, confused, dull), or sattva (clear, calm, discerning)? Daily food choices, company, activities each strengthen one guna. Conscious choices shift guna-balance over time.",
+      "coordinate": {
+        "raw": "Seat: Psychic (the veiling of the Self) · Ontic mode: Condition (the guṇas functioning as veils over awareness) · Valence: Affliction — as veils, to be seen through · Guṇa: all three (each veils in its own way) · Scale: Individual, with cosmic ground · Causal status: Mechanism of concealment · Key relation: Correspondence — the guṇas veil Brahman; complements the reveal-project-veil schema.",
+        "guna": "all three (each veils in its own way)",
+        "seat": "Psychic (the veiling of the Self)",
+        "scale": "Individual, with cosmic ground",
+        "valence": "Affliction — as veils, to be seen through",
+        "ontic_mode": "Condition (the guṇas functioning as veils over awareness)",
+        "key_relation": "Correspondence — the guṇas veil Brahman; complements the reveal-project-veil schema.",
+        "causal_status": "Mechanism of concealment"
+      }
     },
     {
-      "concept_id": 1140,
+      "concept_id": 11,
       "dimension_id": 2,
-      "slug": "two_forms_of_brahman",
-      "name": "Two Forms Of Brahman",
+      "slug": "two-forms-of-brahman",
+      "name": "Two Forms of Brahman",
       "role": "contributing",
-      "gloss": "### Balanced expression\n\nOverview: Recognition of both forms of Brahman—the manifest cosmic forms and the unmanifest absolute. Both are honored.\n\nSomatic (body): Body interacts with the cosmic-saguna forms while knowing the unmanifest.\n\nEmotional current: Emotional devotion to manifest forms with knowledge of nirguna.\n\nCognitive map: Mind holds both: cosmic worship and absolute realization.\n\nInner presence (psychic): The soul honors both the Absolute with form and without, approaching the formless through the form."
+      "gloss": "Brahman has two forms: gross/embodied (sat) and subtle/disembodied (asat); mortal and immortal; defined and undefined. The gross form is air, sky, sun, moon, fire, water, etc. The subtle form is beyond all this. The description of the indescribable is ‘neti-neti.’",
+      "coordinate": {
+        "raw": "Seat: Psychic (the Absolute with and without qualities) · Ontic mode: Metaphysical distinction (two modes of the one Absolute) · Valence: Neutral — a truth to be realized · Guṇa: spans both — Saguna (with guṇas), Nirguna (beyond guṇas) · Scale: Cosmic / transcendent (Ādhidaivika), realized individually · Causal status: Ultimate ground (Nirguna as substrate; Saguna as its qualified aspect) · Key relation: Complementary pair — the guṇas pertain to Saguna and are transcended in Nirguna.",
+        "guna": "spans both — Saguna (with guṇas), Nirguna (beyond guṇas)",
+        "seat": "Psychic (the Absolute with and without qualities)",
+        "scale": "Cosmic / transcendent (Ādhidaivika), realized individually",
+        "valence": "Neutral — a truth to be realized",
+        "ontic_mode": "Metaphysical distinction (two modes of the one Absolute)",
+        "key_relation": "Complementary pair — the guṇas pertain to Saguna and are transcended in Nirguna.",
+        "causal_status": "Ultimate ground (Nirguna as substrate; Saguna as its qualified aspect)"
+      }
     },
     {
-      "concept_id": 1135,
+      "concept_id": 7,
       "dimension_id": 2,
       "slug": "rajas",
       "name": "Rajas",
       "role": "primary",
-      "gloss": "### Balanced expression\n\nOverview: When Rajas is balanced, a person is motivated, ambitious, and productive. They take appropriate action, pursue goals with enthusiasm, engage meaningfully with work, and balance activity with rest.\n\nSomatic (body): Good energy and vitality, healthy appetite, varied food preferences, good metabolism, strength and stamina for work, balanced sleep patterns, active lifestyle without exhaustion, resilient immune system.\n\nEmotional current: Enthusiasm and motivation, healthy passion for life, joy in accomplishment, appropriate ambition, confidence in abilities, ability to feel excitement without becoming manic, genuine interest in relationships and work.\n\nCognitive map: Clear goals and purposeful thinking, ability to strategize and execute, creative problem-solving, motivated learning, good memory function, ability to focus on desired outcomes, adaptability to changing situations.\n\nInner presence (psychic): The soul harnesses rajasic energy as fuel, putting drive and passion into the service of a higher aim."
+      "gloss": "Rajas is the quality of activity, passion, desire, and motion. It is characterized by dynamism, ambition, attachment, and restlessness. Rajas is the force that drives action, creation, and engagement with the world.",
+      "coordinate": {
+        "raw": "Seat: Vital (drive / activity), pervading all layers · Ontic mode: Constituent mode (a guṇa) · Valence: Neutral mode — necessary fuel for action, binding when dominant · Guṇa: Rajas (by definition) · Scale: Individual (prakṛti), with cosmic ground · Causal status: Conditioning mode (projects; the impetus to act) · Key relation: One of the guṇa triad — antagonist-complement to Sattva and Tamas.",
+        "guna": "Rajas (by definition)",
+        "seat": "Vital (drive / activity), pervading all layers",
+        "scale": "Individual (prakṛti), with cosmic ground",
+        "valence": "Neutral mode — necessary fuel for action, binding when dominant",
+        "ontic_mode": "Constituent mode (a guṇa)",
+        "key_relation": "One of the guṇa triad — antagonist-complement to Sattva and Tamas.",
+        "causal_status": "Conditioning mode (projects; the impetus to act)"
+      }
     },
     {
-      "concept_id": 1137,
+      "concept_id": 6,
       "dimension_id": 2,
       "slug": "sattva",
       "name": "Sattva",
       "role": "primary",
-      "gloss": "### Balanced expression\n\nOverview: When Sattva is balanced, a person experiences mental clarity, emotional stability, good health, virtuous behavior, wisdom, compassion, and inner peace.\n\nSomatic (body): Good health, stable energy levels, natural sleep patterns, clear complexion, strong immune function, light and energizing food preferences (fruits, vegetables, dairy), absence of disease.\n\nEmotional current: Emotional stability, inner peace, compassion, contentment, equanimity in face of challenges, natural joy and happiness, absence of mood swings, sense of inner fulfillment.\n\nCognitive map: Mental clarity, focused concentration, ability to discern truth from falsehood, wisdom in decision-making, spiritual insight, organized thinking, ability to learn and retain knowledge easily.\n\nInner presence (psychic): The soul rests most easily in sattva, where clarity and lightness let its inner light shine through; yet it remembers even sattva is a veil to pass beyond."
+      "gloss": "Sattva is the quality of purity, harmony, knowledge, and virtue. It is characterized by clarity, illumination, and a sense of balance. Sattva represents the highest of the three gunas and is associated with wisdom, virtue, and spiritual enlightenment.",
+      "coordinate": {
+        "raw": "Seat: Mental–Psychic (clarity / luminosity), pervading all layers · Ontic mode: Constituent mode (a guṇa — one of the three fundamental modes of prakṛti) · Valence: Neutral mode, relatively liberating when cultivated — yet itself a subtle bond to be transcended · Guṇa: Sattva (by definition) · Scale: Individual (mental-spiritual prakṛti), with cosmic ground · Causal status: Conditioning mode (reveals; colors perception toward clarity) · Key relation: One of the guṇa triad — antagonist-complement to Rajas and Tamas.",
+        "guna": "Sattva (by definition)",
+        "seat": "Mental–Psychic (clarity / luminosity), pervading all layers",
+        "scale": "Individual (mental-spiritual prakṛti), with cosmic ground",
+        "valence": "Neutral mode, relatively liberating when cultivated — yet itself a subtle bond to be transcended",
+        "ontic_mode": "Constituent mode (a guṇa — one of the three fundamental modes of prakṛti)",
+        "key_relation": "One of the guṇa triad — antagonist-complement to Rajas and Tamas.",
+        "causal_status": "Conditioning mode (reveals; colors perception toward clarity)"
+      }
     },
     {
-      "concept_id": 1138,
+      "concept_id": 8,
       "dimension_id": 2,
       "slug": "tamas",
       "name": "Tamas",
       "role": "primary",
-      "gloss": "### Balanced expression\n\nOverview: When Tamas is minimized and balanced, it provides necessary rest, sleep, and groundedness. The person has adequate rest and is connected to the earth with stability.\n\nSomatic (body): Healthy sleep patterns, good rest and recovery, grounded and stable physical presence, connection to nature and earth, ability to be still when needed, physical resilience, good digestion and elimination, capacity to relax and recover.\n\nEmotional current: Emotional stability and groundedness, ability to let go of past hurts, acceptance of what cannot be changed, emotional resilience in face of change, calmness and peace, sense of belonging and connection.\n\nCognitive map: Ability to rest the mind when needed, acceptance of limitations of knowledge, wisdom in knowing when to act and when to be still, good memory integration, capacity for deep sleep and restoration of mind.\n\nInner presence (psychic): The soul accepts tamas in its rightful place — as rest, sleep, and ground of stability — without being ruled by it."
+      "gloss": "Tamas is the quality of inertia, darkness, ignorance, and heaviness. It is characterized by dullness, confusion, destruction, and dissolution. Tamas represents the lowest of the three gunas and clouds the mind.",
+      "coordinate": {
+        "raw": "Seat: Physical (inertia / density), dulling the mind · Ontic mode: Constituent mode (a guṇa) · Valence: Neutral mode — provides rest and stability, obscuring when dominant · Guṇa: Tamas (by definition) · Scale: Individual (prakṛti), with cosmic ground · Causal status: Conditioning mode (veils; inertia and concealment) · Key relation: One of the guṇa triad — antagonist-complement to Sattva and Rajas.",
+        "guna": "Tamas (by definition)",
+        "seat": "Physical (inertia / density), dulling the mind",
+        "scale": "Individual (prakṛti), with cosmic ground",
+        "valence": "Neutral mode — provides rest and stability, obscuring when dominant",
+        "ontic_mode": "Constituent mode (a guṇa)",
+        "key_relation": "One of the guṇa triad — antagonist-complement to Sattva and Rajas.",
+        "causal_status": "Conditioning mode (veils; inertia and concealment)"
+      }
     },
     {
-      "concept_id": 1230,
+      "concept_id": 103,
       "dimension_id": 8,
       "slug": "bhaya",
       "name": "Bhaya",
       "role": "primary",
-      "gloss": "### Equilibrium: Fear as Prudent Awareness\n\nIn equilibrium, Bhaya is healthy caution married to clarity. Internally, there is an alertness that sharpens perception without distorting it. The person recognizes real risks and responds proportionately. Thoughts are evaluative but not catastrophic. The body is watchful—a heightened readiness that enhances rather than overwhelms. There is even, in the classical view, a moral dimension: the person who fears violating dharma acts with conscience and care.\n\nIn relationships, equilibrium Bhaya appears as appropriate vulnerability—the willingness to acknowledge what is at stake without being paralyzed by it. At work, it is the quality that produces thorough risk assessment, careful planning, and the prudence to build margins of safety. In daily life, it ensures that the person locks the door, looks both ways, saves for the uncertain future—without being controlled by the possibility of catastrophe.\n\nThe biopsy results come back tomorrow. She is afraid. She notices the fear with a certain clarity: the tightness in her stomach, the way her mind keeps rehearsing worst-case scenarios. She lets the thoughts run without chasing them. She calls her sister—not for reassurance, but for company. They talk about the garden, about the neighbor’s new dog, about nothing in particular. The fear is still there when she hangs up. But she is not alone with it, and that makes it bearable.\n\nInner Presence (Psychic). At the soul level, balanced Bhaya is the healthy reverence and caution that keeps the soul awake to real danger and humble before the vast. The lesson is that some fear is wisdom — the appropriate trembling before what is genuinely powerful or sacred, which protects and orients."
+      "gloss": "Bhaya is the contraction of consciousness in the face of perceived threat. It is the organism’s oldest intelligence—the capacity to recognize danger and mobilize accordingly. But Bhaya is not only primal. It extends from the visceral panic of the body to the cognitive anxiety of the planner and the existential dread of the philosopher. In the classical framework, it reveals the fragility of egoic identity: we fear because we identify with something that can be lost.",
+      "coordinate": {
+        "raw": "Seat: Vital (the tremor of fear) · Ontic mode: State (durable disposition / Sthāyibhāva) · Valence: Faculty — wholesome caution, afflictive as pervasive dread · Guṇa: Rajas–Tamas · Scale: Individual (ādhyātmika) · Causal status: Dispositional ground · Key relation: Ripens into Bhayānaka Rasa; fed by apprehension and panic.",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital (the tremor of fear)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Faculty — wholesome caution, afflictive as pervasive dread",
+        "ontic_mode": "State (durable disposition / Sthāyibhāva)",
+        "key_relation": "Ripens into Bhayānaka Rasa; fed by apprehension and panic.",
+        "causal_status": "Dispositional ground"
+      }
     },
     {
-      "concept_id": 1231,
+      "concept_id": 99,
       "dimension_id": 8,
       "slug": "hasa",
-      "name": "Hasa",
+      "name": "Hāsa",
       "role": "primary",
-      "gloss": "### Equilibrium: Joy as Healing Intelligence\n\nIn equilibrium, Hāsa manifests as a lightness of being that does not deny difficulty but refuses to be crushed by it. Internally, the person carries a gentle background hum of amusement at the human condition—including their own participation in it. There is cognitive flexibility: the ability to hold two perspectives simultaneously and find the gap between them illuminating rather than threatening. The body reflects this—relaxed jaw, easy breathing, a readiness to smile that is not forced.\n\nIn relationships, equilibrium Hāsa is the capacity to laugh together without anyone being diminished. It is the self-deprecating humor that builds trust, the playful banter that keeps long partnerships alive, the ability to defuse tension with a well-timed observation rather than a confrontation. At work, it appears as creative intelligence—the capacity to see problems from unexpected angles. In daily life, it is the spirit of līlā—play—that makes ordinary tasks tolerable and occasionally delightful.\n\nThe meeting has gone badly. The client rejected the proposal, the timeline is ruined, and the team is sitting in shell-shocked silence. She surveys the wreckage of their carefully prepared slides and says, quietly, “Well, at least the font choice was impeccable.” A beat. Then the project lead snorts, and the tension in the room cracks open like an egg. They begin to problem-solve. The laughter did not fix anything. It made fixing things possible.\n\nInner Presence (Psychic). At the soul level, balanced Hāsa is the lightness of a being that does not take itself too seriously — the cosmic humor that sees the play (līlā) in things. The lesson is that joy and perspective are companions: to laugh kindly is to hold life's contradictions without being crushed by them."
+      "gloss": "Hāsa is the lightening energy of consciousness—the force that lifts, releases, and reminds us that the structures we build around our lives are not as solid as they seem. It is not merely the response to a joke. Hāsa is the cognitive capacity to perceive incongruity, the emotional willingness to delight in absurdity, and the social grace of shared vulnerability that laughter creates. In the classical view, it arises when expectations are subverted in a non-threatening way, and its function is to dissolve rigidity—in the body, in thought patterns, and in the fortress of the ego.",
+      "coordinate": {
+        "raw": "Seat: Vital (the lightness of mirth) · Ontic mode: State (durable disposition / Sthāyibhāva) · Valence: Faculty — wholesome levity, deflective when armored · Guṇa: Sattva in equilibrium · Scale: Individual, with interpersonal expression · Causal status: Dispositional ground · Key relation: Ripens into Hāsya Rasa; fed by transient delight and surprise.",
+        "guna": "Sattva in equilibrium",
+        "seat": "Vital (the lightness of mirth)",
+        "scale": "Individual, with interpersonal expression",
+        "valence": "Faculty — wholesome levity, deflective when armored",
+        "ontic_mode": "State (durable disposition / Sthāyibhāva)",
+        "key_relation": "Ripens into Hāsya Rasa; fed by transient delight and surprise.",
+        "causal_status": "Dispositional ground"
+      }
     },
     {
-      "concept_id": 1232,
+      "concept_id": 104,
       "dimension_id": 8,
       "slug": "jugupsa",
-      "name": "Jugupsa",
+      "name": "Jugupsā",
       "role": "primary",
-      "gloss": "### Equilibrium: Discernment as Moral Clarity\n\nIn equilibrium, Jugupsā is viveka—discriminative wisdom. Internally, there is a clear sense of what aligns with one’s values and what does not. The feeling is not rage but recoil: a quiet, firm turning away from what is harmful or degrading. The body registers it as a subtle contraction—a pulling back of the hand, a narrowing of the eyes—that signals “not this.”\n\nIn relationships, equilibrium Jugupsā appears as healthy boundary-setting—the ability to say “This is not acceptable to me” without hatred, and to withdraw from toxic situations without needing to destroy them. At work, it is the ethical backbone: the person who will not falsify data, who walks away from the deal that requires compromised values. In daily life, it manifests as integrity—the alignment of conduct with conviction.\n\nThe contract is lucrative. The client is eager. But something in the arrangement does not sit right—a vagueness about the sourcing, an eagerness to skip the compliance review. She cannot point to a specific violation, but her stomach knows. She declines. The client is surprised. Her colleagues are puzzled. She does not have a compelling argument; she has something older and more reliable—a visceral refusal to participate in something that feels wrong.\n\nInner Presence (Psychic). At the soul level, balanced Jugupsā is the soul's healthy discernment of what truly harms or degrades — the refined revulsion that turns one from corruption toward purity. The lesson is that aversion, rightly tuned, is a moral compass that protects the soul's integrity."
+      "gloss": "Jugupsā is the emotional recoil from what threatens bodily or moral integrity. It is the force that makes us turn away from decay, cruelty, and corruption—both physical and ethical. In its biological form, it protects against contamination. In its moral form, it serves as the foundation of ethical discernment, the visceral refusal to participate in what degrades. The classical tradition recognizes it as the root of both purity and prejudice, depending on whether it is guided by wisdom or by ignorance.",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital (visceral revulsion) · Ontic mode: State (durable disposition / Sthāyibhāva) · Valence: Faculty — wholesome discernment, contempt when chronic · Guṇa: Sattva (as discernment)–Tamas (as contempt) · Scale: Individual, with a moral (Ādhibhautika) dimension · Causal status: Dispositional ground · Key relation: Ripens into Bībhatsa Rasa; fed by aversion.",
+        "guna": "Sattva (as discernment)–Tamas (as contempt)",
+        "seat": "Physical–Vital (visceral revulsion)",
+        "scale": "Individual, with a moral (Ādhibhautika) dimension",
+        "valence": "Faculty — wholesome discernment, contempt when chronic",
+        "ontic_mode": "State (durable disposition / Sthāyibhāva)",
+        "key_relation": "Ripens into Bībhatsa Rasa; fed by aversion.",
+        "causal_status": "Dispositional ground"
+      }
     },
     {
-      "concept_id": 1233,
+      "concept_id": 101,
       "dimension_id": 8,
       "slug": "krodha",
       "name": "Krodha",
       "role": "primary",
-      "gloss": "### Equilibrium: Anger as Sacred Boundary\n\nIn equilibrium, Krodha is precise and proportionate. Internally, there is a clear recognition that something has gone wrong—a violation of fairness, a breach of trust, a line crossed. The feeling is hot but focused: a fire in the belly rather than a conflagration. Thoughts are sharp and directed toward the specific injustice, not toward character assassination. The body is mobilized—upright, alert, energized—but not out of control.\n\nIn relationships, this manifests as the ability to say no clearly, to confront without cruelty, to draw a boundary and hold it without escalation. At work, it appears as the colleague who speaks up in the meeting when a bad decision is being made, who names the problem everyone else is tiptoeing around. In daily life, equilibrium Krodha is the energy that fuels activism, reform, creative destruction—the refusal to accept what ought to be changed, paired with the discipline to channel that refusal constructively.\n\nShe heard the comment clearly. It was directed at the intern—a remark about her accent, framed as a joke, delivered with a smile. The room laughed politely. She did not. In the hallway afterward, she stopped the speaker. “That wasn’t funny, and it wasn’t appropriate. She’s new and she can’t push back yet. I can.” Her voice was steady. Her hands did not shake. The anger was there—she could feel it, bright and clean in her sternum—but it was in service of something, and so it did not need to be loud.\n\nInner Presence (Psychic). At the soul level, balanced Krodha is the clean fire that rises in defense of what is right — the energy that says ‘no’ to genuine wrong without being poisoned by hatred. The lesson is that anger, rightly used, is a form of love for justice that protects boundaries and serves dharma."
+      "gloss": "Krodha is the fire of the psyche—a high-energy response to perceived violation, injustice, obstruction, or betrayal. It is heat and movement, the emotional equivalent of a boundary drawn in the sand. In its dharmic form—kṣātra-krodha, the righteous anger of the warrior—it protects truth, defends the vulnerable, and refuses to tolerate what should not be tolerated. In its distorted forms, it burns indiscriminately, consuming the person who carries it as readily as it consumes its target.",
+      "coordinate": {
+        "raw": "Seat: Vital (the rising fire of anger) · Ontic mode: State (durable disposition / Sthāyibhāva) · Valence: Faculty tending to affliction (protective, poisonous when indulged) · Guṇa: Rajas-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Dispositional ground (a standing cause) · Key relation: Ripens into Raudra Rasa; fed by the wave Amarṣa (indignation).",
+        "guna": "Rajas-dominant",
+        "seat": "Vital (the rising fire of anger)",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Faculty tending to affliction (protective, poisonous when indulged)",
+        "ontic_mode": "State (durable disposition / Sthāyibhāva)",
+        "key_relation": "Ripens into Raudra Rasa; fed by the wave Amarṣa (indignation).",
+        "causal_status": "Dispositional ground (a standing cause)"
+      }
     },
     {
-      "concept_id": 1234,
+      "concept_id": 98,
       "dimension_id": 8,
       "slug": "rati",
       "name": "Rati",
       "role": "primary",
-      "gloss": "### Equilibrium: Love as Generous Presence\n\nWhen Rati operates in equilibrium, there is a quality of warmth in the chest that is not grasping. The person experiences affection as something that flows outward without demanding return. Internally, thoughts about loved ones carry a tone of appreciation rather than anxiety. The body feels open—shoulders relaxed, breathing easy, a softness around the eyes. There is a natural attentiveness to beauty in small things: the way light falls across a table, the particular cadence of a friend’s laughter.\n\nIn relationships, this manifests as genuine care without possessiveness. The person can hold space for another’s independence without experiencing it as rejection. At work, equilibrium Rati appears as aesthetic sensitivity and a capacity for collaborative warmth—the colleague who remembers birthdays not performatively but because they actually noticed. In daily habit, there is an orientation toward nourishment: the meal prepared with attention, the evening walk chosen for its beauty rather than its efficiency.\n\nShe waters the herbs on the windowsill before checking her phone. The basil has put out new leaves overnight, and she runs a thumb along one, releasing its scent into the kitchen air. Her partner is still asleep. She makes tea for two—not because it was asked for, but because the act of preparing it is itself a small pleasure. The morning feels unhurried. There is nothing to prove.\n\nInner Presence (Psychic). At the soul level, balanced Rati is the heart's pure ‘yes’ to existence — love as participation in beauty that asks nothing back. The spiritual lesson is that affection freely given is itself a form of worship: one loves the particular and, through it, touches the universal."
+      "gloss": "Rati is the centripetal force of the human heart—the gravitational pull toward beauty, connection, and union. It is not limited to romantic desire, though it certainly includes it. Rati is the soul’s fundamental “yes” to life: the warmth that draws a parent to a child’s sleeping face, the quiet pleasure of a garden coming into bloom, the devotional surrender of the bhakta before the divine. It is the emotional current that makes us reach toward what we find beautiful, and in that reaching, discover something essential about ourselves.",
+      "coordinate": {
+        "raw": "Seat: Vital (the heart’s pull toward beauty and union) · Ontic mode: State (durable disposition / Sthāyibhāva) · Valence: Faculty — wholesome as generous love, binding as attachment · Guṇa: Sattva in equilibrium, rajasic in excess · Scale: Interpersonal (Ādhibhautika) · Causal status: Dispositional ground (a durable emotional foundation) · Key relation: Ripens into Śṛṅgāra Rasa; fed by vyabhicāribhāvas such as longing and jealousy.",
+        "guna": "Sattva in equilibrium, rajasic in excess",
+        "seat": "Vital (the heart’s pull toward beauty and union)",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Faculty — wholesome as generous love, binding as attachment",
+        "ontic_mode": "State (durable disposition / Sthāyibhāva)",
+        "key_relation": "Ripens into Śṛṅgāra Rasa; fed by vyabhicāribhāvas such as longing and jealousy.",
+        "causal_status": "Dispositional ground (a durable emotional foundation)"
+      }
     },
     {
-      "concept_id": 1235,
+      "concept_id": 106,
       "dimension_id": 8,
       "slug": "sama",
-      "name": "Sama",
+      "name": "Śama",
       "role": "primary",
-      "gloss": "### Equilibrium: Peace as Integration\n\nIn equilibrium, Śama is not manufactured calm but natural spaciousness. Internally, there is a quality of “enoughness”—a sense that nothing is missing, that the present moment is complete as it is. Thoughts arise and pass without demanding pursuit. Emotions move through the field of awareness like weather across a sky that is itself unmoved. The body is relaxed without being limp, alert without being tense—a state of restful readiness.\n\nIn relationships, equilibrium Śama appears as the capacity for non-reactive presence—the person who can sit with another’s pain without trying to fix it, who can receive criticism without collapsing, who can hold space for difficulty without becoming difficulty. At work, it is the quality of leadership that remains steady when everything else is in flux. In daily life, there is an unhurried quality—a willingness to be with what is, rather than compulsively arranging what should be.\n\nThe news is bad. The restructuring will eliminate her position. She hears this, and there is a moment—a familiar tightening in the chest, a flash of fear, the beginning of a narrative about unfairness. She notices these arrivals the way one notices birds landing on a wire: they are there, and then they will not be there. She takes a breath. She asks the necessary questions. She does not perform calmness; she inhabits it. Later, walking to her car, she will feel the grief arrive, and she will let it come. But it will come to someone who is not made of grief, and that makes all the difference.\n\nInner Presence (Psychic). At the soul level, balanced Śama is the deep tranquility that is the ground of all the other states — the still peace that is not produced but uncovered. The lesson is that serenity is the soul's native condition beneath its weather, and that from this stillness all right feeling and action arise."
+      "gloss": "Śama is the ground of being—the abiding stillness beneath all emotional weather. Championed by Abhinavagupta as the ninth and foundational Sthāyībhāva, it is not the absence of feeling but the presence of a witnessing awareness that allows all other feelings to arise and dissolve without disturbance. It is the rasa of the sage, the Sthita-prajña of the Gītā, the condition in which consciousness rests in its own nature rather than being swept along by its contents.",
+      "coordinate": {
+        "raw": "Seat: Psychic (the still peace beneath all feeling) · Ontic mode: State — the foundational Sthāyibhāva (Abhinavagupta’s ninth) · Valence: Virtue — the equanimity to be uncovered (not the withdrawal that counterfeits it) · Guṇa: Sattva, tending beyond the guṇas · Scale: Individual, opening to the transcendent · Causal status: Ground (the substratum to which the other states return) · Key relation: Ripens into Śānta Rasa; the still ground of the other eight sthāyibhāvas.",
+        "guna": "Sattva, tending beyond the guṇas",
+        "seat": "Psychic (the still peace beneath all feeling)",
+        "scale": "Individual, opening to the transcendent",
+        "valence": "Virtue — the equanimity to be uncovered (not the withdrawal that counterfeits it)",
+        "ontic_mode": "State — the foundational Sthāyibhāva (Abhinavagupta’s ninth)",
+        "key_relation": "Ripens into Śānta Rasa; the still ground of the other eight sthāyibhāvas.",
+        "causal_status": "Ground (the substratum to which the other states return)"
+      }
     },
     {
-      "concept_id": 1236,
+      "concept_id": 100,
       "dimension_id": 8,
       "slug": "soka",
-      "name": "Soka",
+      "name": "Śoka",
       "role": "primary",
-      "gloss": "### Equilibrium: Grief as Sacred Opening\n\nIn equilibrium, Śoka softens rather than destroys. Internally, there is a deep ache—located often in the chest, sometimes behind the eyes—that is painful but not unbearable. Thoughts move slowly, with a quality of tenderness. The person is acutely aware of what matters: the preciousness of time, the fragility of connection, the weight of things left unsaid. The body wants stillness and warmth—a blanket, a window to sit beside, the presence of another person who does not need to speak.\n\nIn relationships, equilibrium Śoka deepens capacity for empathy. The person who has grieved well—who has allowed sorrow its full passage—becomes someone others trust with their own pain. At work, it produces a quality of seriousness that is not grim but profound: the person who knows what matters and does not waste energy on what does not. In daily habit, there is a quality of ritual—the candle lit for the departed, the walk taken in the place that once was shared—that honors loss without being consumed by it.\n\nIt has been eight months since his father died. The acute pain has receded into something more like weather—a persistent atmospheric condition that colors everything without preventing function. This morning, folding laundry, he found one of his father’s handkerchiefs mixed in with his own shirts. He held it for a long time. He did not cry. He simply stood there, in the kitchen, holding the cloth, and let the absence be fully present. Then he folded it carefully and placed it in a drawer.\n\nInner Presence (Psychic). At the soul level, balanced Śoka is the heart's honest acknowledgment of loss — grief as the price and the proof of love. The lesson is that sorrow, fully felt and allowed to move, deepens rather than diminishes; it is the soul's way of honoring what mattered."
+      "gloss": "Śoka is the breaking open of the heart in the face of impermanence. It is the emotional acknowledgment that what we love can be taken, that what we build can crumble, that we ourselves are transient. Legend holds that the first poem—the Rāmāyaṇa—was born when the sage Vālmīki witnessed the killing of a bird and his raw grief spontaneously crystallized into rhythmic verse. The very word śloka (verse) derives from śoka (sorrow). In the classical view, grief is not merely something we suffer; it is something that creates—it gives birth to empathy, poetry, and ultimately to wisdom.",
+      "coordinate": {
+        "raw": "Seat: Vital (the weight of loss in the heart) · Ontic mode: State (durable disposition / Sthāyibhāva) · Valence: Faculty — wholesome as honest grief, afflictive when it becomes a home · Guṇa: Sattva–Tamas · Scale: Interpersonal (Ādhibhautika) · Causal status: Dispositional ground · Key relation: Ripens into Karuṇā Rasa; fed by dejection and anxiety.",
+        "guna": "Sattva–Tamas",
+        "seat": "Vital (the weight of loss in the heart)",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Faculty — wholesome as honest grief, afflictive when it becomes a home",
+        "ontic_mode": "State (durable disposition / Sthāyibhāva)",
+        "key_relation": "Ripens into Karuṇā Rasa; fed by dejection and anxiety.",
+        "causal_status": "Dispositional ground"
+      }
     },
     {
-      "concept_id": 1237,
+      "concept_id": 102,
       "dimension_id": 8,
       "slug": "utsaha",
-      "name": "Utsaha",
+      "name": "Utsāha",
       "role": "primary",
-      "gloss": "### Equilibrium: Heroism as Steady Effort\n\nIn equilibrium, Utsāha is characterized by a lack of confusion and a readiness to sacrifice comfort for a higher purpose. Internally, there is a quiet confidence—not the loud bravado of the ego, but the settled certainty that the work matters and that one is capable of doing it. Thoughts are organized around goals but not enslaved to them. The body feels alive, energized, responsive—capable of sustained effort without the jittery quality of anxiety.\n\nIn relationships, equilibrium Utsāha appears as reliability—the partner who shows up, the friend who helps you move, the parent who maintains structure during chaos. At work, it is the quality that separates productive perseverance from mere busyness: the person who stays focused through setbacks, who treats obstacles as problems to solve rather than signs to quit. Daily life has a rhythm of purposeful activity balanced by genuine rest.\n\nThe grant deadline is in three days and the data set is incomplete. She has been working twelve-hour days, but there is no panic in it. She knows what needs to happen, she has a plan, and she trusts her capacity to execute it. At ten p.m. she closes the laptop, walks the dog, eats dinner. The work will be there tomorrow. She is not anxious about it. She is ready for it.\n\nInner Presence (Psychic). At the soul level, balanced Utsāha is the courage to commit oneself fully to a worthy aim — the heroic energy that meets life with willing engagement. The lesson is that to throw oneself wholeheartedly into right action, undeterred by difficulty, is itself a spiritual discipline."
+      "gloss": "Utsāha is the propulsive force of the psyche—the will to act, to overcome, to rise. It is not the shallow excitement of novelty but the deep, sustained energy that makes a person capable of enduring difficulty in service of something larger than themselves. In the classical schema, it is the emotional engine of the Vīra (heroic) Rasa—the quality that transforms an ordinary person into someone willing to meet the world’s demands with courage and stamina.",
+      "coordinate": {
+        "raw": "Seat: Vital (heroic drive and resolve) · Ontic mode: State (durable disposition / Sthāyibhāva) · Valence: Faculty — wholesome resolve, compulsive striving in excess · Guṇa: Rajas–Sattva · Scale: Individual (ādhyātmika) · Causal status: Dispositional ground · Key relation: Ripens into Vīra Rasa; fed by resolve and vigor.",
+        "guna": "Rajas–Sattva",
+        "seat": "Vital (heroic drive and resolve)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Faculty — wholesome resolve, compulsive striving in excess",
+        "ontic_mode": "State (durable disposition / Sthāyibhāva)",
+        "key_relation": "Ripens into Vīra Rasa; fed by resolve and vigor.",
+        "causal_status": "Dispositional ground"
+      }
     },
     {
-      "concept_id": 1238,
+      "concept_id": 105,
       "dimension_id": 8,
       "slug": "vismaya",
       "name": "Vismaya",
       "role": "primary",
-      "gloss": "### Equilibrium: Wonder as Receptive Intelligence\n\nIn equilibrium, Vismaya is a quality of openness that informs perception without overwhelming it. Internally, there is a spaciousness—a willingness to be surprised, to not know, to encounter the world as though it had something new to show you. Thoughts move with curiosity rather than conclusion. The body opens: eyes widen, breathing deepens, the chest expands. There is a quality of presence—the person is fully here, because wonder only exists in the present tense.\n\nIn relationships, equilibrium Vismaya appears as genuine interest in the other—the capacity to be surprised by someone you have known for decades. At work, it fuels innovation and creative problem-solving: the mind that can wonder “what if” without immediately dismissing the unfamiliar. In daily life, it is the practice of attention that transforms the ordinary—the walk to the train station, the pattern of rain on glass—into occasions for quiet astonishment.\n\nHe is fifty-three and has walked this trail a hundred times. Today the fog sits in the valley like a lake of white, and the hills rise above it like islands. He stops. He has seen fog before. He has seen valleys. But this—this particular arrangement of moisture and light and silence—is unrepeatable, and he knows it. He stands there for several minutes, doing nothing productive, accomplishing nothing measurable, and returns home slightly different than when he left.\n\nInner Presence (Psychic). At the soul level, balanced Vismaya is the soul's openness to be astonished — the wonder that keeps it humble, curious, and alive to the mystery in the ordinary. The lesson is that wonder is the beginning of wisdom; the soul that can still be amazed has not closed itself to the sacred."
+      "gloss": "Vismaya is the opening of consciousness when reality exceeds its current frame. It is the emotion of the threshold—the moment when the known dissolves and something unexpected, vast, or incomprehensible appears. In children, it is the default setting. In adults, it is the door that keeps closing and must be deliberately reopened. The classical tradition regards Vismaya as the seed of both scientific inquiry and spiritual vision—the state in which the ego’s certainties crack open to admit the possibility of the truly Real.",
+      "coordinate": {
+        "raw": "Seat: Mental–Psychic (the opening to mystery) · Ontic mode: State (durable disposition / Sthāyibhāva) · Valence: Faculty — wholesome awe, sensation-seeking in excess · Guṇa: Sattva-dominant · Scale: Individual (ādhyātmika) · Causal status: Dispositional ground · Key relation: Ripens into Adbhuta Rasa; fed by astonishment.",
+        "guna": "Sattva-dominant",
+        "seat": "Mental–Psychic (the opening to mystery)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Faculty — wholesome awe, sensation-seeking in excess",
+        "ontic_mode": "State (durable disposition / Sthāyibhāva)",
+        "key_relation": "Ripens into Adbhuta Rasa; fed by astonishment.",
+        "causal_status": "Dispositional ground"
+      }
     },
     {
-      "concept_id": 1239,
+      "concept_id": 113,
       "dimension_id": 9,
       "slug": "alasya",
-      "name": "Alasya",
+      "name": "Ālasya",
       "role": "primary",
-      "gloss": "### The Equilibrium\n\nHealthy Ālasya is rest. It is the body’s wisdom when it says ‘not now’—the natural conserving of energy after exertion. Healthy Glāni is the honest fatigue that follows genuine effort, the satisfying tiredness of a full day’s work. Both are signals from the Prāṇamaya Kośa—the vital-energy sheath—that resources need replenishing.\n\nThe Somatic Base: A pleasant heaviness in the limbs. The eyelids soften. The muscles release their holding patterns. There is no resistance to the tiredness—it is welcomed, like sinking into warm water.\n\nThe Emotional Current: A quiet satisfaction in having earned rest. The drive is temporarily quiescent, and there is no guilt in the pause.\n\nThe Cognitive Map: Thoughts slow naturally. The mind’s planning function dims. There is a willingness to let tomorrow handle tomorrow.\n\nThe Inner Presence: The psyche is cycling between activity and receptivity—the natural rhythm of consciousness breathing in and out."
+      "gloss": "A heavy disinclination to act. In measure it is restful ease; in excess it sinks into sloth and stagnation that becomes a way of life; in deficiency it is a compulsive inability to be still.",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital · Ontic mode: Wave · Valence: Faculty — a rest signal; sloth in excess · Guṇa: Tamas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Dampens Utsāha; feeds the tamasic states.",
+        "guna": "Tamas-dominant",
+        "seat": "Physical–Vital",
+        "scale": "Individual",
+        "valence": "Faculty — a rest signal; sloth in excess",
+        "ontic_mode": "Wave",
+        "key_relation": "Dampens Utsāha; feeds the tamasic states.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1240,
+      "concept_id": 131,
       "dimension_id": 9,
-      "slug": "amarsha",
-      "name": "Amarsha",
+      "slug": "amarsa",
+      "name": "Amarṣa",
       "role": "primary",
-      "gloss": "## 4.3 Amarṣa — Restrained Anger: The Slow Burn\n\nAmarṣa is one of the most psychologically subtle of the Vyabhicārībhāvas. It is not the explosive anger of Krodha (which belongs to the Sthāyībhāvas). It is the anger that has been swallowed—the irritation, the impatience, the simmering resentment that sits just below the threshold of expression. It is the anger of the person who smiles while their jaw is clenched.\n\n### The Vignette: Restrained Anger\n\nHe sits in the meeting, nodding. His colleague—the one who took credit for the strategy he developed—is presenting it to the leadership team. The slides are his slides, reorganized. The language is his language, slightly paraphrased. His face is composed. His voice, when he speaks, is measured. But beneath the professional surface, a slow heat is building in his solar plexus. It is not rage—that would be dramatic, visible, addressable. It is something quieter and more corrosive: the hot, tight feeling of being unseen. He will not say anything about it. He will go home, be short with his partner for no apparent reason, and lie awake replaying the meeting with the things he should have said. The anger will not be expressed; it will be metabolized—slowly, inefficiently, into the tissue of his body and the texture of his sleep.\n\nThe Somatic Base: Tension concentrated in the jaw, shoulders, and solar plexus. A subtle heating of the face. The breath becomes shallow and held. The body is primed for action but forbidden to act.\n\nThe Emotional Current: A compound of anger, humiliation, and impotence. The drive is toward justice—toward being seen, acknowledged, credited—but the social context does not permit the direct pursuit of that drive.\n\nThe Cognitive Map: Rumination and rehearsal. The mind replays the offense and scripts alternative responses—what one could have said, should have said, might say tomorrow. These scripts are rarely enacted.\n\nThe Inner Presence: Amarṣa reveals the gap between social performance and authentic selfhood. At the psychic level, it is an invitation to examine where we have surrendered our voice in exchange for approval or safety. The spiritual lesson is about boundaries—the dharmic necessity of right speech, of speaking truth without violence.\n\n•  •"
+      "gloss": "The slow burn of indignation at a violated value — the transient wave that rises to fuel durable anger. In measure it is a clean signal that something is wrong; in excess it smoulders into resentment; in deficiency it is a failure to register genuine violation.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave (transient episode / Vyabhicāribhāva) · Valence: Faculty — a passing signal of violated value, neither virtue nor vice in itself · Guṇa: Rajas-dominant · Scale: Individual, with interpersonal trigger · Causal status: Contributory cause (a feeder that nourishes a durable state) · Key relation: Part that feeds the whole — rises to fuel Krodha (Sthāyibhāva), ripening toward Raudra Rasa.",
+        "guna": "Rajas-dominant",
+        "seat": "Vital",
+        "scale": "Individual, with interpersonal trigger",
+        "valence": "Faculty — a passing signal of violated value, neither virtue nor vice in itself",
+        "ontic_mode": "Wave (transient episode / Vyabhicāribhāva)",
+        "key_relation": "Part that feeds the whole — rises to fuel Krodha (Sthāyibhāva), ripening toward Raudra Rasa.",
+        "causal_status": "Contributory cause (a feeder that nourishes a durable state)"
+      }
     },
     {
-      "concept_id": 1241,
+      "concept_id": 128,
       "dimension_id": 9,
       "slug": "apasmara",
-      "name": "Apasmara",
+      "name": "Apasmāra",
       "role": "primary",
-      "gloss": "Apasmara"
+      "gloss": "A slipping-away of recollection and presence — a momentary blanking that unmoors the thread of experience. In its ordinary form it is simple absent-mindedness; in excess it is a disorienting loss of continuity; its opposite is an anxious over-holding of every detail.",
+      "coordinate": {
+        "raw": "Seat: Mental · Ontic mode: Wave · Valence: Faculty tending to affliction (the lost thread) · Guṇa: Tamas · Scale: Individual · Causal status: Contributory feeder · Key relation: Interrupts Smṛti; unsettles the durable emotions.",
+        "guna": "Tamas",
+        "seat": "Mental",
+        "scale": "Individual",
+        "valence": "Faculty tending to affliction (the lost thread)",
+        "ontic_mode": "Wave",
+        "key_relation": "Interrupts Smṛti; unsettles the durable emotions.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1242,
+      "concept_id": 110,
       "dimension_id": 9,
       "slug": "asuya",
-      "name": "Asuya",
+      "name": "Asūyā",
       "role": "primary",
-      "gloss": "## 5.2 Asūyā — Envy: The Mirror That Wounds\n\nAsūyā is the transient state of seeing someone else possess what we desire—and feeling diminished by the comparison. In equilibrium, it is the healthy recognition of admiration, the aspirational pull that motivates growth: ‘I want what they have’ becomes ‘I will work toward what they have.’ In excess, it becomes corrosive—a constant measuring of oneself against others that poisons satisfaction with one’s own life.\n\n### The Vignette: Excess\n\nShe opens Instagram and sees her former roommate’s post: a sun-drenched kitchen in the new house, the baby on the hip, the husband’s arm around the waist. She knows—rationally, clearly—that social media is a highlight reel. She knows her former roommate has her own struggles. But the feeling bypasses all of this. It arrives in the stomach first: a sinking, a tightening. Then the thoughts: Why does everything come so easily to her? What am I doing wrong? She puts the phone down, picks it up again, scrolls to another friend’s vacation photos. The same sinking. She closes the app and stares at the ceiling of her studio apartment. The apartment is fine. She liked it this morning. But after twenty minutes on social media, it has become evidence of her inadequacy.\n\nThe Somatic Base: A sinking in the stomach, a tightness in the chest. Sometimes a slight nausea—the body’s response to perceived diminishment. The shoulders hunch inward, as if trying to make the self smaller.\n\nThe Emotional Current: A compound of desire, inadequacy, and resentment. The hunger is not truly for what the other person has—it is for the feeling of ‘enoughness’ that their success seems to represent.\n\nThe Cognitive Map: Comparative thinking: an incessant, involuntary measuring of one’s life against curated images of others’ lives. The mind selects data that confirms inadequacy and filters out evidence of sufficiency.\n\nThe Inner Presence: Asūyā reveals where the self has been externalized—where identity has been made dependent on external markers rather than rooted in intrinsic being. The spiritual lesson is about Sva-dharma: the recognition that one’s own path, with all its apparent limitations, is the only path that can lead to genuine fulfillment.\n\n•  •"
+      "gloss": "The wound of comparison — resentment at another’s good fortune or worth. In measure it can spur healthy aspiration; in excess it sours affection and hardens into begrudging spite; in deficiency it can mask as a flattering refusal to discern real merit.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty tending to affliction (envious comparison) · Guṇa: Rajas–Tamas · Scale: Interpersonal (Ādhibhautika) · Causal status: Contributory feeder · Key relation: Sours Rati and feeds Krodha.",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Faculty tending to affliction (envious comparison)",
+        "ontic_mode": "Wave",
+        "key_relation": "Sours Rati and feeds Krodha.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1243,
+      "concept_id": 126,
       "dimension_id": 9,
       "slug": "autsukya",
       "name": "Autsukya",
       "role": "primary",
-      "gloss": "## 9.1 Autsukya — Longing: The Sweet Ache\n\nAutsukya is the transient state of wanting what is absent—a person, a place, a time, a possibility. In equilibrium, it is the natural ache of love for someone who is away, the anticipation of a reunion, the aspiration toward a goal not yet reached. It gives life its forward motion, its sense of reaching toward.\n\nIn excess, Autsukya becomes obsessive longing—the inability to be present because the mind is perpetually elsewhere, dwelling on what is missing. The person cannot enjoy what they have because they are consumed by what they lack.\n\n### The Vignette: Longing\n\nHe stands at the kitchen window, watching the autumn light change. His daughter moved across the country three months ago for a job she loves. He is proud—genuinely, deeply proud. And he aches. Not all the time, not unbearably, but at moments like this—the golden hour, the quiet kitchen, the empty chair at the table where she used to sit and do homework with earbuds in, bobbing her head to music he pretended not to like. He picks up his phone, starts to text her, then puts it down. She is busy. She is building a life. The ache is not a problem to be solved; it is the emotional weight of love in the presence of absence. He lets it sit in his chest like a stone warmed by the sun. It is, he realizes, not entirely unpleasant. The ache itself is proof that what they had—what they still have—is real.\n\nThe Somatic Base: A pulling sensation in the chest, centered behind the sternum. The body feels oriented toward something beyond its immediate environment, as if leaning into a wind that only it can feel.\n\nThe Emotional Current: A bittersweet compound of love and absence. The hunger is for reunion, for completion, for the closing of a gap. But in its balanced form, the ache itself is recognized as valuable—as evidence of the capacity to love.\n\nThe Cognitive Map: Thoughts oscillate between present and absent: memories of what was, imaginations of what could be. In balance, these thoughts are held lightly. In excess, they consume all available bandwidth.\n\nThe Inner Presence: Autsukya, in its deepest form, is the soul’s longing for the Absolute—the ‘divine homesickness’ that the Bhakti traditions recognize as the engine of spiritual aspiration. Every human longing—for a person, for a place, for a state of being—is understood as a surface expression of this deeper longing for wholeness, for reunion with the source.\n\n•  •"
+      "gloss": "The sweet ache of longing — the soul’s memory of a wholeness it aches toward. In measure it is aspiration and anticipation; in excess it becomes restless craving that cannot rest in the present; in deficiency it is a flat absence of desire.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty — aspiration; craving in excess · Guṇa: Rajas–Sattva · Scale: Individual, with interpersonal object · Causal status: Contributory feeder · Key relation: Feeds Rati (toward Śṛṅgāra Rasa).",
+        "guna": "Rajas–Sattva",
+        "seat": "Vital",
+        "scale": "Individual, with interpersonal object",
+        "valence": "Faculty — aspiration; craving in excess",
+        "ontic_mode": "Wave",
+        "key_relation": "Feeds Rati (toward Śṛṅgāra Rasa).",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1244,
+      "concept_id": 132,
       "dimension_id": 9,
       "slug": "avahittha",
-      "name": "Avahittha",
+      "name": "Avahitthā",
       "role": "primary",
-      "gloss": "Avahittha"
+      "gloss": "The masking of true feeling behind composure. In measure it is social tact and self-possession; in excess it becomes a self-alienating suppression that hides the heart even from oneself; its absence is an unfiltered over-exposure.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Wave · Valence: Faculty — tact; suppression in excess · Guṇa: Rajas–Tamas · Scale: Interpersonal (Ādhibhautika) · Causal status: Contributory feeder · Key relation: Conceals the durable emotions from view.",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital–Mental",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Faculty — tact; suppression in excess",
+        "ontic_mode": "Wave",
+        "key_relation": "Conceals the durable emotions from view.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1245,
+      "concept_id": 122,
       "dimension_id": 9,
       "slug": "avega",
-      "name": "Avega",
+      "name": "Āvega",
       "role": "primary",
-      "gloss": "### The Equilibrium\n\nIn balance, Capalatā is spontaneity—the ability to respond quickly, to pivot, to seize an opportunity. Āvega in balance is healthy enthusiasm—the quickening of energy that comes with genuine interest or creative inspiration. Both serve the dynamic, responsive quality of a fully alive consciousness."
+      "gloss": "A sudden surge or shock that seizes the system. In emergency it is mobilizing; in excess it disorganizes into overwhelm and reactivity; its absence is a sluggish failure to respond when response is called for.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty — a mobilizing surge · Guṇa: Rajas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: A sudden wave that colors many durable emotions.",
+        "guna": "Rajas-dominant",
+        "seat": "Vital",
+        "scale": "Individual",
+        "valence": "Faculty — a mobilizing surge",
+        "ontic_mode": "Wave",
+        "key_relation": "A sudden wave that colors many durable emotions.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1246,
+      "concept_id": 120,
       "dimension_id": 9,
       "slug": "capalata",
-      "name": "Capalata",
+      "name": "Capalatā",
       "role": "primary",
-      "gloss": "### The Equilibrium\n\nIn balance, Capalatā is spontaneity—the ability to respond quickly, to pivot, to seize an opportunity. Āvega in balance is healthy enthusiasm—the quickening of energy that comes with genuine interest or creative inspiration. Both serve the dynamic, responsive quality of a fully alive consciousness."
+      "gloss": "A restless inability to hold still. In measure it is quick responsiveness and spontaneity; in excess it is scattered volatility that starts everything and finishes nothing; its lack is a rigid immovability.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty — responsiveness; volatility in excess · Guṇa: Rajas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Destabilizes the durable emotions (paired in the text with Āvega).",
+        "guna": "Rajas-dominant",
+        "seat": "Vital",
+        "scale": "Individual",
+        "valence": "Faculty — responsiveness; volatility in excess",
+        "ontic_mode": "Wave",
+        "key_relation": "Destabilizes the durable emotions (paired in the text with Āvega).",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1247,
+      "concept_id": 115,
       "dimension_id": 9,
       "slug": "cinta",
-      "name": "Cinta",
+      "name": "Cintā",
       "role": "primary",
-      "gloss": "## 3.2 Cintā and Viṣāda — The Anxiety-Despair Continuum\n\nCintā (Anxiety/Worry) and Viṣāda (Despair/Sorrow) form a natural continuum—the former is the agitated reaching for control over an uncertain future; the latter is what remains when that reaching has exhausted itself. Together, they represent perhaps the most universally recognized Vyabhicārībhāvas in contemporary life.\n\n### Cintā — Anxiety: The Mind’s Relentless Forecasting\n\nIn equilibrium, Cintā is the adaptive signal that alerts us to genuine threats and galvanizes preparation. It is the tightening before a presentation, the alertness before a difficult conversation. It sharpens focus and mobilizes energy. In this form, it arises, serves its purpose, and dissolves—replaced, perhaps, by Harṣa (joy) or Dhṛti (steadfastness) when the challenge is met.\n\nIn excess, Cintā becomes the defining weather pattern of millions of modern lives. The mind’s forecasting mechanism, designed for genuine threats, runs continuously on imagined ones. The body stays in a state of low-grade activation—cortisol dripping steadily into the bloodstream like a leaking faucet. Sleep becomes elusive. The chest stays tight. Thoughts loop: ‘What if this happens? What if that happens? What did they mean by that?’\n\n### The Vignette: Cintā in Excess\n\nIt is 2:47 a.m. and she is awake again. The quarterly review is in eleven days. She has prepared. She knows the numbers. But her mind has found a new thread to pull: What if they ask about the Carter account? She rehearses the answer. Then rehearses it differently. The ceiling stares back at her, impassive. She picks up her phone, checks email—nothing new, of course—and puts it down. Her stomach is tight, a familiar knot just below the ribs. She tries breathing exercises from the app. They work for ninety seconds. Then: What if the breathing exercise isn’t working because the anxiety is justified? A new loop begins. By morning she will be exhausted, functional, and carrying the invisible weight of a night spent wrestling shadows.\n\nIn deficiency—where appropriate anxiety is absent—the person becomes reckless. Without Cintā’s alerting function, they walk into avoidable disasters with unearned confidence. They sign contracts without reading the fine print. They ignore warning signs in relationships. Their body lacks the low hum of protective vigilance, and their cognitive map is dominated by an assumption of safety that reality does not warrant.\n\n•  •"
+      "gloss": "Future-projected worry that loops over imagined outcomes. In measure it is useful foresight; in excess it becomes corrosive rumination that generates catastrophe; in deficiency it is a heedless refusal to anticipate at all.",
+      "coordinate": {
+        "raw": "Seat: Mental · Ontic mode: Wave · Valence: Faculty — a foresight signal · Guṇa: Rajas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Future-projected; feeds Bhaya and Śoka (paired in the text with Viṣāda).",
+        "guna": "Rajas-dominant",
+        "seat": "Mental",
+        "scale": "Individual",
+        "valence": "Faculty — a foresight signal",
+        "ontic_mode": "Wave",
+        "key_relation": "Future-projected; feeds Bhaya and Śoka (paired in the text with Viṣāda).",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1248,
+      "concept_id": 114,
       "dimension_id": 9,
       "slug": "dainya",
       "name": "Dainya",
       "role": "primary",
-      "gloss": "Dainya"
+      "gloss": "A collapse of self-worth into helplessness and lowliness. In its cleanest form it can soften into true humility; in excess it becomes corrosive self-abasement and victimhood; in deficiency it stiffens into a pride that cannot bow.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty tending to affliction (self-diminishment) · Guṇa: Tamas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Feeds Śoka; opposes Utsāha.",
+        "guna": "Tamas-dominant",
+        "seat": "Vital",
+        "scale": "Individual",
+        "valence": "Faculty tending to affliction (self-diminishment)",
+        "ontic_mode": "Wave",
+        "key_relation": "Feeds Śoka; opposes Utsāha.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1249,
+      "concept_id": 118,
       "dimension_id": 9,
       "slug": "dhrti",
-      "name": "Dhrti",
+      "name": "Dhṛti",
       "role": "primary",
-      "gloss": "## 7.3 Dhṛti and Mati — Steadfastness and Analytical Clarity\n\nDhṛti (Steadfastness/Contentment) and Mati (Analysis/Determination) represent the cognitive and volitional dimensions of clarity. Dhṛti is the capacity to hold steady in the midst of turbulence—to remain anchored when the waves of other Vyabhicārībhāvas crash against the psyche. Mati is the capacity for clear, penetrating analysis—the mind functioning at its highest discriminative capacity.\n\nIn equilibrium, these states provide the ballast that prevents the other transient states from capsizing the vessel of consciousness. A person with strong Dhṛti can experience Cintā (anxiety) without being swept away by it. A person with active Mati can encounter Moha (delusion) and see through it. In excess, Dhṛti can harden into rigidity—the person who refuses to feel, who ‘holds steady’ by suppressing rather than integrating. In excess, Mati can become hyperanalysis—the paralysis of a mind that dissects everything and participates in nothing."
+      "gloss": "A steady holding-firm through difficulty and a settled contentment with what is. In equilibrium it is the ballast that keeps the emotional weather from capsizing; in excess it stiffens into stubbornness; in deficiency it is a resolve that crumbles at the first obstacle.",
+      "coordinate": {
+        "raw": "Seat: Mental–Vital · Ontic mode: Wave · Valence: Faculty — wholesome steadiness · Guṇa: Sattva-dominant · Scale: Individual · Causal status: Contributory feeder (stabilizing) · Key relation: Steadies the durable emotions; allied to Buddhi and Mati.",
+        "guna": "Sattva-dominant",
+        "seat": "Mental–Vital",
+        "scale": "Individual",
+        "valence": "Faculty — wholesome steadiness",
+        "ontic_mode": "Wave",
+        "key_relation": "Steadies the durable emotions; allied to Buddhi and Mati.",
+        "causal_status": "Contributory feeder (stabilizing)"
+      }
     },
     {
-      "concept_id": 1250,
+      "concept_id": 124,
       "dimension_id": 9,
       "slug": "garva",
       "name": "Garva",
       "role": "primary",
-      "gloss": "### The Equilibrium\n\nIn its balanced form, Garva is healthy self-confidence—the quiet knowledge of one’s own competence, earned through genuine achievement. It is the pride that allows a craftsman to stand behind her work, a parent to feel satisfaction in their child’s growth, a student to present their research without apologizing for its existence. This is the pride that does not need an audience."
+      "gloss": "The fortress of self-regard. In its faint form it is healthy self-respect; in excess it inflates into pride that distorts perception and repels connection; in deficiency it collapses into self-effacement.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Wave · Valence: Faculty tending to affliction (inflated self-regard) · Guṇa: Rajas–Tamas · Scale: Individual, with interpersonal display · Causal status: Contributory feeder · Key relation: Distorts the durable emotions; kin to Mada.",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital–Mental",
+        "scale": "Individual, with interpersonal display",
+        "valence": "Faculty tending to affliction (inflated self-regard)",
+        "ontic_mode": "Wave",
+        "key_relation": "Distorts the durable emotions; kin to Mada.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1251,
+      "concept_id": 108,
       "dimension_id": 9,
       "slug": "glani",
-      "name": "Glani",
+      "name": "Glāni",
       "role": "primary",
-      "gloss": "### The Equilibrium\n\nHealthy Ālasya is rest. It is the body’s wisdom when it says ‘not now’—the natural conserving of energy after exertion. Healthy Glāni is the honest fatigue that follows genuine effort, the satisfying tiredness of a full day’s work. Both are signals from the Prāṇamaya Kośa—the vital-energy sheath—that resources need replenishing.\n\nThe Somatic Base: A pleasant heaviness in the limbs. The eyelids soften. The muscles release their holding patterns. There is no resistance to the tiredness—it is welcomed, like sinking into warm water.\n\nThe Emotional Current: A quiet satisfaction in having earned rest. The drive is temporarily quiescent, and there is no guilt in the pause.\n\nThe Cognitive Map: Thoughts slow naturally. The mind’s planning function dims. There is a willingness to let tomorrow handle tomorrow.\n\nThe Inner Presence: The psyche is cycling between activity and receptivity—the natural rhythm of consciousness breathing in and out."
+      "gloss": "The felt exhaustion of body and spirit after exertion or grief. In measure it is an honest call to rest; in excess it becomes chronic collapse and lifelessness; its absence shows as a driven refusal to acknowledge one’s own limits.",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital · Ontic mode: Wave · Valence: Faculty — a depletion signal · Guṇa: Tamas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Dampens the durable emotions; typically follows Śrama.",
+        "guna": "Tamas-dominant",
+        "seat": "Physical–Vital",
+        "scale": "Individual",
+        "valence": "Faculty — a depletion signal",
+        "ontic_mode": "Wave",
+        "key_relation": "Dampens the durable emotions; typically follows Śrama.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1252,
+      "concept_id": 121,
       "dimension_id": 9,
       "slug": "harsa",
-      "name": "Harsa",
+      "name": "Harṣa",
       "role": "primary",
-      "gloss": "### The Equilibrium\n\nHarṣa in equilibrium is one of the most beautiful of all human experiences. It is the sudden, unexpected flash of joy that needs no reason and asks no permission. It arrives like a shaft of sunlight through clouds—briefly, intensely, gratuitously. A child laughing on a bus. A fragment of music overheard from a passing car. The smell of rain on warm asphalt. In these moments, the entire system—body, breath, mind, spirit—lights up for a few seconds, and the fundamental goodness of being alive becomes self-evident.\n\nThe Somatic Base: An expansion in the chest, as if the ribcage has suddenly found more room. The face softens. The eyes brighten. There is a lightness in the limbs—a momentary release from gravity. Sometimes, if the Harṣa is strong enough, goosebumps rise and the breath catches—these are the Sāttvikabhāvas, the involuntary psychophysical responses of genuine aesthetic-emotional experience.\n\nThe Emotional Current: Pure delight, unmixed with desire or possession. Harṣa is joy that wants nothing—it is not the satisfaction of getting what one wanted but the surprise of being touched by beauty or goodness without having sought it.\n\nThe Cognitive Map: Thoughts become spacious and appreciative. The mind’s usual commentary—judging, planning, comparing—falls silent for a moment. There is only the thought: ‘This. This is good.’\n\nThe Inner Presence: Harṣa is the closest the transient states come to the Sthāyībhāva of Rati (Love/Delight) and, ultimately, to the experience of Ānanda—the bliss that the Vedantic tradition places at the deepest core of the self. These brief flashes of joy are understood, in the contemplative traditions, as moments when the veils between the surface mind and the bliss-sheath (the Ānandamaya Kośa) thin momentarily. For a few seconds, we taste what is always there beneath the noise."
+      "gloss": "The sunbreak of joy — an unbidden uprising of gladness. In equilibrium it is received and shared freely; in excess it inflates into a manic elation that cannot land; in deficiency it is a joyless flatness that cannot be gladdened.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty — a wholesome uprising of gladness · Guṇa: Sattva–Rajas · Scale: Individual · Causal status: Contributory feeder · Key relation: Nourishes Rati and Hāsa (toward Śṛṅgāra and Hāsya).",
+        "guna": "Sattva–Rajas",
+        "seat": "Vital",
+        "scale": "Individual",
+        "valence": "Faculty — a wholesome uprising of gladness",
+        "ontic_mode": "Wave",
+        "key_relation": "Nourishes Rati and Hāsa (toward Śṛṅgāra and Hāsya).",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1253,
+      "concept_id": 123,
       "dimension_id": 9,
       "slug": "jadata",
-      "name": "Jadata",
+      "name": "Jaḍatā",
       "role": "primary",
-      "gloss": "## 8.1 Jaḍatā — Stupor: The Paralysis of Overwhelm\n\nJaḍatā is the state in which consciousness freezes. It is the deer in the headlights. It is the person who receives devastating news and simply… stops. Not crying, not screaming, not processing. Just stopped. The body is present; the mind has gone somewhere the body cannot follow.\n\n### The Vignette\n\nThe doctor is still talking, but the words have become sounds without meaning. ‘Biopsy’ was the word that did it—or maybe it was ‘lymph node.’ She is not sure. She is aware, distantly, that she is sitting in a chair, that the light in the office is blue-white, that there is a framed diploma on the wall she cannot read. Her hands are in her lap. They do not feel like her hands. The doctor pauses, asks if she has questions. She shakes her head. She has a thousand questions, but they are trapped behind a wall of glass. She walks to her car. Puts the key in the ignition. Sits. The parking lot is very ordinary—trees, other cars, a woman loading groceries into a trunk. The ordinariness of it is shocking. The world has not changed. Only she has changed. Or rather—she has not changed yet. She is in the space between the impact and the response, the silent gap between the lightning and the thunder. The thunder will come later. For now, there is only this strange, cottony stillness."
+      "gloss": "The paralysis of overwhelm — a protective freeze that suspends response. In measure it buys a moment before an unbearable stimulus; in excess it locks into numb immobility; in deficiency it is an inability to pause even when flooded.",
+      "coordinate": {
+        "raw": "Seat: Physical–Mental · Ontic mode: Wave · Valence: Faculty — a protective freeze · Guṇa: Tamas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Suspends the durable emotions.",
+        "guna": "Tamas-dominant",
+        "seat": "Physical–Mental",
+        "scale": "Individual",
+        "valence": "Faculty — a protective freeze",
+        "ontic_mode": "Wave",
+        "key_relation": "Suspends the durable emotions.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1254,
+      "concept_id": 111,
       "dimension_id": 9,
       "slug": "mada",
       "name": "Mada",
       "role": "primary",
-      "gloss": "Mada"
+      "gloss": "The heady inflation of intoxication, wealth, or success. In small measure it is exuberant vitality; in excess it swells into arrogance that clouds judgment and courts a fall; its lack appears as an inability to enjoy one’s own good fortune.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Wave · Valence: Faculty tending to affliction (inflation) · Guṇa: Rajas–Tamas · Scale: Individual · Causal status: Contributory feeder · Key relation: Feeds Garva; clouds the durable emotions.",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital–Mental",
+        "scale": "Individual",
+        "valence": "Faculty tending to affliction (inflation)",
+        "ontic_mode": "Wave",
+        "key_relation": "Feeds Garva; clouds the durable emotions.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1255,
+      "concept_id": 137,
       "dimension_id": 9,
       "slug": "marana",
-      "name": "Marana",
+      "name": "Maraṇa",
       "role": "primary",
-      "gloss": "Marana"
+      "gloss": "The felt approach of death — the ultimate transition. As a lived state it reframes and gathers all the durable emotions; met consciously it can open into peace; fled from, it becomes terror; denied, it leaves life strangely unlived.",
+      "coordinate": {
+        "raw": "Seat: Physical–Psychic · Ontic mode: Wave (the terminal transition) · Valence: Faculty — the ultimate signal · Guṇa: Tamas, opening beyond the guṇas · Scale: Individual, with cosmic dimension · Causal status: Contributory feeder / terminus · Key relation: Gathers and reframes all the durable emotions (toward Karuṇā and Śānta).",
+        "guna": "Tamas, opening beyond the guṇas",
+        "seat": "Physical–Psychic",
+        "scale": "Individual, with cosmic dimension",
+        "valence": "Faculty — the ultimate signal",
+        "ontic_mode": "Wave (the terminal transition)",
+        "key_relation": "Gathers and reframes all the durable emotions (toward Karuṇā and Śānta).",
+        "causal_status": "Contributory feeder / terminus"
+      }
     },
     {
-      "concept_id": 1256,
+      "concept_id": 134,
       "dimension_id": 9,
       "slug": "mati",
       "name": "Mati",
       "role": "primary",
-      "gloss": "## 7.3 Dhṛti and Mati — Steadfastness and Analytical Clarity\n\nDhṛti (Steadfastness/Contentment) and Mati (Analysis/Determination) represent the cognitive and volitional dimensions of clarity. Dhṛti is the capacity to hold steady in the midst of turbulence—to remain anchored when the waves of other Vyabhicārībhāvas crash against the psyche. Mati is the capacity for clear, penetrating analysis—the mind functioning at its highest discriminative capacity.\n\nIn equilibrium, these states provide the ballast that prevents the other transient states from capsizing the vessel of consciousness. A person with strong Dhṛti can experience Cintā (anxiety) without being swept away by it. A person with active Mati can encounter Moha (delusion) and see through it. In excess, Dhṛti can harden into rigidity—the person who refuses to feel, who ‘holds steady’ by suppressing rather than integrating. In excess, Mati can become hyperanalysis—the paralysis of a mind that dissects everything and participates in nothing."
+      "gloss": "A settled clarity of judgment — the mind arriving at a firm, reasoned conclusion. In equilibrium it is wise decisiveness; in excess it stiffens into dogmatic certainty; in deficiency it is a chronic inability to reach any conclusion.",
+      "coordinate": {
+        "raw": "Seat: Mental · Ontic mode: Wave · Valence: Faculty — wholesome discernment · Guṇa: Sattva-dominant · Scale: Individual · Causal status: Contributory feeder (stabilizing) · Key relation: Steadies the durable emotions; allied to Buddhi and Dhṛti; resolves Vitarka.",
+        "guna": "Sattva-dominant",
+        "seat": "Mental",
+        "scale": "Individual",
+        "valence": "Faculty — wholesome discernment",
+        "ontic_mode": "Wave",
+        "key_relation": "Steadies the durable emotions; allied to Buddhi and Dhṛti; resolves Vitarka.",
+        "causal_status": "Contributory feeder (stabilizing)"
+      }
     },
     {
-      "concept_id": 1257,
+      "concept_id": 116,
       "dimension_id": 9,
       "slug": "moha",
       "name": "Moha",
       "role": "primary",
-      "gloss": "### The Equilibrium\n\nIn its mildest, most balanced form, Moha is the natural confusion that accompanies genuine complexity. It is the bewilderment of standing at a crossroads without a clear map—a temporary state that, if tolerated, can give way to insight. In the Bhagavad Gītā, Arjuna’s Moha at the beginning of the battle is not pathological; it is the necessary confusion that precedes genuine understanding."
+      "gloss": "A fog in which the map replaces the territory. In its mildest form it is ordinary uncertainty; in excess it is a clouded judgment that distorts every perception; its opposite is a brittle over-certainty that mistakes itself for clarity.",
+      "coordinate": {
+        "raw": "Seat: Mental · Ontic mode: Wave · Valence: Faculty tending to affliction (clouded judgment) · Guṇa: Tamas-dominant · Scale: Individual · Causal status: Contributory feeder / mechanism of concealment · Key relation: Distorts all the durable emotions; dispelled by Vibodha.",
+        "guna": "Tamas-dominant",
+        "seat": "Mental",
+        "scale": "Individual",
+        "valence": "Faculty tending to affliction (clouded judgment)",
+        "ontic_mode": "Wave",
+        "key_relation": "Distorts all the durable emotions; dispelled by Vibodha.",
+        "causal_status": "Contributory feeder / mechanism of concealment"
+      }
     },
     {
-      "concept_id": 1258,
+      "concept_id": 127,
       "dimension_id": 9,
       "slug": "nidra",
-      "name": "Nidra",
+      "name": "Nidrā",
       "role": "primary",
-      "gloss": "Nidra"
+      "gloss": "The descent toward sleep. In measure it is natural restoration answering the body’s need; in excess it dulls waking life into perpetual somnolence and avoidance; in deficiency it is a wired inability to let go into rest.",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital · Ontic mode: Wave · Valence: Faculty — a restoration signal · Guṇa: Tamas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Dims all the durable emotions; the threshold to Supta.",
+        "guna": "Tamas-dominant",
+        "seat": "Physical–Vital",
+        "scale": "Individual",
+        "valence": "Faculty — a restoration signal",
+        "ontic_mode": "Wave",
+        "key_relation": "Dims all the durable emotions; the threshold to Supta.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1259,
+      "concept_id": 107,
       "dimension_id": 9,
       "slug": "nirveda",
       "name": "Nirveda",
       "role": "primary",
-      "gloss": "### The Equilibrium\n\nIn its balanced form, Nirveda serves a vital function. It is the healthy disillusionment that follows the recognition of impermanence or the limits of worldly satisfaction. It is what a person feels after achieving a long-pursued goal and discovering that the satisfaction is thinner than expected. In classical thought, this is the gateway to Vairāgya—dispassion—and it can catalyze genuine spiritual inquiry. The question ‘Is this all there is?’ is not pathological when it arises naturally; it is the soul’s hunger for something deeper.\n\nThe Somatic Base: A gentle hollowness in the chest, as if something has been quietly removed. The body feels lighter but also emptier, like a house after the furniture has been moved out. There may be a faint ache behind the sternum—not sharp, but persistent.\n\nThe Emotional Current: A wistful quality, like watching rain on a window. There is sadness, but it is clean sadness—not bitter, not self-pitying. It carries a strange sweetness, the sweetness of letting go.\n\nThe Cognitive Map: Thoughts turn reflective: ‘What truly matters? What have I been chasing?’ There is clarity in the questioning, even if the answers have not yet arrived.\n\nThe Inner Presence: The soul is beginning to withdraw its investment from the surface play of life. This is the first stirring of genuine inquiry. At the psychic level, Nirveda is an invitation—the personality is being asked to release its grip on outcomes so that something deeper can emerge."
+      "gloss": "A quiet emptying of investment in the surface of life. In equilibrium it is clean sadness that opens into genuine inquiry; in excess it hardens into nihilism and contempt; in deficiency it is papered over by a brittle, reflexive positivity.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Wave (transient episode / Vyabhicāribhāva) · Valence: Faculty — a signal of readiness for inquiry; affliction when it hardens into nihilism · Guṇa: Sattva (clean letting-go) / Tamas (despair) · Scale: Individual (ādhyātmika) · Causal status: Contributory feeder · Key relation: Ripens toward Śānta (dispassion) or, unrefined, into Karuṇā.",
+        "guna": "Sattva (clean letting-go) / Tamas (despair)",
+        "seat": "Vital–Mental",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Faculty — a signal of readiness for inquiry; affliction when it hardens into nihilism",
+        "ontic_mode": "Wave (transient episode / Vyabhicāribhāva)",
+        "key_relation": "Ripens toward Śānta (dispassion) or, unrefined, into Karuṇā.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1260,
+      "concept_id": 109,
       "dimension_id": 9,
       "slug": "sanka",
-      "name": "Sanka",
+      "name": "Śaṅkā",
       "role": "primary",
-      "gloss": "## 4.1 Śaṅkā and Trāsa — From Apprehension to Panic\n\nŚaṅkā is the preliminary stirring of suspicion—the sense that something is wrong, that the ground is not as stable as it appears. In its equilibrium form, it is the quiet voice that says ‘Check again.’ It slows impulsive decisions. It is the vigilance that keeps the organism safe. In excess, it becomes the chronic suspicion that poisons relationships and paralyzes decision-making. Every kindness conceals a motive. Every silence is a judgment. The world becomes a place of hidden threats.\n\nTrāsa is the acute form—the full activation of the fear response, the adrenaline surge, the narrowing of consciousness to a single point of threat. In equilibrium, it is the lifesaving panic that moves the body before the mind has finished calculating. In excess, it is the panic attack in the grocery store, the terror that comes from nowhere and everywhere at once.\n\n### The Vignette: The Panic Storm\n\nIt starts in the checkout line. A tightness at the base of the throat, then a wave of heat rising up from the chest. His vision narrows. The fluorescent lights become impossibly bright. His heart hammers—he can feel it in his fingertips, in his ears. The person behind him is too close. The beep of the scanner is too loud. His thoughts fragment: Am I having a heart attack? What if I pass out? Everyone is looking at me. They aren’t looking at him. He knows this somewhere, in a small rational room at the back of his mind, but the door to that room has been slammed shut by the body’s alarm system. He abandons his cart and walks—carefully, deliberately, gripping the edge of ordinary composure—to his car. In the parking lot, with the engine running and the air conditioning blowing on his face, it passes. Fifteen minutes later, he feels foolish and ashamed. But his hands are still shaking.\n\nThe Somatic Base: Trāsa announces itself in the body first and foremost: racing heart, shallow rapid breathing, sweating palms, a sensation of the ground becoming unreliable. The body has declared a war that the rational mind did not authorize.\n\nThe Emotional Current: Raw, primal fear—the oldest emotion, the one that lives in the brainstem. In excess, it becomes untethered from any specific threat, free-floating, available to attach itself to anything.\n\nThe Cognitive Map: Thoughts become catastrophic and circular: ‘Something is very wrong. I am losing control. This will never end.’ The mind’s forecasting function has been hijacked by the alarm system.\n\nThe Inner Presence: At the psychic level, panic is a profound disconnection from the witnessing self. Consciousness collapses entirely into the content of fear. The ‘observer’—the part of us that can watch emotion without being consumed by it—has temporarily vanished. The spiritual lesson of Trāsa is precisely this: it reveals how tenuous our connection to the witnessing self can be, and how quickly we can lose it.\n\n•  •"
+      "gloss": "A wary contraction before a suspected threat. In equilibrium it is protective vigilance that scans and then relaxes; in excess it curdles into corrosive, generalized suspicion; in deficiency it is a naive blindness to real danger.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Wave · Valence: Faculty — protective wariness · Guṇa: Rajas-dominant · Scale: Individual, with interpersonal trigger · Causal status: Contributory feeder · Key relation: Feeds Bhaya, ripening toward Bhayānaka Rasa; peaks as Trāsa.",
+        "guna": "Rajas-dominant",
+        "seat": "Vital–Mental",
+        "scale": "Individual, with interpersonal trigger",
+        "valence": "Faculty — protective wariness",
+        "ontic_mode": "Wave",
+        "key_relation": "Feeds Bhaya, ripening toward Bhayānaka Rasa; peaks as Trāsa.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1261,
+      "concept_id": 117,
       "dimension_id": 9,
       "slug": "smrti",
-      "name": "Smrti",
+      "name": "Smṛti",
       "role": "primary",
-      "gloss": "## 7.1 Smṛti — Recollection: The Arrival of the Relevant Past\n\nSmṛti is not mere memory. It is the spontaneous, unbidden arising of a relevant past experience in the field of present consciousness. It is the moment when something you forgot you knew suddenly surfaces, recontextualizing everything. In equilibrium, Smṛti serves as a bridge between past experience and present wisdom—the grandmother’s advice that returns, decades later, at exactly the right moment. In excess, it becomes rumination—the mind trapped in a loop of replaying past events, unable to release them. In deficiency, it produces the disconnection from one’s own history that characterizes certain forms of dissociation."
+      "gloss": "The arrival of the relevant past into the present. In equilibrium it is a servant that supplies experience when needed; in excess it becomes rumination that will not release the past; in deficiency it is a forgetful unmooring from one’s own history.",
+      "coordinate": {
+        "raw": "Seat: Mental · Ontic mode: Wave · Valence: Faculty — wholesome recall · Guṇa: Sattva · Scale: Individual · Causal status: Contributory feeder · Key relation: Supplies the durable emotions with their remembered material; its failure is Apasmāra.",
+        "guna": "Sattva",
+        "seat": "Mental",
+        "scale": "Individual",
+        "valence": "Faculty — wholesome recall",
+        "ontic_mode": "Wave",
+        "key_relation": "Supplies the durable emotions with their remembered material; its failure is Apasmāra.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1262,
+      "concept_id": 112,
       "dimension_id": 9,
       "slug": "srama",
-      "name": "Srama",
+      "name": "Śrama",
       "role": "primary",
-      "gloss": "Srama"
+      "gloss": "The honest tiredness that follows real effort. In equilibrium it is a satisfying fatigue that calls for restoration; in excess it is pushed past into exhaustion and burnout; in deficiency it is the restlessness of one who cannot let effort come to rest.",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital · Ontic mode: Wave · Valence: Faculty — an exertion signal · Guṇa: Rajas, tipping to Tamas · Scale: Individual · Causal status: Contributory feeder · Key relation: Precedes Glāni and Ālasya.",
+        "guna": "Rajas, tipping to Tamas",
+        "seat": "Physical–Vital",
+        "scale": "Individual",
+        "valence": "Faculty — an exertion signal",
+        "ontic_mode": "Wave",
+        "key_relation": "Precedes Glāni and Ālasya.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1263,
+      "concept_id": 129,
       "dimension_id": 9,
       "slug": "supta",
       "name": "Supta",
       "role": "primary",
-      "gloss": "Supta"
+      "gloss": "The state of being fully asleep — the deep withdrawal the inner weather subsides into. In balance it is the restorative night from which one returns renewed; in excess it becomes escape into oblivion; its lack is a depleting sleeplessness.",
+      "coordinate": {
+        "raw": "Seat: Physical–Psychic · Ontic mode: Wave (a transient state of sleep) · Valence: Faculty — natural rest · Guṇa: Tamas · Scale: Individual · Causal status: Contributory feeder · Key relation: The suspension into which the durable emotions rest; ended by Vibodha.",
+        "guna": "Tamas",
+        "seat": "Physical–Psychic",
+        "scale": "Individual",
+        "valence": "Faculty — natural rest",
+        "ontic_mode": "Wave (a transient state of sleep)",
+        "key_relation": "The suspension into which the durable emotions rest; ended by Vibodha.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1264,
+      "concept_id": 138,
       "dimension_id": 9,
       "slug": "trasa",
-      "name": "Trasa",
+      "name": "Trāsa",
       "role": "primary",
-      "gloss": "## 4.1 Śaṅkā and Trāsa — From Apprehension to Panic\n\nŚaṅkā is the preliminary stirring of suspicion—the sense that something is wrong, that the ground is not as stable as it appears. In its equilibrium form, it is the quiet voice that says ‘Check again.’ It slows impulsive decisions. It is the vigilance that keeps the organism safe. In excess, it becomes the chronic suspicion that poisons relationships and paralyzes decision-making. Every kindness conceals a motive. Every silence is a judgment. The world becomes a place of hidden threats.\n\nTrāsa is the acute form—the full activation of the fear response, the adrenaline surge, the narrowing of consciousness to a single point of threat. In equilibrium, it is the lifesaving panic that moves the body before the mind has finished calculating. In excess, it is the panic attack in the grocery store, the terror that comes from nowhere and everywhere at once.\n\n### The Vignette: The Panic Storm\n\nIt starts in the checkout line. A tightness at the base of the throat, then a wave of heat rising up from the chest. His vision narrows. The fluorescent lights become impossibly bright. His heart hammers—he can feel it in his fingertips, in his ears. The person behind him is too close. The beep of the scanner is too loud. His thoughts fragment: Am I having a heart attack? What if I pass out? Everyone is looking at me. They aren’t looking at him. He knows this somewhere, in a small rational room at the back of his mind, but the door to that room has been slammed shut by the body’s alarm system. He abandons his cart and walks—carefully, deliberately, gripping the edge of ordinary composure—to his car. In the parking lot, with the engine running and the air conditioning blowing on his face, it passes. Fifteen minutes later, he feels foolish and ashamed. But his hands are still shaking.\n\nThe Somatic Base: Trāsa announces itself in the body first and foremost: racing heart, shallow rapid breathing, sweating palms, a sensation of the ground becoming unreliable. The body has declared a war that the rational mind did not authorize.\n\nThe Emotional Current: Raw, primal fear—the oldest emotion, the one that lives in the brainstem. In excess, it becomes untethered from any specific threat, free-floating, available to attach itself to anything.\n\nThe Cognitive Map: Thoughts become catastrophic and circular: ‘Something is very wrong. I am losing control. This will never end.’ The mind’s forecasting function has been hijacked by the alarm system.\n\nThe Inner Presence: At the psychic level, panic is a profound disconnection from the witnessing self. Consciousness collapses entirely into the content of fear. The ‘observer’—the part of us that can watch emotion without being consumed by it—has temporarily vanished. The spiritual lesson of Trāsa is precisely this: it reveals how tenuous our connection to the witnessing self can be, and how quickly we can lose it.\n\n•  •"
+      "gloss": "Sudden overwhelming fright — the acute spike of panic that seizes the whole system. In its function it is the alarm that saves in true danger; in excess it becomes disabling terror; its deficiency is a dangerous fearlessness before real threat.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty — acute alarm · Guṇa: Rajas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: The acute peak of Śaṅkā; feeds Bhaya toward Bhayānaka Rasa.",
+        "guna": "Rajas-dominant",
+        "seat": "Vital",
+        "scale": "Individual",
+        "valence": "Faculty — acute alarm",
+        "ontic_mode": "Wave",
+        "key_relation": "The acute peak of Śaṅkā; feeds Bhaya toward Bhayānaka Rasa.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1265,
+      "concept_id": 133,
       "dimension_id": 9,
       "slug": "ugrata",
-      "name": "Ugrata",
+      "name": "Ugratā",
       "role": "primary",
-      "gloss": "Ugrata"
+      "gloss": "A fierce, harsh intensity. In measure it is the righteous force that meets genuine wrong; in excess it loses restraint and becomes cruelty; in deficiency it is a limpness that cannot summon necessary force.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty tending to affliction (harshness) · Guṇa: Rajas–Tamas · Scale: Interpersonal (Ādhibhautika) · Causal status: Contributory feeder · Key relation: Intensifies Krodha toward Raudra Rasa.",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Faculty tending to affliction (harshness)",
+        "ontic_mode": "Wave",
+        "key_relation": "Intensifies Krodha toward Raudra Rasa.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1266,
+      "concept_id": 136,
       "dimension_id": 9,
       "slug": "unmada",
-      "name": "Unmada",
+      "name": "Unmāda",
       "role": "primary",
-      "gloss": "## 8.2 Unmāda — Temporary Insanity: When the Map Dissolves\n\nUnmāda is among the most extreme of the transient states—the temporary dissolution of rational structure, the experience of a mind that has exceeded its own capacity for coherence. In the classical framework, it is recognized as a transient state, not a permanent condition—a crucial distinction. The mind can lose its moorings temporarily under extreme emotional pressure and find its way back. This normalizes experiences that contemporary culture often pathologizes—the ‘losing it’ that follows unbearable loss, the temporary dissociation that accompanies trauma, the altered states that arise in the extremity of grief or fear.\n\nThe phenomenological texture of Unmāda is distinctive: reality becomes porous. The boundaries between self and world, between memory and present experience, between the rational and the irrational, become permeable. Thoughts lose their usual logical sequence. Behavior becomes disconnected from intention. The person may laugh at inappropriate moments, speak in fragments, or act in ways that seem inexplicable to observers but carry a distorted internal logic.\n\n•  •"
+      "gloss": "The dissolving of the map — a disordering surge where ordinary coherence gives way. It is afflictive by nature; in its milder register it is a temporary loss of grip under extremity; recovered from, it can even leave a strange clarity in its wake.",
+      "coordinate": {
+        "raw": "Seat: Mental–Psychic · Ontic mode: Wave · Valence: Faculty — an extreme, disordering surge · Guṇa: Rajas–Tamas · Scale: Individual · Causal status: Contributory feeder · Key relation: Overwhelms the durable emotions.",
+        "guna": "Rajas–Tamas",
+        "seat": "Mental–Psychic",
+        "scale": "Individual",
+        "valence": "Faculty — an extreme, disordering surge",
+        "ontic_mode": "Wave",
+        "key_relation": "Overwhelms the durable emotions.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1267,
+      "concept_id": 130,
       "dimension_id": 9,
       "slug": "vibodha",
       "name": "Vibodha",
       "role": "primary",
-      "gloss": "## 7.4 Vibodha — Awakening: The Moment the Fog Lifts\n\nVibodha is the transitional state of coming awake—not only from physical sleep, but from any form of unconsciousness, confusion, or Moha. It is the moment when the fog lifts and the landscape of reality becomes suddenly, startlingly clear. In the contemplative traditions, Vibodha describes the micro-awakenings that punctuate the path of inner development: moments when a familiar situation is suddenly seen with fresh eyes, when a longstanding pattern is recognized for the first time, when the ‘obvious’ becomes obvious at last.\n\n### The Vignette: Vibodha\n\nShe is in the middle of an argument with her mother—the same argument they have had, in different costumes, for twenty years. Her mother is saying the familiar words in the familiar tone. She is feeling the familiar tightening, preparing the familiar response. And then—without warning, without effort—something shifts. It is as if she has stepped two feet back from her own reaction and can see the whole pattern from the outside: the trigger, the escalation, the script, the predictable outcome. She sees her mother’s fear beneath the criticism. She sees her own defensiveness as a reflex, not a choice. The argument has not stopped—her mother is still talking—but something inside her has clicked into a different gear. She takes a breath. ‘Mom,’ she says, and her voice is different—not defensive, not conciliatory, just… clear. ‘I know you’re worried about me. I hear that.’ The silence that follows is new. Neither of them has been in this part of the conversation before.\n\n•  •"
+      "gloss": "The moment the fog lifts — a return to alertness from sleep or confusion, a small awakening. In equilibrium it is fresh clarity; in excess it can become a hypervigilant over-alertness; in deficiency it is a lingering grogginess that never fully arrives.",
+      "coordinate": {
+        "raw": "Seat: Mental–Psychic · Ontic mode: Wave · Valence: Faculty — a wholesome flash of clarity · Guṇa: Sattva-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Dispels Moha and Nidrā; lifts the durable emotions toward Śānta.",
+        "guna": "Sattva-dominant",
+        "seat": "Mental–Psychic",
+        "scale": "Individual",
+        "valence": "Faculty — a wholesome flash of clarity",
+        "ontic_mode": "Wave",
+        "key_relation": "Dispels Moha and Nidrā; lifts the durable emotions toward Śānta.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1268,
+      "concept_id": 125,
       "dimension_id": 9,
       "slug": "visada",
-      "name": "Visada",
+      "name": "Viṣāda",
       "role": "primary",
-      "gloss": "## 3.2 Cintā and Viṣāda — The Anxiety-Despair Continuum\n\nCintā (Anxiety/Worry) and Viṣāda (Despair/Sorrow) form a natural continuum—the former is the agitated reaching for control over an uncertain future; the latter is what remains when that reaching has exhausted itself. Together, they represent perhaps the most universally recognized Vyabhicārībhāvas in contemporary life.\n\n### Cintā — Anxiety: The Mind’s Relentless Forecasting\n\nIn equilibrium, Cintā is the adaptive signal that alerts us to genuine threats and galvanizes preparation. It is the tightening before a presentation, the alertness before a difficult conversation. It sharpens focus and mobilizes energy. In this form, it arises, serves its purpose, and dissolves—replaced, perhaps, by Harṣa (joy) or Dhṛti (steadfastness) when the challenge is met.\n\nIn excess, Cintā becomes the defining weather pattern of millions of modern lives. The mind’s forecasting mechanism, designed for genuine threats, runs continuously on imagined ones. The body stays in a state of low-grade activation—cortisol dripping steadily into the bloodstream like a leaking faucet. Sleep becomes elusive. The chest stays tight. Thoughts loop: ‘What if this happens? What if that happens? What did they mean by that?’\n\n### The Vignette: Cintā in Excess\n\nIt is 2:47 a.m. and she is awake again. The quarterly review is in eleven days. She has prepared. She knows the numbers. But her mind has found a new thread to pull: What if they ask about the Carter account? She rehearses the answer. Then rehearses it differently. The ceiling stares back at her, impassive. She picks up her phone, checks email—nothing new, of course—and puts it down. Her stomach is tight, a familiar knot just below the ribs. She tries breathing exercises from the app. They work for ninety seconds. Then: What if the breathing exercise isn’t working because the anxiety is justified? A new loop begins. By morning she will be exhausted, functional, and carrying the invisible weight of a night spent wrestling shadows.\n\nIn deficiency—where appropriate anxiety is absent—the person becomes reckless. Without Cintā’s alerting function, they walk into avoidable disasters with unearned confidence. They sign contracts without reading the fine print. They ignore warning signs in relationships. Their body lacks the low hum of protective vigilance, and their cognitive map is dominated by an assumption of safety that reality does not warrant.\n\n•  •"
+      "gloss": "Present-tense despair — a sinking heaviness when effort fails. Deeper and more static than anxious Cintā; in excess it becomes an immobilizing hopelessness; in deficiency it is a manic denial that cannot admit defeat.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Wave · Valence: Faculty tending to affliction (despair) · Guṇa: Tamas-dominant · Scale: Individual · Causal status: Contributory feeder · Key relation: Feeds Śoka (toward Karuṇā); present-tense counterpart to Cintā.",
+        "guna": "Tamas-dominant",
+        "seat": "Vital–Mental",
+        "scale": "Individual",
+        "valence": "Faculty tending to affliction (despair)",
+        "ontic_mode": "Wave",
+        "key_relation": "Feeds Śoka (toward Karuṇā); present-tense counterpart to Cintā.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1269,
+      "concept_id": 139,
       "dimension_id": 9,
       "slug": "vitarka",
       "name": "Vitarka",
       "role": "primary",
-      "gloss": "Vitarka"
+      "gloss": "The back-and-forth of reasoning that weighs alternatives. In measure it is careful deliberation that arrives at judgment; in excess it becomes an endless argumentative churn that cannot rest in any choice; in deficiency it is a heedless failure to weigh at all.",
+      "coordinate": {
+        "raw": "Seat: Mental · Ontic mode: Wave · Valence: Faculty — deliberation; paralysis in excess · Guṇa: Rajas–Sattva · Scale: Individual · Causal status: Contributory feeder · Key relation: Precedes and is resolved by Mati; unchecked, it feeds Cintā.",
+        "guna": "Rajas–Sattva",
+        "seat": "Mental",
+        "scale": "Individual",
+        "valence": "Faculty — deliberation; paralysis in excess",
+        "ontic_mode": "Wave",
+        "key_relation": "Precedes and is resolved by Mati; unchecked, it feeds Cintā.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1270,
+      "concept_id": 119,
       "dimension_id": 9,
       "slug": "vrida",
-      "name": "Vrida",
+      "name": "Vrīḍā",
       "role": "primary",
-      "gloss": "## 6.1 Vrīḍā — Shame: The Contraction of Being Seen\n\nShame is perhaps the most socially powerful of all the Vyabhicārībhāvas. In its balanced form—what the tradition calls healthy Vrīḍā—it is the internal check that maintains social harmony and personal integrity. It is the flush of discomfort when we have crossed a boundary, the signal that our behavior has fallen below our own standards. Healthy shame is corrective; it brings us back into alignment.\n\nIn excess, shame becomes toxic—a pervasive sense of deficiency that is not about what one has done but about what one is. The body curls inward, the gaze drops, the voice diminishes. The person becomes a fugitive from visibility, because to be seen is to be exposed, and to be exposed is to be found wanting.\n\n### The Vignette: Excess Shame\n\nShe rehearses the story three times before telling it at dinner, editing out the parts that make her look uncertain. When she laughs, she covers her mouth. When she disagrees, she phrases it as a question. In meetings, she sits slightly behind others, contributing only when directly asked, and even then qualifying every statement: ‘I could be wrong, but...’ ‘This might be a stupid question...’ She does not know that the pattern is visible. She thinks she is being modest, careful, appropriate. What she is actually doing is spending enormous energy ensuring that no one ever sees the unedited version of her. The cost is invisible but immense: a life lived at seventy percent of its natural volume, every genuine impulse filtered through the question, ‘What will they think?’"
+      "gloss": "The contraction of being seen. In measure it is healthy conscience and modesty; in excess it becomes toxic self-erasure and hiding; in deficiency it is a shamelessness that has lost the inner check.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Wave · Valence: Faculty — a conscience signal; toxic as self-erasure · Guṇa: Tamas-tinged (contraction) · Scale: Interpersonal (Ādhibhautika) · Causal status: Contributory feeder · Key relation: Modulates Rati, Bhaya, and Śoka.",
+        "guna": "Tamas-tinged (contraction)",
+        "seat": "Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Faculty — a conscience signal; toxic as self-erasure",
+        "ontic_mode": "Wave",
+        "key_relation": "Modulates Rati, Bhaya, and Śoka.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1271,
+      "concept_id": 135,
       "dimension_id": 9,
       "slug": "vyadhi",
-      "name": "Vyadhi",
+      "name": "Vyādhi",
       "role": "primary",
-      "gloss": "Vyadhi"
+      "gloss": "The felt distress of illness — bodily suffering that colors mood and thought. In measure it humbles and clarifies what matters; in excess it defeats and consumes the whole field of experience; its denial is a reckless ignoring of the body’s signals.",
+      "coordinate": {
+        "raw": "Seat: Physical · Ontic mode: Wave · Valence: Faculty — a distress signal · Guṇa: Tamas-tinged · Scale: Individual, with environmental cause (Ādhibhautika) · Causal status: Contributory feeder · Key relation: Colors Śoka, Bhaya, and Glāni.",
+        "guna": "Tamas-tinged",
+        "seat": "Physical",
+        "scale": "Individual, with environmental cause (Ādhibhautika)",
+        "valence": "Faculty — a distress signal",
+        "ontic_mode": "Wave",
+        "key_relation": "Colors Śoka, Bhaya, and Glāni.",
+        "causal_status": "Contributory feeder"
+      }
     },
     {
-      "concept_id": 1329,
+      "concept_id": 206,
       "dimension_id": 15,
-      "slug": "kapha",
-      "name": "Kapha",
+      "slug": "part-i-vata",
+      "name": "Part I: Vāta",
       "role": "contributing",
-      "gloss": "## 1. Kapha in Equilibrium: The Generous Ground of Being\n\n### Internal Landscape\n\nSomatic Base (Physical): The body feels substantial, solid, and deeply comfortable in itself. There is a natural sturdiness—thick bones, well-padded joints, strong muscles that may not be visibly defined but possess remarkable endurance. The skin is smooth, cool, and slightly moist with good elasticity. Hair is thick and lustrous. Digestion is steady if not spectacular—the Kapha constitution processes food slowly but thoroughly, extracting maximum nutrition. Sleep is the crown jewel: deep, restorative, dreamless sleep that leaves the individual genuinely refreshed. The immune system is robust; this is the constitution least likely to fall ill, and when it does, recovery is steady and complete. There is a physical groundedness that others can feel—sitting next to a balanced Kapha individual is like sitting next to a very old, very calm tree.\n\nEmotional Current (Vital): The dominant emotional tone is one of unconditional steadiness. The Kapha temperament in balance is the most emotionally stable of the three—not because they lack feeling but because their feelings are deep, slow-moving, and enduring rather than quick, reactive, and volatile. Love, once given, is not easily withdrawn. Commitments, once made, are held. There is a natural compassion that arises not from intellectual understanding (Pitta) or empathic attunement (Vāta) but from a bone-deep sense of shared humanity. The balanced Kapha individual is the friend you call at 3 AM—not for advice, but for the silent, unshakeable presence that tells you everything will eventually be all right.\n\nCognitive Map (Mental): Thought is slow, deliberate, and thorough. The Kapha mind does not generate ideas at Vāta’s pace or analyze them with Pitta’s precision, but what it does do is understand them deeply and remember them permanently. This is the constitution with the best long-term memory—not for facts and figures (which belong more to Pitta) but for the emotional texture of experiences, the faces of people met decades ago, the exact quality of a childhood afternoon. Decision-making is careful, sometimes maddeningly so, but the decisions, once made, are wise and rarely regretted. The internal narrative is calm and present-tense: “All is well. There is time. Let me consider this properly.”\n\nInner Presence (Psychic): At the soul level, balanced Kapha is the experience of pṛthivī as sanctuary—the feeling of being held by the earth, of having a place, of belonging. There is a natural devotional quality to this dosha—a readiness to surrender not from weakness but from a deep trust in the sustaining order of things. This is the dosha most closely connected to the Annamaya Kośa (physical sheath) in its preservative aspect, and in equilibrium, it grants an almost elemental sense of being rooted, as though one’s existence has the same unquestionable reality as a mountain. The spiritual lesson is one of grounded service—the understanding that the highest expression of stability is to become the ground on which others can stand."
+      "gloss": "Its five subdoshas—Prāṇa (governing mind, senses, and vital breath), Udāna (governing speech, effort, and upward movement), Samāna (governing intestinal peristalsis and nutrient absorption), Apāna (governing elimination and downward movement), and Vyāna (governing circulation and peripheral sensation)—together orchestrate the entire kinetic life of the organism. On the psychological plane, Vāta is the energy of creativity, spontaneity, enthusiasm, and the restless hunger for new experience.",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital (movement, the nervous system, prāṇa) · Ontic mode: Constituent — a doṣa (the bio-energetic principle of movement) · Valence: Neutral faculty (balance is the aim) · Guṇa: Rajas-dominant (movement, dynamism) · Scale: Individual — constitutional (prakṛti), current expression (vikṛti) varying · Causal status: Governing principle (governs all movement — circulation, breath, nerve impulse) · Key relation: One of the tridoṣa (with Pitta and Kapha); corresponds to Air + Space (Dim 1).",
+        "guna": "Rajas-dominant (movement, dynamism)",
+        "seat": "Physical–Vital (movement, the nervous system, prāṇa)",
+        "scale": "Individual — constitutional (prakṛti), current expression (vikṛti) varying",
+        "valence": "Neutral faculty (balance is the aim)",
+        "ontic_mode": "Constituent — a doṣa (the bio-energetic principle of movement)",
+        "key_relation": "One of the tridoṣa (with Pitta and Kapha); corresponds to Air + Space (Dim 1).",
+        "causal_status": "Governing principle (governs all movement — circulation, breath, nerve impulse)"
+      }
     },
     {
-      "concept_id": 1330,
+      "concept_id": 207,
       "dimension_id": 15,
-      "slug": "pitta",
-      "name": "Pitta",
+      "slug": "part-ii-pitta",
+      "name": "Part II: Pitta",
       "role": "contributing",
-      "gloss": "## 1. Pitta in Equilibrium: The Steady Flame of Purpose\n\n### Internal Landscape\n\nSomatic Base (Physical): The body runs warm but not hot. Digestion is strong and predictable—hunger arrives at regular intervals and is satisfied cleanly, without lingering heaviness or acid reflux. The skin has a healthy luster, slightly oily but not greasy, with good color. The eyes are bright and penetrating. Musculature is well-defined without being bulky—a medium, athletic build that speaks of efficient metabolism. Sleep is deep and sufficient; six or seven hours feels like enough because the quality is high. There is a natural physical confidence, a sense that the body is a reliable instrument that does what you ask of it.\n\nEmotional Current (Vital): The dominant emotional tone is one of purposeful warmth. There is a natural charisma—the kind of person others look to when a decision needs to be made, not because they are domineering but because their clarity is reassuring. Anger, when it arises, is clean and proportional: it flares in response to genuine injustice and subsides once the situation is addressed. There is a deep sense of fairness, an almost visceral reaction to dishonesty or incompetence. In relationships, the balanced Pitta individual is warm, direct, and loyal—the friend who will tell you the truth even when it is uncomfortable, but who will also be the first to show up when you need help.\n\nCognitive Map (Mental): Thought is sharp, logical, and goal-directed. The balanced Pitta mind excels at analysis, at breaking complex problems into manageable components, and at executing plans with precision. There is a natural gift for strategy and a preference for efficiency that borders on elegance. The internal narrative is organized around purpose: “What needs to be done? What is the most effective way to do it? How do we measure success?” Memory is excellent, especially for facts, sequences, and arguments.\n\nInner Presence (Psychic): At the soul level, balanced Pitta is the experience of agni as illumination—the inner fire that burns away confusion and reveals things as they are. There is a natural discrimination (viveka) that allows this person to distinguish signal from noise, essence from appearance, truth from comfortable fiction. This is the dosha most closely connected to the Manomaya Kośa (mental sheath) in its analytic capacity, and in equilibrium, it grants the ability to see clearly without the distortion of wishful thinking or denial. The spiritual lesson is one of right use of power—the understanding that clarity and strength are gifts to be placed in service, not weapons to be wielded for dominance."
+      "gloss": "Its five subdoshas—Pāchaka (governing digestion in the stomach), Rañjaka (governing liver metabolism and blood chemistry), Ālochaka (governing vision and the processing of light), Sādhaka (governing the emotional heart and the subtle transformation of feeling into wisdom), and Bhrājaka (governing skin pigmentation and the transformation of external stimuli)—together orchestrate the entire metabolic life of the organism. On the psychological plane, Pitta is the energy of intellect, ambition, courage, discrimination, and the focused will to achieve.",
+      "coordinate": {
+        "raw": "Seat: Physical–Mental (metabolism, digestion, discernment) · Ontic mode: Constituent — a doṣa (the bio-energetic principle of transformation) · Valence: Neutral faculty (balance is the aim) · Guṇa: Sattva–Rajas (illumination and intensity) · Scale: Individual — constitutional (prakṛti), current expression (vikṛti) varying · Causal status: Governing principle (governs transformation — digestion, metabolism, perception) · Key relation: One of the tridoṣa; corresponds to Fire (+ Water); the metabolic fire (agni).",
+        "guna": "Sattva–Rajas (illumination and intensity)",
+        "seat": "Physical–Mental (metabolism, digestion, discernment)",
+        "scale": "Individual — constitutional (prakṛti), current expression (vikṛti) varying",
+        "valence": "Neutral faculty (balance is the aim)",
+        "ontic_mode": "Constituent — a doṣa (the bio-energetic principle of transformation)",
+        "key_relation": "One of the tridoṣa; corresponds to Fire (+ Water); the metabolic fire (agni).",
+        "causal_status": "Governing principle (governs transformation — digestion, metabolism, perception)"
+      }
     },
     {
-      "concept_id": 1331,
+      "concept_id": 208,
       "dimension_id": 15,
-      "slug": "vata",
-      "name": "Vata",
+      "slug": "part-iii-kapha",
+      "name": "Part III: Kapha",
       "role": "contributing",
-      "gloss": "## 1. Vāta in Equilibrium: The Dance of Inspired Motion\n\n### Internal Landscape\n\nSomatic Base (Physical): The body feels light but not ungrounded. There is an effortless quality to movement—limbs respond crisply, digestion proceeds with quiet regularity, the breath flows in a gentle, unforced rhythm. Joints are supple without being hypermobile. The skin, while naturally on the drier side, maintains a healthy glow. There is a pleasant coolness to the hands and feet that feels refreshing rather than uncomfortable. Sleep comes easily and, while perhaps lighter than a Kapha constitution’s deep slumber, it is restorative. The nervous system is alert without being hypervigilant—like a well-tuned instrument, it registers stimuli accurately and responds proportionately.\n\nEmotional Current (Vital): The dominant emotional tone is one of creative enthusiasm. There is a natural buoyancy, a sense that possibilities are everywhere and that life is interesting. This is not the driven intensity of Pitta’s ambition but a lighter, more playful engagement—the delight of a mind that makes unexpected connections. Socially, there is a genuine warmth and a gift for conversation; the Vāta-balanced person is often the one who puts a room at ease with a well-timed observation or a spontaneous laugh. Fear, when it arises, is appropriate and quickly processed—the healthy startle that keeps you alert, not the lingering dread that steals your sleep.\n\nCognitive Map (Mental): Thought is quick, flexible, and associative. The balanced Vāta mind excels at brainstorming, at seeing patterns across disparate domains, and at initiating projects with infectious optimism. There is a natural adaptability—when plans change, this mind pivots without excessive distress. Memory may not have the photographic precision of a Pitta mind, but it captures the essential thread of an experience with vivid sensory detail. The internal narrative is forward-looking: “What if we tried this?” “I wonder what would happen if…”\n\nInner Presence (Psychic): At the soul level, balanced Vāta is the experience of prāṇa as grace—the feeling that the life-force is moving through you unimpeded, that you are a channel rather than a dam. There is a natural attunement to subtle energies: the shift of seasons, the emotional atmosphere of a room, the unspoken needs of another person. This is the dosha most closely connected to the Prāṇamaya Kośa (vital sheath), and in equilibrium, it grants an almost intuitive sense of being carried by something larger than oneself. The spiritual lesson is one of trust in the flow—the understanding that not everything needs to be controlled or predicted for life to unfold beautifully."
+      "gloss": "Its five subdoshas—Kledaka (governing the mucous lining of the stomach), Avalambaka (governing the lungs, heart, and trachea), Bodhaka (governing saliva and taste), Tarpaka (governing cerebrospinal fluid and the “lubrication” of the brain), and Śleṣaka (governing joint fluid, connective tissue, and the sinovial membranes)—together orchestrate the entire structural and preservative life of the organism. On the psychological plane, Kapha is the energy of patience, loyalty, compassion, emotional stability, and the deep, enduring forms of love and memory.",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital (structure, fluids, stability) · Ontic mode: Constituent — a doṣa (the bio-energetic principle of cohesion) · Valence: Neutral faculty (balance is the aim) · Guṇa: Tamas-dominant (stability, heaviness, cohesion) · Scale: Individual — constitutional (prakṛti), current expression (vikṛti) varying · Causal status: Governing principle (governs structure, lubrication, and immunity) · Key relation: One of the tridoṣa; corresponds to Earth + Water (Dim 1); the ground of stability.",
+        "guna": "Tamas-dominant (stability, heaviness, cohesion)",
+        "seat": "Physical–Vital (structure, fluids, stability)",
+        "scale": "Individual — constitutional (prakṛti), current expression (vikṛti) varying",
+        "valence": "Neutral faculty (balance is the aim)",
+        "ontic_mode": "Constituent — a doṣa (the bio-energetic principle of cohesion)",
+        "key_relation": "One of the tridoṣa; corresponds to Earth + Water (Dim 1); the ground of stability.",
+        "causal_status": "Governing principle (governs structure, lubrication, and immunity)"
+      }
     },
     {
-      "concept_id": 1354,
+      "concept_id": 235,
       "dimension_id": 19,
-      "slug": "asmita",
-      "name": "Asmita",
+      "slug": "dvesa",
+      "name": "Dveṣa",
       "role": "contributing",
-      "gloss": "## In the refined state — a working ‘I’ held lightly\n\nWhen Asmita is dissolved, consciousness recognizes itself as separate from its instruments. There is clear distinction between awareness and the contents of awareness.\n\nSomatic (body): Body recognized as instrument, no identity-attachment, healthy use of body without identification, clarity in physical existence.\n\nEmotional current: Emotional freedom from defending an ego-identity, peace from non-identification, emotional liberation.\n\nCognitive map: Pure awareness recognizing itself, freedom from mental identification, witness consciousness established.\n\nInner presence (psychic): The soul wears the ‘I’ as a useful garment without being bound by it; the lesson — that the seer is not the instrument of seeing — is held in living balance."
+      "gloss": "Dveṣa is aversion that follows pain — the mirror image of rāga. It is the residue of past painful experience hardening into recoil: the dwelling on what hurt and the active avoidance of anything that resembles it. Where rāga reaches toward, dveṣa pushes away; together they form the two arms of the same grasping reflex.",
+      "coordinate": {
+        "raw": "Seat: Vital (aversion, recoil) · Ontic mode: Affliction — a kleśa (aversion) · Valence: Affliction (aversion to attenuate) · Guṇa: Rajas–Tamas · Scale: Individual (ādhyātmika) · Causal status: Branch (grows from Asmitā / Avidyā) · Key relation: Branch of Avidyā; antagonist-pair with Rāga; drives the unpleasant pole of Valence (Dim 7).",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital (aversion, recoil)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction (aversion to attenuate)",
+        "ontic_mode": "Affliction — a kleśa (aversion)",
+        "key_relation": "Branch of Avidyā; antagonist-pair with Rāga; drives the unpleasant pole of Valence (Dim 7).",
+        "causal_status": "Branch (grows from Asmitā / Avidyā)"
+      }
     },
     {
-      "concept_id": 1355,
-      "dimension_id": 19,
-      "slug": "avidya",
-      "name": "Avidya",
-      "role": "contributing",
-      "gloss": "## In the refined state — avidyā seen through\n\nWhen Avidya is removed through Viveka (discrimination), reality is seen as it is. The yogi knows the difference between Self and non-Self, real and unreal.\n\nSomatic (body): Body known as instrument not Self, physical clarity about temporary nature of body, healthy non-identification.\n\nEmotional current: Emotional freedom from misidentification, peace from knowing true Self, freedom from suffering of confusion.\n\nCognitive map: Clear discrimination, freedom from fundamental error, wisdom about reality, all other kleshas dissolved.\n\nInner presence (psychic): The soul rests in its own light; the lesson — that the witness was never the witnessed — has been touched at the very root of all veiling."
-    },
-    {
-      "concept_id": 1357,
+      "concept_id": 234,
       "dimension_id": 19,
       "slug": "raga",
-      "name": "Raga",
+      "name": "Rāga",
       "role": "contributing",
-      "gloss": "## In the refined state — enjoyment without the hook\n\nWhen Raga is overcome, the yogi can experience pleasure without compulsive attachment to repeat it. There is engagement without bondage.\n\nSomatic (body): Body can experience pleasure without compulsion, healthy enjoyment, freedom from sensory addiction, balanced engagement.\n\nEmotional current: Emotional freedom from compulsive seeking of pleasant feelings, ability to feel without grasping, peace.\n\nCognitive map: Mental freedom from dwelling on pleasures, no compulsion to repeat experiences, clear thinking.\n\nInner presence (psychic): The soul enjoys the play of the world as the play of the one Self, taking what comes without grasping; the lesson — that fullness is one’s nature, not a thing to be acquired — is being lived."
+      "gloss": "Rāga is attachment that follows pleasure — the dwelling on past enjoyments and the leaning-forward to repeat them. It is not the enjoyment itself, which is innocent, but the residue enjoyment leaves: a track laid down in memory that pulls the mind back toward the source and quietly organizes future behavior around getting more.",
+      "coordinate": {
+        "raw": "Seat: Vital (attraction, craving) · Ontic mode: Affliction — a kleśa (attachment) · Valence: Affliction (craving to attenuate) · Guṇa: Rajas-dominant · Scale: Individual (ādhyātmika) · Causal status: Branch (grows from Asmitā / Avidyā) · Key relation: Branch of Avidyā; antagonist-pair with Dveṣa; drives the pleasant pole of Valence (Dim 7).",
+        "guna": "Rajas-dominant",
+        "seat": "Vital (attraction, craving)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction (craving to attenuate)",
+        "ontic_mode": "Affliction — a kleśa (attachment)",
+        "key_relation": "Branch of Avidyā; antagonist-pair with Dveṣa; drives the pleasant pole of Valence (Dim 7).",
+        "causal_status": "Branch (grows from Asmitā / Avidyā)"
+      }
     },
     {
-      "concept_id": 1363,
+      "concept_id": 249,
       "dimension_id": 21,
-      "slug": "alabdha_bhumikatva",
-      "name": "Alabdha Bhumikatva",
+      "slug": "alabdha-bhumikatva",
+      "name": "Alabdha-bhūmikatva",
       "role": "contributing",
-      "gloss": "## Balanced — steady progress in due season\n\nWhen Alabdha-bhumikatva is overcome, the yogi makes progress and attains higher states. Practice bears fruit, advancement occurs.\n\nSomatic (body): Body shows progress in practice, gaining capacity, fruit of effort visible in body.\n\nEmotional current: Emotional advancement, transformation visible, fruits of practice felt.\n\nCognitive map: Mental progress, higher states attained, advancement on path, gaining new ground.\n\nInner presence (psychic): The soul ripens in its own season; steady progress, trusted without demand, is its own quiet reassurance."
+      "gloss": "Alabdha-bhumikatva is the inability to reach the higher states of yoga despite practice. There is effort but no fruit—failure to gain ground.",
+      "coordinate": {
+        "raw": "Seat: Mental–Psychic (the plateau) · Ontic mode: Obstacle — an antarāya (failure to gain ground) · Valence: Affliction / obstacle · Guṇa: Rajas–Tamas · Scale: Individual (ādhyātmika) · Causal status: Obstruction (stalled progress) · Key relation: One of the nine antarāyas; the felt failure to advance through the stages (Dim 11).",
+        "guna": "Rajas–Tamas",
+        "seat": "Mental–Psychic (the plateau)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction / obstacle",
+        "ontic_mode": "Obstacle — an antarāya (failure to gain ground)",
+        "key_relation": "One of the nine antarāyas; the felt failure to advance through the stages (Dim 11).",
+        "causal_status": "Obstruction (stalled progress)"
+      }
     },
     {
-      "concept_id": 1364,
+      "concept_id": 246,
       "dimension_id": 21,
       "slug": "alasya",
-      "name": "Alasya",
+      "name": "Ālasya",
       "role": "contributing",
-      "gloss": "## Balanced — willing, ready energy for what matters\n\nWhen Alasya is overcome, the yogi practices with appropriate effort and consistency. Energy is available for sustained engagement.\n\nSomatic (body): Available energy for practice, body that responds to effort, vitality, sustained physical engagement.\n\nEmotional current: Emotional motivation, willingness to make effort, enthusiasm.\n\nCognitive map: Mental discipline, ability to exert effort, sustained focus through challenges.\n\nInner presence (psychic): The soul’s energy is available for what matters; willing, ready effort is itself a form of inner aliveness."
+      "gloss": "Alasya is physical and mental laziness—lack of effort, sloth, postponing practice. It is a tamasic obstacle related to but distinct from Styana (mental dullness specifically).",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital (inertia, disinclination to effort) · Ontic mode: Obstacle — an antarāya (sloth) · Valence: Affliction / obstacle · Guṇa: Tamas-dominant · Scale: Individual (ādhyātmika) · Causal status: Obstruction (inertia that resists effort) · Key relation: One of the nine antarāyas; same as Ālasya the wave (Dim 9); kin to Styāna.",
+        "guna": "Tamas-dominant",
+        "seat": "Physical–Vital (inertia, disinclination to effort)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction / obstacle",
+        "ontic_mode": "Obstacle — an antarāya (sloth)",
+        "key_relation": "One of the nine antarāyas; same as Ālasya the wave (Dim 9); kin to Styāna.",
+        "causal_status": "Obstruction (inertia that resists effort)"
+      }
     },
     {
-      "concept_id": 1365,
+      "concept_id": 250,
       "dimension_id": 21,
       "slug": "anavasthitatva",
       "name": "Anavasthitatva",
       "role": "contributing",
-      "gloss": "## Balanced — ground gained and held\n\nWhen Anavasthitatva is overcome, the yogi stabilizes attained states. Progress is maintained, ground is held, advancement consolidates.\n\nSomatic (body): Maintained physical practice, stabilized practice routines, body's gains preserved.\n\nEmotional current: Emotional stability in attained states, maintained transformation, lasting changes.\n\nCognitive map: Mental stabilization in higher states, sustained meditation, consolidated wisdom.\n\nInner presence (psychic): The soul consolidates what it gains; a state once reached becomes stable ground for the next, and progress stops leaking away."
+      "gloss": "Anavasthitatva is the inability to maintain a state once attained—instability where ground is gained then lost. The mind cannot stabilize in higher states.",
+      "coordinate": {
+        "raw": "Seat: Mental–Psychic (loss of a gained level) · Ontic mode: Obstacle — an antarāya (instability) · Valence: Affliction / obstacle · Guṇa: Rajas-dominant · Scale: Individual (ādhyātmika) · Causal status: Obstruction (the loss of an attained ground) · Key relation: One of the nine antarāyas; counterpart to Alabdha-bhūmikatva — losing rather than failing to reach.",
+        "guna": "Rajas-dominant",
+        "seat": "Mental–Psychic (loss of a gained level)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction / obstacle",
+        "ontic_mode": "Obstacle — an antarāya (instability)",
+        "key_relation": "One of the nine antarāyas; counterpart to Alabdha-bhūmikatva — losing rather than failing to reach.",
+        "causal_status": "Obstruction (the loss of an attained ground)"
+      }
     },
     {
-      "concept_id": 1366,
+      "concept_id": 247,
       "dimension_id": 21,
       "slug": "avirati",
       "name": "Avirati",
       "role": "contributing",
-      "gloss": "## Balanced — senses enjoyed without being ruled\n\nWhen Avirati is overcome through Vairagya (dispassion), the senses no longer dominate. The yogi can engage with senses consciously without being dragged.\n\nSomatic (body): Healthy relationship with sensory pleasure, body free from sensory addiction, balanced engagement.\n\nEmotional current: Emotional freedom from sensory craving, contentment, peace with sensory experience.\n\nCognitive map: Mental freedom from sensory obsession, focus available for practice, no slavery to senses.\n\nInner presence (psychic): The soul enjoys the senses without being ruled by them; dispassion here is not coldness but freedom, the senses placed at the service of a larger aim."
+      "gloss": "Avirati is craving for sense objects—the inability to turn away from sensory pleasures. It pulls the mind away from yoga practice toward sensory engagement.",
+      "coordinate": {
+        "raw": "Seat: Vital (sensual pull) · Ontic mode: Obstacle — an antarāya (sensual craving / non-restraint) · Valence: Affliction / obstacle · Guṇa: Rajas-dominant · Scale: Individual (ādhyātmika) · Causal status: Obstruction (craving that pulls attention outward) · Key relation: One of the nine antarāyas; kin to Rāga (Dim 19) and Kāma-vāsanā (Dim 12); antagonist to Brahmacharya.",
+        "guna": "Rajas-dominant",
+        "seat": "Vital (sensual pull)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction / obstacle",
+        "ontic_mode": "Obstacle — an antarāya (sensual craving / non-restraint)",
+        "key_relation": "One of the nine antarāyas; kin to Rāga (Dim 19) and Kāma-vāsanā (Dim 12); antagonist to Brahmacharya.",
+        "causal_status": "Obstruction (craving that pulls attention outward)"
+      }
     },
     {
-      "concept_id": 1367,
+      "concept_id": 248,
       "dimension_id": 21,
-      "slug": "bhrantidarshana",
-      "name": "Bhrantidarshana",
+      "slug": "bhrantidarsana",
+      "name": "Bhrāntidarśana",
       "role": "contributing",
-      "gloss": "## Balanced — accurate understanding of the path and one’s place on it\n\nWhen Bhrantidarshana is overcome, the yogi has correct understanding of practice, experiences, and reality. There is clear discrimination about progress.\n\nSomatic (body): Accurate perception of body's signals, healthy embodied understanding.\n\nEmotional current: Accurate emotional understanding, no false self-assessment of feelings.\n\nCognitive map: Correct understanding of practice and experiences, clear discrimination, accurate progress assessment.\n\nInner presence (psychic): The soul sees the path and its own place on it accurately; right understanding keeps the whole journey honest."
+      "gloss": "Bhrantidarshana is false perception or erroneous view—wrong understanding of practice, philosophy, or experience. Mistaking progress, misidentifying experiences.",
+      "coordinate": {
+        "raw": "Seat: Mental (mistaken understanding) · Ontic mode: Obstacle — an antarāya (false perception) · Valence: Affliction / obstacle · Guṇa: Tamas–Rajas · Scale: Individual (ādhyātmika) · Causal status: Obstruction (wrong view that misdirects practice) · Key relation: One of the nine antarāyas; kin to Viparyaya (Dim 20) and Avidyā (Dim 19).",
+        "guna": "Tamas–Rajas",
+        "seat": "Mental (mistaken understanding)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction / obstacle",
+        "ontic_mode": "Obstacle — an antarāya (false perception)",
+        "key_relation": "One of the nine antarāyas; kin to Viparyaya (Dim 20) and Avidyā (Dim 19).",
+        "causal_status": "Obstruction (wrong view that misdirects practice)"
+      }
     },
     {
-      "concept_id": 1368,
+      "concept_id": 245,
       "dimension_id": 21,
       "slug": "pramada",
-      "name": "Pramada",
+      "name": "Pramāda",
       "role": "contributing",
-      "gloss": "## Balanced — sustained, vigilant attention\n\nWhen Pramada is overcome, the yogi maintains constant mindful awareness. There is steady attention without forgetting one's purpose and practice.\n\nSomatic (body): Mindful physical presence, careful attention to body, healthy alertness, careful actions.\n\nEmotional current: Emotional mindfulness, careful attention to feelings, freedom from emotional carelessness.\n\nCognitive map: Constant mental awareness, careful attention, mindfulness maintained, no negligence.\n\nInner presence (psychic): The soul keeps its thread; steady mindful attention is the continuity through which all practice deepens."
+      "gloss": "Pramada is carelessness or negligence—lack of awareness and attention in practice. It is a moment-to-moment forgetting of yogic awareness.",
+      "coordinate": {
+        "raw": "Seat: Mental–Vital (heedlessness) · Ontic mode: Obstacle — an antarāya (carelessness) · Valence: Affliction / obstacle · Guṇa: Tamas–Rajas · Scale: Individual (ādhyātmika) · Causal status: Obstruction (inattention that lets practice lapse) · Key relation: One of the nine antarāyas; antagonist to the vigilance of mindful attention.",
+        "guna": "Tamas–Rajas",
+        "seat": "Mental–Vital (heedlessness)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction / obstacle",
+        "ontic_mode": "Obstacle — an antarāya (carelessness)",
+        "key_relation": "One of the nine antarāyas; antagonist to the vigilance of mindful attention.",
+        "causal_status": "Obstruction (inattention that lets practice lapse)"
+      }
     },
     {
-      "concept_id": 1369,
+      "concept_id": 244,
       "dimension_id": 21,
-      "slug": "samshaya",
-      "name": "Samshaya",
+      "slug": "samsaya",
+      "name": "Saṁśaya",
       "role": "contributing",
-      "gloss": "## Balanced — honest questioning that seeks truth\n\nWhen Samshaya is overcome through faith (shraddha) and experience, the yogi practices with conviction. Healthy questioning remains, but corrosive doubt is gone.\n\nSomatic (body): Body practiced with conviction, healthy commitment to practice, physical confidence.\n\nEmotional current: Emotional confidence in path, faith from experience, freedom from corrosive doubt.\n\nCognitive map: Mental conviction supporting practice, clarity about path, healthy critical thinking without paralysis.\n\nInner presence (psychic): The soul questions honestly and then trusts; doubt resolved into conviction frees the energy that endless skepticism would consume."
+      "gloss": "Samshaya is doubt that undermines practice. Not healthy questioning, but corrosive doubt that prevents commitment and progress on the path.",
+      "coordinate": {
+        "raw": "Seat: Mental (wavering conviction) · Ontic mode: Obstacle — an antarāya (corrosive doubt) · Valence: Affliction / obstacle · Guṇa: Rajas–Tamas · Scale: Individual (ādhyātmika) · Causal status: Obstruction (doubt that undermines commitment) · Key relation: One of the nine antarāyas; the corrosive form of Vitarka’s deliberation (Dim 9); dissolved by resolve and faith.",
+        "guna": "Rajas–Tamas",
+        "seat": "Mental (wavering conviction)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction / obstacle",
+        "ontic_mode": "Obstacle — an antarāya (corrosive doubt)",
+        "key_relation": "One of the nine antarāyas; the corrosive form of Vitarka’s deliberation (Dim 9); dissolved by resolve and faith.",
+        "causal_status": "Obstruction (doubt that undermines commitment)"
+      }
     },
     {
-      "concept_id": 1370,
+      "concept_id": 243,
       "dimension_id": 21,
       "slug": "styana",
-      "name": "Styana",
+      "name": "Styāna",
       "role": "contributing",
-      "gloss": "## Balanced — a clear, willing, alert mind\n\nWhen Styana is overcome, the mind is alert and enthusiastic for practice. There is mental vitality and engagement.\n\nSomatic (body): Alert physical presence, vital energy, body that supports active engagement, healthy nervous system.\n\nEmotional current: Enthusiasm and emotional engagement, joy in practice, emotional vitality.\n\nCognitive map: Mental alertness, enthusiasm for yoga, sharp clarity, engaged thinking.\n\nInner presence (psychic): The soul’s light reaches the surface through a clear, willing mind; enthusiasm for practice is itself a sign that the inner fire still burns."
+      "gloss": "Styana is mental dullness or apathy—a state of mental sluggishness where there is no enthusiasm for practice. It is a tamasic obstruction.",
+      "coordinate": {
+        "raw": "Seat: Mental (heaviness of mind) · Ontic mode: Obstacle — an antarāya (mental dullness) · Valence: Affliction / obstacle · Guṇa: Tamas-dominant · Scale: Individual (ādhyātmika) · Causal status: Obstruction (dullness that saps the will to practice) · Key relation: One of the nine antarāyas; kin to Ālasya and the tamasic vṛttis.",
+        "guna": "Tamas-dominant",
+        "seat": "Mental (heaviness of mind)",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction / obstacle",
+        "ontic_mode": "Obstacle — an antarāya (mental dullness)",
+        "key_relation": "One of the nine antarāyas; kin to Ālasya and the tamasic vṛttis.",
+        "causal_status": "Obstruction (dullness that saps the will to practice)"
+      }
     },
     {
-      "concept_id": 1371,
+      "concept_id": 242,
       "dimension_id": 21,
       "slug": "vyadhi",
-      "name": "Vyadhi",
+      "name": "Vyādhi",
       "role": "contributing",
-      "gloss": "## Balanced — health as the ground of practice\n\nWhen the body is healthy, it serves as a fit vehicle for yoga practice. Vyadhi is overcome through proper care, lifestyle, and yogic practices.\n\nSomatic (body): Healthy disease-free body, strong immune function, vitality, balanced physiology, body fit for practice.\n\nEmotional current: Emotional stability supported by physical health, freedom from disease-related distress.\n\nCognitive map: Mental clarity from healthy body, focus undisturbed by physical complaints, capacity for practice.\n\nInner presence (psychic): The soul has a fit vehicle; bodily health, neither clung to nor neglected, becomes a quiet support for the inner work rather than a distraction from it."
+      "gloss": "Vyadhi is disease or illness—the first of nine obstacles Patanjali names that distract the mind from yoga. Physical illness disturbs mental focus and impedes practice.",
+      "coordinate": {
+        "raw": "Seat: Physical (bodily distress) · Ontic mode: Obstacle — an antarāya (disease) · Valence: Affliction / obstacle (to remedy) · Guṇa: Tamas-tinged · Scale: Individual, with environmental cause · Causal status: Obstruction (bodily distress that stalls practice) · Key relation: One of the nine antarāyas; same as Vyādhi the wave (Dim 9); undermines the Annamaya ground.",
+        "guna": "Tamas-tinged",
+        "seat": "Physical (bodily distress)",
+        "scale": "Individual, with environmental cause",
+        "valence": "Affliction / obstacle (to remedy)",
+        "ontic_mode": "Obstacle — an antarāya (disease)",
+        "key_relation": "One of the nine antarāyas; same as Vyādhi the wave (Dim 9); undermines the Annamaya ground.",
+        "causal_status": "Obstruction (bodily distress that stalls practice)"
+      }
     },
     {
-      "concept_id": 1372,
+      "concept_id": 252,
       "dimension_id": 22,
       "slug": "karuna",
-      "name": "Karuna",
+      "name": "Karuṇā",
       "role": "contributing",
-      "gloss": "## Balanced — warm, steady compassion that can act\n\nWhen Karuna is established, genuine compassion arises in face of suffering. The yogi feels for others without absorption, helps wisely.\n\nSomatic (body): Open heart center, warm physical presence with suffering others, healthy compassionate engagement.\n\nEmotional current: Genuine compassion and warmth toward suffering, ability to help from balance, emotional generosity.\n\nCognitive map: Wisdom about how to alleviate suffering, clear thinking compassion, mental purity from caring.\n\nInner presence (psychic): The soul meets suffering with a compassion that can act — the heart open and the ground steady, mirroring the boundless mercy it is learning to embody."
+      "gloss": "Karuna is compassion toward those who are suffering. It dissolves cruelty and indifference, creating mental purity and serenity.",
+      "coordinate": {
+        "raw": "Seat: Vital (tenderness toward pain) · Ontic mode: Virtue — a brahmavihāra (compassion) · Valence: Virtue to cultivate (near enemy: pity / grief; far enemy: cruelty) · Guṇa: Sattva-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Condition (opens the heart to another’s suffering) · Key relation: One of the four brahmavihāras — the key for those who suffer; the ripened form of Śoka’s Karuṇā Rasa (Dim 8).",
+        "guna": "Sattva-dominant",
+        "seat": "Vital (tenderness toward pain)",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate (near enemy: pity / grief; far enemy: cruelty)",
+        "ontic_mode": "Virtue — a brahmavihāra (compassion)",
+        "key_relation": "One of the four brahmavihāras — the key for those who suffer; the ripened form of Śoka’s Karuṇā Rasa (Dim 8).",
+        "causal_status": "Condition (opens the heart to another’s suffering)"
+      }
     },
     {
-      "concept_id": 1373,
+      "concept_id": 251,
       "dimension_id": 22,
       "slug": "maitri",
-      "name": "Maitri",
+      "name": "Maitrī",
       "role": "contributing",
-      "gloss": "## Balanced — genuine gladness at another’s good fortune\n\nWhen Maitri is established, a person feels genuine warmth and friendliness toward happy and successful people. Envy dissolves, mental serenity arises.\n\nSomatic (body): Open warm physical presence with happy others, healthy nervous system, body that doesn't tense around success.\n\nEmotional current: Genuine joy at others' happiness, warmth in relationships, freedom from envy, emotional abundance.\n\nCognitive map: Mental serenity, freedom from comparison thinking, clarity from non-envious mind, peaceful thinking.\n\nInner presence (psychic): The soul recognizes itself in another’s happiness; gladness at others’ good fortune dissolves the boundary between self and other, which is the secret the brahmavihāras exist to teach."
+      "gloss": "Maitri is friendliness or loving-kindness toward those who are happy and successful. It dissolves envy and creates serene mental clarity. One of the four locks/keys to mental peace.",
+      "coordinate": {
+        "raw": "Seat: Vital (the heart’s warmth) · Ontic mode: Virtue — a brahmavihāra (loving-kindness) · Valence: Virtue to cultivate (near enemy: attachment; far enemy: ill-will) · Guṇa: Sattva-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Condition (warms the heart toward all beings) · Key relation: One of the four brahmavihāras — the key for those who are happy; antidote to Dveṣa (Dim 19).",
+        "guna": "Sattva-dominant",
+        "seat": "Vital (the heart’s warmth)",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate (near enemy: attachment; far enemy: ill-will)",
+        "ontic_mode": "Virtue — a brahmavihāra (loving-kindness)",
+        "key_relation": "One of the four brahmavihāras — the key for those who are happy; antidote to Dveṣa (Dim 19).",
+        "causal_status": "Condition (warms the heart toward all beings)"
+      }
     },
     {
-      "concept_id": 1374,
+      "concept_id": 253,
       "dimension_id": 22,
       "slug": "mudita",
-      "name": "Mudita",
+      "name": "Muditā",
       "role": "contributing",
-      "gloss": "## Balanced — sympathetic joy at goodness and merit\n\nWhen Mudita is established, the yogi feels genuine joy at others' virtue and spiritual progress. This dissolves competitive spiritual envy.\n\nSomatic (body): Body that lights up at others' goodness, healthy joyful response, warm presence.\n\nEmotional current: Genuine emotional joy at virtue, freedom from spiritual envy, warm celebration of goodness.\n\nCognitive map: Mental celebration of virtue, freedom from comparison about progress, joyful thinking.\n\nInner presence (psychic): The soul delights in goodness wherever it appears, taking joy in another’s virtue as its own; this gladness quietly erodes the comparing, competing ego."
+      "gloss": "Mudita is joy at others’ virtue or happiness, particularly the gladness at seeing meritorious actions. It dissolves competitive envy regarding spiritual or moral accomplishment.",
+      "coordinate": {
+        "raw": "Seat: Vital (gladness at another’s good) · Ontic mode: Virtue — a brahmavihāra (sympathetic joy) · Valence: Virtue to cultivate (near enemy: comparison / flattery; far enemy: envy) · Guṇa: Sattva-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Condition (rejoices in another’s good fortune) · Key relation: One of the four brahmavihāras — the key for the fortunate and virtuous; antidote to Asūyā (envy, Dim 9).",
+        "guna": "Sattva-dominant",
+        "seat": "Vital (gladness at another’s good)",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate (near enemy: comparison / flattery; far enemy: envy)",
+        "ontic_mode": "Virtue — a brahmavihāra (sympathetic joy)",
+        "key_relation": "One of the four brahmavihāras — the key for the fortunate and virtuous; antidote to Asūyā (envy, Dim 9).",
+        "causal_status": "Condition (rejoices in another’s good fortune)"
+      }
     },
     {
-      "concept_id": 1375,
+      "concept_id": 254,
       "dimension_id": 22,
-      "slug": "upeksha",
-      "name": "Upeksha",
+      "slug": "upeksa",
+      "name": "Upekṣā",
       "role": "contributing",
-      "gloss": "## Balanced — non-disturbance in the face of wrongdoing\n\nWhen Upeksha is established, the yogi maintains equanimity in presence of unvirtuous behavior. There is wise discernment without reactive disturbance.\n\nSomatic (body): Calm body in presence of harmful others, healthy nervous system, no reactive tension.\n\nEmotional current: Emotional equanimity facing wickedness, freedom from being thrown by others' vice, peace.\n\nCognitive map: Mental peace despite others' wrong actions, clear discrimination without reactive judgment, serenity.\n\nInner presence (psychic): The soul rests undisturbed before wrongdoing, neither condoning nor inflamed; equanimity is the highest of the four, the steadiness of one no longer ruled by reaction."
+      "gloss": "Upeksha is equanimity (sometimes translated as ‘indifference’) toward those who are unvirtuous or wicked. Not approval, but freedom from being disturbed by their vice. It preserves mental peace.",
+      "coordinate": {
+        "raw": "Seat: Psychic–Mental (the steady, even heart) · Ontic mode: Virtue — a brahmavihāra (equanimity) · Valence: Virtue to cultivate (near enemy: indifference; far enemy: agitation / partiality) · Guṇa: Sattva, tending beyond the guṇas · Scale: Interpersonal (Ādhibhautika), grounded in the individual · Causal status: Condition (holds the heart even amid what cannot be changed) · Key relation: One of the four brahmavihāras — the key for the difficult and beyond-help; kin to Śama (Dim 8) and Udāsīnatā (Dim 10).",
+        "guna": "Sattva, tending beyond the guṇas",
+        "seat": "Psychic–Mental (the steady, even heart)",
+        "scale": "Interpersonal (Ādhibhautika), grounded in the individual",
+        "valence": "Virtue to cultivate (near enemy: indifference; far enemy: agitation / partiality)",
+        "ontic_mode": "Virtue — a brahmavihāra (equanimity)",
+        "key_relation": "One of the four brahmavihāras — the key for the difficult and beyond-help; kin to Śama (Dim 8) and Udāsīnatā (Dim 10).",
+        "causal_status": "Condition (holds the heart even amid what cannot be changed)"
+      }
     },
     {
-      "concept_id": 1407,
+      "concept_id": 264,
       "dimension_id": 24,
       "slug": "abhayam",
       "name": "Abhayam",
       "role": "contributing",
-      "gloss": "## Balanced — courage rooted in awareness\n\nWhen Abhayam is present, a person acts wisely with awareness of risks but without paralyzing fear. There is courage rooted in awareness of true Self that nothing can ultimately harm.\n\nSomatic (body): Steady physical presence in challenging situations, calm nervous system under threat, healthy adrenal function, body that responds appropriately to actual danger without chronic fear response, courageous physical bearing.\n\nEmotional current: Emotional courage and security, freedom from chronic anxiety, ability to feel fear momentarily without being overwhelmed, emotional grounding in deeper Self, courageous engagement with life.\n\nCognitive map: Mental clarity in face of challenges, ability to think clearly under pressure, freedom from anxious thinking, courageous decision-making, wisdom about what truly threatens versus apparent threats.\n\nInner presence (psychic): The soul rests in what cannot be harmed; fearlessness is the natural fragrance of a self that has begun to know its own indestructibility."
+      "gloss": "Abhayam is the absence of fear—not the absence of awareness of danger, but the absence of psychological fear that paralyzes action. It is the first divine quality listed in Chapter 16 and considered foundational for spiritual growth.",
+      "coordinate": {
+        "raw": "Seat: Vital–Psychic · Ontic mode: Virtue — a daivī quality (fearlessness) · Valence: Virtue to cultivate · Guṇa: Sattva-dominant · Scale: Individual (ādhyātmika) · Causal status: Foundation (the first divine quality, ground of the rest) · Key relation: First of the daivī sampat; antagonist to Bhaya (Dim 8); rooted in Self-knowledge.",
+        "guna": "Sattva-dominant",
+        "seat": "Vital–Psychic",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Virtue to cultivate",
+        "ontic_mode": "Virtue — a daivī quality (fearlessness)",
+        "key_relation": "First of the daivī sampat; antagonist to Bhaya (Dim 8); rooted in Self-knowledge.",
+        "causal_status": "Foundation (the first divine quality, ground of the rest)"
+      }
     },
     {
-      "concept_id": 1408,
+      "concept_id": 272,
       "dimension_id": 24,
       "slug": "ahimsa",
-      "name": "Ahimsa",
+      "name": "Ahiṁsā",
       "role": "contributing",
-      "gloss": "## Balanced — harmlessness that still protects what is right\n\nWhen Ahimsa is balanced, a person avoids unnecessary harm, acts with compassion, stands up for what is right without cruelty, protects the vulnerable, and lives peacefully without aggression.\n\nSomatic (body): Gentle and non-aggressive body language, peaceful physical presence, absence of violence or aggression, good physical health from peaceful living, kind and caring touch.\n\nEmotional current: Compassion and caring for all beings, emotional warmth and kindness, emotional peace and non-reactivity, ability to set boundaries without violence, emotional strength combined with gentleness.\n\nCognitive map: Thinking that harms no one, mindful and conscious speech, awareness of impact of words and thoughts, wisdom in addressing injustice without harm, mental peace from non-harming.\n\nInner presence (psychic): The soul wishes harm to nothing; non-violence is the conduct of one who has begun to see the same Self everywhere."
+      "gloss": "Ahimsa is the principle of non-harm and non-violence, extending to all living beings. It encompasses harmlessness in thought, word, and deed, and reflects respect for all life.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Virtue — a daivī quality (non-harming) · Valence: Virtue to cultivate (the foundational restraint) · Guṇa: Sattva-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Foundation (the root of the ethical life) · Key relation: A daivī quality; same as Ahiṁsā the yama (Dim 11), the ground of all restraints.",
+        "guna": "Sattva-dominant",
+        "seat": "Vital–Mental",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate (the foundational restraint)",
+        "ontic_mode": "Virtue — a daivī quality (non-harming)",
+        "key_relation": "A daivī quality; same as Ahiṁsā the yama (Dim 11), the ground of all restraints.",
+        "causal_status": "Foundation (the root of the ethical life)"
+      }
     },
     {
-      "concept_id": 1409,
+      "concept_id": 265,
       "dimension_id": 24,
       "slug": "akrodha",
       "name": "Akrodha",
       "role": "contributing",
-      "gloss": "## Balanced — calm that can still register injustice\n\nWhen Akrodha is present, a person can recognize injustice and respond firmly without being consumed by destructive anger. There is the capacity for righteous response without the bondage of rage.\n\nSomatic (body): Relaxed physical state, healthy nervous system, absence of tension from suppressed rage, good cardiovascular health, steady physical presence even when challenged, calm body language.\n\nEmotional current: Emotional equanimity that doesn't suppress feelings, ability to feel disappointment or frustration without being consumed, emotional clarity, capacity to address wrongs from peace rather than rage.\n\nCognitive map: Clear thinking unclouded by rage, ability to discriminate appropriate response from reactive aggression, mental peace, wisdom in addressing injustice, freedom from revenge thinking.\n\nInner presence (psychic): The soul meets provocation without being seized by it; freedom from anger is the spaciousness in which a clear response can arise."
+      "gloss": "Akrodha is the absence of destructive anger. It does not mean the absence of all righteous indignation, but freedom from the kind of anger that distorts perception, harms others, and degrades consciousness. It is one of the divine qualities.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Virtue — a daivī quality (freedom from anger) · Valence: Virtue to cultivate · Guṇa: Sattva-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Condition (non-reactivity to provocation) · Key relation: A daivī quality; the direct antagonist to Krodha (its āsurī counterpart, 4.2).",
+        "guna": "Sattva-dominant",
+        "seat": "Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate",
+        "ontic_mode": "Virtue — a daivī quality (freedom from anger)",
+        "key_relation": "A daivī quality; the direct antagonist to Krodha (its āsurī counterpart, 4.2).",
+        "causal_status": "Condition (non-reactivity to provocation)"
+      }
     },
     {
-      "concept_id": 1410,
+      "concept_id": 271,
       "dimension_id": 24,
       "slug": "damah",
-      "name": "Damah",
+      "name": "Damaḥ",
       "role": "contributing",
-      "gloss": "## Balanced — mastered senses serving a chosen life\n\nWhen Damah is present, a person enjoys sensory experiences without being controlled by them. There is conscious choice in engagement with sense objects.\n\nSomatic (body): Healthy sense organs functioning naturally, appropriate sensory engagement, body that responds to conscious direction, vitality from balanced sensory life.\n\nEmotional current: Emotional freedom from sensory compulsion, ability to enjoy pleasure without enslavement, contentment regardless of sensory input.\n\nCognitive map: Mental capacity to direct senses consciously, freedom from sensory obsession, wisdom about appropriate sensory engagement, focused attention.\n\nInner presence (psychic): The soul governs the senses wisely; self-control is not war on the senses but their right ordering under a higher aim."
+      "gloss": "Damah is the disciplined control of the senses—the ability to direct attention and engagement of sight, hearing, taste, touch, and smell consciously rather than being driven by sensory cravings.",
+      "coordinate": {
+        "raw": "Seat: Physical–Vital · Ontic mode: Virtue — a daivī quality (self-control) · Valence: Virtue to cultivate · Guṇa: Sattva-dominant · Scale: Individual (ādhyātmika) · Causal status: Condition (mastery of the sense-organs) · Key relation: A daivī quality; same as Dama the treasure (Dim 23); kin to Pratyāhāra (Dim 11).",
+        "guna": "Sattva-dominant",
+        "seat": "Physical–Vital",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Virtue to cultivate",
+        "ontic_mode": "Virtue — a daivī quality (self-control)",
+        "key_relation": "A daivī quality; same as Dama the treasure (Dim 23); kin to Pratyāhāra (Dim 11).",
+        "causal_status": "Condition (mastery of the sense-organs)"
+      }
     },
     {
-      "concept_id": 1411,
+      "concept_id": 273,
       "dimension_id": 24,
       "slug": "dambha",
       "name": "Dambha",
       "role": "contributing",
-      "gloss": "## Balanced — transparency; image and reality aligned\n\nWhen Dambha is absent and replaced with Arjavam (straightforwardness), a person's inner reality matches their outer presentation. There is integrity without false display.\n\nSomatic (body): Natural and authentic physical presence, body that matches inner state, healthy nervous system from integration, no exhaustion from maintaining facades.\n\nEmotional current: Emotional authenticity, freedom from emotional pretense, genuine feelings expressed appropriately, integrity in emotional expression.\n\nCognitive map: Mental honesty, freedom from self-deception, wisdom about appropriate display versus hiding, integrated thinking aligned with action.\n\nInner presence (psychic): The soul lets image and reality coincide; with nothing to perform, it can simply be what it is."
+      "gloss": "Dambha is hypocrisy—the false display of virtues one does not actually possess. It is putting on a religious or moral facade for show, while inner reality contradicts the outer presentation.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Affliction — an āsurī quality (hypocrisy / ostentation) · Valence: Affliction (to see through and drop) · Guṇa: Rajas–Tamas · Scale: Interpersonal (Ādhibhautika) · Causal status: Distortion (a false show of virtue) · Key relation: An āsurī quality; antagonist to Hrī (modesty) and Satya (truthfulness).",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital–Mental",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Affliction (to see through and drop)",
+        "ontic_mode": "Affliction — an āsurī quality (hypocrisy / ostentation)",
+        "key_relation": "An āsurī quality; antagonist to Hrī (modesty) and Satya (truthfulness).",
+        "causal_status": "Distortion (a false show of virtue)"
+      }
     },
     {
-      "concept_id": 1412,
+      "concept_id": 266,
       "dimension_id": 24,
       "slug": "daya",
-      "name": "Daya",
+      "name": "Dayā",
       "role": "contributing",
-      "gloss": "## Balanced — warm care that can also act\n\nWhen Daya is present, a person feels genuine empathy and acts to help others without being overwhelmed or codependent. There is heartful care combined with wisdom about how to truly help.\n\nSomatic (body): Open heart center, warm physical presence, healthy heart and circulation, gentle physical contact with others, body that expresses care, healthy nervous system.\n\nEmotional current: Genuine empathy and emotional warmth, ability to feel others' suffering without absorption, emotional generosity, healing emotional presence, balanced emotional engagement.\n\nCognitive map: Wisdom about how to help versus enable, clear thinking about others' true needs, mental discernment in compassion, ability to maintain perspective while caring.\n\nInner presence (psychic): The soul feels the suffering of others as not finally other; compassion is the felt recognition of a shared being."
+      "gloss": "Daya is the active quality of compassion—feeling for others’ suffering and being moved to alleviate it. It is one of the divine qualities and reflects recognition of the same Self in all beings.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Virtue — a daivī quality (compassion) · Valence: Virtue to cultivate · Guṇa: Sattva-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Condition (tenderness toward all beings) · Key relation: A daivī quality; kin to Karuṇā (Dim 22).",
+        "guna": "Sattva-dominant",
+        "seat": "Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate",
+        "ontic_mode": "Virtue — a daivī quality (compassion)",
+        "key_relation": "A daivī quality; kin to Karuṇā (Dim 22).",
+        "causal_status": "Condition (tenderness toward all beings)"
+      }
     },
     {
-      "concept_id": 1413,
+      "concept_id": 267,
       "dimension_id": 24,
-      "slug": "hrih",
-      "name": "Hrih",
+      "slug": "hri",
+      "name": "Hrī",
       "role": "contributing",
-      "gloss": "## Balanced — a wholesome conscience and humility\n\nWhen Hrih is present, a person naturally avoids actions that would compromise dignity or violate ethical principles. There is innate sense of propriety without false prudishness.\n\nSomatic (body): Naturally modest physical presence, appropriate physical boundaries, dignified body language, healthy sense of physical privacy.\n\nEmotional current: Innate sense of emotional propriety, ability to feel appropriate shame when warranted, healthy moral compass, emotional dignity.\n\nCognitive map: Clear inner sense of right and wrong action, mental restraint based on values, wisdom about appropriate conduct, conscience that guides without crippling.\n\nInner presence (psychic): The soul carries a healthy reverence — the capacity for proper shame that keeps action aligned with conscience."
+      "gloss": "Hrih is the natural sense of modesty and shame regarding inappropriate or unworthy actions. It is the inner moral compass that signals when conduct violates dharma, creating spontaneous restraint.",
+      "coordinate": {
+        "raw": "Seat: Vital–Mental · Ontic mode: Virtue — a daivī quality (modesty / moral conscience) · Valence: Virtue to cultivate · Guṇa: Sattva · Scale: Interpersonal (Ādhibhautika) · Causal status: Condition (the healthy conscience that recoils from wrong) · Key relation: A daivī quality; the wholesome form of Vrīḍā (Dim 9); antagonist to Dambha (4.1).",
+        "guna": "Sattva",
+        "seat": "Vital–Mental",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate",
+        "ontic_mode": "Virtue — a daivī quality (modesty / moral conscience)",
+        "key_relation": "A daivī quality; the wholesome form of Vrīḍā (Dim 9); antagonist to Dambha (4.1).",
+        "causal_status": "Condition (the healthy conscience that recoils from wrong)"
+      }
     },
     {
-      "concept_id": 1414,
+      "concept_id": 276,
       "dimension_id": 24,
-      "slug": "kama_krodha_lobha",
-      "name": "Kama Krodha Lobha",
+      "slug": "kama",
+      "name": "Kāma",
       "role": "contributing",
-      "gloss": "## Balanced — desire directed toward the worthy\n\nWhen Kama is balanced and acknowledged, a person can pursue legitimate pleasures and desires without being enslaved by them. Desires are fulfilled appropriately while maintaining spiritual focus.\n\nSomatic (body): Good sensory enjoyment and appreciation, healthy appetite and sexuality, pleasure in food, movement, and physical experiences, vitality from enjoying life, good health from balanced satisfaction.\n\nEmotional current: Joy and pleasure in appropriate measure, emotional satisfaction from fulfilling desires, emotional richness and engagement, emotional freedom and spontaneity, balanced attachments.\n\nCognitive map: Clear understanding of desires and their nature, wisdom in pursuing desires, ability to enjoy without obsession, mental clarity about what truly satisfies, intentional choice of desires to pursue.\n\nInner presence (psychic): Desire directed toward the worthy becomes fuel; the soul lets longing pull it toward what genuinely nourishes."
+      "gloss": "Kama is desire, longing, and the drive for pleasure and gratification. It is a natural force that motivates action but can also lead to suffering if uncontrolled. Kama includes sensory pleasures and emotional desires.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Affliction — an āsurī quality (binding, insatiable desire) · Valence: Affliction (to transmute) · Guṇa: Rajas-dominant · Scale: Individual (ādhyātmika) · Causal status: Root distortion (the insatiable craving the Gītā names, with Krodha, the gate of hell) · Key relation: An āsurī quality; kin to Rāga (Dim 19) and Kāma-vāsanā (Dim 12); root of the demonic trajectory.",
+        "guna": "Rajas-dominant",
+        "seat": "Vital",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Affliction (to transmute)",
+        "ontic_mode": "Affliction — an āsurī quality (binding, insatiable desire)",
+        "key_relation": "An āsurī quality; kin to Rāga (Dim 19) and Kāma-vāsanā (Dim 12); root of the demonic trajectory.",
+        "causal_status": "Root distortion (the insatiable craving the Gītā names, with Krodha, the gate of hell)"
+      }
     },
     {
-      "concept_id": 1415,
+      "concept_id": 274,
       "dimension_id": 24,
       "slug": "krodha",
       "name": "Krodha",
       "role": "contributing",
-      "gloss": "## Balanced — the energy of anger transmuted into clear action\n\nWhen Krodha is transcended, a person responds to frustration with wisdom rather than reactive anger. There is capacity for righteous response without being consumed by rage.\n\nSomatic (body): Calm nervous system even when frustrated, healthy stress response, body in equilibrium, no chronic tension from suppressed anger.\n\nEmotional current: Emotional equanimity in face of frustration, ability to feel disappointment without rage, healthy boundaries without aggression, emotional maturity.\n\nCognitive map: Clear thinking when frustrated, freedom from revenge thinking, wisdom about appropriate response, mental peace despite obstacles.\n\nInner presence (psychic): The soul transmutes the heat of anger into clear, righteous energy; the fire warms and lights rather than destroys."
+      "gloss": "Krodha is anger that arises when desires are frustrated. The Gita describes the chain: contemplation of objects → attachment → desire → anger when desire is thwarted → delusion → loss of memory → loss of discrimination → destruction.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Affliction — an āsurī quality (anger) · Valence: Affliction (to transmute) · Guṇa: Rajas-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Distortion (destructive reactivity) · Key relation: An āsurī quality; the same Krodha as the sthāyibhāva (Dim 8), here as a binding endowment; antagonist to Akrodha (3.3).",
+        "guna": "Rajas-dominant",
+        "seat": "Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Affliction (to transmute)",
+        "ontic_mode": "Affliction — an āsurī quality (anger)",
+        "key_relation": "An āsurī quality; the same Krodha as the sthāyibhāva (Dim 8), here as a binding endowment; antagonist to Akrodha (3.3).",
+        "causal_status": "Distortion (destructive reactivity)"
+      }
     },
     {
-      "concept_id": 1416,
+      "concept_id": 268,
       "dimension_id": 24,
       "slug": "mardavam",
-      "name": "Mardavam",
+      "name": "Mārdavam",
       "role": "contributing",
-      "gloss": "## Balanced — strength expressed as gentleness\n\nWhen Märdavam is present, a person interacts with others gently and kindly while maintaining strength. There is softness without weakness, gentleness without timidity.\n\nSomatic (body): Gentle physical touch and presence, soft body language, peaceful physical demeanor, healthy nervous system from peaceful engagement.\n\nEmotional current: Emotional softness and warmth, kind emotional expression, gentle approach to others, emotional tenderness combined with strength.\n\nCognitive map: Gentle thinking patterns, mental refinement, sensitive consideration of others, thoughtful and considerate mental engagement.\n\nInner presence (psychic): The soul meets the world with a softness that is not weakness; gentleness is strength that has no need to harden."
+      "gloss": "Märdavam is gentleness—softness in conduct, manner, and approach. It is the quality of being kind in interaction with others, not harsh or rough. It reflects refinement and compassion in expression.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Virtue — a daivī quality (gentleness / softness) · Valence: Virtue to cultivate · Guṇa: Sattva-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Condition (a soft, non-harsh disposition) · Key relation: A daivī quality; direct antagonist to Pāruṣyam (harshness, 4.3).",
+        "guna": "Sattva-dominant",
+        "seat": "Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate",
+        "ontic_mode": "Virtue — a daivī quality (gentleness / softness)",
+        "key_relation": "A daivī quality; direct antagonist to Pāruṣyam (harshness, 4.3).",
+        "causal_status": "Condition (a soft, non-harsh disposition)"
+      }
     },
     {
-      "concept_id": 1417,
+      "concept_id": 275,
       "dimension_id": 24,
       "slug": "parusyam",
-      "name": "Parusyam",
+      "name": "Pāruṣyam",
       "role": "contributing",
-      "gloss": "## Balanced — speech that is firm but never cruel\n\nWhen Pärusyam is absent and Anudvegakaram (non-hurtful speech) is present, a person speaks truth without harshness. Communication is firm when needed but never cruel.\n\nSomatic (body): Calm physical demeanor, gentle physical presence, healthy nervous system, no chronic tension from aggressive interactions.\n\nEmotional current: Emotional warmth and gentleness in communication, ability to be firm without cruelty, emotional regulation in speech, peaceful relationships.\n\nCognitive map: Mental refinement in expression, thoughtful word choice, wisdom about impact of speech, considerate communication.\n\nInner presence (psychic): The soul speaks truth that does not wound; firm and kind at once, its words carry weight without leaving injury."
+      "gloss": "Pärusyam is harshness, particularly in speech but also in manner. It is the rough, hurtful, cruel way of communicating that damages others and reflects an inner state of aggression.",
+      "coordinate": {
+        "raw": "Seat: Vital · Ontic mode: Affliction — an āsurī quality (harshness of speech and manner) · Valence: Affliction (to transmute) · Guṇa: Rajas–Tamas · Scale: Interpersonal (Ādhibhautika) · Causal status: Distortion (cutting, cruel expression) · Key relation: An āsurī quality; kin to Ugratā (Dim 9); direct antagonist to Mārdavam (gentleness, 3.6).",
+        "guna": "Rajas–Tamas",
+        "seat": "Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Affliction (to transmute)",
+        "ontic_mode": "Affliction — an āsurī quality (harshness of speech and manner)",
+        "key_relation": "An āsurī quality; kin to Ugratā (Dim 9); direct antagonist to Mārdavam (gentleness, 3.6).",
+        "causal_status": "Distortion (cutting, cruel expression)"
+      }
     },
     {
-      "concept_id": 1418,
+      "concept_id": 269,
       "dimension_id": 24,
       "slug": "satya",
       "name": "Satya",
       "role": "contributing",
-      "gloss": "## Balanced — honesty aligned with kindness\n\nWhen Satya is present, a person speaks and lives in accordance with truth while exercising wisdom about how and when to express it. Truth is delivered with kindness and care.\n\nSomatic (body): Body language consistent with words, nervous system at ease from lack of pretense, healthy physical presence from authenticity, no need to hide.\n\nEmotional current: Emotional honesty with self and others, freedom from emotional pretense, emotional integrity, authentic expression of feelings, peace from authenticity.\n\nCognitive map: Clear honest thinking, mental integrity, freedom from rationalization and self-deception, wisdom in expression, mental clarity from authenticity.\n\nInner presence (psychic): The soul aligns word, thought, and deed; truthfulness is less a rule than the transparency of a being with nothing to hide."
+      "gloss": "Satya is truthfulness in thought, speech, and action. It is alignment with what is real and right, expressed with love (Satyam priyahitamchayat — truth spoken with love or be silent). It includes both factual truth and the deeper truth of Self.",
+      "coordinate": {
+        "raw": "Seat: Mental–Vital · Ontic mode: Virtue — a daivī quality (truthfulness) · Valence: Virtue to cultivate · Guṇa: Sattva-dominant · Scale: Interpersonal (Ādhibhautika) · Causal status: Condition (alignment of word, thought, and deed) · Key relation: A daivī quality; same as Satya the yama (Dim 11); kin to Ārjavam (Dim 10).",
+        "guna": "Sattva-dominant",
+        "seat": "Mental–Vital",
+        "scale": "Interpersonal (Ādhibhautika)",
+        "valence": "Virtue to cultivate",
+        "ontic_mode": "Virtue — a daivī quality (truthfulness)",
+        "key_relation": "A daivī quality; same as Satya the yama (Dim 11); kin to Ārjavam (Dim 10).",
+        "causal_status": "Condition (alignment of word, thought, and deed)"
+      }
     },
     {
-      "concept_id": 1419,
+      "concept_id": 270,
       "dimension_id": 24,
       "slug": "shaucham",
       "name": "Shaucham",
       "role": "contributing",
-      "gloss": "## Balanced — cleanliness of body, speech, and intent\n\nWhen Shaucham is present, a person maintains appropriate hygiene and cleanliness while cultivating inner purity of mind and motive. There is natural cleanliness without obsession.\n\nSomatic (body): Clean and well-maintained body, healthy hygiene practices, clean environment, body that radiates wellness, healthy elimination.\n\nEmotional current: Pure motives and emotional clarity, freedom from corrupting emotions, emotional cleanness, absence of toxic feelings.\n\nCognitive map: Pure thoughts and clean mental patterns, freedom from corrupted thinking, mental clarity, ability to think clean thoughts.\n\nInner presence (psychic): Outer and inner cleanliness mirror each other; purity is the soul keeping its instrument clear enough to reflect the real."
+      "gloss": "Shaucham is purity—both external (physical cleanliness, hygiene) and internal (purity of mind, motives, emotions). It is the foundation that allows clarity and spiritual progress.",
+      "coordinate": {
+        "raw": "Seat: Physical–Mental · Ontic mode: Virtue — a daivī quality (purity, inner and outer) · Valence: Virtue to cultivate · Guṇa: Sattva-dominant · Scale: Individual (ādhyātmika) · Causal status: Condition (cleanliness of body and mind) · Key relation: A daivī quality; same as Śaucha the niyama (Dim 11).",
+        "guna": "Sattva-dominant",
+        "seat": "Physical–Mental",
+        "scale": "Individual (ādhyātmika)",
+        "valence": "Virtue to cultivate",
+        "ontic_mode": "Virtue — a daivī quality (purity, inner and outer)",
+        "key_relation": "A daivī quality; same as Śaucha the niyama (Dim 11).",
+        "causal_status": "Condition (cleanliness of body and mind)"
+      }
     }
   ]
 }

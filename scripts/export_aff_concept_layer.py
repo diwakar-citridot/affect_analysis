@@ -21,24 +21,38 @@ def export_concept_layer(*, out_path: Path = OUT_PATH) -> dict[str, object]:
     if not settings.mysql_host or not settings.mysql_database:
         raise RuntimeError("MySQL is not configured")
 
-    sql = """
-        SELECT c.concept_id, cl.dimension_id, c.slug, c.name, cl.role,
-               COALESCE(NULLIF(TRIM(c.description), ''), c.name) AS gloss
-          FROM svarupa_concept_layer cl
-          JOIN svarupa_concepts c ON c.concept_id = cl.concept_id
-         WHERE cl.layer_code = %s
-         ORDER BY cl.dimension_id, cl.role DESC, c.slug
-    """
     conn = open_mysql(settings)
     try:
         with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT 1
+                  FROM information_schema.COLUMNS
+                 WHERE TABLE_SCHEMA = DATABASE()
+                   AND TABLE_NAME = 'svarupa_concepts'
+                   AND COLUMN_NAME = 'coordinate'
+                 LIMIT 1
+                """
+            )
+            has_coordinate = cur.fetchone() is not None
+            coordinate_select = "c.coordinate" if has_coordinate else "NULL AS coordinate"
+            sql = f"""
+                SELECT c.concept_id, cl.dimension_id, c.slug, c.name, cl.role,
+                       COALESCE(NULLIF(TRIM(c.description), ''), c.name) AS gloss,
+                       {coordinate_select}
+                  FROM svarupa_concept_layer cl
+                  JOIN svarupa_concepts c ON c.concept_id = cl.concept_id
+                 WHERE cl.layer_code = %s
+                 ORDER BY cl.dimension_id, cl.role DESC, c.slug
+            """
             cur.execute(sql, (LAYER_CODE,))
             rows = cur.fetchall()
     finally:
         conn.close()
 
-    concepts = [
-        {
+    concepts = []
+    for row in rows:
+        item: dict[str, object] = {
             "concept_id": int(row["concept_id"]),
             "dimension_id": int(row["dimension_id"]),
             "slug": str(row["slug"]),
@@ -46,8 +60,20 @@ def export_concept_layer(*, out_path: Path = OUT_PATH) -> dict[str, object]:
             "role": str(row["role"]),
             "gloss": str(row["gloss"] or row["name"]),
         }
-        for row in rows
-    ]
+        coordinate = row.get("coordinate")
+        if coordinate is not None:
+            if isinstance(coordinate, (bytes, bytearray)):
+                coordinate = coordinate.decode("utf-8")
+            if isinstance(coordinate, str):
+                text = coordinate.strip()
+                if text:
+                    try:
+                        item["coordinate"] = json.loads(text)
+                    except json.JSONDecodeError:
+                        item["coordinate"] = {"raw": text}
+            elif isinstance(coordinate, dict):
+                item["coordinate"] = coordinate
+        concepts.append(item)
     affinity = sorted({c["dimension_id"] for c in concepts})
     payload: dict[str, object] = {
         "schema_version": "1.0.0",

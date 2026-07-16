@@ -6,9 +6,15 @@ Steps:
   2. Read ``documentation/dimensions_and_concepts/Dimension & Attribute Mapping to
      Analytical Layers.xlsx``.
   3. Resolve ``Dimension`` -> ``dimension_id`` (``D{n}`` prefix or name lookup).
-  4. Resolve ``Core Attributes / Constructs`` -> ``concept_id`` (comma-separated tokens;
-     falls back to all concepts in the dimension when the cell is descriptive).
-  5. Parse ``Primary Layer(s)`` / ``Contributing Layer(s)`` for layer codes (SEM, AFF, …).
+  4. Resolve concepts for each dimension from **all** rows in ``svarupa_concepts``
+     (seeded from the latest dimension-attribute documentation JSON). Excel
+     ``Core Attributes / Constructs`` names the *primary* subset when it lists
+     specific tokens; remaining documentation concepts are still attached as
+     ``contributing``. Bulk / descriptive cells (e.g. ``etc.``, ``16 archetypes``)
+     treat every concept in the dimension as primary.
+  5. Parse ``Primary Layer(s)`` / ``Contributing Layer(s)`` for layer codes
+     (SEM, AFF, …). Parentheticals ending in ``only`` restrict that layer to
+     named concepts (e.g. ``AFF (rāga/dveṣa only)``).
   6. Insert ``(dimension_id, concept_id, layer_code, role)`` rows.
 
 Usage:
@@ -47,17 +53,32 @@ DEFAULT_XLSX = (
 
 DIMENSION_RE = re.compile(r"^D(\d+)\b", re.IGNORECASE)
 LAYER_CODE_RE = re.compile(r"\b([A-Z]{3})\b")
+# ``AFF (rāga/dveṣa only)`` / ``PSY (vikalpa, smṛti only)`` — concept filters.
+LAYER_ONLY_FILTER_RE = re.compile(
+    r"\b([A-Z]{3})\s*\(([^)]*?\bonly\b[^)]*)\)",
+    re.IGNORECASE,
+)
 VALID_LAYER_CODES = frozenset({"SEM", "COT", "AFF", "PHE", "PSY", "MET", "NAR"})
 
 # English / common tokens -> concept slug (within a dimension when ambiguous).
+# Keys use ``_ascii_key`` form (lookup always ascii-folds the Excel token).
 CONCEPT_SLUG_ALIASES: dict[tuple[int, str], str] = {
-    (1, "earth"): "prithvi",
+    (1, "earth"): "prthivi",
+    (1, "prithvi"): "prthivi",
     (1, "water"): "apas",
     (1, "fire"): "agni",
     (1, "air"): "vayu",
-    (1, "ether"): "akasha",
-    (10, "yoga"): "raja_yoga",
+    (1, "ether"): "akasa",
+    (1, "akasha"): "akasa",
+    (10, "yoga"): "chapter_4_raja_yoga",
+    (10, "rajayoga"): "chapter_4_raja_yoga",
+    (10, "jnana"): "chapter_3_jnana_yoga",
+    (10, "karma"): "chapter_2_karma_yoga",
+    (10, "bhakti"): "chapter_5_bhakti_yoga",
     (12, "karma"): "karma_phala",
+    (15, "vata"): "part_i_vata",
+    (15, "pitta"): "part_ii_pitta",
+    (15, "kapha"): "part_iii_kapha",
 }
 
 BULK_DESCRIPTOR_PATTERNS = (
@@ -78,6 +99,8 @@ BULK_DESCRIPTOR_PATTERNS = (
     re.compile(r"^soul-age\b", re.I),
 )
 
+_XLSX_NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+
 
 @dataclass(frozen=True)
 class ExcelRow:
@@ -85,6 +108,14 @@ class ExcelRow:
     concepts_text: str
     primary_layers_text: str
     contributing_layers_text: str
+
+
+@dataclass(frozen=True)
+class LayerSpec:
+    """A layer code with an optional concept-token filter from ``(… only)``."""
+
+    layer_code: str
+    concept_tokens: tuple[str, ...] | None = None
 
 
 @dataclass(frozen=True)
@@ -101,32 +132,54 @@ def _ascii_key(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", stripped.lower())
 
 
+def _col_index(cell_ref: str) -> int:
+    """Convert Excel column letters in ``A1`` / ``AE12`` to a 0-based index."""
+    letters = "".join(ch for ch in cell_ref if ch.isalpha())
+    n = 0
+    for ch in letters.upper():
+        n = n * 26 + (ord(ch) - 64)
+    return n - 1
+
+
+def _cell_text(cell: ET.Element, shared: list[str]) -> str | None:
+    cell_type = cell.get("t")
+    if cell_type == "inlineStr":
+        parts = [t.text or "" for t in cell.findall(".//m:t", _XLSX_NS)]
+        text = "".join(parts)
+        return text if text else None
+    value_el = cell.find("m:v", _XLSX_NS)
+    if value_el is None or value_el.text is None:
+        return None
+    if cell_type == "s":
+        return shared[int(value_el.text)]
+    return value_el.text
+
+
 def _read_xlsx_stdlib(path: Path) -> list[list[str | None]]:
     """Read the first worksheet via stdlib (no openpyxl dependency)."""
     with zipfile.ZipFile(path) as zf:
         shared: list[str] = []
         if "xl/sharedStrings.xml" in zf.namelist():
             root = ET.fromstring(zf.read("xl/sharedStrings.xml"))
-            ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
-            for si in root.findall(".//m:si", ns):
-                parts = [t.text or "" for t in si.findall(".//m:t", ns)]
+            for si in root.findall(".//m:si", _XLSX_NS):
+                parts = [t.text or "" for t in si.findall(".//m:t", _XLSX_NS)]
                 shared.append("".join(parts))
 
-        sheet_xml = zf.read("xl/worksheets/sheet1.xml")
-        root = ET.fromstring(sheet_xml)
-        ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+        sheet_name = next(
+            (n for n in zf.namelist() if re.fullmatch(r"xl/worksheets/sheet\d+\.xml", n)),
+            "xl/worksheets/sheet1.xml",
+        )
+        root = ET.fromstring(zf.read(sheet_name))
         rows: list[list[str | None]] = []
-        for row_el in root.findall(".//m:sheetData/m:row", ns):
-            row: list[str | None] = []
-            for cell in row_el.findall("m:c", ns):
-                cell_type = cell.get("t")
-                value_el = cell.find("m:v", ns)
-                if value_el is None or value_el.text is None:
-                    row.append(None)
-                elif cell_type == "s":
-                    row.append(shared[int(value_el.text)])
-                else:
-                    row.append(value_el.text)
+        for row_el in root.findall(".//m:sheetData/m:row", _XLSX_NS):
+            by_col: dict[int, str | None] = {}
+            max_col = -1
+            for cell in row_el.findall("m:c", _XLSX_NS):
+                ref = cell.get("r") or ""
+                col = _col_index(ref) if ref else (max_col + 1)
+                by_col[col] = _cell_text(cell, shared)
+                max_col = max(max_col, col)
+            row = [by_col.get(i) for i in range(max_col + 1)] if max_col >= 0 else []
             rows.append(row)
         return rows
 
@@ -152,20 +205,28 @@ def load_excel_rows(path: Path) -> list[ExcelRow]:
     col = {name: header.index(name) for name in expected}
     out: list[ExcelRow] = []
     for raw in raw_rows[1:]:
-        if not raw or not raw[col["Dimension"]]:
+        if not raw or col["Dimension"] >= len(raw) or not raw[col["Dimension"]]:
             continue
+        def _cell(name: str) -> str:
+            idx = col[name]
+            if idx >= len(raw) or raw[idx] is None:
+                return ""
+            return str(raw[idx]).strip()
+
         out.append(
             ExcelRow(
-                dimension_label=str(raw[col["Dimension"]]).strip(),
-                concepts_text=str(raw[col["Core Attributes / Constructs"]] or "").strip(),
-                primary_layers_text=str(raw[col["Primary Layer(s)"]] or "").strip(),
-                contributing_layers_text=str(raw[col["Contributing Layer(s)"]] or "").strip(),
+                dimension_label=_cell("Dimension"),
+                concepts_text=_cell("Core Attributes / Constructs"),
+                primary_layers_text=_cell("Primary Layer(s)"),
+                contributing_layers_text=_cell("Contributing Layer(s)"),
             )
         )
     return out
 
 
-def parse_dimension_id(label: str, dimension_by_id: dict[int, str], dimension_by_name: dict[str, int]) -> int | None:
+def parse_dimension_id(
+    label: str, dimension_by_id: dict[int, str], dimension_by_name: dict[str, int]
+) -> int | None:
     match = DIMENSION_RE.match(label.strip())
     if match:
         dim_id = int(match.group(1))
@@ -182,17 +243,48 @@ def parse_dimension_id(label: str, dimension_by_id: dict[int, str], dimension_by
     return None
 
 
-def parse_layer_codes(text: str) -> list[str]:
+def _split_filter_tokens(filter_body: str) -> tuple[str, ...]:
+    """Extract concept tokens from ``rāga/dveṣa only`` / ``vikalpa, smṛti only``."""
+    body = re.sub(r"\bonly\b", "", filter_body, flags=re.I)
+    body = body.strip(" ,/;")
+    tokens: list[str] = []
+    for part in re.split(r"[,/]| and ", body):
+        token = part.strip()
+        if not token:
+            continue
+        token = re.sub(r"\s*\([^)]*\)\s*$", "", token).strip()
+        if token:
+            tokens.append(token)
+    return tuple(tokens)
+
+
+def parse_layer_specs(text: str) -> list[LayerSpec]:
+    """Parse layer codes; keep ``(… only)`` concept filters when present."""
     if not text:
         return []
+
+    # Scan original text so Sanskrit diacritics inside ``(… only)`` survive.
+    filtered: dict[str, tuple[str, ...] | None] = {}
+    for match in LAYER_ONLY_FILTER_RE.finditer(text):
+        code = match.group(1).upper()
+        if code not in VALID_LAYER_CODES:
+            continue
+        filtered[code] = _split_filter_tokens(match.group(2))
+
     seen: set[str] = set()
-    ordered: list[str] = []
+    ordered: list[LayerSpec] = []
     for match in LAYER_CODE_RE.finditer(text.upper()):
         code = match.group(1)
-        if code in VALID_LAYER_CODES and code not in seen:
-            seen.add(code)
-            ordered.append(code)
+        if code not in VALID_LAYER_CODES or code in seen:
+            continue
+        seen.add(code)
+        ordered.append(LayerSpec(layer_code=code, concept_tokens=filtered.get(code)))
     return ordered
+
+
+def parse_layer_codes(text: str) -> list[str]:
+    """Backward-compatible helper: layer codes only, ignoring filters."""
+    return [spec.layer_code for spec in parse_layer_specs(text)]
 
 
 def _is_bulk_descriptor(text: str) -> bool:
@@ -213,7 +305,7 @@ def _split_concept_tokens(text: str) -> list[str]:
 
 
 class ConceptLookup:
-    """Resolve concept tokens within a dimension."""
+    """Resolve concept tokens within a dimension (latest ``svarupa_concepts``)."""
 
     def __init__(self, rows: list[dict[str, object]]) -> None:
         self._by_dimension: dict[int, list[dict[str, object]]] = defaultdict(list)
@@ -228,7 +320,7 @@ class ConceptLookup:
             for raw in (slug, name, sanskrit):
                 if raw:
                     self._index[(dim_id, _ascii_key(raw))] = concept_id
-            for word in re.split(r"[/\s]+", name):
+            for word in re.split(r"[/\s_-]+", name):
                 word_key = _ascii_key(word)
                 if len(word_key) >= 3:
                     self._index.setdefault((dim_id, word_key), concept_id)
@@ -239,34 +331,86 @@ class ConceptLookup:
     def resolve_token(self, dimension_id: int, token: str) -> int | None:
         alias_slug = CONCEPT_SLUG_ALIASES.get((dimension_id, _ascii_key(token)))
         if alias_slug:
-            return self._index.get((dimension_id, _ascii_key(alias_slug)))
+            aliased = self._index.get((dimension_id, _ascii_key(alias_slug)))
+            if aliased is not None:
+                return aliased
 
         direct = self._index.get((dimension_id, _ascii_key(token)))
         if direct is not None:
             return direct
 
         token_key = _ascii_key(token)
+        if not token_key:
+            return None
+        # Prefer longest slug that equals / ends with / is ended by the token key
+        # (handles documentation slugs like part_i_vata or chapter_2_karma_yoga).
+        best: tuple[int, int] | None = None
         for row in self._by_dimension.get(dimension_id, []):
             slug_key = _ascii_key(str(row["slug"]))
-            if slug_key.startswith(token_key) or token_key.startswith(slug_key):
-                return int(row["concept_id"])
-        return None
+            if not slug_key:
+                continue
+            if slug_key == token_key or slug_key.endswith(token_key) or token_key.endswith(slug_key):
+                candidate = (len(slug_key), int(row["concept_id"]))
+                if best is None or candidate[0] > best[0]:
+                    best = candidate
+        return best[1] if best else None
 
-    def resolve_concepts(self, dimension_id: int, text: str) -> list[int]:
-        if not text or _is_bulk_descriptor(text):
-            return self.all_concept_ids(dimension_id)
-
+    def resolve_tokens(self, dimension_id: int, tokens: list[str] | tuple[str, ...]) -> list[int]:
         matched: list[int] = []
         seen: set[int] = set()
-        for token in _split_concept_tokens(text):
+        for token in tokens:
             concept_id = self.resolve_token(dimension_id, token)
             if concept_id is not None and concept_id not in seen:
                 seen.add(concept_id)
                 matched.append(concept_id)
-
-        if not matched:
-            return self.all_concept_ids(dimension_id)
         return matched
+
+    def resolve_primary_and_remainder(
+        self, dimension_id: int, text: str
+    ) -> tuple[list[int], list[int], bool]:
+        """Return ``(primary_ids, remainder_ids, used_bulk)``.
+
+        * Bulk / empty Excel cells → every documentation concept is primary.
+        * Specific Excel tokens → those are primary; every other concept in the
+          dimension (from the latest documentation seed) is remainder/contributing.
+        * If specific tokens resolve to nothing → fall back to all as primary.
+        """
+        all_ids = self.all_concept_ids(dimension_id)
+        if not text or _is_bulk_descriptor(text):
+            return all_ids, [], True
+
+        primary = self.resolve_tokens(dimension_id, _split_concept_tokens(text))
+        if not primary:
+            return all_ids, [], True
+
+        primary_set = set(primary)
+        remainder = [cid for cid in all_ids if cid not in primary_set]
+        return primary, remainder, False
+
+
+def _append_insert(
+    inserts: list[ConceptLayerInsert],
+    dedupe: set[tuple[int, str, str]],
+    *,
+    dimension_id: int,
+    concept_id: int,
+    layer_code: str,
+    role: str,
+) -> None:
+    key = (concept_id, layer_code, role)
+    if key in dedupe:
+        return
+    if role == "contributing" and (concept_id, layer_code, "primary") in dedupe:
+        return
+    dedupe.add(key)
+    inserts.append(
+        ConceptLayerInsert(
+            dimension_id=dimension_id,
+            concept_id=concept_id,
+            layer_code=layer_code,
+            role=role,
+        )
+    )
 
 
 def build_inserts(
@@ -286,47 +430,90 @@ def build_inserts(
             warnings.append(f"Unmapped dimension: {row.dimension_label!r}")
             continue
 
-        concept_ids = concept_lookup.resolve_concepts(dimension_id, row.concepts_text)
-        if not concept_ids:
+        primary_ids, remainder_ids, used_bulk = concept_lookup.resolve_primary_and_remainder(
+            dimension_id, row.concepts_text
+        )
+        if not primary_ids and not remainder_ids:
             warnings.append(
                 f"D{dimension_id} ({row.dimension_label!r}): no concepts in database — skipped"
             )
             continue
 
-        primary_layers = parse_layer_codes(row.primary_layers_text)
-        contributing_layers = parse_layer_codes(row.contributing_layers_text)
+        if not used_bulk and remainder_ids:
+            logger.info(
+                "D%s: Excel lists %d primary concept(s); attaching %d remaining "
+                "documentation concept(s) as contributing",
+                dimension_id,
+                len(primary_ids),
+                len(remainder_ids),
+            )
+
+        primary_layers = parse_layer_specs(row.primary_layers_text)
+        contributing_layers = parse_layer_specs(row.contributing_layers_text)
         if not primary_layers and not contributing_layers:
             warnings.append(f"D{dimension_id}: no layer codes parsed — skipped")
             continue
 
-        for concept_id in concept_ids:
-            for layer_code in primary_layers:
-                key = (concept_id, layer_code, "primary")
-                if key not in dedupe:
-                    dedupe.add(key)
-                    inserts.append(
-                        ConceptLayerInsert(
-                            dimension_id=dimension_id,
-                            concept_id=concept_id,
-                            layer_code=layer_code,
-                            role="primary",
-                        )
+        for spec in primary_layers:
+            if spec.concept_tokens is not None:
+                concept_ids = concept_lookup.resolve_tokens(dimension_id, spec.concept_tokens)
+                if not concept_ids:
+                    warnings.append(
+                        f"D{dimension_id} primary {spec.layer_code}: "
+                        f"only-filter {spec.concept_tokens!r} matched nothing"
                     )
-            for layer_code in contributing_layers:
-                key = (concept_id, layer_code, "contributing")
-                if key in dedupe:
                     continue
-                primary_key = (concept_id, layer_code, "primary")
-                if primary_key in dedupe:
-                    continue
-                dedupe.add(key)
-                inserts.append(
-                    ConceptLayerInsert(
+                for concept_id in concept_ids:
+                    _append_insert(
+                        inserts,
+                        dedupe,
                         dimension_id=dimension_id,
                         concept_id=concept_id,
-                        layer_code=layer_code,
-                        role="contributing",
+                        layer_code=spec.layer_code,
+                        role="primary",
                     )
+                continue
+
+            for concept_id in primary_ids:
+                _append_insert(
+                    inserts,
+                    dedupe,
+                    dimension_id=dimension_id,
+                    concept_id=concept_id,
+                    layer_code=spec.layer_code,
+                    role="primary",
+                )
+            for concept_id in remainder_ids:
+                _append_insert(
+                    inserts,
+                    dedupe,
+                    dimension_id=dimension_id,
+                    concept_id=concept_id,
+                    layer_code=spec.layer_code,
+                    role="contributing",
+                )
+
+        for spec in contributing_layers:
+            if spec.concept_tokens is not None:
+                concept_ids = concept_lookup.resolve_tokens(dimension_id, spec.concept_tokens)
+                if not concept_ids:
+                    warnings.append(
+                        f"D{dimension_id} contributing {spec.layer_code}: "
+                        f"only-filter {spec.concept_tokens!r} matched nothing"
+                    )
+                    continue
+            else:
+                # Include every documentation concept for unrestricted contributing layers.
+                concept_ids = primary_ids + remainder_ids
+
+            for concept_id in concept_ids:
+                _append_insert(
+                    inserts,
+                    dedupe,
+                    dimension_id=dimension_id,
+                    concept_id=concept_id,
+                    layer_code=spec.layer_code,
+                    role="contributing",
                 )
 
     return inserts, warnings

@@ -22,7 +22,7 @@ STEP2_THROTTLE_MAX_RETRIES = 8
 STEP2_THROTTLE_BASE_DELAY = 5
 STEP2_THROTTLE_MAX_DELAY = 120
 
-LIVED_EXPERIENCE_MAX_TOKENS = 8192
+LIVED_EXPERIENCE_MAX_TOKENS = 16384
 LIVED_EXPERIENCE_MAX_RETRIES = 3
 LIVED_EXPERIENCE_RETRY_DELAY_SEC = 5
 LIVED_EXPERIENCE_THROTTLE_MAX_RETRIES = 8
@@ -71,41 +71,71 @@ class ConceptProfile:
     spoken_anchor: str = ""
 
 
-PROMPT_TEMPLATE = """## Input
+PROMPT_TEMPLATE = """## Purpose
 
-You will receive a passage describing a concept or dimension from Indian wisdom traditions (e.g., one of the five koshas, a guna, a chakra, a state of consciousness).
+Generate 60 short, first-person lived-experience statements (30 Western-perspective + 30 Asian-perspective) that let a person recognize themselves as **dwelling in** one specific Concept, within its parent Dimension, from the Svarupa framework of Indian wisdom traditions. Statements never name the concept, the dimension, or use tradition vocabulary — they disclose it entirely through plain, ordinary, lived detail.
 
-## Step 1: Internal Analysis (do not output)
+## 1. Key Definitions
+
+**Dimension** — one of the framework's organizing lenses on human experience (e.g., *Guṇa*, *Yuga Cycles*, *Pañca Kośa*, *The Five Kleśas*). A dimension is a category, not something a person feels directly. Each dimension groups a small family of affiliated **Concepts** that share a common thread but differ from one another in texture, role, or emphasis — e.g., the Guṇa dimension groups Sattva, Rajas, and Tamas; the Yuga Cycles dimension groups the Satya-, Tretā-, Dvāpara-, and Kali-soul states.
+
+**Concept** (also called an *attribute*) — the specific, nameable pattern within a dimension that a person can actually recognize as something they live. Every concept belongs to exactly one dimension and can be examined across four experiential layers (physical, vital/emotional, mental, psychic) and three states (deficient, balanced, excessive). A concept is typically one of:
+
+1. A quality or mode that colors experience — e.g., Sattva, Rajas, Tamas
+2. A structural aspect of the human system — e.g., Annamaya Kośa
+3. A constitutional element or nature — e.g., an element, a doṣa
+4. A state or stage of awareness/consciousness — e.g., a yuga-soul, a kośa
+5. A subtle energy or channel — e.g., a chakra, a vāyu
+6. A durable or transient emotional state — e.g., a Sthāyibhāva, a Vyabhicāribhāva
+7. A psychodynamic pattern — an affliction, mental modification, or obstacle
+8. A path, practice, or developmental/evolutionary stage
+
+**Why this matters here:** two concepts inside the same dimension are often close cousins (two guṇas, two yuga-souls, two kleśas). Every statement below must disclose not just the *dimension* but this exact *concept* — never a neighbor. This is tested formally in the Signal Clarity Review (Step 4).
+
+## 2. Concept Context for This Run
+
+- **Dimension**: {dimension}
+- **Concept**: {concept}
+- **Display name**: {display_name}
+- **Source meaning** (primary semantic authority):
+
+{source_meaning}
+
+## 3. Step 1: Silent Internal Analysis (do not output)
 
 Before writing any statements, silently identify:
 
-- **The distinctive signature** of this dimension — what makes it recognizable as *this* and not something adjacent. What distinguishes someone *dwelling* at this layer from someone who merely passes through it occasionally?
-- **The load-bearing test** — for a person whose center of gravity is this dimension, what does this dimension *carry* in their life? What does it organize? What decisions are made through it? What suffering is routed through it? What does wellbeing depend on?
-- **The spectrum** of expression: deficient form, balanced form, excessive form
-- **The contexts where it surfaces** in ordinary modern life — including interpersonal moments (with family, relatives, friends, colleagues, neighbours, strangers) where the dimension shows up in how the person responds, reacts, withdraws, leans in, judges, or feels touched
-- **The somatic/experiential signature** — how this dimension actually feels in lived experience, not how it sounds in books
+- **The distinctive signature of this concept** — what makes it recognizable as *this concept* and not a neighboring one (including neighbors within the same dimension). What distinguishes someone *dwelling* here from someone who merely passes through occasionally?
+- **The load-bearing test target** — for a person whose center of gravity is this concept, what does it *carry* in their life? What does it organize? What decisions run through it? What suffering is routed through it? What does wellbeing depend on?
+- **The spectrum of expression** — deficient, balanced, excessive.
+- **The contexts where it surfaces** in ordinary modern life — including interpersonal moments (family, relatives, friends, colleagues, neighbours, strangers) where the concept shows up in how the person responds, reacts, withdraws, leans in, judges, or feels touched.
+- **The somatic/experiential signature** — how this concept actually feels in lived experience, not how it sounds in books.
 
-## Step 2: The Load-Bearing Test (critical)
+## 4. Step 2: The Load-Bearing Test (apply to every statement)
 
 The single most important test for each statement:
 
-**Does this statement reveal that the dimension is doing load-bearing work in this person's life — that their identity, meaning, suffering, wellbeing, or daily organization is routed through this layer?**
+**Does this statement reveal that the concept is doing load-bearing work in this person's life — that their identity, meaning, suffering, wellbeing, or daily organization is routed through it?**
 
-Mere mention of body, energy, mind, intellect, or bliss is not enough. Anyone might mention these. A statement reflects *dwelling at* this dimension only when it discloses that this layer is the **center of gravity** — what the person's life is organized around, what they fall back on, what sets the terms.
+Mere mention of body, energy, mind, intellect, or bliss is not enough. Anyone might mention these. A statement reflects *dwelling in* this concept only when it discloses that this layer is the **center of gravity** — what the person's life is organized around, what they fall back on, what sets the terms.
 
 {step2_examples}
 
-Apply the equivalent test to whichever dimension is being explored.
+Apply the equivalent test to whichever concept — within its dimension — is being explored.
 
-## Step 3: Generate Two Sets of 8 Statements
+## 5. Generation Requirements (establish before writing)
 
-Generate one set from a **Western perspective** and one set from an **Asian perspective**. The cultural difference should show up in the *substance and context* of the lived experience, not in surface details (don't just swap one word for another). The contextual grain — the structure of family, the role of food and care, the rhythms of work and worship, the role of elders, the felt presence of community — should do real work.
+### 5.1 Volume and Status Distribution
 
-A great deal of human experience surfaces *in the presence of, or in interaction with, other people*. Statements should reflect this. Many of the strongest disclosures come from how a person responds physically and emotionally to family members, relatives, friends, colleagues, neighbours, household help, strangers in public, and what they notice in themselves while watching others interact.
+Generate **exactly 60 statements total**: 30 for a Western perspective and 30 for an Asian perspective (cultural grain in 5.4). Within **each** set of 30, include exactly:
 
-### Distribution within each set of 8:
+- 10 statements with status **balanced** — healthy, integrated expression of dwelling at this layer (includes subtle background experiences most people miss)
+- 10 statements with status **excessive** — stressed, over-activated, or dominated expression of this concept
+- 10 statements with status **deficient** — absence, under-activation, or suppressed expression of this concept
 
-| Life Context | Minimum statements |
+### 5.2 Life-Context Distribution (per set of 30)
+
+| Life Context | Statements |
 |---|---|
 | Personal/inner life (self alone, mornings, sleep, habits) | 6 |
 | Family and intimate relationships (spouse, parents, children, in-laws, siblings) | 6 |
@@ -114,20 +144,28 @@ A great deal of human experience surfaces *in the presence of, or in interaction
 | Wider social/community interactions (strangers, public spaces, gatherings, observing others) | 5 |
 | Transitions between contexts | 4 |
 
-### Across each set of 8, ensure each body-mind layer appears at least 6 times:
+### 5.3 Body-Mind Layer Coverage (per set of 30)
+
+Each layer must appear in **at least 6** statements (a single statement may combine layers, so this is a floor, not a strict partition):
 
 - **Physical body** — sensation, energy, sleep, appetite, posture, breath
 - **Mental body** — attention quality, thought patterns, decision-making
 - **Emotional/vital body** — mood texture, reactivity, energy waves
 - **Psychic/soul body** — felt sense of meaning, rightness, intuition, inner knowing. Phrase this so a thoughtful non-spiritual reader would not roll their eyes.
 
-### Within each set of 8, include exactly:
+### 5.4 Cultural Grain (Western vs. Asian)
 
-- 2 statements with status **balanced** — healthy, integrated expression of dwelling at this layer (includes subtle background experiences most people miss)
-- 2 statements with status **excessive** — stressed, over-activated, or dominated expression of this dimension
-- 2 statements with status **deficient** — absence, under-activation, or suppressed expression of this dimension
+The cultural difference should show up in the *substance and context* of the lived experience, not in surface details (don't just swap one word for another). The contextual grain — the structure of family, the role of food and care, the rhythms of work and worship, the role of elders, the felt presence of community — should do real work.
 
-## Format & Voice
+A great deal of human experience surfaces *in the presence of, or in interaction with, other people*. Statements should reflect this. Many of the strongest disclosures come from how a person responds physically and emotionally to family members, relatives, friends, colleagues, neighbours, household help, strangers in public, and what they notice in themselves while watching others interact.
+
+**Western perspective — likely textures:** individual or nuclear-family living, the gym, primary care doctors and annual physicals, school drop-off, the commute by car, open-plan offices and video calls, takeout and meal-prep culture, dating apps, weekend brunch, marathon training, weather as seasons (winter coats, first warm day), retirement planning, mortgage, ER visits, the dentist, holiday weekends, neighbours one barely knows, networking events.
+
+**Asian perspective — likely textures (drawn broadly from East, Southeast, and South Asia):** multi-generational and extended-family households or close family involvement even when living apart, food as a primary love and care language, elders' active presence and authority in daily decisions, marriage and reproduction as shared family concerns, the role of household help or live-in caregivers where applicable, the felt weight of being observed and assessed by community, festival and ritual rhythms (lunar new year, harvest festivals, religious holidays, ancestor remembrances), hot food vs. cold food and other folk health beliefs, traditional medicine alongside modern doctors, removing footwear at the threshold, dense urban living and public transport, hierarchy at work, the importance of face and reputation, neighbours and community members who know one's business, food gifts and reciprocity, body and appearance as family-level concerns.
+
+The cultural difference should appear in **what is happening to and around the person — including in the presence of other people** — not just in surface details of consumption.
+
+### 5.5 Format & Voice
 
 - **First person, present tense**. The voice is a person describing themselves to a therapist, counsellor, doctor, or close friend they trust — someone they are talking to because they would like to understand their experience.
 - **2–3 sentences per statement**.
@@ -136,7 +174,7 @@ A great deal of human experience surfaces *in the presence of, or in interaction
 - **The statement must reveal the speaker's own lived experience.** Other people can appear in the statement — that is encouraged — but what is being disclosed is what is happening *in the speaker* in response to or in interaction with them.
 - **No commentary about other people's behaviour as an end in itself, no analytical asides, no neat life-lessons.** The speaker is reporting their own experience, not interpreting others.
 
-## Specificity Requirements
+### 5.6 Specificity Requirements
 
 - **One small anchor per statement** — a moment, an object, a recurring situation, a person. Just enough to ground the experience. Not a full scene or storyline.
 - **Sensory or behavioural detail lightly** — a sensation, a time of day, a small action — but don't build a story around it.
@@ -145,41 +183,43 @@ A great deal of human experience surfaces *in the presence of, or in interaction
 - **No translated jargon** ("luminous clarity," "groundedness of being," "expansive consciousness"). Use kitchen-table language.
 - **Ordinariness is the discipline.** Real people describe themselves in small, partial, sometimes confused ways. They rarely sum themselves up neatly. If a statement sounds wise, insightful, or like a finished thought, it's probably too written.
 
-## Cultural Grain (for the two sets)
+## 6. Worked Examples for This Concept
 
-**Western perspective — likely textures:** individual or nuclear-family living, the gym, primary care doctors and annual physicals, school drop-off, the commute by car, open-plan offices and video calls, takeout and meal-prep culture, dating apps, weekend brunch, marathon training, weather as seasons (winter coats, first warm day), retirement planning, mortgage, ER visits, the dentist, holiday weekends, neighbours one barely knows, networking events.
+{target_quality_examples}
 
-**Asian perspective — likely textures (drawn broadly from East, Southeast, and South Asia):** multi-generational and extended-family households or close family involvement even when living apart, food as a primary love and care language, elders' active presence and authority in daily decisions, marriage and reproduction as shared family concerns, the role of household help or live-in caregivers where applicable, the felt weight of being observed and assessed by community, festival and ritual rhythms (lunar new year, harvest festivals, religious holidays, ancestor remembrances), hot food vs. cold food and other folk health beliefs, traditional medicine alongside modern doctors, removing footwear at the threshold, dense urban living and public transport, hierarchy at work, the importance of face and reputation, neighbours and community members who know one's business, food gifts and reciprocity, body and appearance as family-level concerns.
+## 7. Step 3: Generate
 
-The cultural difference should appear in **what is happening to and around the person — including in the presence of other people** — not just in surface details of consumption.
+Write all 60 statements now, satisfying every requirement in Section 5.
 
-## Self-check Before Outputting
+## 8. Step 4: Quality Review (three passes; revise before finalizing)
+
+### Pass 1 — Per-statement self-check
 
 For each statement, ask:
 
-- **Does this pass the load-bearing test?** Does it reveal that this dimension is doing the organizing work in this person's life — or is it just mentioning the dimension?
-- **Could this describe the opposite concept too?** If yes, it's too generic.
+- **Does this pass the load-bearing test?** Does it reveal that this concept is doing the organizing work in this person's life — or is it just mentioning the concept?
+- **Could this describe a neighbouring concept too?** If yes, it's too generic.
 - **Is this disclosing something about the speaker's own lived experience** — including when others are present — or is it just describing what someone else did?
 - **Is there a small anchor, or just abstract feeling-words?**
 - **Does it sound like spoken description, or like a written reflection?**
 - **Is it insight-laden in a way ordinary people are not?** If the speaker has too clear a read on their own pattern, it's probably too writerly.
 - **Does this overlap too closely with another statement in the set?**
 
-### Signal clarity review (required — revise before output)
+### Pass 2 — Signal clarity review
 
-After generating the lived-experience statements, review **every** statement against the **expected signals** for this concept context. The statement itself must make these three signals clear, crisp, and unambiguous — without using tradition jargon or naming the dimension/attribute in Sanskrit or technical labels:
+After generating the lived-experience statements, review **every** statement against the **expected signals** for this concept context. The statement itself must make these three signals clear, crisp, and unambiguous — without using tradition jargon or naming the dimension/concept in Sanskrit or technical labels:
 
 1. **Dimension signal** — Would a careful reader reliably infer that this person is organized around *this dimension* (not an adjacent one)? If the experiential cues could equally fit a neighbouring dimension, the signal is muddy — revise.
-2. **Attribute / concept signal** — Does the statement disclose the distinctive signature of *this attribute* (the concept named in the Concept context below), not a generic flavour of the parent dimension? If the attribute-specific texture is vague, soft, or interchangeable with a sibling attribute, revise until the cue is precise.
+2. **Concept signal** — Does the statement disclose the distinctive signature of *this concept* (named in Section 2 above), not a generic flavour of the parent dimension or a sibling concept? If the concept-specific texture is vague, soft, or interchangeable with a sibling concept, revise until the cue is precise.
 3. **State signal** — Does the experiential pattern clearly and unambiguously match the assigned `"status"` (`balanced` / `excessive` / `deficient`)? A balanced statement must not read as stress or absence; an excessive statement must show over-activation or domination; a deficient statement must show under-activation, absence, or suppression. If status could be misread, revise until the state is unmistakable from the lived detail alone.
 
 **Revision rule:** If any of the three signals is missing, blurred, implied only by wishful reading, or not crisp and precise, **rewrite that lived-experience statement** before including it in the output. Prefer a sharper anchor, a more distinctive behavioural/somatic cue, and clearer status texture — still in plain spoken language. Do not "fix" clarity by adding analytical labels or tradition vocabulary.
 
-After assembling all statements, review them once per perspective set. Identify the 5 weakest (most generic, most likely to apply to any dimension, most writerly, most repetitive, or weakest on dimension / attribute / state signal clarity) and rewrite them with a clearer anchor, plainer language, a stronger disclosure of dwelling-at-this-layer, and unambiguous expected signals. Ensure the final counts still satisfy the 2/2/2 status distribution for each perspective.
+### Pass 3 — Weakest-five pass
 
-{target_quality_examples}
+For each set of 30, identify the 5 weakest statements (most generic, most likely to apply to any concept, most writerly, most repetitive, or weakest on dimension / concept / state signal clarity) and rewrite them with a clearer anchor, plainer language, a stronger disclosure of dwelling-at-this-concept, and unambiguous expected signals. Ensure the final counts still satisfy the 10/10/10 status distribution for each perspective and the distributions in 5.2–5.3.
 
-## Output
+## 9. Output
 
 Return a JSON array of exactly 60 statement objects. Each object must have exactly these three fields:
 
@@ -187,30 +227,13 @@ Return a JSON array of exactly 60 statement objects. Each object must have exact
 - `"status"`: one of `"balanced"`, `"excessive"`, or `"deficient"`
 - `"regional_perspective"`: one of `"western"` or `"asian"`
 
-The array must contain exactly 8 objects with `"regional_perspective": "western"` (2 balanced, 2 excessive, 2 deficient) and 8 objects with `"regional_perspective": "asian"` (2 balanced, 2 excessive, 2 deficient).
+The array must contain exactly 30 objects with `"regional_perspective": "western"` (10 balanced, 10 excessive, 10 deficient) and exactly 30 objects with `"regional_perspective": "asian"` (10 balanced, 10 excessive, 10 deficient).
 
 Output only the raw JSON array — no markdown fences, no preamble, no commentary, no concept name.
-
----
-
-## Concept context (for generation)
-
-- **Dimension**: {dimension}
-- **Concept**: {concept}
-- **Display name**: {display_name}
-- **Source meaning** (primary semantic authority):
-
-{source_meaning}
 """
 
 
-STEP2_GENERATION_PROMPT = """You are an expert at calibrating example pairs for a lived experience extraction task. Your job is to produce a small set of ✗/✓ contrast pairs that teach another model the right level of specificity for first-person experience statements about a concept from Indian wisdom traditions.
-
-Input
-
-Dimension: {dimension_name}
-Attribute/Sub-concept (if applicable): {attribute_name}
-Source passage: {source_passage}
+STEP2_SYSTEM_PROMPT = """You are an expert at calibrating example pairs for a lived experience extraction task. Your job is to produce a small set of ✗/✓ contrast pairs that teach another model the right level of specificity for first-person experience statements about a concept from Indian wisdom traditions.
 
 What You Are Generating
 
@@ -227,6 +250,7 @@ Calibration Rules for the ✓ Statements
 - Sound like spoken language, not written language — the way someone describes themselves to a friend or therapist
 - One small anchor: a moment, an object, a time of day, a recurring situation. Not a full scene.
 - Kitchen-table vocabulary. No Sanskrit. No translated jargon ("luminous clarity," "groundedness of being," etc.). No tradition-specific imagery (lotuses, sages, deities, chakras).
+- Never state the concept's name (Sanskrit term, translated name, or the dimension's name) inside a ✓ or ✗ statement itself — the concept must be disclosed only through feeling, behavior, and context, exactly as the downstream generation task requires.
 - Reference modern everyday life — mornings, messages, meetings, meals, sleep, conversations.
 - The ✓ statement should be the same feeling as the ✗ statement, just calibrated correctly. They are a matched pair, not unrelated examples.
 
@@ -270,6 +294,13 @@ Produce exactly this structure, nothing else:
 *"[statement]"*
 
 No preamble, no headings, no commentary, no explanation of which life context or layer each pair covers."""
+
+
+STEP2_USER_PROMPT = """Input
+
+Dimension: {dimension_name}
+Attribute/Sub-concept (if applicable): {attribute_name}
+Source passage: {source_passage}"""
 
 
 class BedrockStep2Client(Protocol):
@@ -343,6 +374,24 @@ def _log_bedrock_prompt(
     if extra:
         payload["context"] = extra
     logger.info("Bedrock request\n%s", json.dumps(payload, indent=2, ensure_ascii=False))
+
+
+def _log_bedrock_response(
+    *,
+    purpose: str,
+    model_id: str,
+    response_text: str,
+    extra: dict[str, Any] | None = None,
+) -> None:
+    payload: dict[str, Any] = {
+        "purpose": purpose,
+        "model_id": model_id,
+        "response_chars": len(response_text),
+        "response_text": response_text,
+    }
+    if extra:
+        payload["context"] = extra
+    logger.info("Bedrock response\n%s", json.dumps(payload, indent=2, ensure_ascii=False))
 
 
 def _is_throttle(exc: Exception) -> bool:
@@ -579,17 +628,20 @@ def build_step2_examples(
         else ""
     )
     dimension_label = record.db_dimension_name or display_name(record.dimension)
-    prompt = STEP2_GENERATION_PROMPT.format(
+    system_prompt = STEP2_SYSTEM_PROMPT.format(
+        dimension_name=dimension_label,
+        attribute_suffix=attribute_suffix,
+    )
+    user_prompt = STEP2_USER_PROMPT.format(
         dimension_name=dimension_label,
         attribute_name=profile.display_name,
         source_passage=record.source_meaning.strip(),
-        attribute_suffix=attribute_suffix,
     )
     _log_bedrock_prompt(
         purpose="step2_examples",
         model_id=resolved_model_id,
-        system_prompt="",
-        user_prompt=prompt,
+        system_prompt=system_prompt,
+        user_prompt=user_prompt,
         extra={
             "dimension": record.dimension,
             "concept": record.concept,
@@ -599,8 +651,8 @@ def build_step2_examples(
 
     client = bedrock_client or get_step2_bedrock_client(region=region)
     raw = client.generate_step2_examples(
-        system_prompt="",
-        user_prompt=prompt,
+        system_prompt=system_prompt,
+        user_prompt=user_prompt,
         model_id=resolved_model_id,
         max_tokens=STEP2_MAX_TOKENS,
     )
@@ -651,8 +703,8 @@ def build_target_quality_examples(profile: ConceptProfile) -> str:
             ok=False,
             heading=f"Fails the load-bearing test — a surface habit that doesn't disclose {profile.organizing_phrase}",
             quote=(
-                f"I always do the same little routine my mother taught me around {anchor}. "
-                "If I skip it I feel unsettled."
+                "I always do the same little breathing routine my mother taught me before bed. "
+                "If I skip it, I feel a little unsettled, though I couldn't say why."
             ),
             explanation=(
                 f"This is a familiar habit related to {anchor}. People dwelling at {adjacent} "
@@ -675,8 +727,8 @@ def build_target_quality_examples(profile: ConceptProfile) -> str:
             ok=False,
             heading="Too writerly, too self-aware for ordinary speech",
             quote=(
-                f"I am starting to see that {anchor} has been running my life for years, "
-                "and I think I am finally ready to understand why."
+                "I'm starting to see that this need to earn my own steadiness has been running my life "
+                "for years, and I think I'm finally ready to understand why."
             ),
             explanation=(
                 "Real people rarely deliver this much packaged insight in one breath. "
@@ -685,7 +737,7 @@ def build_target_quality_examples(profile: ConceptProfile) -> str:
         ),
         _example_block(
             ok=False,
-            heading="Too generic — could describe any dimension",
+            heading="Too generic — could describe any concept",
             quote="I just feel off most days. Nothing feels right and I can't explain it.",
             explanation=(
                 f"This is feeling-language without an anchor. It could fit illness, grief, "
@@ -696,8 +748,9 @@ def build_target_quality_examples(profile: ConceptProfile) -> str:
             ok=True,
             heading=f"Right level — {profile.organizing_phrase}, with another person in the frame",
             quote=(
-                f"When my father-in-law starts talking about money at dinner, something in me locks up "
-                f"before I even answer. By dessert I still am not myself if {anchor} feels threatened."
+                "When my father-in-law starts talking about money at dinner, something in me locks up "
+                "before I even answer. By dessert I still haven't found my footing — like the steadiness "
+                "I usually have to work for got knocked loose, and I can't just will it back."
             ),
             explanation=(
                 f"Another person is present, but the disclosure is the speaker's own experience — "
@@ -708,12 +761,12 @@ def build_target_quality_examples(profile: ConceptProfile) -> str:
             ok=True,
             heading=f"Right level — {profile.organizing_subject} sets the terms for the speaker's entire week",
             quote=(
-                f"I protect one part of every week just to keep {anchor} steady. "
+                "I protect one part of every week, no matter what, just to keep myself steady. "
                 "It is not a hobby — it is the only thing that keeps me functional with my team by Wednesday."
             ),
             explanation=(
                 f"{profile.organizing_subject} is the foundation of the speaker's professional and relational life. "
-                "The dimension is doing load-bearing work."
+                "The concept is doing load-bearing work."
             ),
         ),
         _example_block(
@@ -732,7 +785,7 @@ def build_target_quality_examples(profile: ConceptProfile) -> str:
             ok=True,
             heading=f"Right level — {anchor} as identity, ordinary language, no insight overlay",
             quote=(
-                f"If I go a few days without tending to {anchor}, I do not feel like myself with my kids. "
+                "If I go a few days without my usual morning routine, I do not feel like myself with my kids. "
                 "My partner notices before I do. It is not something I do on the side — it is where I become myself."
             ),
             explanation=(
@@ -755,9 +808,8 @@ def build_target_quality_examples(profile: ConceptProfile) -> str:
     ]
 
     intro = (
-        "## Examples of the Target Quality\n\n"
-        f"The examples below use **{profile.display_name}** ({profile.gloss}) as the working illustration. "
-        "The same logic applies to whichever dimension is being explored.\n"
+        f"The examples below apply the load-bearing test to **{profile.display_name}** ({profile.gloss}) specifically. "
+        "The same logic applies to whichever concept — within its dimension — is being explored.\n"
     )
     return intro + "".join(blocks)
 
@@ -889,6 +941,7 @@ def generate_lived_experience_text(
     model_id: str | None = None,
     region: str | None = None,
     max_tokens: int = LIVED_EXPERIENCE_MAX_TOKENS,
+    extra: dict[str, Any] | None = None,
 ) -> str:
     """Run an assembled dimension-dwelling prompt through Bedrock Claude and return the raw response."""
     resolved_model_id = _resolve_bedrock_model_id(model_id)
@@ -897,6 +950,7 @@ def generate_lived_experience_text(
         model_id=resolved_model_id,
         system_prompt="",
         user_prompt=prompt_text,
+        extra=extra,
     )
     client = bedrock_client or get_step2_bedrock_client(region=region)
     raw = client.generate_lived_experience(
@@ -905,5 +959,10 @@ def generate_lived_experience_text(
         max_tokens=max_tokens,
     )
     cleaned = _strip_fence(raw)
-    logger.info("Bedrock lived-experience response generated | chars=%s", len(cleaned))
+    _log_bedrock_response(
+        purpose="lived_experience",
+        model_id=resolved_model_id,
+        response_text=cleaned,
+        extra=extra,
+    )
     return cleaned

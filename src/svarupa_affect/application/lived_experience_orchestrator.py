@@ -32,6 +32,8 @@ from ..domain.ports import (
 )
 from ..domain.scoring import build_uncertainty_profile, clip, softmax
 from ..infrastructure.affect.lexicons import tokenize
+from ..infrastructure.config import Settings
+from ..infrastructure.kg.concept_registry import fetch_concept_coordinates
 from ..infrastructure.kg.dimension_registry import build_dimension_registry
 from ..infrastructure.llm.prompts import lived_experience_v1 as prompt_mod
 from .safety_shell import SafetyShell
@@ -312,28 +314,40 @@ class LivedExperienceOrchestrator:
             return False, ["factual_schedule"]
         return True, []
 
-    def _vocabulary_blocks(self) -> dict[int, list[dict[str, str]]]:
+    def _vocabulary_blocks(self) -> dict[int, list[dict[str, object]]]:
         """Closed vocabulary for the primary dimensions (D2/D8/D9).
 
         Each concept carries its three pole descriptions (deficiency / balance /
         excess) from the pinned triplet snapshot so the model can discriminate
         against explicit poles. Balance falls back to the concept gloss, and if
         no triplet text exists at all the item degrades to a single ``gloss``.
+        When present, ``coordinate`` (seat / guṇa / scale / …) is attached as
+        additional grounding from ``svarupa_concepts.coordinate``.
         """
-        out: dict[int, list[dict[str, str]]] = {}
+        out: dict[int, list[dict[str, object]]] = {}
         for dim_id in sorted(self._emit_dimensions):
             if dim_id not in (2, 8, 9):
                 continue
             slugs = sorted(self._allowed_slugs(dim_id))
             glosses = self._registry.glosses(dim_id, list(slugs))
-            items: list[dict[str, str]] = []
+            # Prefer live ``svarupa_concepts.coordinate`` (source of truth after
+            # description seed). Fall back to whatever the concept registry has
+            # (enriched snapshot or MySQL concept_layer join).
+            coordinates = fetch_concept_coordinates(
+                Settings.load(),
+                dimension_id=dim_id,
+                slugs=list(slugs),
+            )
+            if not coordinates:
+                coordinates = self._registry.coordinates(dim_id, list(slugs))
+            items: list[dict[str, object]] = []
             for slug in slugs:
                 states = (
                     self._triplets.status_descriptions(dim_id, slug)
                     if self._triplets is not None
                     else {}
                 )
-                item: dict[str, str] = {"slug": slug}
+                item: dict[str, object] = {"slug": slug}
                 poles = (
                     ("deficiency", states.get("deficiency")),
                     ("balance", states.get("balance") or glosses.get(slug)),
@@ -344,6 +358,9 @@ class LivedExperienceOrchestrator:
                         item[status] = _trim_description(text)
                 if len(item) == 1:  # no pole text at all -> legacy single gloss
                     item["gloss"] = glosses.get(slug, slug)[:400]
+                coordinate = coordinates.get(slug)
+                if coordinate:
+                    item["coordinate"] = coordinate
                 items.append(item)
             out[dim_id] = items
         return out
