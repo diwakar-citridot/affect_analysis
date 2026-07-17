@@ -18,6 +18,11 @@ def test_canonical_slug_aliases():
     assert canonical_slug("shoka") == "soka"
     assert canonical_slug("vishada") == "visada"
     assert canonical_slug("bhaya") == "bhaya"
+    assert canonical_slug("two-forms-of-brahman") == "two_forms_of_brahman"
+    assert canonical_slug("two_forms_of_brahman") == "two_forms_of_brahman"
+    assert canonical_slug("three-gunas-as-daily-veils") == canonical_slug(
+        "three_gunas_as_daily_veils"
+    )
 
 
 def test_static_registry_exposes_d8_d9_glosses():
@@ -43,7 +48,10 @@ def test_static_registry_d9_full_vocabulary():
 
 def test_static_registry_tridosha_contributing():
     reg = StaticConceptRegistry()
-    assert reg.slugs(15) == frozenset({"vata", "pitta", "kapha"})
+    # Documentation JSON / concept_layer snapshot uses part-prefixed dosha slugs.
+    assert reg.slugs(15) == frozenset(
+        {"part-i-vata", "part-ii-pitta", "part-iii-kapha"}
+    )
 
 
 def test_emission_intersects_db_affinity_with_implemented_scorers():

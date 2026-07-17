@@ -43,7 +43,13 @@ _LAYER_SNAPSHOTS: dict[str, Path] = {
 
 
 def canonical_slug(slug: str) -> str:
-    return BRIDGE_SLUG_ALIASES.get(slug, slug)
+    """Normalize concept slugs for equality checks.
+
+    Folds hyphen/underscore variants (``two-forms-of-brahman`` ↔
+    ``two_forms_of_brahman``) and applies legacy bridge aliases.
+    """
+    folded = (slug or "").strip().replace("-", "_")
+    return BRIDGE_SLUG_ALIASES.get(folded, folded)
 
 
 @dataclass(frozen=True)

@@ -166,11 +166,36 @@ def test_build_system_includes_concept_coordinate():
         ]
     }
     system = prompt_mod.build_system(vocabulary)
-    assert prompt_mod.PROMPT_VERSION == "lived_experience_v4"
+    assert prompt_mod.PROMPT_VERSION == "lived_experience_v6"
     assert '"coordinate"' in system
     assert "Vital-Emotional" in system
     assert "do not invent coordinates" in system
     assert "bhaya" in system
+    assert "every concept listed under Three Gunas" in system
+    assert "contributing / meta-construct" in system
+    assert "D2 meta-construct discrimination" in system
+    assert prompt_mod.LIVED_EXPERIENCE_SCHEMA["properties"]["d2"]["maxItems"] == 7
+
+
+def test_build_system_injects_d2_discrimination_notes():
+    vocabulary = {
+        2: [
+            {
+                "slug": "two-forms-of-brahman",
+                "balance": "manifest and unmanifest both honored",
+            },
+            {
+                "slug": "three-gunas-as-daily-veils",
+                "balance": "guna modes as veils",
+            },
+        ]
+    }
+    system = prompt_mod.build_system(vocabulary)
+    assert '"discrimination"' in system
+    assert "sayable/unsayable" in system or "unnamed/formless" in system
+    assert "Do not substitute (2) or (3) for (1)" in system
+    assert "two-forms-of-brahman" in system
+    assert "three-gunas-as-daily-veils" in system
 
 
 @pytest.mark.parametrize(

@@ -35,7 +35,7 @@ def test_v2_meta_returns_prompt_version():
     assert resp.status_code == 200
     body = resp.json()
     assert body["affect_mode"] == "llm_primary"
-    assert body["prompt_version"] == "lived_experience_v4"
+    assert body["prompt_version"] == "lived_experience_v6"
     assert 8 in body["emit_dimensions"]
 
 

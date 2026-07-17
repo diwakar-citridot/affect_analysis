@@ -16,6 +16,8 @@ from .rationale import compose_insightful_rationale
 
 _RELEVANCE_ITEM_FLOOR = 0.15
 _TOP_K = 5
+# D2 vocabulary includes primary gunas + contributing meta-constructs.
+_TOP_K_BY_DIMENSION = {2: 7}
 
 
 class SafetyShell:
@@ -42,12 +44,17 @@ class SafetyShell:
 
         scores: list[AttributeScore] = []
         evidence: list[Evidence] = []
+        # Map canonical form → vocabulary spelling so hyphen/underscore variants match.
+        allowed_by_canon = {canonical_slug(s): s for s in allowed_slugs} if allowed_slugs else {}
         for item in items:
             raw_slug = str(item.get("attribute", ""))
             slug = canonical_slug(raw_slug)
-            if allowed_slugs and slug not in allowed_slugs and raw_slug not in allowed_slugs:
+            if allowed_slugs and slug not in allowed_by_canon and raw_slug not in allowed_slugs:
                 continue
-            emit_slug = raw_slug if raw_slug in allowed_slugs else slug
+            emit_slug = (
+                allowed_by_canon.get(slug)
+                or (raw_slug if raw_slug in allowed_slugs else slug)
+            )
             raw_rel = float(item.get("relevance", 0.0))
             rel = saturate(raw_rel)
             if rel < _RELEVANCE_ITEM_FLOOR:
@@ -105,7 +112,8 @@ class SafetyShell:
                 )
 
         scores.sort(key=lambda s: s.relevance, reverse=True)
-        return scores[:_TOP_K], evidence[:_TOP_K]
+        top_k = _TOP_K_BY_DIMENSION.get(dimension_id, _TOP_K)
+        return scores[:top_k], evidence[:top_k]
 
     def _resolve_state(
         self,

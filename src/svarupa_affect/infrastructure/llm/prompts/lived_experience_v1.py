@@ -31,13 +31,40 @@ from ....domain.models import (
 )
 from ....domain.scoring import clip
 
-PROMPT_VERSION = "lived_experience_v4"
+PROMPT_VERSION = "lived_experience_v6"
 
 # Per-concept keys rendered into the closed-vocabulary block, in stable order.
 # Poles come from the triplet snapshot; ``gloss`` is the legacy single-text fallback.
 # ``coordinate`` is the concept's KG location (seat/guna/scale/…) when available.
 _POLE_KEYS = ("deficiency", "balance", "excess", "gloss")
-_META_KEYS = ("coordinate",)
+_META_KEYS = ("coordinate", "discrimination")
+
+# Short lived-experience discrimination cues for D2 contributing meta-constructs.
+# Keys are canonical underscore form; applied for both hyphen and underscore slugs.
+_D2_DISCRIMINATION: dict[str, str] = {
+    "two_forms_of_brahman": (
+        "Prefer when the text holds BOTH a named/concrete/manifest side AND an "
+        "unnamed/formless/unspeakable side at once (e.g. the story of the day vs "
+        "what cannot be captured by any of those facts; heat on skin vs something "
+        "in the warmth that is not temperature). Secular dual awareness counts — "
+        "do not require religious language."
+    ),
+    "three_gunas_as_daily_veils": (
+        "Prefer when the text tracks shifting guna-like modes (clarity / drive / "
+        "heaviness) as coverings over a deeper ground, or daily choices to move "
+        "toward clarity — not merely form vs formless dual holding."
+    ),
+    "rajas_projects_tamas_veils_sattva_reveals": (
+        "Prefer when the text names the functional roles of the three qualities "
+        "(projection / veiling / revealing) as a mechanism, or cultivating "
+        "revealing over veiling — not merely that something unspoken sits behind "
+        "ordinary facts."
+    ),
+    "abhibhuya": (
+        "Prefer when competing inner qualities actively fight or cancel each "
+        "other, or when the person watches that contest without joining it."
+    ),
+}
 
 # Human-readable labels for the primary dimensions in the closed vocabulary.
 # The model still SCORES under the output keys d2/d8/d9 (see the task text +
@@ -82,7 +109,8 @@ LIVED_EXPERIENCE_SCHEMA: dict = {
         "experiential_patterns": {"type": "array"},
         "d8": {"type": "array", "maxItems": 5, "items": _SCORED_ITEM_SCHEMA},
         "d9": {"type": "array", "maxItems": 5, "items": _SCORED_ITEM_SCHEMA},
-        "d2": {"type": "array", "maxItems": 3, "items": _SCORED_ITEM_SCHEMA},
+        # D2 may include primary gunas plus contributing meta-constructs.
+        "d2": {"type": "array", "maxItems": 7, "items": _SCORED_ITEM_SCHEMA},
     },
 }
 
@@ -123,6 +151,21 @@ class LivedExperienceValidationError(ValueError):
     """Raised when the LLM payload fails schema or philosophy checks."""
 
 
+def _vocab_concept_entry(dim: int, item: dict[str, object]) -> dict[str, object]:
+    """One closed-vocabulary concept row, with optional D2 discrimination cue."""
+    entry: dict[str, object] = {
+        "concept": item["slug"],
+        **{k: item[k] for k in _POLE_KEYS if k in item},
+        **{k: item[k] for k in _META_KEYS if k in item},
+    }
+    if dim == 2 and "discrimination" not in entry:
+        canon = str(item["slug"]).replace("-", "_")
+        note = _D2_DISCRIMINATION.get(canon)
+        if note:
+            entry["discrimination"] = note
+    return entry
+
+
 def build_system(vocabulary: dict[int, list[dict[str, object]]]) -> str:
     """Static system prefix: contract + closed vocabulary + task/format rules.
 
@@ -134,12 +177,7 @@ def build_system(vocabulary: dict[int, list[dict[str, object]]]) -> str:
     """
     vocab_block = {
         _DIMENSION_LABELS.get(dim, f"d{dim}"): [
-            {
-                "concept": item["slug"],
-                **{k: item[k] for k in _POLE_KEYS if k in item},
-                **{k: item[k] for k in _META_KEYS if k in item},
-            }
-            for item in items
+            _vocab_concept_entry(dim, item) for item in items
         ]
         for dim, items in sorted(vocabulary.items())
     }
@@ -152,11 +190,14 @@ def build_system(vocabulary: dict[int, list[dict[str, object]]]) -> str:
         "description of each; match the text to the pole it best fits. "
         "When a concept includes a \"coordinate\" object (seat, ontic mode, valence, "
         "guṇa, scale, causal status, key relation), use it as grounding for how and "
-        "where that concept typically shows up — do not invent coordinates:\n"
+        "where that concept typically shows up — do not invent coordinates. "
+        "When a concept includes a \"discrimination\" note, use it to choose among "
+        "near-neighbor concepts in the same dimension:\n"
         f"{json.dumps(vocab_block, indent=2)}\n\n"
         "TASK: Reconstruct background_field (core, motivation, regulation, relational, temporal), "
         "optional appraisal and experiential_patterns, and score d8 (Nine Enduring Emotions — enduring), "
-        "d9 (Thirty-Three Transient States — transient), d2 (Three Gunas — sattva/rajas/tamas felt tone). "
+        "d9 (Thirty-Three Transient States — transient), and d2 (Three Gunas — every concept listed "
+        "under Three Gunas in the closed vocabulary, not only sattva/rajas/tamas). "
         "Each scored item must include "
         '"attribute" (an exact concept value from the vocabulary above), '
         '"relevance", "state", "rationale", and optional "durability", "span". '
@@ -168,15 +209,32 @@ def build_system(vocabulary: dict[int, list[dict[str, object]]]) -> str:
         "balance description is given, still infer deficiency or excess from the text. "
         "Do not default to balance. "
         "Be exhaustive within each dimension: list every concept whose pole description "
-        "plausibly matches the text (up to 5 per dimension), including secondary and "
+        "plausibly matches the text (up to 5 for d8/d9; up to 7 for d2), including secondary and "
         "borderline readings at lower relevance — do not stop at the single strongest "
-        "concept. A deficiency pole describes the ABSENCE of the concept's quality; "
+        "concept. For d2, when a contributing / meta-construct concept (for example "
+        "abhibhuya, two-forms-of-brahman, three-gunas-as-daily-veils, "
+        "rajas-projects-tamas-veils-sattva-reveals) fits the text as well as or better than "
+        "bare sattva/rajas/tamas, you MUST include that exact attribute — do not replace it "
+        "with only the three gunas. Gunas may still appear as secondary readings. "
+        "D2 meta-construct discrimination (mandatory when several could fit): "
+        "(1) two-forms-of-brahman — simultaneous holding of concrete/named/manifest "
+        "content AND an unnamed/formless/unspeakable side (story vs what the story cannot "
+        "capture; felt object vs what makes it real). Prefer this over veil/reveal siblings "
+        "when the dual is form/formless or sayable/unsayable, even without religious words. "
+        "(2) three-gunas-as-daily-veils — awareness of shifting clarity/drive/heaviness as "
+        "coverings, or daily cultivation toward clarity. "
+        "(3) rajas-projects-tamas-veils-sattva-reveals — the three qualities' functions as "
+        "projection / veiling / revealing. "
+        "(4) abhibhuya — inner qualities competing or canceling, or watching that contest. "
+        "Do not substitute (2) or (3) for (1) when the text is primarily dual form/formless "
+        "holding. "
+        "A deficiency pole describes the ABSENCE of the concept's quality; "
         "consider deficiency readings even when the concept itself is not overtly present. "
         'For every scored triple, "rationale" MUST be 1–2 sentences explaining why that '
         "attribute and state belong in the response: name the dimension (Three Gunas / "
         "Nine Enduring Emotions / Thirty-Three Transient States), cite how the lived "
-        "experience aligns with that concept's pole description (and coordinate when "
-        "present), and describe the "
+        "experience aligns with that concept's pole description (and coordinate / "
+        "discrimination note when present), and describe the "
         "recognition in observational language — never diagnose, label the person, or "
         'prescribe. When helpful, add "span" with a short verbatim phrase from the text. '
         "Set abstain:true when affect is absent or too thin. "
