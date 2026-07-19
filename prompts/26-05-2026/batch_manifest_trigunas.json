@@ -1,0 +1,128 @@
+{
+  "rec00000": {
+    "dimension": "trigunas",
+    "concept": "abhibhuya",
+    "status": "balanced",
+    "path": "prompts/26-05-2026/trigunas__abhibhuya__balanced.txt"
+  },
+  "rec00001": {
+    "dimension": "trigunas",
+    "concept": "abhibhuya",
+    "status": "deficient",
+    "path": "prompts/26-05-2026/trigunas__abhibhuya__deficient.txt"
+  },
+  "rec00002": {
+    "dimension": "trigunas",
+    "concept": "abhibhuya",
+    "status": "excessive",
+    "path": "prompts/26-05-2026/trigunas__abhibhuya__excessive.txt"
+  },
+  "rec00003": {
+    "dimension": "trigunas",
+    "concept": "rajas-projects-tamas-veils-sattva-reveals",
+    "status": "balanced",
+    "path": "prompts/26-05-2026/trigunas__rajas-projects-tamas-veils-sattva-reveals__balanced.txt"
+  },
+  "rec00004": {
+    "dimension": "trigunas",
+    "concept": "rajas-projects-tamas-veils-sattva-reveals",
+    "status": "deficient",
+    "path": "prompts/26-05-2026/trigunas__rajas-projects-tamas-veils-sattva-reveals__deficient.txt"
+  },
+  "rec00005": {
+    "dimension": "trigunas",
+    "concept": "rajas-projects-tamas-veils-sattva-reveals",
+    "status": "excessive",
+    "path": "prompts/26-05-2026/trigunas__rajas-projects-tamas-veils-sattva-reveals__excessive.txt"
+  },
+  "rec00006": {
+    "dimension": "trigunas",
+    "concept": "rajas",
+    "status": "balanced",
+    "path": "prompts/26-05-2026/trigunas__rajas__balanced.txt"
+  },
+  "rec00007": {
+    "dimension": "trigunas",
+    "concept": "rajas",
+    "status": "deficient",
+    "path": "prompts/26-05-2026/trigunas__rajas__deficient.txt"
+  },
+  "rec00008": {
+    "dimension": "trigunas",
+    "concept": "rajas",
+    "status": "excessive",
+    "path": "prompts/26-05-2026/trigunas__rajas__excessive.txt"
+  },
+  "rec00009": {
+    "dimension": "trigunas",
+    "concept": "sattva",
+    "status": "balanced",
+    "path": "prompts/26-05-2026/trigunas__sattva__balanced.txt"
+  },
+  "rec00010": {
+    "dimension": "trigunas",
+    "concept": "sattva",
+    "status": "deficient",
+    "path": "prompts/26-05-2026/trigunas__sattva__deficient.txt"
+  },
+  "rec00011": {
+    "dimension": "trigunas",
+    "concept": "sattva",
+    "status": "excessive",
+    "path": "prompts/26-05-2026/trigunas__sattva__excessive.txt"
+  },
+  "rec00012": {
+    "dimension": "trigunas",
+    "concept": "tamas",
+    "status": "balanced",
+    "path": "prompts/26-05-2026/trigunas__tamas__balanced.txt"
+  },
+  "rec00013": {
+    "dimension": "trigunas",
+    "concept": "tamas",
+    "status": "deficient",
+    "path": "prompts/26-05-2026/trigunas__tamas__deficient.txt"
+  },
+  "rec00014": {
+    "dimension": "trigunas",
+    "concept": "tamas",
+    "status": "excessive",
+    "path": "prompts/26-05-2026/trigunas__tamas__excessive.txt"
+  },
+  "rec00015": {
+    "dimension": "trigunas",
+    "concept": "three-gunas-as-daily-veils",
+    "status": "balanced",
+    "path": "prompts/26-05-2026/trigunas__three-gunas-as-daily-veils__balanced.txt"
+  },
+  "rec00016": {
+    "dimension": "trigunas",
+    "concept": "three-gunas-as-daily-veils",
+    "status": "deficient",
+    "path": "prompts/26-05-2026/trigunas__three-gunas-as-daily-veils__deficient.txt"
+  },
+  "rec00017": {
+    "dimension": "trigunas",
+    "concept": "three-gunas-as-daily-veils",
+    "status": "excessive",
+    "path": "prompts/26-05-2026/trigunas__three-gunas-as-daily-veils__excessive.txt"
+  },
+  "rec00018": {
+    "dimension": "trigunas",
+    "concept": "two-forms-of-brahman",
+    "status": "balanced",
+    "path": "prompts/26-05-2026/trigunas__two-forms-of-brahman__balanced.txt"
+  },
+  "rec00019": {
+    "dimension": "trigunas",
+    "concept": "two-forms-of-brahman",
+    "status": "deficient",
+    "path": "prompts/26-05-2026/trigunas__two-forms-of-brahman__deficient.txt"
+  },
+  "rec00020": {
+    "dimension": "trigunas",
+    "concept": "two-forms-of-brahman",
+    "status": "excessive",
+    "path": "prompts/26-05-2026/trigunas__two-forms-of-brahman__excessive.txt"
+  }
+}

@@ -1,0 +1,274 @@
+Dimension: tridosha
+Concept: part-iii-kapha
+Status: balanced
+========================================================================
+
+## Purpose
+
+Generate 20 short, first-person lived-experience statements (10 Western-perspective + 10 Asian-perspective) that let a person recognize themselves as **dwelling in** one specific Concept, within its parent Dimension, at one specific **state**, from the Svarupa framework of Indian wisdom traditions. Statements never name the concept, the dimension, the state, or use tradition vocabulary — they disclose it entirely through plain, ordinary, lived detail.
+
+This prompt has three parts: **(A)** these shared instructions, **(B)** the specific concept context, and **(C)** the STATE-SPECIFIC INSTRUCTIONS at the very end, which name the exact state to generate and give its authoritative descriptions. Read all three parts before writing anything.
+
+## A.1 Key Definitions
+
+**Dimension** — one of the framework's organizing lenses on human experience (e.g., *Guṇa*, *Yuga Cycles*, *Pañca Kośa*, *The Five Kleśas*). A dimension is a category, not something a person feels directly. Each dimension groups a small family of affiliated **Concepts** that share a common thread but differ from one another in texture, role, or emphasis.
+
+**Concept** (also called an *attribute*) — the specific, nameable pattern within a dimension that a person can actually recognize as something they live. Every concept belongs to exactly one dimension and can be examined across experiential layers (physical/somatic, emotional/vital, mental/cognitive, psychic/soul, and the relational-external and overall texture) and three states (deficient, balanced, excessive).
+
+**State** — each concept can be examined in three states (deficient, balanced, excessive). You will generate statements for exactly ONE state, named and defined by authored descriptions in Part C. Every statement must read unmistakably as that one state, never as one of the other two.
+
+**Why this matters:** two concepts inside the same dimension are often close cousins. Every statement must disclose not just the *dimension* but the exact *concept* (Part B), at the exact *state* (Part C) — never a neighbor and never a neighboring state.
+
+## A.2 Shared Generation Requirements
+
+### A.2.1 Life-Context Distribution (per set of 10)
+
+Spread the 10 statements of each perspective across life contexts — roughly: 2 personal/inner life; 2 family and intimate relationships; 2 work/professional life; 2 extended relationships or wider social/community; 2 transitions between contexts or any not yet covered.
+
+### A.2.2 Body-Mind Layer Coverage (per set of 10)
+
+Across each set of 10, cover **all** of the experiential layers at least once — physical/somatic, emotional/vital, mental/cognitive, and psychic/soul — with relational-external texture woven through. A single statement may combine layers.
+
+- **Psychic/soul body** — felt sense of meaning, rightness, intuition, inner knowing. Phrase this so a thoughtful non-spiritual reader would not roll their eyes.
+
+### A.2.3 Cultural Grain (Western vs. Asian)
+
+The cultural difference should show up in the *substance and context* of the lived experience, not in surface details (don't just swap one word for another). The contextual grain — the structure of family, the role of food and care, the rhythms of work and worship, the role of elders, the felt presence of community — should do real work.
+
+A great deal of human experience surfaces *in the presence of, or in interaction with, other people*. Many of the strongest disclosures come from how a person responds physically and emotionally to family members, relatives, friends, colleagues, neighbours, household help, strangers in public, and what they notice in themselves while watching others interact.
+
+**Western perspective — likely textures:** individual or nuclear-family living, the gym, primary care doctors and annual physicals, school drop-off, the commute by car, open-plan offices and video calls, takeout and meal-prep culture, dating apps, weekend brunch, weather as seasons, retirement planning, mortgage, ER visits, the dentist, holiday weekends, neighbours one barely knows, networking events.
+
+**Asian perspective — likely textures (drawn broadly from East, Southeast, and South Asia):** multi-generational and extended-family households or close family involvement even when living apart, food as a primary love and care language, elders' active presence and authority in daily decisions, marriage and reproduction as shared family concerns, household help or live-in caregivers where applicable, the felt weight of being observed and assessed by community, festival and ritual rhythms, hot food vs. cold food and other folk health beliefs, traditional medicine alongside modern doctors, removing footwear at the threshold, dense urban living and public transport, hierarchy at work, the importance of face and reputation, neighbours who know one's business, food gifts and reciprocity.
+
+### A.2.4 Format & Voice
+
+- **First person, present tense**. The voice is a person describing themselves to a therapist, counsellor, doctor, or close friend they trust.
+- **2–3 sentences per statement**.
+- **Plain spoken language** — the way someone would actually describe themselves out loud. No literary flourishes, no insight-laden conclusions, no neat lessons.
+- **Vary openers naturally**: "I get...", "When I...", "If I...", "I cannot...", "I notice...", "I find myself...", "After...", or simply describing the experience directly. Avoid starting more than 4 consecutive statements with the same opener.
+- **The statement must reveal the speaker's own lived experience.** Other people can appear — that is encouraged — but what is disclosed is what is happening *in the speaker*.
+- **No commentary about other people's behaviour as an end in itself, no analytical asides, no neat life-lessons.**
+
+### A.2.5 Specificity Requirements
+
+- **One small anchor per statement** — a moment, an object, a recurring situation, a person. Just enough to ground the experience.
+- **Sensory or behavioural detail lightly** — a sensation, a time of day, a small action — but don't build a story around it.
+- **Reference everyday modern life** — mornings, meals, sleep, work, family, social occasions, transit, public spaces.
+- **No tradition-specific imagery** (no lotuses, sages, ancient rivers).
+- **No translated jargon** ("luminous clarity," "groundedness of being," "expansive consciousness"). Use kitchen-table language.
+- **Plain, but never vague.** The language stays ordinary and unpolished, but the *pattern* must be unmistakable. Plainness is not an excuse for a statement that could mean anything — the speaker may not understand their pattern, yet a careful listener must still recognise exactly which one it is. If a statement sounds wise or like a finished thought, it's too written; if it could describe half the population, it's too vague. Aim between the two.
+
+### A.2.6 Discriminability Requirement (hard gate)
+
+Every statement must pass this test, or it does not go in the output:
+
+- **Concept-distinctive:** it turns on the single distinctive cue of the concept (see Part B) — a concrete behaviour, decision, or bodily signature that would be **false or clearly off** for every sibling concept listed in Part B. A statement that would fit a sibling as well as this concept is a failure.
+- **Not generic-human:** it is not merely "a hard day," stress, low mood, or busyness that almost anyone could claim. Strip any statement whose disclosure survives even if you swap in a completely different concept.
+- **Single stable pattern:** it discloses one recognizable pattern of this concept in the target state — not a cycle through multiple states, and not the whole dimension at once.
+- **State-locked:** the target state (Part C) is unmistakable and could not be re-read as either of the other two states.
+
+If a draft fails any bullet, rewrite it with a sharper, more concept-specific anchor — or replace it. Do not pad the count with generic statements.
+
+<<<CACHE_BREAKPOINT>>>
+
+## Part B — Concept Context for This Run
+
+- **Dimension**: The Tridoṣa
+- **Concept**: Part III: Kapha
+- **Display name**: Part III: Kapha
+
+### B.1 Concept aspect (the gist of this concept)
+
+Its five subdoshas—Kledaka (governing the mucous lining of the stomach), Avalambaka (governing the lungs, heart, and trachea), Bodhaka (governing saliva and taste), Tarpaka (governing cerebrospinal fluid and the “lubrication” of the brain), and Śleṣaka (governing joint fluid, connective tissue, and the sinovial membranes)—together orchestrate the entire structural and preservative life of the organism. On the psychological plane, Kapha is the energy of patience, loyalty, compassion, emotional stability, and the deep, enduring forms of love and memory.
+
+### B.2 Concept coordinate (where this concept sits in the framework)
+
+- **Seat**: Physical–Vital (structure, fluids, stability)
+- **Ontic mode**: Constituent — a doṣa (the bio-energetic principle of cohesion)
+- **Valence**: Neutral faculty (balance is the aim)
+- **Guṇa**: Tamas-dominant (stability, heaviness, cohesion)
+- **Scale**: Individual — constitutional (prakṛti), current expression (vikṛti) varying
+- **Causal status**: Governing principle (governs structure, lubrication, and immunity)
+- **Key relation**: One of the tridoṣa; corresponds to Earth + Water (Dim 1); the ground of stability.
+
+### B.3 Sibling concepts in this dimension (statements must NOT fit these)
+
+The concepts below live in the **same dimension** and are the most likely to be confused with **Part III: Kapha**. Every statement you write must disclose **Part III: Kapha** specifically — it must NOT read as equally true of any sibling below. Use this list as a live contrast set: after drafting each statement, check it cannot be swapped onto a sibling.
+
+- Part I: Vāta — Its five subdoshas—Prāṇa (governing mind, senses, and vital breath), Udāna (governing speech, effort, and upward movement), Samāna (governing intestinal peristalsis and nutrient absorption), Apāna (governing elim...
+- Part II: Pitta — Its five subdoshas—Pāchaka (governing digestion in the stomach), Rañjaka (governing liver metabolism and blood chemistry), Ālochaka (governing vision and the processing of light), Sādhaka (governing the emotional...
+
+### B.4 The Load-Bearing Test — calibration examples
+
+The single most important test for each statement: **does it reveal that the concept is doing load-bearing work in this person's life — that their identity, meaning, suffering, wellbeing, or daily organization is routed through it, in the target state?** Mere mention of body, energy, mind, intellect, or bliss is not enough; the concept must be the **center of gravity**. The ✗/✓ pairs below calibrate the right level:
+
+✗ Too vague (no anchor at all):
+*"I feel a steadiness that holds everything together, like I'm the container that keeps things safe and intact. There's a thickness to how I move through the world, a presence that doesn't rush."*
+
+✓ Right level (feeling + small anchor):
+*"When my manager keeps changing the project scope, I notice I'm the one who tracks what we already decided three weeks ago—not because I'm trying to win an argument, just because I remember and it feels wrong to lose what we built. My coworkers say I'm slow to pivot but I think I'm just not dropping things."*
+
+✗ Too narrative (reads like a journal entry):
+*"This morning I woke up and made the same breakfast I've made for six years—oatmeal with honey, the wooden spoon that's worn smooth in my hand. I sat at the table my grandmother gave me, feeling the weight of her love in the grain of the wood. My daughter came down and I hugged her the way my mother hugged me, and I thought about how some things shouldn't change, how holding on is its own kind of strength."*
+
+✓ Right level:
+*"I use the same mug every morning and when someone puts it in the wrong cabinet I feel genuinely annoyed. It's not about the mug, it's that I like things where they've always been—my body knows the routine and there's a comfort in reaching for what's always there."*
+
+✗ Too generic:
+*"I'm good at staying calm when other people are stressed. I don't get swept up in the panic, I just keep going at my own pace and eventually things settle down. People tell me I'm grounding to be around."*
+
+✓ Right level:
+*"My sister calls me crying about her breakup and I don't jump in with advice or try to fix it—I just let her talk, say 'I know' a lot, and she told me later that she felt held. I wasn't doing anything, just being there at the same rhythm I always am."*
+
+✗ Too generic:
+*"I don't need much excitement to feel okay. I'm happy with quiet evenings and the same routines. I'm not ambitious in the way some people are—I'm more interested in keeping what I have than chasing what I don't."*
+
+✓ Right level:
+*"I've been in the same apartment for nine years and my friends keep asking when I'll move somewhere bigger, but the thought of packing up makes my whole body feel heavy. I know the creak in the floorboard, I know how the light comes in at 4pm—leaving feels like peeling off my own skin."*
+
+### B.5 Worked Examples for This Concept
+
+The examples below apply the load-bearing test to **Part III: Kapha** (its five subdoshas—Kledaka (governing the mucous lining of the stomach), Avalambaka (governing the lungs, heart, and trachea), Bodhaka (governing saliva and taste), Tarpaka (governing cerebrospinal fluid and the “lubr...) specifically. The same logic applies to whichever concept — within its dimension — is being explored.
+
+---
+
+**✗ Fails the load-bearing test — part iii: kapha is mentioned but not load-bearing**
+
+*"I've been off lately and something in me keeps slipping. I wish I could get back to normal."*
+
+Almost anyone could say this during a difficult stretch. It does not show that part iii: kapha organizes this person's week, relationships, or sense of who they are.
+
+---
+
+**✗ Fails the load-bearing test — a surface habit that doesn't disclose Part III: Kapha-centered dwelling**
+
+*"I always do the same little breathing routine my mother taught me before bed. If I skip it, I feel a little unsettled, though I couldn't say why."*
+
+This is a familiar habit related to part iii: kapha. People dwelling at many adjacent human qualities could say the same. It does not show that part iii: kapha is the load-bearing center.
+
+---
+
+**✗ About someone else, not about the speaker's own lived experience**
+
+*"My sister walks into the room and I can tell immediately whether the evening will be easy or tense."*
+
+This observes someone else's mood or behaviour. The speaker has not disclosed what is happening in them through part iii: kapha.
+
+---
+
+**✗ Too writerly, too self-aware for ordinary speech**
+
+*"I'm starting to see that this need to earn my own steadiness has been running my life for years, and I think I'm finally ready to understand why."*
+
+Real people rarely deliver this much packaged insight in one breath. It sounds written, not spoken.
+
+---
+
+**✗ Too generic — could describe any concept**
+
+*"I just feel off most days. Nothing feels right and I can't explain it."*
+
+This is feeling-language without an anchor. It could fit illness, grief, burnout, or many adjacent human qualities. It cannot disclose dwelling at Part III: Kapha.
+
+---
+
+**✓ Right level — Part III: Kapha-centered dwelling, with another person in the frame**
+
+*"When my father-in-law starts talking about money at dinner, something in me locks up before I even answer. By dessert I still haven't found my footing — like the steadiness I usually have to work for got knocked loose, and I can't just will it back."*
+
+Another person is present, but the disclosure is the speaker's own experience — and that experience is load-bearing because part iii: kapha sets the tone for the rest of the evening.
+
+---
+
+**✓ Right level — Part Iii: Kapha sets the terms for the speaker's entire week**
+
+*"I protect one part of every week, no matter what, just to keep myself steady. It is not a hobby — it is the only thing that keeps me functional with my team by Wednesday."*
+
+Part Iii: Kapha is the foundation of the speaker's professional and relational life. The concept is doing load-bearing work.
+
+---
+
+**✓ Right level — Part Iii: Kapha as final authority over social life**
+
+*"My friends make plans and I want to say yes, but I check first whether I can hold myself together. If I ignore that, the whole evening is ruined and they think I am being difficult."*
+
+Part Iii: Kapha decides, not the speaker. Social plans negotiate around what part iii: kapha will tolerate.
+
+---
+
+**✓ Right level — part iii: kapha as identity, ordinary language, no insight overlay**
+
+*"If I go a few days without my usual morning routine, I do not feel like myself with my kids. My partner notices before I do. It is not something I do on the side — it is where I become myself."*
+
+Part Iii: Kapha is the location of selfhood. Other people are in the frame, and the speaker reports the pattern without a neat lesson.
+
+---
+
+**✓ Right level — part iii: kapha-mediated reading of others, disclosing the speaker's own experience**
+
+*"At a family gathering, if someone hugs me and feels closed off, I am flat the rest of the night. Something in me has already decided the evening is heavy."*
+
+The speaker is with others, but the disclosure is their own experience — and that experience is load-bearing because part iii: kapha shapes the rest of the evening.
+
+
+<<<CACHE_BREAKPOINT>>>
+
+## Part C — STATE-SPECIFIC INSTRUCTIONS
+
+**Generate only the balanced state of the concept in Part B.** Do not generate any statement for the other two states.
+
+### C.1 Authored descriptions of the balanced state (primary semantic authority)
+
+The following are the framework's own descriptions of how this concept's **balanced** state expresses across experiential layers. They are the authoritative source for the felt texture you must disclose. Read them as the ground truth for what this state feels like — then translate them into ordinary, first-person lived detail (never quote or paraphrase the jargon directly).
+
+**Physical / somatic**
+
+The body feels substantial, solid, and deeply comfortable in itself. There is a natural sturdiness—thick bones, well-padded joints, strong muscles that may not be visibly defined but possess remarkable endurance. The skin is smooth, cool, and slightly moist with good elasticity. Hair is thick and lustrous. Digestion is steady if not spectacular—the Kapha constitution processes food slowly but thoroughly, extracting maximum nutrition. Sleep is the crown jewel: deep, restorative, dreamless sleep that leaves the individual genuinely refreshed. The immune system is robust; this is the constitution least likely to fall ill, and when it does, recovery is steady and complete. There is a physical groundedness that others can feel—sitting next to a balanced Kapha individual is like sitting next to a very old, very calm tree.
+
+**Emotional / vital**
+
+The dominant emotional tone is one of **unconditional steadiness**. The Kapha temperament in balance is the most emotionally stable of the three—not because they lack feeling but because their feelings are deep, slow-moving, and enduring rather than quick, reactive, and volatile. Love, once given, is not easily withdrawn. Commitments, once made, are held. There is a natural compassion that arises not from intellectual understanding (Pitta) or empathic attunement (Vāta) but from a bone-deep sense of shared humanity. The balanced Kapha individual is the friend you call at 3 AM—not for advice, but for the silent, unshakeable presence that tells you everything will eventually be all right.
+
+**Mental / cognitive**
+
+Thought is slow, deliberate, and thorough. The Kapha mind does not generate ideas at Vāta’s pace or analyze them with Pitta’s precision, but what it does do is understand them deeply and remember them permanently. This is the constitution with the best long-term memory—not for facts and figures (which belong more to Pitta) but for the emotional texture of experiences, the faces of people met decades ago, the exact quality of a childhood afternoon. Decision-making is careful, sometimes maddeningly so, but the decisions, once made, are wise and rarely regretted. The internal narrative is calm and present-tense: “All is well. There is time. Let me consider this properly.”
+
+**Psychic / soul**
+
+At the soul level, balanced Kapha is the experience of **pṛthivī as sanctuary**—the feeling of being held by the earth, of having a place, of belonging. There is a natural devotional quality to this dosha—a readiness to surrender not from weakness but from a deep trust in the sustaining order of things. This is the dosha most closely connected to the **Annamaya Kośa** (physical sheath) in its preservative aspect, and in equilibrium, it grants an almost elemental sense of being rooted, as though one’s existence has the same unquestionable reality as a mountain. The spiritual lesson is one of **grounded service**—the understanding that the highest expression of stability is to become the ground on which others can stand. At work, the balanced Kapha individual is the one who holds the team together. They may not be the visionary (Vāta) or the strategist (Pitta), but they are the person who remembers every commitment, follows through on every promise, and maintains the institutional memory that keeps the organization functional. In relationships, they are the rock—steady, reliable, affectionate, and deeply present. Their daily habits are the most consistent of the three doshas: regular meals, regular sleep, regular exercise (preferring endurance activities like long walks, swimming, or cycling), and a social life that revolves around a small, intimate circle of deep friendships rather than a wide network.
+
+### C.2 Step 1: Silent internal analysis (do not output)
+
+Identify **the single distinctive cue** of this concept at the balanced state — the one pattern (a behaviour, a decision rule, a bodily signature) that marks *this concept in this state* and would be **false or off** for every sibling in B.3 and for the other two states. Every statement must turn on a cue of this kind. Avoid anything so general it would be true of most people on a hard day, or a "tour" through several states at once.
+
+### C.3 Volume
+
+Generate **exactly 20 statements total**, all in the **balanced** state: 10 Western + 10 Asian. Follow the life-context (A.2.1) and body-mind layer (A.2.2) distributions within each set of 10.
+
+### C.4 State-locking (hard gate)
+
+Every statement must read unmistakably as the **balanced** state and could not be re-read as either other state. A balanced statement must not read as stress or absence; an excessive statement must show over-activation or domination; a deficient statement must show under-activation, absence, or suppression.
+
+### C.5 Step 2: Generate
+
+Write all 20 statements now, all in the balanced state, satisfying every requirement in Parts A and B.
+
+### C.6 Step 3: Quality review (revise before finalizing)
+
+- **Per-statement:** passes the load-bearing test (B.4)? unmistakably the balanced state? has one small anchor? sounds spoken, not written? not overlapping another?
+- **Signal clarity:** the dimension signal, the concept signal (distinct from every sibling in B.3), and the balanced-state signal are each crisp — without naming the dimension/concept/state or using tradition jargon.
+- **Sibling-swap gate (mandatory):** for each statement — could any sibling in B.3 honestly say it? could it be said in either other state? could it be dismissed as "just a hard day / stress / low mood"? If yes to any, **rewrite** it so it turns on a cue true of **Part III: Kapha** but false of that sibling / other state, or **replace** it. A statement survives only if it fails the swap for every sibling and both other states.
+- **Weakest pass:** rewrite the weakest remaining few (most generic, writerly, or repetitive). Keep exactly 10 Western + 10 Asian, all balanced.
+
+### C.7 Output
+
+Return a JSON array of exactly 20 statement objects. Each object must have exactly these three fields:
+
+- `"statement"`: the lived-experience statement (2–3 sentences, first-person, present tense)
+- `"status"`: exactly `"balanced"` for every object
+- `"regional_perspective"`: one of `"western"` or `"asian"`
+
+The array must contain exactly 10 objects with `"regional_perspective": "western"` and exactly 10 with `"regional_perspective": "asian"`, and every object must have `"status": "balanced"`.
+
+Output only the raw JSON array — no markdown fences, no preamble, no commentary, no concept name.

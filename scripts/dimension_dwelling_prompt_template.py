@@ -8,7 +8,7 @@ import os
 import random
 import re
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Protocol
 
 logger = logging.getLogger(__name__)
@@ -58,6 +58,106 @@ class ConceptRecord:
     db_display_name: str = ""  # svarupa_concepts.name
     db_sanskrit_term: str = ""
     db_category: str = ""
+    # svarupa_concepts.description (seeded from JSON ``aspect``): the concept gist.
+    aspect: str = ""
+    # svarupa_concepts.coordinate JSON, parsed (seat/guna/valence/...).
+    coordinate: dict[str, str] = field(default_factory=dict)
+    # Authored per-facet descriptions keyed by canonical status code
+    # ("deficiency"/"balance"/"excess") -> tuple of (perspective, description).
+    status_facets: dict[str, tuple[tuple[str, str], ...]] = field(default_factory=dict)
+
+
+# Canonical status code (svarupa_status.code) -> output/label vocabulary used in
+# the generated statements and the downstream Excel/parser.
+STATUS_CODE_TO_LABEL: dict[str, str] = {
+    "deficiency": "deficient",
+    "balance": "balanced",
+    "excess": "excessive",
+}
+# Generation / display order for statuses.
+STATUS_ORDER: tuple[str, ...] = ("balance", "excess", "deficiency")
+
+# Coordinate JSON fields to surface (the ``raw`` string just concatenates these,
+# so it is intentionally dropped).
+COORDINATE_FIELDS: tuple[tuple[str, str], ...] = (
+    ("seat", "Seat"),
+    ("ontic_mode", "Ontic mode"),
+    ("valence", "Valence"),
+    ("guna", "Guṇa"),
+    ("scale", "Scale"),
+    ("causal_status", "Causal status"),
+    ("key_relation", "Key relation"),
+)
+
+# Facet ordering and human labels for the authored per-perspective descriptions.
+PERSPECTIVE_ORDER: tuple[str, ...] = (
+    "overview",
+    "somatic",
+    "emotional",
+    "cognitive",
+    "psychic",
+    "external",
+)
+PERSPECTIVE_LABELS: dict[str, str] = {
+    "overview": "Overview",
+    "somatic": "Physical / somatic",
+    "emotional": "Emotional / vital",
+    "cognitive": "Mental / cognitive",
+    "psychic": "Psychic / soul",
+    "external": "External / relational",
+}
+
+
+def format_coordinate(coordinate: dict[str, str]) -> str:
+    """Render the coordinate JSON as labeled markdown lines (dropping ``raw``)."""
+    if not coordinate:
+        return ""
+    lines: list[str] = []
+    for key, label in COORDINATE_FIELDS:
+        value = str(coordinate.get(key) or "").strip()
+        if value:
+            lines.append(f"- **{label}**: {value}")
+    return "\n".join(lines)
+
+
+def format_status_descriptions(record: "ConceptRecord", status_code: str) -> str:
+    """Combine the authored per-perspective descriptions for one status into a block."""
+    facets = record.status_facets.get(status_code, ())
+    if not facets:
+        return ""
+    by_perspective = {perspective: text for perspective, text in facets}
+    blocks: list[str] = []
+    seen: set[str] = set()
+    for perspective in PERSPECTIVE_ORDER:
+        text = (by_perspective.get(perspective) or "").strip()
+        if text:
+            blocks.append(f"**{PERSPECTIVE_LABELS[perspective]}**\n\n{text}")
+            seen.add(perspective)
+    # Any perspective not in the canonical ordering still gets included.
+    for perspective, text in facets:
+        if perspective in seen:
+            continue
+        text = (text or "").strip()
+        if text:
+            blocks.append(f"**{perspective.replace('_', ' ').title()}**\n\n{text}")
+    return "\n\n".join(blocks)
+
+
+SIBLINGS_CAP = 15
+
+
+def format_siblings(siblings: list[tuple[str, str]], *, cap: int = SIBLINGS_CAP) -> str:
+    """Render the sibling concepts (name + short gloss) as a contrast list."""
+    if not siblings:
+        return ""
+    lines: list[str] = []
+    for name, gloss in siblings[:cap]:
+        gloss = (gloss or "").strip()
+        lines.append(f"- {name}{f' — {gloss}' if gloss else ''}")
+    remaining = len(siblings) - cap
+    if remaining > 0:
+        lines.append(f"- …and {remaining} more concept(s) in this dimension")
+    return "\n".join(lines)
 
 
 @dataclass(frozen=True)
@@ -233,6 +333,163 @@ Output only the raw JSON array — no markdown fences, no preamble, no commentar
 """
 
 
+# Marker separating cache-aligned segments of an assembled status prompt. The
+# assembled prompt is: STATIC <marker> CONCEPT <marker> STATUS. The static and
+# concept segments carry no status-specific content, so a Bedrock ``cachePoint`` at
+# each marker lets repeat calls reuse the prefix (static: across all concepts;
+# concept: across a concept's three statuses).
+CACHE_BREAKPOINT = "\n\n<<<CACHE_BREAKPOINT>>>\n\n"
+
+
+# --- Segment A: fully static instructions (identical for every concept & status). ---
+STATUS_PROMPT_STATIC = """## Purpose
+
+Generate 20 short, first-person lived-experience statements (10 Western-perspective + 10 Asian-perspective) that let a person recognize themselves as **dwelling in** one specific Concept, within its parent Dimension, at one specific **state**, from the Svarupa framework of Indian wisdom traditions. Statements never name the concept, the dimension, the state, or use tradition vocabulary — they disclose it entirely through plain, ordinary, lived detail.
+
+This prompt has three parts: **(A)** these shared instructions, **(B)** the specific concept context, and **(C)** the STATE-SPECIFIC INSTRUCTIONS at the very end, which name the exact state to generate and give its authoritative descriptions. Read all three parts before writing anything.
+
+## A.1 Key Definitions
+
+**Dimension** — one of the framework's organizing lenses on human experience (e.g., *Guṇa*, *Yuga Cycles*, *Pañca Kośa*, *The Five Kleśas*). A dimension is a category, not something a person feels directly. Each dimension groups a small family of affiliated **Concepts** that share a common thread but differ from one another in texture, role, or emphasis.
+
+**Concept** (also called an *attribute*) — the specific, nameable pattern within a dimension that a person can actually recognize as something they live. Every concept belongs to exactly one dimension and can be examined across experiential layers (physical/somatic, emotional/vital, mental/cognitive, psychic/soul, and the relational-external and overall texture) and three states (deficient, balanced, excessive).
+
+**State** — each concept can be examined in three states (deficient, balanced, excessive). You will generate statements for exactly ONE state, named and defined by authored descriptions in Part C. Every statement must read unmistakably as that one state, never as one of the other two.
+
+**Why this matters:** two concepts inside the same dimension are often close cousins. Every statement must disclose not just the *dimension* but the exact *concept* (Part B), at the exact *state* (Part C) — never a neighbor and never a neighboring state.
+
+## A.2 Shared Generation Requirements
+
+### A.2.1 Life-Context Distribution (per set of 10)
+
+Spread the 10 statements of each perspective across life contexts — roughly: 2 personal/inner life; 2 family and intimate relationships; 2 work/professional life; 2 extended relationships or wider social/community; 2 transitions between contexts or any not yet covered.
+
+### A.2.2 Body-Mind Layer Coverage (per set of 10)
+
+Across each set of 10, cover **all** of the experiential layers at least once — physical/somatic, emotional/vital, mental/cognitive, and psychic/soul — with relational-external texture woven through. A single statement may combine layers.
+
+- **Psychic/soul body** — felt sense of meaning, rightness, intuition, inner knowing. Phrase this so a thoughtful non-spiritual reader would not roll their eyes.
+
+### A.2.3 Cultural Grain (Western vs. Asian)
+
+The cultural difference should show up in the *substance and context* of the lived experience, not in surface details (don't just swap one word for another). The contextual grain — the structure of family, the role of food and care, the rhythms of work and worship, the role of elders, the felt presence of community — should do real work.
+
+A great deal of human experience surfaces *in the presence of, or in interaction with, other people*. Many of the strongest disclosures come from how a person responds physically and emotionally to family members, relatives, friends, colleagues, neighbours, household help, strangers in public, and what they notice in themselves while watching others interact.
+
+**Western perspective — likely textures:** individual or nuclear-family living, the gym, primary care doctors and annual physicals, school drop-off, the commute by car, open-plan offices and video calls, takeout and meal-prep culture, dating apps, weekend brunch, weather as seasons, retirement planning, mortgage, ER visits, the dentist, holiday weekends, neighbours one barely knows, networking events.
+
+**Asian perspective — likely textures (drawn broadly from East, Southeast, and South Asia):** multi-generational and extended-family households or close family involvement even when living apart, food as a primary love and care language, elders' active presence and authority in daily decisions, marriage and reproduction as shared family concerns, household help or live-in caregivers where applicable, the felt weight of being observed and assessed by community, festival and ritual rhythms, hot food vs. cold food and other folk health beliefs, traditional medicine alongside modern doctors, removing footwear at the threshold, dense urban living and public transport, hierarchy at work, the importance of face and reputation, neighbours who know one's business, food gifts and reciprocity.
+
+### A.2.4 Format & Voice
+
+- **First person, present tense**. The voice is a person describing themselves to a therapist, counsellor, doctor, or close friend they trust.
+- **2–3 sentences per statement**.
+- **Plain spoken language** — the way someone would actually describe themselves out loud. No literary flourishes, no insight-laden conclusions, no neat lessons.
+- **Vary openers naturally**: "I get...", "When I...", "If I...", "I cannot...", "I notice...", "I find myself...", "After...", or simply describing the experience directly. Avoid starting more than 4 consecutive statements with the same opener.
+- **The statement must reveal the speaker's own lived experience.** Other people can appear — that is encouraged — but what is disclosed is what is happening *in the speaker*.
+- **No commentary about other people's behaviour as an end in itself, no analytical asides, no neat life-lessons.**
+
+### A.2.5 Specificity Requirements
+
+- **One small anchor per statement** — a moment, an object, a recurring situation, a person. Just enough to ground the experience.
+- **Sensory or behavioural detail lightly** — a sensation, a time of day, a small action — but don't build a story around it.
+- **Reference everyday modern life** — mornings, meals, sleep, work, family, social occasions, transit, public spaces.
+- **No tradition-specific imagery** (no lotuses, sages, ancient rivers).
+- **No translated jargon** ("luminous clarity," "groundedness of being," "expansive consciousness"). Use kitchen-table language.
+- **Plain, but never vague.** The language stays ordinary and unpolished, but the *pattern* must be unmistakable. Plainness is not an excuse for a statement that could mean anything — the speaker may not understand their pattern, yet a careful listener must still recognise exactly which one it is. If a statement sounds wise or like a finished thought, it's too written; if it could describe half the population, it's too vague. Aim between the two.
+
+### A.2.6 Discriminability Requirement (hard gate)
+
+Every statement must pass this test, or it does not go in the output:
+
+- **Concept-distinctive:** it turns on the single distinctive cue of the concept (see Part B) — a concrete behaviour, decision, or bodily signature that would be **false or clearly off** for every sibling concept listed in Part B. A statement that would fit a sibling as well as this concept is a failure.
+- **Not generic-human:** it is not merely "a hard day," stress, low mood, or busyness that almost anyone could claim. Strip any statement whose disclosure survives even if you swap in a completely different concept.
+- **Single stable pattern:** it discloses one recognizable pattern of this concept in the target state — not a cycle through multiple states, and not the whole dimension at once.
+- **State-locked:** the target state (Part C) is unmistakable and could not be re-read as either of the other two states.
+
+If a draft fails any bullet, rewrite it with a sharper, more concept-specific anchor — or replace it. Do not pad the count with generic statements."""
+
+
+# --- Segment B: concept context (identical across a concept's three statuses). ---
+STATUS_PROMPT_CONCEPT_TEMPLATE = """## Part B — Concept Context for This Run
+
+- **Dimension**: {dimension}
+- **Concept**: {concept}
+- **Display name**: {display_name}
+
+### B.1 Concept aspect (the gist of this concept)
+
+{aspect_block}
+
+### B.2 Concept coordinate (where this concept sits in the framework)
+
+{coordinate_block}
+
+### B.3 Sibling concepts in this dimension (statements must NOT fit these)
+
+The concepts below live in the **same dimension** and are the most likely to be confused with **{display_name}**. Every statement you write must disclose **{display_name}** specifically — it must NOT read as equally true of any sibling below. Use this list as a live contrast set: after drafting each statement, check it cannot be swapped onto a sibling.
+
+{siblings_block}
+
+### B.4 The Load-Bearing Test — calibration examples
+
+The single most important test for each statement: **does it reveal that the concept is doing load-bearing work in this person's life — that their identity, meaning, suffering, wellbeing, or daily organization is routed through it, in the target state?** Mere mention of body, energy, mind, intellect, or bliss is not enough; the concept must be the **center of gravity**. The ✗/✓ pairs below calibrate the right level:
+
+{step2_examples}
+
+### B.5 Worked Examples for This Concept
+
+{target_quality_examples}"""
+
+
+# --- Segment C: state-specific instructions (varies per status; never cached). ---
+STATUS_PROMPT_SUFFIX_TEMPLATE = """## Part C — STATE-SPECIFIC INSTRUCTIONS
+
+**Generate only the {status_label} state of the concept in Part B.** Do not generate any statement for the other two states.
+
+### C.1 Authored descriptions of the {status_label} state (primary semantic authority)
+
+The following are the framework's own descriptions of how this concept's **{status_label}** state expresses across experiential layers. They are the authoritative source for the felt texture you must disclose. Read them as the ground truth for what this state feels like — then translate them into ordinary, first-person lived detail (never quote or paraphrase the jargon directly).
+
+{status_descriptions}
+
+### C.2 Step 1: Silent internal analysis (do not output)
+
+Identify **the single distinctive cue** of this concept at the {status_label} state — the one pattern (a behaviour, a decision rule, a bodily signature) that marks *this concept in this state* and would be **false or off** for every sibling in B.3 and for the other two states. Every statement must turn on a cue of this kind. Avoid anything so general it would be true of most people on a hard day, or a "tour" through several states at once.
+
+### C.3 Volume
+
+Generate **exactly 20 statements total**, all in the **{status_label}** state: 10 Western + 10 Asian. Follow the life-context (A.2.1) and body-mind layer (A.2.2) distributions within each set of 10.
+
+### C.4 State-locking (hard gate)
+
+Every statement must read unmistakably as the **{status_label}** state and could not be re-read as either other state. A balanced statement must not read as stress or absence; an excessive statement must show over-activation or domination; a deficient statement must show under-activation, absence, or suppression.
+
+### C.5 Step 2: Generate
+
+Write all 20 statements now, all in the {status_label} state, satisfying every requirement in Parts A and B.
+
+### C.6 Step 3: Quality review (revise before finalizing)
+
+- **Per-statement:** passes the load-bearing test (B.4)? unmistakably the {status_label} state? has one small anchor? sounds spoken, not written? not overlapping another?
+- **Signal clarity:** the dimension signal, the concept signal (distinct from every sibling in B.3), and the {status_label}-state signal are each crisp — without naming the dimension/concept/state or using tradition jargon.
+- **Sibling-swap gate (mandatory):** for each statement — could any sibling in B.3 honestly say it? could it be said in either other state? could it be dismissed as "just a hard day / stress / low mood"? If yes to any, **rewrite** it so it turns on a cue true of **{display_name}** but false of that sibling / other state, or **replace** it. A statement survives only if it fails the swap for every sibling and both other states.
+- **Weakest pass:** rewrite the weakest remaining few (most generic, writerly, or repetitive). Keep exactly 10 Western + 10 Asian, all {status_label}.
+
+### C.7 Output
+
+Return a JSON array of exactly 20 statement objects. Each object must have exactly these three fields:
+
+- `"statement"`: the lived-experience statement (2–3 sentences, first-person, present tense)
+- `"status"`: exactly `"{status_label}"` for every object
+- `"regional_perspective"`: one of `"western"` or `"asian"`
+
+The array must contain exactly 10 objects with `"regional_perspective": "western"` and exactly 10 with `"regional_perspective": "asian"`, and every object must have `"status": "{status_label}"`.
+
+Output only the raw JSON array — no markdown fences, no preamble, no commentary, no concept name.
+"""
+
+
 STEP2_SYSTEM_PROMPT = """You are an expert at calibrating example pairs for a lived experience extraction task. Your job is to produce a small set of ✗/✓ contrast pairs that teach another model the right level of specificity for first-person experience statements about a concept from Indian wisdom traditions.
 
 What You Are Generating
@@ -316,7 +573,8 @@ class BedrockStep2Client(Protocol):
     def generate_lived_experience(
         self,
         *,
-        user_prompt: str,
+        user_prompt: str | None = None,
+        segments: list[str] | None = None,
         model_id: str,
         max_tokens: int,
     ) -> str: ...
@@ -415,11 +673,22 @@ def _validate_step2_examples(text: str, *, display_name: str) -> str:
     return cleaned
 
 
+def _cache_aligned_content(segments: list[str]) -> list[dict[str, Any]]:
+    """Build converse ``content`` blocks with a ``cachePoint`` after each non-final segment."""
+    blocks: list[dict[str, Any]] = []
+    for i, seg in enumerate(segments):
+        blocks.append({"text": seg})
+        if i < len(segments) - 1:
+            blocks.append({"cachePoint": {"type": "default"}})
+    return blocks
+
+
 def _bedrock_converse_with_retry(
     client: Any,
     *,
     system_prompt: str,
-    user_prompt: str,
+    user_prompt: str | None = None,
+    content: list[dict[str, Any]] | None = None,
     model_id: str,
     max_tokens: int,
     purpose: str,
@@ -429,26 +698,37 @@ def _bedrock_converse_with_retry(
     throttle_base_delay: int,
     throttle_max_delay: int,
 ) -> str:
+    message_content = content if content is not None else [{"text": user_prompt or ""}]
     throttle_attempts = 0
     attempt = 0
     while True:
         try:
             converse_kwargs: dict[str, Any] = {
                 "modelId": model_id,
-                "messages": [{"role": "user", "content": [{"text": user_prompt}]}],
+                "messages": [{"role": "user", "content": message_content}],
                 "inferenceConfig": {"maxTokens": max_tokens},
             }
             if system_prompt:
                 converse_kwargs["system"] = [{"text": system_prompt}]
             response = client.converse(**converse_kwargs)
-            content = ""
+            usage = response.get("usage", {}) or {}
+            if usage:
+                logger.info(
+                    "Bedrock usage | %s | input=%s output=%s cache_read=%s cache_write=%s",
+                    purpose,
+                    usage.get("inputTokens"),
+                    usage.get("outputTokens"),
+                    usage.get("cacheReadInputTokens", usage.get("cacheReadInputTokenCount", 0)),
+                    usage.get("cacheWriteInputTokens", usage.get("cacheWriteInputTokenCount", 0)),
+                )
+            content_text = ""
             for block in response.get("output", {}).get("message", {}).get("content", []):
                 if "text" in block:
-                    content += block["text"]
-            content = _strip_fence(content)
-            if not content:
+                    content_text += block["text"]
+            content_text = _strip_fence(content_text)
+            if not content_text:
                 raise ValueError(f"Empty Bedrock response for {purpose}")
-            return content
+            return content_text
         except Exception as exc:
             if _is_throttle(exc):
                 throttle_attempts += 1
@@ -519,14 +799,19 @@ class Boto3Step2Client:
     def generate_lived_experience(
         self,
         *,
-        user_prompt: str,
+        user_prompt: str | None = None,
+        segments: list[str] | None = None,
         model_id: str,
         max_tokens: int,
     ) -> str:
+        # When ``segments`` is given, send them as cache-aligned content blocks so
+        # Bedrock reuses the static + concept prefixes across repeat calls.
+        content = _cache_aligned_content(segments) if segments else None
         return _bedrock_converse_with_retry(
             self._client,
             system_prompt="",
             user_prompt=user_prompt,
+            content=content,
             model_id=model_id,
             max_tokens=max_tokens,
             purpose="lived-experience generation",
@@ -840,6 +1125,77 @@ def build_prompt(
     )
 
 
+def build_status_prompt(
+    record: ConceptRecord,
+    status_code: str,
+    *,
+    step2_examples: str,
+    target_quality_examples: str | None = None,
+    siblings: list[tuple[str, str]] | None = None,
+) -> str:
+    """Assemble a single-status dimension-dwelling prompt (20 statements for one state).
+
+    ``step2_examples`` and ``target_quality_examples`` are computed once per concept
+    and reused across its statuses (the ✗/✓ calibration is concept-, not state-, specific).
+    ``siblings`` is the list of (display_name, gloss) for the other concepts in the same
+    dimension — injected as a contrast set so statements disclose this concept distinctly.
+    """
+    status_label = STATUS_CODE_TO_LABEL.get(status_code, status_code)
+    profile = infer_profile(record)
+    dimension_label = record.db_dimension_name or display_name(record.dimension)
+    concept_label = record.db_display_name or display_name(record.concept)
+
+    aspect_text = (record.aspect or record.source_meaning or "").strip()
+    aspect_block = aspect_text or "_(no concept-level aspect available)_"
+
+    coordinate_block = format_coordinate(record.coordinate) or "_(no coordinate available)_"
+
+    status_descriptions = format_status_descriptions(record, status_code)
+    if not status_descriptions:
+        status_descriptions = (
+            f"_(no authored per-perspective descriptions for the {status_label} state; "
+            "ground the statements in the concept aspect and coordinate above.)_"
+        )
+
+    siblings_block = format_siblings(siblings or [])
+    if not siblings_block:
+        siblings_block = (
+            "_(no sibling concepts available for this dimension; still ensure each "
+            "statement is concept-distinctive and not generic-human.)_"
+        )
+
+    if target_quality_examples is None:
+        target_quality_examples = build_target_quality_examples(profile)
+
+    concept_block = STATUS_PROMPT_CONCEPT_TEMPLATE.format(
+        step2_examples=step2_examples,
+        target_quality_examples=target_quality_examples,
+        dimension=dimension_label,
+        concept=concept_label,
+        display_name=profile.display_name,
+        aspect_block=aspect_block,
+        coordinate_block=coordinate_block,
+        siblings_block=siblings_block,
+    )
+    suffix = STATUS_PROMPT_SUFFIX_TEMPLATE.format(
+        display_name=profile.display_name,
+        status_label=status_label,
+        status_descriptions=status_descriptions,
+    )
+    return CACHE_BREAKPOINT.join([STATUS_PROMPT_STATIC, concept_block, suffix])
+
+
+def split_cache_segments(prompt_text: str) -> list[str]:
+    """Split an assembled status prompt into its cache-aligned segments.
+
+    Returns ``[static, concept, status]`` when the cache markers are present, or a
+    single-element list (the whole prompt) when they are not — so callers degrade
+    gracefully to an uncached single-block request.
+    """
+    parts = [seg for seg in prompt_text.split(CACHE_BREAKPOINT.strip()) if seg.strip()]
+    return [seg.strip() for seg in parts] if len(parts) > 1 else [prompt_text.strip()]
+
+
 _WESTERN_PERSPECTIVE_RE = re.compile(r"(?im)^.*western\s+perspective.*$")
 _ASIAN_PERSPECTIVE_RE = re.compile(r"(?im)^.*asian\s+perspective.*$")
 
@@ -953,8 +1309,10 @@ def generate_lived_experience_text(
         extra=extra,
     )
     client = bedrock_client or get_step2_bedrock_client(region=region)
+    segments = split_cache_segments(prompt_text)
     raw = client.generate_lived_experience(
-        user_prompt=prompt_text,
+        segments=segments if len(segments) > 1 else None,
+        user_prompt=prompt_text if len(segments) <= 1 else None,
         model_id=resolved_model_id,
         max_tokens=max_tokens,
     )

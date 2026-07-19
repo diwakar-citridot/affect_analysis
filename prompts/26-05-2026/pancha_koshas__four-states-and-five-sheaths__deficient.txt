@@ -1,0 +1,281 @@
+Dimension: pancha_koshas
+Concept: four-states-and-five-sheaths
+Status: deficient
+========================================================================
+
+## Purpose
+
+Generate 20 short, first-person lived-experience statements (10 Western-perspective + 10 Asian-perspective) that let a person recognize themselves as **dwelling in** one specific Concept, within its parent Dimension, at one specific **state**, from the Svarupa framework of Indian wisdom traditions. Statements never name the concept, the dimension, the state, or use tradition vocabulary — they disclose it entirely through plain, ordinary, lived detail.
+
+This prompt has three parts: **(A)** these shared instructions, **(B)** the specific concept context, and **(C)** the STATE-SPECIFIC INSTRUCTIONS at the very end, which name the exact state to generate and give its authoritative descriptions. Read all three parts before writing anything.
+
+## A.1 Key Definitions
+
+**Dimension** — one of the framework's organizing lenses on human experience (e.g., *Guṇa*, *Yuga Cycles*, *Pañca Kośa*, *The Five Kleśas*). A dimension is a category, not something a person feels directly. Each dimension groups a small family of affiliated **Concepts** that share a common thread but differ from one another in texture, role, or emphasis.
+
+**Concept** (also called an *attribute*) — the specific, nameable pattern within a dimension that a person can actually recognize as something they live. Every concept belongs to exactly one dimension and can be examined across experiential layers (physical/somatic, emotional/vital, mental/cognitive, psychic/soul, and the relational-external and overall texture) and three states (deficient, balanced, excessive).
+
+**State** — each concept can be examined in three states (deficient, balanced, excessive). You will generate statements for exactly ONE state, named and defined by authored descriptions in Part C. Every statement must read unmistakably as that one state, never as one of the other two.
+
+**Why this matters:** two concepts inside the same dimension are often close cousins. Every statement must disclose not just the *dimension* but the exact *concept* (Part B), at the exact *state* (Part C) — never a neighbor and never a neighboring state.
+
+## A.2 Shared Generation Requirements
+
+### A.2.1 Life-Context Distribution (per set of 10)
+
+Spread the 10 statements of each perspective across life contexts — roughly: 2 personal/inner life; 2 family and intimate relationships; 2 work/professional life; 2 extended relationships or wider social/community; 2 transitions between contexts or any not yet covered.
+
+### A.2.2 Body-Mind Layer Coverage (per set of 10)
+
+Across each set of 10, cover **all** of the experiential layers at least once — physical/somatic, emotional/vital, mental/cognitive, and psychic/soul — with relational-external texture woven through. A single statement may combine layers.
+
+- **Psychic/soul body** — felt sense of meaning, rightness, intuition, inner knowing. Phrase this so a thoughtful non-spiritual reader would not roll their eyes.
+
+### A.2.3 Cultural Grain (Western vs. Asian)
+
+The cultural difference should show up in the *substance and context* of the lived experience, not in surface details (don't just swap one word for another). The contextual grain — the structure of family, the role of food and care, the rhythms of work and worship, the role of elders, the felt presence of community — should do real work.
+
+A great deal of human experience surfaces *in the presence of, or in interaction with, other people*. Many of the strongest disclosures come from how a person responds physically and emotionally to family members, relatives, friends, colleagues, neighbours, household help, strangers in public, and what they notice in themselves while watching others interact.
+
+**Western perspective — likely textures:** individual or nuclear-family living, the gym, primary care doctors and annual physicals, school drop-off, the commute by car, open-plan offices and video calls, takeout and meal-prep culture, dating apps, weekend brunch, weather as seasons, retirement planning, mortgage, ER visits, the dentist, holiday weekends, neighbours one barely knows, networking events.
+
+**Asian perspective — likely textures (drawn broadly from East, Southeast, and South Asia):** multi-generational and extended-family households or close family involvement even when living apart, food as a primary love and care language, elders' active presence and authority in daily decisions, marriage and reproduction as shared family concerns, household help or live-in caregivers where applicable, the felt weight of being observed and assessed by community, festival and ritual rhythms, hot food vs. cold food and other folk health beliefs, traditional medicine alongside modern doctors, removing footwear at the threshold, dense urban living and public transport, hierarchy at work, the importance of face and reputation, neighbours who know one's business, food gifts and reciprocity.
+
+### A.2.4 Format & Voice
+
+- **First person, present tense**. The voice is a person describing themselves to a therapist, counsellor, doctor, or close friend they trust.
+- **2–3 sentences per statement**.
+- **Plain spoken language** — the way someone would actually describe themselves out loud. No literary flourishes, no insight-laden conclusions, no neat lessons.
+- **Vary openers naturally**: "I get...", "When I...", "If I...", "I cannot...", "I notice...", "I find myself...", "After...", or simply describing the experience directly. Avoid starting more than 4 consecutive statements with the same opener.
+- **The statement must reveal the speaker's own lived experience.** Other people can appear — that is encouraged — but what is disclosed is what is happening *in the speaker*.
+- **No commentary about other people's behaviour as an end in itself, no analytical asides, no neat life-lessons.**
+
+### A.2.5 Specificity Requirements
+
+- **One small anchor per statement** — a moment, an object, a recurring situation, a person. Just enough to ground the experience.
+- **Sensory or behavioural detail lightly** — a sensation, a time of day, a small action — but don't build a story around it.
+- **Reference everyday modern life** — mornings, meals, sleep, work, family, social occasions, transit, public spaces.
+- **No tradition-specific imagery** (no lotuses, sages, ancient rivers).
+- **No translated jargon** ("luminous clarity," "groundedness of being," "expansive consciousness"). Use kitchen-table language.
+- **Plain, but never vague.** The language stays ordinary and unpolished, but the *pattern* must be unmistakable. Plainness is not an excuse for a statement that could mean anything — the speaker may not understand their pattern, yet a careful listener must still recognise exactly which one it is. If a statement sounds wise or like a finished thought, it's too written; if it could describe half the population, it's too vague. Aim between the two.
+
+### A.2.6 Discriminability Requirement (hard gate)
+
+Every statement must pass this test, or it does not go in the output:
+
+- **Concept-distinctive:** it turns on the single distinctive cue of the concept (see Part B) — a concrete behaviour, decision, or bodily signature that would be **false or clearly off** for every sibling concept listed in Part B. A statement that would fit a sibling as well as this concept is a failure.
+- **Not generic-human:** it is not merely "a hard day," stress, low mood, or busyness that almost anyone could claim. Strip any statement whose disclosure survives even if you swap in a completely different concept.
+- **Single stable pattern:** it discloses one recognizable pattern of this concept in the target state — not a cycle through multiple states, and not the whole dimension at once.
+- **State-locked:** the target state (Part C) is unmistakable and could not be re-read as either of the other two states.
+
+If a draft fails any bullet, rewrite it with a sharper, more concept-specific anchor — or replace it. Do not pad the count with generic statements.
+
+<<<CACHE_BREAKPOINT>>>
+
+## Part B — Concept Context for This Run
+
+- **Dimension**: The Pañca Kośa — Five Sheaths
+- **Concept**: Four States and Five Sheaths
+- **Display name**: Four States and Five Sheaths
+
+### B.1 Concept aspect (the gist of this concept)
+
+In waking, senses and mind are active. In dream, only mind active without senses. In deep sleep, prana alone remains. The fourth state (Turiya implied) is pure awareness witnessing all.
+
+### B.2 Concept coordinate (where this concept sits in the framework)
+
+- **Seat**: Mental–Psychic (mapping the sheaths across the states of consciousness)
+- **Ontic mode**: Framework (a correspondence between the sheaths and the states)
+- **Valence**: Neutral — an orienting map
+- **Guṇa**: Sattva (a clarifying schema)
+- **Scale**: Individual (ādhyātmika)
+- **Causal status**: Framework (relates the five sheaths to waking, dream, sleep, and Turīya)
+- **Key relation**: Cross-dimensional correspondence — the sheaths (Dim 5) mapped onto the four states of consciousness (Dim 4).
+
+### B.3 Sibling concepts in this dimension (statements must NOT fit these)
+
+The concepts below live in the **same dimension** and are the most likely to be confused with **Four States and Five Sheaths**. Every statement you write must disclose **Four States and Five Sheaths** specifically — it must NOT read as equally true of any sibling below. Use this list as a live contrast set: after drafting each statement, check it cannot be swapped onto a sibling.
+
+- Ananda Mimamsa — Indra and Virochana go to Prajapati to learn the Self.
+- Anandamaya — Anandamaya—the bliss sheath.
+- Anandamaya Vidya — Meditation on the Bliss-sheath as the most subtle covering of Self.
+- Annamaya Kosha — Annamaya—the food sheath, the physical body.
+- Five Koshas — Five sheaths cover the Self: Annamaya (food/body), Pranamaya (vital energy), Manomaya (mind), Vijnanamaya (intellect), Anandamaya (bliss).
+
+### B.4 The Load-Bearing Test — calibration examples
+
+The single most important test for each statement: **does it reveal that the concept is doing load-bearing work in this person's life — that their identity, meaning, suffering, wellbeing, or daily organization is routed through it, in the target state?** Mere mention of body, energy, mind, intellect, or bliss is not enough; the concept must be the **center of gravity**. The ✗/✓ pairs below calibrate the right level:
+
+✗ Too vague (no anchor at all):
+*"I feel like I'm aware of different layers operating at different times. Sometimes everything is active, sometimes only part of me is present, and sometimes there's just this background hum that keeps going."*
+
+✓ Right level (feeling + small anchor):
+*"When I'm scrolling my phone at night, I notice my eyes moving and my thoughts racing. But in the morning, right before my alarm, I'm somewhere else entirely—dreaming but my body completely still. And last week when I had the flu, I slept so deeply I didn't dream at all, just this sense of breathing continuing while everything else was off."*
+
+✗ Too narrative (reads like a journal entry):
+*"This morning I woke up slowly, first becoming aware that I existed but not knowing where I was. Then I heard the coffee maker downstairs and remembered—oh right, I'm in my bedroom, it's Saturday. My eyes opened and suddenly the whole room appeared with all its colours and details. I got up, feeling my feet on the cold floor, and walked to the window. The transition from that formless awareness to being fully here in my body and the world felt like crossing a threshold I cross every single day but never really notice."*
+
+✓ Right level:
+*"Most mornings I'm dreaming one second and then my alarm yanks me into the bright room and my phone screen. But sometimes I wake up earlier, and there's this gap—I'm aware I exist but I haven't opened my eyes yet, no thoughts yet, just a sense of being here before the day starts assembling itself."*
+
+✗ Too generic:
+*"I feel more present some days than others. When I'm really engaged with something I'm fully there, but when I'm tired or distracted I'm only half-aware. It's like I'm operating on different levels depending on my energy."*
+
+✓ Right level:
+*"In the middle of a work call, I'm tracking faces on screen, forming responses, feeling my jaw tense. But last night when my partner asked if I heard them call my name, I realized I'd been staring at the wall—not daydreaming, not thinking, just blank. Same room, totally different mode."*
+
+✗ Too generic:
+*"Sometimes I feel disconnected from my body, like I'm just going through the motions. Other times I'm very aware of physical sensations. It depends on how stressed or relaxed I am."*
+
+✓ Right level:
+*"When I'm reading a novel on the couch, my hand turns pages but I don't register it—I'm in the story. But when I run, every footstrike and breath demands attention. And yesterday after the dentist's anesthesia, I knew my face was there but couldn't feel it, like the sensation layer was just switched off while I stayed conscious."*
+
+### B.5 Worked Examples for This Concept
+
+The examples below apply the load-bearing test to **Four States and Five Sheaths** (in waking, senses and mind are active.) specifically. The same logic applies to whichever concept — within its dimension — is being explored.
+
+---
+
+**✗ Fails the load-bearing test — चतुर् अवस्था is mentioned but not load-bearing**
+
+*"I've been off lately and something in me keeps slipping. I wish I could get back to normal."*
+
+Almost anyone could say this during a difficult stretch. It does not show that four states and five sheaths organizes this person's week, relationships, or sense of who they are.
+
+---
+
+**✗ Fails the load-bearing test — a surface habit that doesn't disclose Four States and Five Sheaths-centered dwelling**
+
+*"I always do the same little breathing routine my mother taught me before bed. If I skip it, I feel a little unsettled, though I couldn't say why."*
+
+This is a familiar habit related to चतुर् अवस्था. People dwelling at many adjacent human qualities could say the same. It does not show that four states and five sheaths is the load-bearing center.
+
+---
+
+**✗ About someone else, not about the speaker's own lived experience**
+
+*"My sister walks into the room and I can tell immediately whether the evening will be easy or tense."*
+
+This observes someone else's mood or behaviour. The speaker has not disclosed what is happening in them through four states and five sheaths.
+
+---
+
+**✗ Too writerly, too self-aware for ordinary speech**
+
+*"I'm starting to see that this need to earn my own steadiness has been running my life for years, and I think I'm finally ready to understand why."*
+
+Real people rarely deliver this much packaged insight in one breath. It sounds written, not spoken.
+
+---
+
+**✗ Too generic — could describe any concept**
+
+*"I just feel off most days. Nothing feels right and I can't explain it."*
+
+This is feeling-language without an anchor. It could fit illness, grief, burnout, or many adjacent human qualities. It cannot disclose dwelling at Four States and Five Sheaths.
+
+---
+
+**✓ Right level — Four States and Five Sheaths-centered dwelling, with another person in the frame**
+
+*"When my father-in-law starts talking about money at dinner, something in me locks up before I even answer. By dessert I still haven't found my footing — like the steadiness I usually have to work for got knocked loose, and I can't just will it back."*
+
+Another person is present, but the disclosure is the speaker's own experience — and that experience is load-bearing because four states and five sheaths sets the tone for the rest of the evening.
+
+---
+
+**✓ Right level — Four States And Five Sheaths sets the terms for the speaker's entire week**
+
+*"I protect one part of every week, no matter what, just to keep myself steady. It is not a hobby — it is the only thing that keeps me functional with my team by Wednesday."*
+
+Four States And Five Sheaths is the foundation of the speaker's professional and relational life. The concept is doing load-bearing work.
+
+---
+
+**✓ Right level — Four States And Five Sheaths as final authority over social life**
+
+*"My friends make plans and I want to say yes, but I check first whether I can hold myself together. If I ignore that, the whole evening is ruined and they think I am being difficult."*
+
+Four States And Five Sheaths decides, not the speaker. Social plans negotiate around what चतुर् अवस्था will tolerate.
+
+---
+
+**✓ Right level — चतुर् अवस्था as identity, ordinary language, no insight overlay**
+
+*"If I go a few days without my usual morning routine, I do not feel like myself with my kids. My partner notices before I do. It is not something I do on the side — it is where I become myself."*
+
+Four States And Five Sheaths is the location of selfhood. Other people are in the frame, and the speaker reports the pattern without a neat lesson.
+
+---
+
+**✓ Right level — चतुर् अवस्था-mediated reading of others, disclosing the speaker's own experience**
+
+*"At a family gathering, if someone hugs me and feels closed off, I am flat the rest of the night. Something in me has already decided the evening is heavy."*
+
+The speaker is with others, but the disclosure is their own experience — and that experience is load-bearing because four states and five sheaths shapes the rest of the evening.
+
+
+<<<CACHE_BREAKPOINT>>>
+
+## Part C — STATE-SPECIFIC INSTRUCTIONS
+
+**Generate only the deficient state of the concept in Part B.** Do not generate any statement for the other two states.
+
+### C.1 Authored descriptions of the deficient state (primary semantic authority)
+
+The following are the framework's own descriptions of how this concept's **deficient** state expresses across experiential layers. They are the authoritative source for the felt texture you must disclose. Read them as the ground truth for what this state feels like — then translate them into ordinary, first-person lived detail (never quote or paraphrase the jargon directly).
+
+**Overview**
+
+Unconscious cycling through states—no awareness of transitions, no recognition of the witness present in each.
+
+**Physical / somatic**
+
+Mechanical sleep-wake cycles.
+
+**Emotional / vital**
+
+Emotional contents of each state taken as ultimate.
+
+**Mental / cognitive**
+
+Mind without awareness of state-transitions.
+
+**Psychic / soul**
+
+The soul identifies wholly with the active sheath of the moment, never sensing what lies beneath.
+
+### C.2 Step 1: Silent internal analysis (do not output)
+
+Identify **the single distinctive cue** of this concept at the deficient state — the one pattern (a behaviour, a decision rule, a bodily signature) that marks *this concept in this state* and would be **false or off** for every sibling in B.3 and for the other two states. Every statement must turn on a cue of this kind. Avoid anything so general it would be true of most people on a hard day, or a "tour" through several states at once.
+
+### C.3 Volume
+
+Generate **exactly 20 statements total**, all in the **deficient** state: 10 Western + 10 Asian. Follow the life-context (A.2.1) and body-mind layer (A.2.2) distributions within each set of 10.
+
+### C.4 State-locking (hard gate)
+
+Every statement must read unmistakably as the **deficient** state and could not be re-read as either other state. A balanced statement must not read as stress or absence; an excessive statement must show over-activation or domination; a deficient statement must show under-activation, absence, or suppression.
+
+### C.5 Step 2: Generate
+
+Write all 20 statements now, all in the deficient state, satisfying every requirement in Parts A and B.
+
+### C.6 Step 3: Quality review (revise before finalizing)
+
+- **Per-statement:** passes the load-bearing test (B.4)? unmistakably the deficient state? has one small anchor? sounds spoken, not written? not overlapping another?
+- **Signal clarity:** the dimension signal, the concept signal (distinct from every sibling in B.3), and the deficient-state signal are each crisp — without naming the dimension/concept/state or using tradition jargon.
+- **Sibling-swap gate (mandatory):** for each statement — could any sibling in B.3 honestly say it? could it be said in either other state? could it be dismissed as "just a hard day / stress / low mood"? If yes to any, **rewrite** it so it turns on a cue true of **Four States and Five Sheaths** but false of that sibling / other state, or **replace** it. A statement survives only if it fails the swap for every sibling and both other states.
+- **Weakest pass:** rewrite the weakest remaining few (most generic, writerly, or repetitive). Keep exactly 10 Western + 10 Asian, all deficient.
+
+### C.7 Output
+
+Return a JSON array of exactly 20 statement objects. Each object must have exactly these three fields:
+
+- `"statement"`: the lived-experience statement (2–3 sentences, first-person, present tense)
+- `"status"`: exactly `"deficient"` for every object
+- `"regional_perspective"`: one of `"western"` or `"asian"`
+
+The array must contain exactly 10 objects with `"regional_perspective": "western"` and exactly 10 with `"regional_perspective": "asian"`, and every object must have `"status": "deficient"`.
+
+Output only the raw JSON array — no markdown fences, no preamble, no commentary, no concept name.

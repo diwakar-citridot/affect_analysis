@@ -1,0 +1,292 @@
+Dimension: ways_of_knowing
+Concept: shrotrasya-shrotram
+Status: balanced
+========================================================================
+
+## Purpose
+
+Generate 20 short, first-person lived-experience statements (10 Western-perspective + 10 Asian-perspective) that let a person recognize themselves as **dwelling in** one specific Concept, within its parent Dimension, at one specific **state**, from the Svarupa framework of Indian wisdom traditions. Statements never name the concept, the dimension, the state, or use tradition vocabulary — they disclose it entirely through plain, ordinary, lived detail.
+
+This prompt has three parts: **(A)** these shared instructions, **(B)** the specific concept context, and **(C)** the STATE-SPECIFIC INSTRUCTIONS at the very end, which name the exact state to generate and give its authoritative descriptions. Read all three parts before writing anything.
+
+## A.1 Key Definitions
+
+**Dimension** — one of the framework's organizing lenses on human experience (e.g., *Guṇa*, *Yuga Cycles*, *Pañca Kośa*, *The Five Kleśas*). A dimension is a category, not something a person feels directly. Each dimension groups a small family of affiliated **Concepts** that share a common thread but differ from one another in texture, role, or emphasis.
+
+**Concept** (also called an *attribute*) — the specific, nameable pattern within a dimension that a person can actually recognize as something they live. Every concept belongs to exactly one dimension and can be examined across experiential layers (physical/somatic, emotional/vital, mental/cognitive, psychic/soul, and the relational-external and overall texture) and three states (deficient, balanced, excessive).
+
+**State** — each concept can be examined in three states (deficient, balanced, excessive). You will generate statements for exactly ONE state, named and defined by authored descriptions in Part C. Every statement must read unmistakably as that one state, never as one of the other two.
+
+**Why this matters:** two concepts inside the same dimension are often close cousins. Every statement must disclose not just the *dimension* but the exact *concept* (Part B), at the exact *state* (Part C) — never a neighbor and never a neighboring state.
+
+## A.2 Shared Generation Requirements
+
+### A.2.1 Life-Context Distribution (per set of 10)
+
+Spread the 10 statements of each perspective across life contexts — roughly: 2 personal/inner life; 2 family and intimate relationships; 2 work/professional life; 2 extended relationships or wider social/community; 2 transitions between contexts or any not yet covered.
+
+### A.2.2 Body-Mind Layer Coverage (per set of 10)
+
+Across each set of 10, cover **all** of the experiential layers at least once — physical/somatic, emotional/vital, mental/cognitive, and psychic/soul — with relational-external texture woven through. A single statement may combine layers.
+
+- **Psychic/soul body** — felt sense of meaning, rightness, intuition, inner knowing. Phrase this so a thoughtful non-spiritual reader would not roll their eyes.
+
+### A.2.3 Cultural Grain (Western vs. Asian)
+
+The cultural difference should show up in the *substance and context* of the lived experience, not in surface details (don't just swap one word for another). The contextual grain — the structure of family, the role of food and care, the rhythms of work and worship, the role of elders, the felt presence of community — should do real work.
+
+A great deal of human experience surfaces *in the presence of, or in interaction with, other people*. Many of the strongest disclosures come from how a person responds physically and emotionally to family members, relatives, friends, colleagues, neighbours, household help, strangers in public, and what they notice in themselves while watching others interact.
+
+**Western perspective — likely textures:** individual or nuclear-family living, the gym, primary care doctors and annual physicals, school drop-off, the commute by car, open-plan offices and video calls, takeout and meal-prep culture, dating apps, weekend brunch, weather as seasons, retirement planning, mortgage, ER visits, the dentist, holiday weekends, neighbours one barely knows, networking events.
+
+**Asian perspective — likely textures (drawn broadly from East, Southeast, and South Asia):** multi-generational and extended-family households or close family involvement even when living apart, food as a primary love and care language, elders' active presence and authority in daily decisions, marriage and reproduction as shared family concerns, household help or live-in caregivers where applicable, the felt weight of being observed and assessed by community, festival and ritual rhythms, hot food vs. cold food and other folk health beliefs, traditional medicine alongside modern doctors, removing footwear at the threshold, dense urban living and public transport, hierarchy at work, the importance of face and reputation, neighbours who know one's business, food gifts and reciprocity.
+
+### A.2.4 Format & Voice
+
+- **First person, present tense**. The voice is a person describing themselves to a therapist, counsellor, doctor, or close friend they trust.
+- **2–3 sentences per statement**.
+- **Plain spoken language** — the way someone would actually describe themselves out loud. No literary flourishes, no insight-laden conclusions, no neat lessons.
+- **Vary openers naturally**: "I get...", "When I...", "If I...", "I cannot...", "I notice...", "I find myself...", "After...", or simply describing the experience directly. Avoid starting more than 4 consecutive statements with the same opener.
+- **The statement must reveal the speaker's own lived experience.** Other people can appear — that is encouraged — but what is disclosed is what is happening *in the speaker*.
+- **No commentary about other people's behaviour as an end in itself, no analytical asides, no neat life-lessons.**
+
+### A.2.5 Specificity Requirements
+
+- **One small anchor per statement** — a moment, an object, a recurring situation, a person. Just enough to ground the experience.
+- **Sensory or behavioural detail lightly** — a sensation, a time of day, a small action — but don't build a story around it.
+- **Reference everyday modern life** — mornings, meals, sleep, work, family, social occasions, transit, public spaces.
+- **No tradition-specific imagery** (no lotuses, sages, ancient rivers).
+- **No translated jargon** ("luminous clarity," "groundedness of being," "expansive consciousness"). Use kitchen-table language.
+- **Plain, but never vague.** The language stays ordinary and unpolished, but the *pattern* must be unmistakable. Plainness is not an excuse for a statement that could mean anything — the speaker may not understand their pattern, yet a careful listener must still recognise exactly which one it is. If a statement sounds wise or like a finished thought, it's too written; if it could describe half the population, it's too vague. Aim between the two.
+
+### A.2.6 Discriminability Requirement (hard gate)
+
+Every statement must pass this test, or it does not go in the output:
+
+- **Concept-distinctive:** it turns on the single distinctive cue of the concept (see Part B) — a concrete behaviour, decision, or bodily signature that would be **false or clearly off** for every sibling concept listed in Part B. A statement that would fit a sibling as well as this concept is a failure.
+- **Not generic-human:** it is not merely "a hard day," stress, low mood, or busyness that almost anyone could claim. Strip any statement whose disclosure survives even if you swap in a completely different concept.
+- **Single stable pattern:** it discloses one recognizable pattern of this concept in the target state — not a cycle through multiple states, and not the whole dimension at once.
+- **State-locked:** the target state (Part C) is unmistakable and could not be re-read as either of the other two states.
+
+If a draft fails any bullet, rewrite it with a sharper, more concept-specific anchor — or replace it. Do not pad the count with generic statements.
+
+<<<CACHE_BREAKPOINT>>>
+
+## Part B — Concept Context for This Run
+
+- **Dimension**: The Ways of Knowing
+- **Concept**: Shrotrasya Shrotram
+- **Display name**: Shrotrasya Shrotram
+
+### B.1 Concept aspect (the gist of this concept)
+
+Brahman is the ear of the ear, the mind of the mind, the breath of the breath, the eye of the eye. The senses are organs—but what enables them to function as senses is the deeper consciousness.
+
+### B.2 Concept coordinate (where this concept sits in the framework)
+
+- **Seat**: Psychic–Mental
+- **Ontic mode**: Framework — a vision / pointer
+- **Valence**: Neutral — a pointer to be realized
+- **Guṇa**: Sattva, tending beyond
+- **Scale**: Individual, toward the Absolute
+- **Causal status**: Framework / realization
+- **Key relation**: the ‘Ear of the ear’ — the awareness behind the senses (Kena).
+
+### B.3 Sibling concepts in this dimension (statements must NOT fit these)
+
+The concepts below live in the **same dimension** and are the most likely to be confused with **Shrotrasya Shrotram**. Every statement you write must disclose **Shrotrasya Shrotram** specifically — it must NOT read as equally true of any sibling below. Use this list as a live contrast set: after drafting each statement, check it cannot be swapped onto a sibling.
+
+- Adhikari-Bheda — Ashtavakra acknowledges different categories of seekers (adhikari-bheda).
+- Allegorical Mahabharata — Lahiri Mahasay’s profound allegorical interpretation: every character of the Mahabharata represents an inner psychological force in the Kriyavan.
+- Asuri Sampat — Asuri Sampat is a detailed psychological profile of toxic human traits including pride, arrogance, harshness, anger, insatiable lust, and cruelty.
+- Bhakti-Jnana-Vairagya Cycle — The Bhagavatam’s distinctive cycle: Bhakti (devotion) opens the heart; experienced ananda (joy) is the result; from ananda arises Jnana (awareness/insight); from jnana arises Vairagya (dispassion).
+- Birth and Death as Correlatives — Like corn growing and falling, growing again from fallen seed—human life follows the same pattern.
+- Buddhi — Buddhi is the faculty of logical determination and discernment.
+- Choicelessness — Mind functions through choice—creating dichotomies that don’t exist in reality.
+- Complementariness of Sin and Virtue — The Hindu view sees good and evil not as warring opposites but as complementary balance.
+- Daivi Sampat — Daivi Sampat is a checklist of twenty-six psychological virtues including fearlessness, purification of mind, charity, absence of anger and malice, truthfulness, and self-control.
+- Death and the Two Paths — Two paths after death: Devayana (path of the gods) for those who know Brahman—they pass through flame, day, bright fortnight, six months of sun’s northern course, year, sun, moon, lightning—never to return to samsara.
+- Four Types of Dhyana — Mahavira’s revolutionary framework: meditation is not a special activity—everyone meditates.
+- Gargi’s Inquiry — Gargi Vachaknavi asks Yajnavalkya progressive questions: ‘On what is the earth woven, warp and woof?’ Each answer leads to another question ‘on what is THAT woven?’ Through worlds of water, air, sky, sun, moon, stars,...
+- Gravitation vs Grace — Two fundamental laws govern existence: gravitation (pull toward objects, downward and outward) and grace (pull toward Source, inward and upward).
+- Impersonal Divine — The divine is not a person—personhood is itself illusion.
+- Knowledge vs Knowing — The crucial distinction between accumulated information (knowledge) and direct realization (knowing).
+- …and 28 more concept(s) in this dimension
+
+### B.4 The Load-Bearing Test — calibration examples
+
+The single most important test for each statement: **does it reveal that the concept is doing load-bearing work in this person's life — that their identity, meaning, suffering, wellbeing, or daily organization is routed through it, in the target state?** Mere mention of body, energy, mind, intellect, or bliss is not enough; the concept must be the **center of gravity**. The ✗/✓ pairs below calibrate the right level:
+
+✗ Too vague (no anchor at all):
+*"I experience awareness behind my awareness, like something listening to my listening. There's a presence that makes perception possible, deeper than the senses themselves."*
+
+✓ Right level (feeling + small anchor):
+*"When my daughter asks me something while I'm reading, I hear her voice but I'm also catching myself hearing it—like there's a quiet attention that noticed I was about to miss her question before I consciously realized it."*
+
+✗ Too narrative (reads like a journal entry):
+*"This morning I was making coffee and suddenly became aware of the sound of water filling the kettle. But then I noticed I was noticing the sound—there was this strange doubling effect where I was aware of being aware. I stood there for a moment, kettle in hand, feeling like I'd stumbled onto something I'd been looking through my whole life without seeing. The steam started rising and I wondered how many other moments I'd missed this way."*
+
+✓ Right level:
+*"Sometimes when I'm listening to music on my commute, I catch myself aware that I'm hearing—not just the song, but the fact that hearing is happening. It's like watching myself listen from a step back."*
+
+✗ Too generic:
+*"I notice there's something observing my thoughts and feelings throughout the day. It's like a witness that's always present, watching everything unfold without getting involved."*
+
+✓ Right level:
+*"In meetings when someone's talking, occasionally I become aware that understanding is happening—not just hearing words, but I'm somehow watching the process of meaning forming before it becomes my thought about what they said."*
+
+✗ Too generic:
+*"I feel connected to a deeper awareness that's always there beneath my everyday consciousness. It's peaceful and constant, like a foundation supporting all my experiences."*
+
+✓ Right level:
+*"When I reach for my phone, sometimes I notice the intention to reach before my hand moves—like something registered the impulse a split second before I became the person deciding to check messages."*
+
+### B.5 Worked Examples for This Concept
+
+The examples below apply the load-bearing test to **Shrotrasya Shrotram** (brahman is the ear of the ear, the mind of the mind, the breath of the breath, the eye of the eye.) specifically. The same logic applies to whichever concept — within its dimension — is being explored.
+
+---
+
+**✗ Fails the load-bearing test — श्रोत्रस्य श्रोत्रम् is mentioned but not load-bearing**
+
+*"I've been off lately and something in me keeps slipping. I wish I could get back to normal."*
+
+Almost anyone could say this during a difficult stretch. It does not show that shrotrasya shrotram organizes this person's week, relationships, or sense of who they are.
+
+---
+
+**✗ Fails the load-bearing test — a surface habit that doesn't disclose Shrotrasya Shrotram-centered dwelling**
+
+*"I always do the same little breathing routine my mother taught me before bed. If I skip it, I feel a little unsettled, though I couldn't say why."*
+
+This is a familiar habit related to श्रोत्रस्य श्रोत्रम्. People dwelling at many adjacent human qualities could say the same. It does not show that shrotrasya shrotram is the load-bearing center.
+
+---
+
+**✗ About someone else, not about the speaker's own lived experience**
+
+*"My sister walks into the room and I can tell immediately whether the evening will be easy or tense."*
+
+This observes someone else's mood or behaviour. The speaker has not disclosed what is happening in them through shrotrasya shrotram.
+
+---
+
+**✗ Too writerly, too self-aware for ordinary speech**
+
+*"I'm starting to see that this need to earn my own steadiness has been running my life for years, and I think I'm finally ready to understand why."*
+
+Real people rarely deliver this much packaged insight in one breath. It sounds written, not spoken.
+
+---
+
+**✗ Too generic — could describe any concept**
+
+*"I just feel off most days. Nothing feels right and I can't explain it."*
+
+This is feeling-language without an anchor. It could fit illness, grief, burnout, or many adjacent human qualities. It cannot disclose dwelling at Shrotrasya Shrotram.
+
+---
+
+**✓ Right level — Shrotrasya Shrotram-centered dwelling, with another person in the frame**
+
+*"When my father-in-law starts talking about money at dinner, something in me locks up before I even answer. By dessert I still haven't found my footing — like the steadiness I usually have to work for got knocked loose, and I can't just will it back."*
+
+Another person is present, but the disclosure is the speaker's own experience — and that experience is load-bearing because shrotrasya shrotram sets the tone for the rest of the evening.
+
+---
+
+**✓ Right level — Shrotrasya Shrotram sets the terms for the speaker's entire week**
+
+*"I protect one part of every week, no matter what, just to keep myself steady. It is not a hobby — it is the only thing that keeps me functional with my team by Wednesday."*
+
+Shrotrasya Shrotram is the foundation of the speaker's professional and relational life. The concept is doing load-bearing work.
+
+---
+
+**✓ Right level — Shrotrasya Shrotram as final authority over social life**
+
+*"My friends make plans and I want to say yes, but I check first whether I can hold myself together. If I ignore that, the whole evening is ruined and they think I am being difficult."*
+
+Shrotrasya Shrotram decides, not the speaker. Social plans negotiate around what श्रोत्रस्य श्रोत्रम् will tolerate.
+
+---
+
+**✓ Right level — श्रोत्रस्य श्रोत्रम् as identity, ordinary language, no insight overlay**
+
+*"If I go a few days without my usual morning routine, I do not feel like myself with my kids. My partner notices before I do. It is not something I do on the side — it is where I become myself."*
+
+Shrotrasya Shrotram is the location of selfhood. Other people are in the frame, and the speaker reports the pattern without a neat lesson.
+
+---
+
+**✓ Right level — श्रोत्रस्य श्रोत्रम्-mediated reading of others, disclosing the speaker's own experience**
+
+*"At a family gathering, if someone hugs me and feels closed off, I am flat the rest of the night. Something in me has already decided the evening is heavy."*
+
+The speaker is with others, but the disclosure is their own experience — and that experience is load-bearing because shrotrasya shrotram shapes the rest of the evening.
+
+
+<<<CACHE_BREAKPOINT>>>
+
+## Part C — STATE-SPECIFIC INSTRUCTIONS
+
+**Generate only the balanced state of the concept in Part B.** Do not generate any statement for the other two states.
+
+### C.1 Authored descriptions of the balanced state (primary semantic authority)
+
+The following are the framework's own descriptions of how this concept's **balanced** state expresses across experiential layers. They are the authoritative source for the felt texture you must disclose. Read them as the ground truth for what this state feels like — then translate them into ordinary, first-person lived detail (never quote or paraphrase the jargon directly).
+
+**Overview**
+
+Recognition that consciousness is what makes senses work, not the senses making consciousness. The ‘mind of the mind’ is realized as the witnessing presence.
+
+**Physical / somatic**
+
+Senses function but consciousness behind them is known.
+
+**Emotional / vital**
+
+Emotional perception backed by witness-awareness.
+
+**Mental / cognitive**
+
+The ‘mind of the mind’ realized—the witnessing presence behind thought.
+
+**Psychic / soul**
+
+The soul turns toward the awareness behind the senses — the ear of the ear — that the senses themselves cannot grasp.
+
+### C.2 Step 1: Silent internal analysis (do not output)
+
+Identify **the single distinctive cue** of this concept at the balanced state — the one pattern (a behaviour, a decision rule, a bodily signature) that marks *this concept in this state* and would be **false or off** for every sibling in B.3 and for the other two states. Every statement must turn on a cue of this kind. Avoid anything so general it would be true of most people on a hard day, or a "tour" through several states at once.
+
+### C.3 Volume
+
+Generate **exactly 20 statements total**, all in the **balanced** state: 10 Western + 10 Asian. Follow the life-context (A.2.1) and body-mind layer (A.2.2) distributions within each set of 10.
+
+### C.4 State-locking (hard gate)
+
+Every statement must read unmistakably as the **balanced** state and could not be re-read as either other state. A balanced statement must not read as stress or absence; an excessive statement must show over-activation or domination; a deficient statement must show under-activation, absence, or suppression.
+
+### C.5 Step 2: Generate
+
+Write all 20 statements now, all in the balanced state, satisfying every requirement in Parts A and B.
+
+### C.6 Step 3: Quality review (revise before finalizing)
+
+- **Per-statement:** passes the load-bearing test (B.4)? unmistakably the balanced state? has one small anchor? sounds spoken, not written? not overlapping another?
+- **Signal clarity:** the dimension signal, the concept signal (distinct from every sibling in B.3), and the balanced-state signal are each crisp — without naming the dimension/concept/state or using tradition jargon.
+- **Sibling-swap gate (mandatory):** for each statement — could any sibling in B.3 honestly say it? could it be said in either other state? could it be dismissed as "just a hard day / stress / low mood"? If yes to any, **rewrite** it so it turns on a cue true of **Shrotrasya Shrotram** but false of that sibling / other state, or **replace** it. A statement survives only if it fails the swap for every sibling and both other states.
+- **Weakest pass:** rewrite the weakest remaining few (most generic, writerly, or repetitive). Keep exactly 10 Western + 10 Asian, all balanced.
+
+### C.7 Output
+
+Return a JSON array of exactly 20 statement objects. Each object must have exactly these three fields:
+
+- `"statement"`: the lived-experience statement (2–3 sentences, first-person, present tense)
+- `"status"`: exactly `"balanced"` for every object
+- `"regional_perspective"`: one of `"western"` or `"asian"`
+
+The array must contain exactly 10 objects with `"regional_perspective": "western"` and exactly 10 with `"regional_perspective": "asian"`, and every object must have `"status": "balanced"`.
+
+Output only the raw JSON array — no markdown fences, no preamble, no commentary, no concept name.
